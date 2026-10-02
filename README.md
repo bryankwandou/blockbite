@@ -186,6 +186,8 @@ Results of the last full run (2026-10-02):
 | Suite | Result |
 |---|---|
 | Prize program (LiteSVM) | 20/20 |
+| Prize money math (payout split, merkle tree) | 10/10 |
+| Translations | 29 languages × 20 namespaces, 33,118 strings, 0 missing |
 | Partner distribution self-test | 54/54 (27 in-memory, 27 on Postgres) |
 | Auth checks | 19/19 |
 | Achievements | 5,300 achievements, 5,300 unique emblems |
