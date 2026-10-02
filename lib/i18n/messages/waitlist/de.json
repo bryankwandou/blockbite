@@ -1,0 +1,22 @@
+{
+  "title": "Lass dich benachrichtigen, wenn der Daily-Ranked-Ticketverkauf startet",
+  "kicker": "Warteliste",
+  "sub": "Der Ticketverkauf startet, sobald das Preisprogramm auf dem Solana Mainnet live ist. Hinterlass deine E-Mail und wir sagen dir Bescheid, wenn es losgeht.",
+  "email_label": "E-Mail",
+  "email_placeholder": "du@beispiel.de",
+  "submit": "Benachrichtige mich",
+  "submitting": "Sendet…",
+  "err_email": "Gib eine gültige E-Mail-Adresse ein.",
+  "err_rate": "Zu viele Versuche. Warte eine Minute und versuch es dann nochmal.",
+  "err_server": "Bei uns ist etwas schiefgelaufen. Versuch es gleich nochmal.",
+  "done": "Du stehst auf der Liste. Wir mailen dir, sobald der Ticketverkauf startet.",
+  "count": "{n} auf der Liste",
+  "facts_title": "Was startet",
+  "fact_1": "1 Ticket = 1 USDC = 1 Ranked-Versuch.",
+  "fact_2": "Bis zu 3 Versuche pro Wallet und UTC-Tag. Dein bester zählt.",
+  "fact_3": "An diesem Tag gleiches Brett und gleiche Teile für alle.",
+  "fact_4": "Die täglichen und monatlichen Top 10 gewinnen USDC aus dem Preistresor.",
+  "meanwhile": "Der Abenteuer-Modus ist kostenlos und jetzt offen.",
+  "cta_play": "Abenteuer spielen",
+  "cta_guide": "So funktioniert es"
+}

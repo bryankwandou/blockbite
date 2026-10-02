@@ -1,0 +1,18 @@
+{
+  "title": "Fanya kazi na BlockBite",
+  "kicker": "Ushirikiano",
+  "sub": "BlockBite ni fumbo la vitalu la kila siku kwenye Solana. Ukiendesha mradi, jumuiya au tukio na ungependa kufanya jambo pamoja, tuambie hapa.",
+  "email_label": "Barua pepe",
+  "email_ph": "you@project.xyz",
+  "project_label": "Mradi au timu",
+  "project_ph": "Jina na kiungo",
+  "notes_label": "Una nini akilini? (si lazima)",
+  "notes_ph": "Mistari michache inatosha",
+  "submit": "Tuma",
+  "submitting": "Inatuma…",
+  "sent_title": "Imetumwa.",
+  "sent_desc": "Tutajibu kwa {email}.",
+  "err": "Haikuweza kutuma: {msg}",
+  "contact": "Unapendelea ujumbe wa moja kwa moja? Tuko kwenye",
+  "contact_x": "X"
+}

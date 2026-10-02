@@ -1,0 +1,232 @@
+.tut {
+  display: grid;
+  gap: 18px 28px;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 16px;
+}
+@media (min-width: 760px) {
+  .tut { grid-template-columns: minmax(0, 340px) minmax(0, 1fr); padding: 22px; align-items: start; }
+  .side { grid-column: 2; grid-row: 1; }
+  .boardCol { grid-column: 1; grid-row: 1; }
+}
+
+/* ── Steps ─────────────────────────────────────── */
+.steps { display: flex; gap: 6px; margin-bottom: 12px; }
+.stepChip {
+  flex: 1 1 0;
+  height: 8px;
+  border-radius: 3px;
+  background: var(--ds-border, #1f1f3a);
+  transition: background 200ms ease-out;
+}
+.stepOn { background: var(--ds-accent, #a78bfa); }
+.stepDone { background: var(--ds-ok, #22c55e); }
+.stepRow { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
+.stepLabel {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ds-text-dim, #94a3b8);
+}
+.score {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ds-text, #fff);
+}
+
+/* ── Coach: mascot + bubble ────────────────────── */
+.coach {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  margin: 10px 0 14px;
+}
+.mascotWrap { display: block; width: 64px; height: 64px; transform-origin: 50% 100%; }
+.mascot { display: block; width: 64px; height: 64px; object-fit: contain; }
+.idle { animation: tutIdle 2600ms ease-in-out infinite; }
+.hop { animation: tutHop 520ms cubic-bezier(0.34, 1.56, 0.64, 1); }
+.shake { animation: tutShake 320ms ease-out; }
+@keyframes tutIdle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+@keyframes tutHop {
+  0% { transform: translateY(0) scale(1); }
+  35% { transform: translateY(-14px) scale(1.06, 0.95); }
+  70% { transform: translateY(0) scale(0.96, 1.04); }
+  100% { transform: none; }
+}
+@keyframes tutShake {
+  25% { transform: translateX(-5px) rotate(-4deg); }
+  75% { transform: translateX(5px) rotate(4deg); }
+}
+.bubble {
+  position: relative;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 2px solid var(--ds-border, #1f1f3a);
+  background: var(--ds-surface2, rgba(0,0,0,0.35));
+  font-size: 14.5px;
+  line-height: 1.45;
+  min-height: 44px;
+}
+.bubble::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: -8px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  background: inherit;
+  border-inline-start: 2px solid var(--ds-border, #1f1f3a);
+  border-bottom: 2px solid var(--ds-border, #1f1f3a);
+  transform: rotate(45deg);
+}
+:global(html[dir='rtl']) .bubble::before { transform: rotate(-45deg); }
+.good { border-color: var(--ds-ok, #22c55e); }
+.good::before { border-color: var(--ds-ok, #22c55e); }
+.bad { border-color: var(--ds-danger, #ef4444); }
+.bad::before { border-color: var(--ds-danger, #ef4444); }
+.cheer {
+  display: block;
+  font-family: 'Bungee', 'Space Grotesk', system-ui, sans-serif;
+  font-size: 18px;
+  color: var(--ds-ok, #22c55e);
+  margin-bottom: 2px;
+}
+
+/* ── Board ─────────────────────────────────────── */
+.boardCol { position: relative; display: grid; gap: 12px; justify-items: center; min-width: 0; }
+.pop {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  z-index: 2;
+  pointer-events: none;
+  font-family: 'Bungee', 'Space Grotesk', system-ui, sans-serif;
+  font-size: 30px;
+  color: var(--ds-block-3, #fbbf24);
+  text-shadow: 0 3px 0 rgba(0,0,0,0.35);
+  transform: translate(-50%, 0);
+  animation: tutPop 1100ms var(--ds-ease-out, ease-out) forwards;
+}
+@keyframes tutPop {
+  0% { opacity: 0; transform: translate(-50%, 10px) scale(0.7); }
+  20% { opacity: 1; transform: translate(-50%, 0) scale(1.08); }
+  70% { opacity: 1; transform: translate(-50%, -18px) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -34px) scale(1); }
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 3px;
+  width: 100%;
+  max-width: 340px;
+  padding: 6px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border: 2px solid var(--ds-border, #1f1f3a);
+  background: var(--ds-surface2, rgba(0,0,0,0.35));
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+.board:focus-visible { outline: 3px solid var(--ds-accent2, #5eead4); outline-offset: 3px; }
+.cell {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  background: var(--ds-surface, rgba(255,255,255,0.04));
+  box-shadow: inset 0 0 0 1px var(--ds-border, #1f1f3a);
+}
+.filled {
+  background: var(--c);
+  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.25), inset 0 2px 0 rgba(255,255,255,0.25);
+}
+.ghost {
+  background: color-mix(in srgb, var(--c) 45%, transparent);
+  box-shadow: inset 0 0 0 2px var(--c);
+}
+.ghostBad { box-shadow: inset 0 0 0 2px var(--ds-danger, #ef4444); }
+.cursor { outline: 2px solid var(--ds-accent2, #5eead4); outline-offset: 1px; }
+.clearing { animation: tutClear 380ms var(--ds-ease-out, ease-out) forwards; }
+@keyframes tutClear {
+  0% { transform: scale(1); filter: brightness(1); }
+  40% { transform: scale(1.08); filter: brightness(1.6); }
+  100% { transform: scale(0.2); opacity: 0; }
+}
+.keys { font-size: 12.5px; color: var(--ds-text-dim, #94a3b8); text-align: center; margin: 0; }
+
+/* ── Tray ──────────────────────────────────────── */
+.trayRow { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+.tray {
+  display: grid;
+  place-items: center;
+  min-width: 112px;
+  min-height: 112px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border: 2px dashed var(--ds-border, #1f1f3a);
+}
+.pieceBtn {
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  touch-action: none;
+  cursor: grab;
+  transition: transform 160ms var(--ds-ease-out, ease-out), opacity 160ms ease-out;
+}
+.pieceBtn:hover { transform: scale(1.06); }
+.pieceBtn:active { cursor: grabbing; }
+.pieceBtn:focus-visible { outline: 3px solid var(--ds-accent2, #5eead4); outline-offset: 2px; }
+.pieceGrid { display: grid; gap: 3px; }
+.pieceLifted { opacity: 0.3; }
+.pieceCell { width: 22px; height: 22px; border-radius: 4px; }
+.pieceCell.on {
+  background: var(--c);
+  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.25), inset 0 2px 0 rgba(255,255,255,0.25);
+}
+.trayEmpty { font-size: 13px; color: var(--ds-text-dim, #94a3b8); text-align: center; }
+
+.float {
+  position: fixed;
+  z-index: 1000;
+  display: grid;
+  gap: 3px;
+  pointer-events: none;
+  opacity: 0.92;
+  filter: drop-shadow(0 8px 10px rgba(0,0,0,0.35));
+}
+.float .pieceCell { width: auto; height: auto; aspect-ratio: 1; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+
+/* Reduced motion: no hops, shakes, bobbing or sliding. The score pop still
+   shows, it just fades without moving. */
+@media (prefers-reduced-motion: reduce) {
+  .idle, .hop, .shake, .clearing { animation: none; }
+  .pop { animation: tutFade 1100ms linear forwards; }
+  .pieceBtn, .stepChip { transition: none; }
+  .pieceBtn:hover { transform: none; }
+}
+:global(html[data-reduce-motion='true']) .idle,
+:global(html[data-reduce-motion='true']) .hop,
+:global(html[data-reduce-motion='true']) .shake,
+:global(html[data-reduce-motion='true']) .clearing { animation: none; }
+:global(html[data-reduce-motion='true']) .pop { animation: tutFade 1100ms linear forwards; }
+:global(html[data-reduce-motion='true']) .pieceBtn,
+:global(html[data-reduce-motion='true']) .stepChip { transition: none; }
+:global(html[data-reduce-motion='true']) .pieceBtn:hover { transform: none; }
+@keyframes tutFade {
+  0%, 70% { opacity: 1; }
+  100% { opacity: 0; }
+}

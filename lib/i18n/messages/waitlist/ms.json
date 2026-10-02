@@ -1,0 +1,22 @@
+{
+  "title": "Dapatkan makluman apabila jualan tiket Berperingkat Harian dibuka",
+  "kicker": "Senarai menunggu",
+  "sub": "Jualan tiket bermula selepas program hadiah aktif di Solana mainnet. Tinggalkan e-mel anda dan kami akan beritahu apabila dibuka.",
+  "email_label": "E-mel",
+  "email_placeholder": "anda@contoh.com",
+  "submit": "Maklumkan saya",
+  "submitting": "Menghantar…",
+  "err_email": "Masukkan alamat e-mel yang sah.",
+  "err_rate": "Terlalu banyak percubaan. Tunggu seminit, kemudian cuba lagi.",
+  "err_server": "Sesuatu tidak kena di pihak kami. Cuba lagi sebentar nanti.",
+  "done": "Anda sudah dalam senarai. Kami akan e-mel apabila jualan tiket dibuka.",
+  "count": "{n} dalam senarai",
+  "facts_title": "Apa yang akan dibuka",
+  "fact_1": "1 tiket = 1 USDC = 1 percubaan berperingkat.",
+  "fact_2": "Sehingga 3 percubaan setiap dompet setiap hari UTC. Yang terbaik dikira.",
+  "fact_3": "Papan dan blok yang sama untuk semua orang pada hari itu.",
+  "fact_4": "10 teratas harian dan bulanan memenangi USDC daripada peti hadiah.",
+  "meanwhile": "Mod Pengembaraan percuma dan dibuka sekarang.",
+  "cta_play": "Main Pengembaraan",
+  "cta_guide": "Cara ia berfungsi"
+}

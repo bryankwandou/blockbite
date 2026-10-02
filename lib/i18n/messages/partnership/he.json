@@ -1,0 +1,18 @@
+{
+  "title": "עבדו עם BlockBite",
+  "kicker": "שותפות",
+  "sub": "BlockBite הוא פאזל קוביות יומי על Solana. אם אתם מנהלים פרויקט, קהילה או אירוע ורוצים לעשות משהו ביחד, ספרו לנו כאן.",
+  "email_label": "אימייל",
+  "email_ph": "you@project.xyz",
+  "project_label": "פרויקט או צוות",
+  "project_ph": "שם וקישור",
+  "notes_label": "מה יש לכם בראש? (אופציונלי)",
+  "notes_ph": "כמה שורות מספיקות",
+  "submit": "שלח",
+  "submitting": "שולח…",
+  "sent_title": "נשלח.",
+  "sent_desc": "נענה ל-{email}.",
+  "err": "לא ניתן היה לשלוח: {msg}",
+  "contact": "מעדיפים הודעה ישירה? אנחנו ב",
+  "contact_x": "X"
+}

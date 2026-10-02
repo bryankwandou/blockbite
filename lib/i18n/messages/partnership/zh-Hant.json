@@ -1,0 +1,18 @@
+{
+  "title": "與 BlockBite 合作",
+  "kicker": "合作",
+  "sub": "BlockBite 是 Solana 上的每日方塊益智遊戲。如果你經營專案、社群或活動，想一起做點什麼，請在這裡告訴我們。",
+  "email_label": "電子郵件",
+  "email_ph": "you@project.xyz",
+  "project_label": "專案或團隊",
+  "project_ph": "名稱和連結",
+  "notes_label": "你有什麼想法？（選填）",
+  "notes_ph": "寫幾行就夠了",
+  "submit": "送出",
+  "submitting": "傳送中…",
+  "sent_title": "已送出。",
+  "sent_desc": "我們會回覆到 {email}。",
+  "err": "無法送出：{msg}",
+  "contact": "想直接傳訊息？我們在",
+  "contact_x": "X"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Maabisuhan kapag nagbukas ang benta ng Daily Ranked ticket",
+  "kicker": "Waitlist",
+  "sub": "Magsisimula ang benta ng ticket kapag live na ang prize program sa Solana mainnet. Iwan ang email mo at sasabihan ka namin kapag nagbukas.",
+  "email_label": "Email",
+  "email_placeholder": "ikaw@halimbawa.com",
+  "submit": "Abisuhan ako",
+  "submitting": "Ipinapadala…",
+  "err_email": "Maglagay ng wastong email address.",
+  "err_rate": "Napakaraming subok. Maghintay ng isang minuto, saka subukan ulit.",
+  "err_server": "May nagkamali sa panig namin. Subukan ulit sa ilang sandali.",
+  "done": "Nasa listahan ka na. Mag-eemail kami kapag nagbukas ang benta ng ticket.",
+  "count": "{n} ang nasa listahan",
+  "facts_title": "Ang magbubukas",
+  "fact_1": "1 ticket = 1 USDC = 1 ranked na subok.",
+  "fact_2": "Hanggang 3 subok kada wallet kada UTC day. Ang pinakamagaling ang binibilang.",
+  "fact_3": "Pareho ang board at mga piraso para sa lahat sa araw na iyon.",
+  "fact_4": "Ang daily at monthly top 10 ay nananalo ng USDC mula sa prize vault.",
+  "meanwhile": "Libre at bukas na ang Adventure mode.",
+  "cta_play": "Maglaro ng Adventure",
+  "cta_guide": "Paano ito gumagana"
+}

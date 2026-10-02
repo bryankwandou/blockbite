@@ -1,0 +1,22 @@
+{
+  "title": "Krijg een melding als de ticketverkoop van Daily Ranked opent",
+  "kicker": "Wachtlijst",
+  "sub": "De ticketverkoop start nadat het prijzenprogramma live is op Solana mainnet. Laat je e-mailadres achter en we laten het je weten zodra het opent.",
+  "email_label": "E-mail",
+  "email_placeholder": "jij@voorbeeld.nl",
+  "submit": "Meld me",
+  "submitting": "Versturen…",
+  "err_email": "Vul een geldig e-mailadres in.",
+  "err_rate": "Te veel pogingen. Wacht een minuut en probeer het dan opnieuw.",
+  "err_server": "Er ging iets mis aan onze kant. Probeer het zo meteen opnieuw.",
+  "done": "Je staat op de lijst. We mailen je zodra de ticketverkoop opent.",
+  "count": "{n} op de lijst",
+  "facts_title": "Wat er opent",
+  "fact_1": "1 ticket = 1 USDC = 1 Ranked-poging.",
+  "fact_2": "Tot 3 pogingen per wallet per UTC-dag. Je beste telt.",
+  "fact_3": "Die dag hetzelfde bord en dezelfde stukken voor iedereen.",
+  "fact_4": "De dagelijkse en maandelijkse top 10 winnen USDC uit de prijzenkluis.",
+  "meanwhile": "Adventure-modus is gratis en nu open.",
+  "cta_play": "Speel Adventure",
+  "cta_guide": "Hoe het werkt"
+}

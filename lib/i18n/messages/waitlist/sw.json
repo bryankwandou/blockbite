@@ -1,0 +1,22 @@
+{
+  "title": "Pata taarifa mauzo ya tikiti za Daily Ranked yakifunguka",
+  "kicker": "Orodha ya kusubiri",
+  "sub": "Mauzo ya tikiti huanza baada ya programu ya zawadi kuanza kwenye Solana mainnet. Acha barua pepe yako na tutakujulisha yakifunguka.",
+  "email_label": "Barua pepe",
+  "email_placeholder": "you@example.com",
+  "submit": "Nijulishe",
+  "submitting": "Inatuma…",
+  "err_email": "Weka anwani sahihi ya barua pepe.",
+  "err_rate": "Majaribio mengi mno. Subiri dakika moja kisha ujaribu tena.",
+  "err_server": "Kuna tatizo upande wetu. Jaribu tena baada ya muda mfupi.",
+  "done": "Uko kwenye orodha. Tutakutumia barua pepe mauzo ya tikiti yakifunguka.",
+  "count": "{n} kwenye orodha",
+  "facts_title": "Kinachofunguka",
+  "fact_1": "Tikiti 1 = USDC 1 = jaribio 1 la ranked.",
+  "fact_2": "Hadi majaribio 3 kwa pochi kwa siku ya UTC. Bora zaidi ndilo linalohesabiwa.",
+  "fact_3": "Ubao na vipande vilevile kwa wote siku hiyo.",
+  "fact_4": "10 bora wa kila siku na kila mwezi hushinda USDC kutoka hazina ya zawadi.",
+  "meanwhile": "Hali ya Matukio ni bure na imefunguliwa sasa.",
+  "cta_play": "Cheza Matukio",
+  "cta_guide": "Jinsi inavyofanya kazi"
+}

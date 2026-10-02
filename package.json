@@ -1,0 +1,49 @@
+{
+  "name": "blockbite",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "build:program": "cargo build-sbf --arch v3 --manifest-path programs/blockbite-vesting/Cargo.toml",
+    "test:program": "npm run build:program && cargo test --manifest-path programs/blockbite-vesting/Cargo.toml",
+    "setup:kv": "node scripts/setup-kv.mjs",
+    "test:e2e": "playwright test",
+    "test:e2e:mobile": "playwright test --project=android-pixel7 --project=android-lowend --project=iphone-14 --project=iphone-se --project=ipad"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "@solana/spl-token": "^0.4.14",
+    "@solana/wallet-adapter-base": "^0.9.27",
+    "@solana/wallet-adapter-coinbase": "^0.1.23",
+    "@solana/wallet-adapter-ledger": "^0.9.29",
+    "@solana/wallet-adapter-phantom": "^0.9.29",
+    "@solana/wallet-adapter-react": "^0.15.39",
+    "@solana/wallet-adapter-react-ui": "^0.9.39",
+    "@solana/wallet-adapter-solflare": "^0.6.33",
+    "@solana/wallet-adapter-trust": "^0.1.17",
+    "@solana/web3.js": "^1.91.4",
+    "@vercel/kv": "^3.0.0",
+    "bs58": "^5.0.0",
+    "lucide-react": "^0.378.0",
+    "next": "14.2.35",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-jsx": "^5.1.1",
+    "three": "^0.184.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}

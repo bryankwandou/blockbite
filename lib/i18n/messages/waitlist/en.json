@@ -1,0 +1,22 @@
+{
+  "title": "Get notified when Daily Ranked ticket sales open",
+  "kicker": "Waitlist",
+  "sub": "Ticket sales start after the prize program is live on Solana mainnet. Leave your email and we'll tell you when they open.",
+  "email_label": "Email",
+  "email_placeholder": "you@example.com",
+  "submit": "Notify me",
+  "submitting": "Sending…",
+  "err_email": "Enter a valid email address.",
+  "err_rate": "Too many tries. Wait a minute, then try again.",
+  "err_server": "Something went wrong on our side. Try again in a moment.",
+  "done": "You're on the list. We'll email you when ticket sales open.",
+  "count": "{n} on the list",
+  "facts_title": "What opens",
+  "fact_1": "1 ticket = 1 USDC = 1 ranked attempt.",
+  "fact_2": "Up to 3 attempts per wallet per UTC day. Your best one counts.",
+  "fact_3": "Same board and same pieces for everyone that day.",
+  "fact_4": "The daily and monthly top 10 win USDC from the prize vault.",
+  "meanwhile": "Adventure mode is free and open now.",
+  "cta_play": "Play Adventure",
+  "cta_guide": "How it works"
+}

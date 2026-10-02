@@ -1,0 +1,18 @@
+{
+  "title": "Hợp tác với BlockBite",
+  "kicker": "Hợp tác",
+  "sub": "BlockBite là trò xếp khối hằng ngày trên Solana. Nếu bạn điều hành một dự án, cộng đồng hoặc sự kiện và muốn làm gì đó cùng nhau, hãy cho chúng tôi biết ở đây.",
+  "email_label": "Email",
+  "email_ph": "ban@duan.xyz",
+  "project_label": "Dự án hoặc đội",
+  "project_ph": "Tên và liên kết",
+  "notes_label": "Bạn đang nghĩ đến điều gì? (không bắt buộc)",
+  "notes_ph": "Vài dòng là đủ",
+  "submit": "Gửi",
+  "submitting": "Đang gửi…",
+  "sent_title": "Đã gửi.",
+  "sent_desc": "Chúng tôi sẽ trả lời tới {email}.",
+  "err": "Không gửi được: {msg}",
+  "contact": "Thích nhắn tin trực tiếp hơn? Chúng tôi có mặt trên",
+  "contact_x": "X"
+}

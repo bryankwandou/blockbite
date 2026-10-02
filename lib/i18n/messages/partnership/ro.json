@@ -1,0 +1,18 @@
+{
+  "title": "Partnership",
+  "kicker": "Parteneriat",
+  "sub": "BlockBite este un puzzle zilnic cu blocuri pe Solana. Dacă ai un proiect, o comunitate sau un eveniment și vrei să facem ceva împreună, spune-ne aici.",
+  "email_label": "E-mail",
+  "email_ph": "tu@proiect.xyz",
+  "project_label": "Proiect sau echipă",
+  "project_ph": "Nume și un link",
+  "notes_label": "Ce ai în minte? (opțional)",
+  "notes_ph": "Câteva rânduri sunt suficiente",
+  "submit": "Trimite",
+  "submitting": "Se trimite…",
+  "sent_title": "Trimis.",
+  "sent_desc": "Vom răspunde la {email}.",
+  "err": "Nu s-a putut trimite: {msg}",
+  "contact": "Preferi un mesaj direct? Suntem pe",
+  "contact_x": "X"
+}

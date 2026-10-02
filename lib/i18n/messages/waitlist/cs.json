@@ -1,0 +1,22 @@
+{
+  "title": "Dej mi vědět, až se otevře prodej tiketů Daily Ranked",
+  "kicker": "Čekací listina",
+  "sub": "Prodej tiketů začne, až program cen poběží na mainnetu Solany. Nech tu svůj e-mail a dáme ti vědět, až se otevře.",
+  "email_label": "E-mail",
+  "email_placeholder": "ty@priklad.cz",
+  "submit": "Upozornit mě",
+  "submitting": "Odesílám…",
+  "err_email": "Zadej platnou e-mailovou adresu.",
+  "err_rate": "Příliš mnoho pokusů. Počkej minutu a zkus to znovu.",
+  "err_server": "U nás se něco pokazilo. Zkus to za chvíli.",
+  "done": "Jsi na seznamu. Napíšeme ti, až se otevře prodej tiketů.",
+  "count": "Na seznamu: {n}",
+  "facts_title": "Co se otevírá",
+  "fact_1": "1 tiket = 1 USDC = 1 pokus Ranked.",
+  "fact_2": "Až 3 pokusy na peněženku za den UTC. Počítá se ten nejlepší.",
+  "fact_3": "Ten den stejná deska a stejné dílky pro všechny.",
+  "fact_4": "Denní a měsíční top 10 vyhrává USDC z trezoru cen.",
+  "meanwhile": "Režim Dobrodružství je zdarma a už otevřený.",
+  "cta_play": "Hrát Dobrodružství",
+  "cta_guide": "Jak to funguje"
+}

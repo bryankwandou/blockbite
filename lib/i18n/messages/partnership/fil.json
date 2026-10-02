@@ -1,0 +1,18 @@
+{
+  "title": "Makipagtulungan sa BlockBite",
+  "kicker": "Partnership",
+  "sub": "Ang BlockBite ay isang daily block puzzle sa Solana. Kung may pinapatakbo kang proyekto, komunidad o event at gusto ninyong gumawa ng bagay nang magkasama, ikuwento ito rito.",
+  "email_label": "Email",
+  "email_ph": "ikaw@proyekto.xyz",
+  "project_label": "Proyekto o team",
+  "project_ph": "Pangalan at link",
+  "notes_label": "Ano ang nasa isip mo? (opsyonal)",
+  "notes_ph": "Sapat na ang ilang linya",
+  "submit": "Ipadala",
+  "submitting": "Ipinapadala…",
+  "sent_title": "Naipadala.",
+  "sent_desc": "Sasagot kami sa {email}.",
+  "err": "Hindi naipadala: {msg}",
+  "contact": "Mas gusto ang direct message? Nasa",
+  "contact_x": "X kami"
+}

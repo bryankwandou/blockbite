@@ -1,0 +1,52 @@
+/* Theme tokens — switch by [data-theme] on <html>. */
+:root[data-theme='dark'] {
+  --bg: #08081a; --surface: rgba(255,255,255,0.04); --text: #fff;
+  --text-dim: #94a3b8; --border: #1f1f3a;
+  --accent: #a78bfa; --accent2: #5eead4;
+  --warn: #fbbf24; --danger: #ef4444; --ok: #22c55e;
+  --header-grad: linear-gradient(180deg, #1e1b4b 0%, #08081a 100%);
+}
+:root[data-theme='light'] {
+  --bg: #f7f7fb; --surface: rgba(0,0,0,0.04); --text: #0a0a14;
+  --text-dim: #475569; --border: #e2e8f0;
+  --accent: #6d28d9; --accent2: #0d9488;
+  --warn: #b45309; --danger: #b91c1c; --ok: #15803d;
+  --header-grad: linear-gradient(180deg, #ede9fe 0%, #f7f7fb 100%);
+}
+html, body { margin: 0; background: var(--bg); color: var(--text);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  transition: background .25s, color .25s; }
+.seg { display: flex; gap: 4px; padding: 3px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--border); }
+.seg button { flex: 1; padding: 8px 12px; border-radius: 999px; border: none;
+  background: transparent; color: var(--text); font-weight: 800;
+  cursor: pointer; }
+.seg button[data-on='true'] { background: var(--accent); color: var(--bg); }
+.card { padding: 16px; border-radius: 14px; background: var(--surface);
+  border: 1px solid var(--border); }
+.card .k { font-size: 10px; letter-spacing: 1.5px; color: var(--text-dim); }
+.card .v { font-size: 24px; font-weight: 900; margin-top: 4px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px; padding: 16px; }
+
+/* ── Graphics level: <html data-gfx="low|balanced|high"> (lib/gfx.ts) ── */
+/* Low: no blur, no big shadows/glows, no looping animations, snappy transitions. */
+[data-gfx='low'] *,
+[data-gfx='low'] *::before,
+[data-gfx='low'] *::after {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  text-shadow: none !important;
+  animation-iteration-count: 1 !important;
+  animation-duration: 0.01ms !important;
+  animation-delay: 0s !important;
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+}
+[data-gfx='low'] *:not(button):not(a):not(input):not(select) { box-shadow: none !important; }
+[data-gfx='low'] [style*='drop-shadow'], [data-gfx='low'] img { filter: none !important; }
+html[data-gfx='low'] { scroll-behavior: auto !important; }
+
+/* Balanced: keep everything, but drop the costliest blur radius. */
+[data-gfx='balanced'] { --gfx-blur: 8px; }
+[data-gfx='high'] { --gfx-blur: 16px; }

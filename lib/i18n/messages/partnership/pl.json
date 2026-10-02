@@ -1,0 +1,18 @@
+{
+  "title": "Współpracuj z BlockBite",
+  "kicker": "Partnerstwo",
+  "sub": "BlockBite to codzienna blokowa układanka na Solanie. Jeśli prowadzisz projekt, społeczność lub wydarzenie i chcesz coś razem zrobić, napisz do nas tutaj.",
+  "email_label": "E-mail",
+  "email_ph": "ty@projekt.xyz",
+  "project_label": "Projekt lub zespół",
+  "project_ph": "Nazwa i link",
+  "notes_label": "Co masz na myśli? (opcjonalnie)",
+  "notes_ph": "Kilka linijek wystarczy",
+  "submit": "Wyślij",
+  "submitting": "Wysyłam…",
+  "sent_title": "Wysłano.",
+  "sent_desc": "Odpiszemy na {email}.",
+  "err": "Nie udało się wysłać: {msg}",
+  "contact": "Wolisz wiadomość prywatną? Jesteśmy na",
+  "contact_x": "X"
+}

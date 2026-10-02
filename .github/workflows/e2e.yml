@@ -1,0 +1,120 @@
+name: E2E (cross-platform)
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+    inputs:
+      android_emulator:
+        description: 'Also run the real Android Chrome emulator smoke job'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: e2e-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  playwright:
+    name: ${{ matrix.label }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: linux (chromium, firefox, android emulation)
+            os: ubuntu-latest
+            browsers: chromium firefox
+            projects: --project=android-pixel7 --project=android-lowend --project=windows-chromium --project=firefox-desktop
+          - label: macos (webkit iPhone, iPad, Mac)
+            os: macos-latest
+            browsers: webkit
+            projects: --project=iphone-14 --project=iphone-se --project=ipad --project=macos-webkit
+          - label: windows (Edge)
+            os: windows-latest
+            browsers: chromium
+            projects: --project=windows-edge
+            edge: '1'
+    env:
+      CI: 'true'
+      PW_EDGE: ${{ matrix.edge }}
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps ${{ matrix.browsers }}
+      - name: Build
+        run: npx next build
+      - name: Start server
+        shell: bash
+        run: |
+          npx next start -p 3100 > next.log 2>&1 &
+          npx --yes wait-on@8 -t 120000 http://localhost:3100
+      - name: Run Playwright
+        shell: bash
+        env:
+          BASE_URL: http://localhost:3100
+        run: npx playwright test ${{ matrix.projects }}
+      - name: Upload report + traces
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-${{ matrix.os }}
+          path: |
+            playwright-report/
+            test-results/
+            next.log
+          retention-days: 14
+
+  android-emulator:
+    name: real Android Chrome (emulator smoke, optional)
+    if: github.event_name == 'workflow_dispatch' && inputs.android_emulator
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci && npx next build
+      - name: Start server
+        run: |
+          npx next start -p 3100 > next.log 2>&1 &
+          npx --yes wait-on@8 -t 120000 http://localhost:3100
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
+      - name: Open site in emulator Chrome
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis_playstore
+          arch: x86_64
+          disable-animations: true
+          script: |
+            adb reverse tcp:3100 tcp:3100
+            adb shell am start -a android.intent.action.VIEW -d http://localhost:3100/game com.android.chrome
+            sleep 20
+            adb exec-out screencap -p > android-game.png
+            adb logcat -d -s chromium:E > android-chrome-errors.txt || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: android-emulator-smoke
+          path: |
+            android-game.png
+            android-chrome-errors.txt
+            next.log

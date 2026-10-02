@@ -1,0 +1,367 @@
+/* Game + Ranked board chrome. Page chrome uses --ds-* tokens so light mode
+   works; the canvas itself keeps its own arcade palette. Layout uses logical
+   properties so RTL languages mirror correctly (the board stays LTR). */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  min-width: 0;
+  margin: 0 auto;
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-block-end: 14px;
+  padding: 12px 14px;
+  background: var(--ds-surface2, rgba(0, 0, 0, 0.35));
+  border: 2px solid var(--ds-border, #1f1f3a);
+  border-radius: var(--ds-radius-lg, 18px);
+  box-shadow: 0 4px 0 var(--ds-border, #1f1f3a);
+}
+
+.hudStat {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  text-align: start;
+}
+
+.hudStatEnd {
+  text-align: end;
+  align-items: flex-end;
+}
+
+.hudLabel {
+  font-size: 10px;
+  color: var(--ds-text-dim, #94a3b8);
+  letter-spacing: 0.14em;
+  margin-block-end: 2px;
+  font-weight: 700;
+}
+
+.hudValue {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--ds-text, #fff);
+  font-variant-numeric: tabular-nums;
+}
+
+.hudCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.levelBadge {
+  background: var(--ds-accent2, #5eead4);
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: #06121a;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+}
+
+.levelName {
+  font-size: 10px;
+  color: var(--ds-text-dim, #94a3b8);
+  letter-spacing: 0.04em;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.levelProgressBar {
+  width: 80px;
+  height: 4px;
+  background: var(--ds-surface, rgba(255, 255, 255, 0.08));
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: var(--ds-accent2, #5eead4);
+  transition: width 300ms var(--ds-ease-out, ease-out);
+}
+
+.canvas {
+  background: #060614;
+  border-radius: 20px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.35), 0 18px 40px rgba(0, 0, 0, 0.25);
+  touch-action: none;
+  width: 100%;
+  height: auto;
+  direction: ltr;
+}
+
+.hint {
+  margin-block-start: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 14px;
+  font-size: 12px;
+  color: var(--ds-text-dim, #94a3b8);
+  letter-spacing: 0.04em;
+  text-align: center;
+  max-width: 100%;
+}
+
+.hintKey {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--ds-text, #fff);
+  padding: 1px 6px;
+  border-radius: 5px;
+  border: 1px solid var(--ds-border, #1f1f3a);
+  border-block-end-width: 3px;
+  background: var(--ds-surface, rgba(255, 255, 255, 0.04));
+}
+
+.overlay {
+  /* Standalone block (never layered on the canvas). Normal flow + fluid
+     width so it can't be squeezed or push past a phone viewport. */
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(20px, 6vw, 36px);
+  border-radius: var(--ds-radius-xl, 24px);
+  background: var(--ds-surface2, rgba(0, 0, 0, 0.35));
+  border: 2px solid var(--ds-border, #1f1f3a);
+  box-shadow: 0 6px 0 var(--ds-border, #1f1f3a);
+  color: var(--ds-text, #fff);
+}
+
+.overlayMascot {
+  width: 112px;
+  height: 112px;
+  object-fit: contain;
+  margin-block-end: 4px;
+  animation: mascotWave 2.4s var(--ds-ease-in-out, ease-in-out) infinite;
+  transform-origin: 50% 90%;
+}
+
+@keyframes mascotWave {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-4deg) translateY(-3px); }
+}
+
+.overlayTitle {
+  margin: 0 0 8px;
+  font-size: clamp(18px, 5vw, 24px);
+  color: var(--ds-text, #fff);
+  overflow-wrap: anywhere;
+}
+
+.overlayBody {
+  color: var(--ds-text-dim, #94a3b8);
+  margin: 0 0 20px;
+  font-size: 14px;
+  max-width: 34ch;
+  line-height: 1.6;
+}
+
+.overlayCta {
+  max-width: 100%;
+  white-space: normal;
+  padding-inline: clamp(20px, 6vw, 40px);
+}
+
+.chainBadge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 215, 0, 0.14);
+  border: 1px solid rgba(255, 215, 0, 0.45);
+  border-radius: 8px;
+  padding: 2px 8px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ds-warn, #fbbf24);
+  animation: chainPulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes chainPulse {
+  from { transform: scale(0.97); }
+  to   { transform: scale(1.04); }
+}
+
+.walletIcons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+  justify-content: center;
+}
+
+.walletChip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--ds-surface, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--ds-border, #1f1f3a);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 11px;
+  color: var(--ds-text-dim, #94a3b8);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 150ms var(--ds-ease-out, ease-out), color 150ms;
+}
+
+.walletChip:hover {
+  color: var(--ds-text, #fff);
+  transform: translateY(-2px);
+}
+
+.gameOverActions {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(260px, 90%);
+  z-index: 110;
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gameOverActions :global(.btn) {
+  white-space: normal;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translate(-50%, -40%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* ── Buttons that follow the theme tokens ─────────────────────────── */
+.btnMain,
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 100%;
+  min-height: 48px;
+  padding: 12px 22px;
+  border-radius: 14px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  cursor: pointer;
+  transition: transform 150ms var(--ds-ease-out, ease-out), box-shadow 150ms var(--ds-ease-out, ease-out);
+}
+
+.btnMain {
+  background: var(--ds-accent2, #5eead4);
+  color: #06121a;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.35);
+}
+
+.btnGhost {
+  background: transparent;
+  color: var(--ds-text, #fff);
+  border: 2px solid var(--ds-border, #1f1f3a);
+  box-shadow: 0 4px 0 var(--ds-border, #1f1f3a);
+}
+
+.btnMain:hover:not(:disabled),
+.btnGhost:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.btnMain:active:not(:disabled),
+.btnGhost:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+}
+
+.btnMain:disabled {
+  cursor: not-allowed;
+  background: var(--ds-surface, rgba(255, 255, 255, 0.06));
+  color: var(--ds-text-dim, #94a3b8);
+  border-color: var(--ds-border, #1f1f3a);
+  box-shadow: none;
+}
+
+.btnMain:focus-visible,
+.btnGhost:focus-visible,
+.walletChip:focus-visible {
+  outline: 3px solid var(--ds-accent, #a78bfa);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .hudValue { font-size: 16px; }
+  .hudLabel { font-size: 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlayMascot, .chainBadge, .gameOverActions { animation: none; }
+  .btnMain, .btnGhost, .walletChip, .progressBarFill { transition: none; }
+}
+
+:global(html[data-reduce-motion="true"]) .overlayMascot,
+:global(html[data-reduce-motion="true"]) .chainBadge,
+:global(html[data-reduce-motion="true"]) .gameOverActions {
+  animation: none;
+}
+
+/* Mode frame: --mode-accent comes from lib/game/modes.ts (teal / purple / gold). */
+.wrapper[data-mode] .canvas {
+  outline: 2px solid var(--mode-accent, transparent);
+  outline-offset: 3px;
+}
+.wrapper[data-mode] .levelBadge {
+  background: var(--mode-accent);
+}
+
+.freeActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-block-start: 10px;
+}
+
+.goalLine {
+  margin: 0 0 8px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--mode-accent, #2dd4bf);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ds-text, #fff);
+}

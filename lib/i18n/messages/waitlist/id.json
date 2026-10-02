@@ -1,0 +1,22 @@
+{
+  "title": "Dapat kabar saat penjualan tiket Ranked Harian dibuka",
+  "kicker": "Daftar tunggu",
+  "sub": "Penjualan tiket mulai setelah program hadiah live di Solana mainnet. Tinggalkan emailmu dan kami kabari saat dibuka.",
+  "email_label": "Email",
+  "email_placeholder": "kamu@contoh.com",
+  "submit": "Kabari aku",
+  "submitting": "Mengirim…",
+  "err_email": "Masukkan alamat email yang valid.",
+  "err_rate": "Terlalu banyak percobaan. Tunggu semenit, lalu coba lagi.",
+  "err_server": "Ada masalah di sisi kami. Coba lagi sebentar lagi.",
+  "done": "Kamu sudah masuk daftar. Kami email saat penjualan tiket dibuka.",
+  "count": "{n} orang di daftar",
+  "facts_title": "Yang akan dibuka",
+  "fact_1": "1 tiket = 1 USDC = 1 percobaan ranked.",
+  "fact_2": "Maksimal 3 percobaan per wallet per hari UTC. Yang terbaik yang dihitung.",
+  "fact_3": "Papan dan blok yang sama untuk semua orang di hari itu.",
+  "fact_4": "Top 10 harian dan bulanan memenangkan USDC dari vault hadiah.",
+  "meanwhile": "Mode Adventure gratis dan sudah dibuka.",
+  "cta_play": "Main Adventure",
+  "cta_guide": "Cara kerjanya"
+}

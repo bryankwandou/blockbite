@@ -1,0 +1,69 @@
+name: Security Audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  npm-audit:
+    name: npm audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci --legacy-peer-deps
+        # --legacy-peer-deps required: @keystonehq/sdk (now removed), Coinbase, Ledger
+        # adapters have peer-dep declarations for React 15-17 despite working on 18.
+      - run: npm audit --audit-level=critical --omit=dev
+        # HIGH items intentionally not blocked:
+        # - bigint-buffer in @solana/spl-token: abandoned package, no safe version exists;
+        #   npm fix would downgrade spl-token to 0.1.8 (2021) breaking all token ops.
+        # - next@14.x HIGHs: require upgrade to Next.js 15 (breaking change); deferred
+        #   to next major release cycle. All CRITICAL next.js CVEs fixed at 14.2.35.
+
+  cargo-audit:
+    name: cargo audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install cargo-audit
+        run: cargo install cargo-audit --locked
+      - name: Run cargo audit
+        # Cargo.lock lives at the workspace root, not inside the program
+        # subdirectory. Running cargo audit from the root is the only way
+        # to scan transitive deps for the Anchor program.
+        #
+        # Known non-actionable advisories (pinned by Anchor 0.32.x — no
+        # safe upgrade path until Anchor publishes a release that bumps
+        # solana-program past 1.18 / curve25519-dalek past 4.x):
+        #
+        #   RUSTSEC-2024-0344  curve25519-dalek timing variability
+        #   RUSTSEC-2022-0093  ed25519-dalek double public-key signing
+        #   RUSTSEC-2024-0388  derivative unmaintained (compile-time only)
+        #   RUSTSEC-2024-0436  paste unmaintained (compile-time only)
+        #   RUSTSEC-2024-0421  idna onion-domain edge case (transitive)
+        #
+        # These are tracked for the Week-7 security review.
+        run: |
+          cargo audit \
+            --ignore RUSTSEC-2024-0344 \
+            --ignore RUSTSEC-2022-0093 \
+            --ignore RUSTSEC-2024-0388 \
+            --ignore RUSTSEC-2024-0436 \
+            --ignore RUSTSEC-2024-0421
+
+  secret-scan:
+    name: gitleaks secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

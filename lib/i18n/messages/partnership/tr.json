@@ -1,0 +1,18 @@
+{
+  "title": "BlockBite ile çalış",
+  "kicker": "Ortaklık",
+  "sub": "BlockBite, Solana üzerinde günlük bir blok bulmacasıdır. Bir proje, topluluk ya da etkinlik yürütüyorsan ve birlikte bir şey yapmak istiyorsan buradan anlat.",
+  "email_label": "E-posta",
+  "email_ph": "you@project.xyz",
+  "project_label": "Proje ya da ekip",
+  "project_ph": "Ad ve bir bağlantı",
+  "notes_label": "Aklında ne var? (isteğe bağlı)",
+  "notes_ph": "Birkaç satır yeter",
+  "submit": "Gönder",
+  "submitting": "Gönderiliyor…",
+  "sent_title": "Gönderildi.",
+  "sent_desc": "{email} adresine yanıt vereceğiz.",
+  "err": "Gönderilemedi: {msg}",
+  "contact": "Doğrudan mesajı mı tercih edersin? Şurada bulunuruz:",
+  "contact_x": "X"
+}

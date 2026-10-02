@@ -1,0 +1,22 @@
+{
+  "title": "Günlük Ranked bilet satışı açılınca haber al",
+  "kicker": "Bekleme listesi",
+  "sub": "Bilet satışı, ödül programı Solana mainnet'te canlıya geçtikten sonra başlar. E-postanı bırak, açılınca sana haber verelim.",
+  "email_label": "E-posta",
+  "email_placeholder": "you@example.com",
+  "submit": "Bana haber ver",
+  "submitting": "Gönderiliyor…",
+  "err_email": "Geçerli bir e-posta adresi gir.",
+  "err_rate": "Çok fazla deneme. Bir dakika bekle, sonra tekrar dene.",
+  "err_server": "Bizim tarafta bir şeyler ters gitti. Birazdan tekrar dene.",
+  "done": "Listedesin. Bilet satışı açılınca sana e-posta atacağız.",
+  "count": "Listede {n} kişi var",
+  "facts_title": "Neler açılıyor",
+  "fact_1": "1 bilet = 1 USDC = 1 Ranked deneme.",
+  "fact_2": "UTC günü başına cüzdan başı en fazla 3 deneme. En iyisi sayılır.",
+  "fact_3": "O gün herkes için aynı tahta ve aynı parçalar.",
+  "fact_4": "Günlük ve aylık ilk 10, ödül kasasından USDC kazanır.",
+  "meanwhile": "Macera modu ücretsiz ve şu an açık.",
+  "cta_play": "Macerayı oyna",
+  "cta_guide": "Nasıl işler"
+}

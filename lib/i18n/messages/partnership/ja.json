@@ -1,0 +1,18 @@
+{
+  "title": "BlockBite と協力する",
+  "kicker": "パートナーシップ",
+  "sub": "BlockBite は Solana の毎日遊べるブロックパズルです。プロジェクト、コミュニティ、イベントを運営していて、一緒に何かしたい方は、こちらからお知らせください。",
+  "email_label": "メールアドレス",
+  "email_ph": "you@project.xyz",
+  "project_label": "プロジェクトまたはチーム",
+  "project_ph": "名前とリンク",
+  "notes_label": "どんなことを考えていますか？（任意）",
+  "notes_ph": "数行で十分です",
+  "submit": "送信",
+  "submitting": "送信中…",
+  "sent_title": "送信しました。",
+  "sent_desc": "{email} に返信します。",
+  "err": "送信できませんでした：{msg}",
+  "contact": "ダイレクトメッセージがよければ、こちらにいます：",
+  "contact_x": "X"
+}

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" role="img" aria-label="BlockBite Web3">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0F0820"/>
+      <stop offset="100%" stop-color="#0A0A1E"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="500" height="120" fill="url(#bg)"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- PAC-MAN PIXEL ART  (pixel=6px, offset x=10 y=12) -->
+  <!-- facing RIGHT — mouth opens toward the blocks   -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Row  0 : cols 4-11  x=34 w=48 -->
+  <rect x="34"  y="12"  width="48" height="6" fill="#FFB800"/>
+  <!-- Row  1 : cols 2-13  x=22 w=72 -->
+  <rect x="22"  y="18"  width="72" height="6" fill="#FFB800"/>
+  <!-- Row  2 : cols 1-6, eye col 7, cols 8-14 -->
+  <rect x="16"  y="24"  width="36" height="6" fill="#FFB800"/>
+  <rect x="52"  y="24"  width="6"  height="6" fill="#12102A"/>
+  <rect x="58"  y="24"  width="42" height="6" fill="#FFB800"/>
+  <!-- eye highlight -->
+  <rect x="55"  y="26"  width="3"  height="3" fill="#FFDD66"/>
+  <!-- Row  3 : cols 1-14  x=16 w=84 -->
+  <rect x="16"  y="30"  width="84" height="6" fill="#FFB800"/>
+  <!-- Row  4 : cols 1-14 -->
+  <rect x="16"  y="36"  width="84" height="6" fill="#FFB800"/>
+  <!-- Row  5 : cols 0-14  (widest — last full row before mouth) -->
+  <rect x="10"  y="42"  width="90" height="6" fill="#FFB800"/>
+  <!-- Row  6 : cols 0-10  (upper jaw — mouth gap opens here) -->
+  <rect x="10"  y="48"  width="66" height="6" fill="#FFB800"/>
+  <!-- Row  7 : cols 0-7   (upper jaw narrows) -->
+  <rect x="10"  y="54"  width="48" height="6" fill="#FFB800"/>
+  <!-- Row  8 : cols 0-6   (mouth tip — narrowest) -->
+  <rect x="10"  y="60"  width="42" height="6" fill="#FFB800"/>
+  <!-- Row  9 : cols 0-7   (lower jaw begins) -->
+  <rect x="10"  y="66"  width="48" height="6" fill="#FFB800"/>
+  <!-- Row 10 : cols 0-11 -->
+  <rect x="10"  y="72"  width="72" height="6" fill="#FFB800"/>
+  <!-- Row 11 : cols 0-14 -->
+  <rect x="10"  y="78"  width="90" height="6" fill="#FFB800"/>
+  <!-- Row 12 : cols 1-14  x=16 w=84 -->
+  <rect x="16"  y="84"  width="84" height="6" fill="#FFB800"/>
+  <!-- Row 13 : cols 1-14 -->
+  <rect x="16"  y="90"  width="84" height="6" fill="#FFB800"/>
+  <!-- Row 14 : cols 2-13  x=22 w=72 -->
+  <rect x="22"  y="96"  width="72" height="6" fill="#FFB800"/>
+  <!-- Row 15 : cols 4-11  x=34 w=48 -->
+  <rect x="34"  y="102" width="48" height="6" fill="#FFB800"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- COLORFUL BLOCKS BEING CHOMPED                  -->
+  <!-- placed right at the mouth opening (rows 6-10)  -->
+  <!-- cols 11-12 = x=76,  cols 13-14 = x=88          -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- upper-left  : CYAN -->
+  <rect x="76" y="48" width="12" height="12" fill="#00F5FF"/>
+  <!-- upper-right : MAGENTA -->
+  <rect x="88" y="48" width="12" height="12" fill="#FF00FF"/>
+  <!-- lower-left  : GOLD -->
+  <rect x="76" y="66" width="12" height="12" fill="#FFD700"/>
+  <!-- lower-right : GREEN -->
+  <rect x="88" y="66" width="12" height="12" fill="#00FF88"/>
+  <!-- inner shine on blocks -->
+  <rect x="77" y="49" width="4" height="2" fill="rgba(255,255,255,0.35)"/>
+  <rect x="89" y="49" width="4" height="2" fill="rgba(255,255,255,0.35)"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- WORDMARK                                        -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <text
+    x="122" y="57"
+    font-family="'Orbitron','Share Tech Mono',monospace"
+    font-size="32" font-weight="900" letter-spacing="1"
+    filter="url(#glow)"
+  ><tspan fill="#FFFFFF">BLOCK</tspan><tspan fill="#FFB800">BITE</tspan></text>
+
+  <!-- Thin gold divider -->
+  <rect x="122" y="65" width="358" height="1.5" rx="1" fill="#FFB800" opacity="0.2"/>
+
+  <!-- Sub-label -->
+  <text
+    x="122" y="82"
+    font-family="'Share Tech Mono','Courier New',monospace"
+    font-size="10" fill="#44445A" letter-spacing="4"
+  >WEB3  ·  SOLANA  ·  PLAY TO EARN</text>
+
+  <!-- BETA badge -->
+  <rect x="388" y="90" width="46" height="18" rx="9"
+        fill="rgba(255,184,0,0.1)" stroke="#FFB800" stroke-width="0.8"/>
+  <text x="411" y="103"
+    font-family="monospace" font-size="8" font-weight="700"
+    fill="#FFB800" text-anchor="middle" letter-spacing="2">BETA</text>
+</svg>

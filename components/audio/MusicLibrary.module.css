@@ -1,0 +1,75 @@
+.lib { padding: 4px 0 16px; display: grid; gap: 14px; min-width: 0; }
+
+.tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.tab {
+  display: grid; gap: 2px; text-align: start; min-width: 0;
+  padding: 10px 12px; border-radius: 12px;
+  border: 1px solid var(--ds-border, #1f1f3a); background: var(--ds-bg, #08081a);
+  color: var(--ds-text-dim, #94a3b8); font: 800 14px 'Space Grotesk', system-ui, sans-serif; cursor: pointer;
+  transition: border-color 150ms ease-out, color 150ms ease-out;
+}
+.tabOn { border-color: var(--ds-accent, #a78bfa); color: var(--ds-text, #fff); }
+.tabAlbum { font-size: 11px; font-weight: 600; color: var(--ds-text-dim, #94a3b8); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Album shelf: scrolls sideways on phones, like a game playlist screen */
+.albums {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(128px, 1fr);
+  gap: 10px; overflow-x: auto; padding: 4px 2px 8px; scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+}
+.album {
+  --tint: #a78bfa;
+  scroll-snap-align: start; display: grid; justify-items: start; gap: 6px; text-align: start;
+  padding: 10px; border-radius: 16px; min-width: 0;
+  border: 2px solid var(--ds-border, #1f1f3a);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--tint) 28%, transparent), transparent 70%), var(--ds-bg, #08081a);
+  color: var(--ds-text, #fff); cursor: pointer;
+  transition: transform 150ms ease-out, border-color 150ms ease-out;
+}
+.album:hover { transform: translateY(-2px); }
+.albumOn { border-color: var(--tint); box-shadow: 0 0 0 2px color-mix(in srgb, var(--tint) 40%, transparent); }
+.m_classic { --tint: #5eead4; }
+.m_royal { --tint: #a78bfa; }
+.m_calm { --tint: #38bdf8; }
+.m_tense { --tint: #f43f5e; }
+.m_bright { --tint: #fbbf24; }
+.cover {
+  width: 100%; aspect-ratio: 1; border-radius: 12px; display: grid; place-items: center;
+  background: color-mix(in srgb, var(--tint) 22%, var(--ds-bg, #08081a));
+}
+.cover img { width: 64%; height: auto; }
+.albumName { font: 800 14px/1.2 'Space Grotesk', system-ui, sans-serif; }
+.albumMeta { font-size: 11px; color: var(--ds-text-dim, #94a3b8); }
+
+.modeRow { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.modeLabel { font-weight: 700; font-size: 14px; }
+.seg { display: inline-flex; gap: 4px; padding: 4px; border-radius: 12px; background: var(--ds-bg, #08081a); border: 1px solid var(--ds-border, #1f1f3a); }
+.segBtn { padding: 7px 10px; border: none; border-radius: 9px; background: transparent; color: var(--ds-text-dim, #94a3b8); font: 700 12px 'Space Grotesk', system-ui, sans-serif; cursor: pointer; }
+.segOn { background: var(--ds-accent, #a78bfa); color: var(--ds-bg, #08081a); }
+
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.item {
+  display: flex; align-items: center; gap: 8px; min-width: 0;
+  padding: 8px 8px 8px 6px; border-radius: 12px;
+  border: 1px solid var(--ds-border, #1f1f3a); background: var(--ds-bg, #08081a);
+}
+.itemOff { opacity: 0.5; }
+.itemLive { border-color: var(--ds-accent2, #5eead4); }
+.dragging { opacity: 0.4; }
+.grip { cursor: grab; color: var(--ds-text-dim, #94a3b8); letter-spacing: -3px; padding: 0 4px; user-select: none; }
+.check { width: 18px; height: 18px; accent-color: var(--ds-accent, #a78bfa); flex-shrink: 0; cursor: pointer; }
+.trackText { display: grid; min-width: 0; flex: 1; }
+.trackName { font-weight: 700; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.trackMeta { font-size: 11px; color: var(--ds-text-dim, #94a3b8); }
+.iconBtn {
+  width: 34px; height: 34px; flex-shrink: 0; border-radius: 9px;
+  border: 1px solid var(--ds-border, #1f1f3a); background: transparent; color: var(--ds-text, #fff);
+  font-size: 14px; cursor: pointer;
+}
+.iconBtn:disabled { opacity: 0.3; cursor: default; }
+.tab:focus-visible, .album:focus-visible, .segBtn:focus-visible, .iconBtn:focus-visible, .check:focus-visible {
+  outline: 2px solid var(--ds-accent, #a78bfa); outline-offset: 2px;
+}
+
+@media (hover: none) { .grip { display: none; } }
+@media (max-width: 420px) { .iconBtn { width: 30px; height: 30px; } .tab { padding: 8px; font-size: 13px; } }

@@ -1,0 +1,350 @@
+/* /game — Adventure shell. Fluid on phones (single column, nothing hidden),
+   three columns from 960px. Logical properties throughout for RTL. */
+
+.main {
+  padding-block: 80px 48px;
+  padding-inline: 16px;
+  min-height: 100vh;
+  background: var(--ds-bg, #08081a);
+  color: var(--ds-text, #fff);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  max-width: 1120px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  min-width: 0;
+  order: 1;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  order: 2;
+}
+
+.sideEnd { order: 3; }
+
+@media (min-width: 960px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 420px) minmax(0, 1fr);
+    gap: 28px;
+  }
+  .side { order: 0; padding-block-start: 96px; }
+  .center { order: 0; }
+  .sideEnd { order: 0; }
+}
+
+/* ── Header ───────────────────────────────────────────────────────── */
+.head {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  min-width: 0;
+  padding: 16px;
+  padding-inline-end: 88px;
+  border-radius: var(--ds-radius-xl, 24px);
+  background: var(--ds-surface, rgba(255, 255, 255, 0.04));
+  border: 2px solid var(--ds-border, #1f1f3a);
+  overflow: hidden;
+}
+
+.headText {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.kicker {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ds-accent2, #5eead4);
+}
+
+.title {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: clamp(26px, 7vw, 36px);
+  line-height: 1;
+  color: var(--ds-text, #fff);
+  overflow-wrap: anywhere;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  min-width: 0;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ds-text, #fff);
+  background: var(--ds-surface2, rgba(0, 0, 0, 0.35));
+  border: 1px solid var(--ds-border, #1f1f3a);
+  overflow-wrap: anywhere;
+}
+
+.chip::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex: 0 0 auto;
+  background: var(--ds-block-2, #5eead4);
+}
+
+.chip:nth-child(2)::before { background: var(--ds-block-3, #fbbf24); }
+.chip:nth-child(3)::before { background: var(--ds-block-4, #f472b6); }
+
+.lede {
+  margin: 4px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ds-text-dim, #94a3b8);
+  max-width: 44ch;
+}
+
+.mascot {
+  position: absolute;
+  inset-inline-end: -6px;
+  bottom: -14px;
+  width: 104px;
+  height: 104px;
+  object-fit: contain;
+  pointer-events: none;
+  animation: peek 3.2s var(--ds-ease-in-out, ease-in-out) infinite;
+}
+
+@keyframes peek {
+  0%, 70%, 100% { transform: translateY(0); }
+  80% { transform: translateY(-8px) rotate(-3deg); }
+  90% { transform: translateY(-2px) rotate(2deg); }
+}
+
+/* ── Cards ────────────────────────────────────────────────────────── */
+.card {
+  min-width: 0;
+  padding: 18px;
+  border-radius: var(--ds-radius-lg, 18px);
+  background: var(--ds-surface, rgba(255, 255, 255, 0.04));
+  border: 2px solid var(--ds-border, #1f1f3a);
+  box-shadow: 0 4px 0 var(--ds-border, #1f1f3a);
+  transition: transform 200ms var(--ds-ease-out, ease-out);
+}
+
+.card:hover { transform: translateY(-2px); }
+
+.cardTitle {
+  margin: 0 0 12px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ds-text, #fff);
+}
+
+.rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding-block: 7px;
+  border-block-end: 1px solid var(--ds-border, #1f1f3a);
+  font-size: 13px;
+  color: var(--ds-text-dim, #94a3b8);
+}
+
+.row:last-child { border-block-end: 0; }
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bar {
+  height: 4px;
+  border-radius: 1px;
+}
+
+.rowLabel {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.mult {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: var(--ds-text, #fff);
+  text-align: end;
+  white-space: nowrap;
+}
+
+.note {
+  margin: 10px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ds-text-dim, #94a3b8);
+  overflow-wrap: anywhere;
+}
+
+.tips {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: tip;
+}
+
+.tip {
+  position: relative;
+  padding-block: 8px;
+  padding-inline-start: 30px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ds-text-dim, #94a3b8);
+  border-block-end: 1px solid var(--ds-border, #1f1f3a);
+  overflow-wrap: anywhere;
+}
+
+.tip:last-child { border-block-end: 0; }
+
+.tip::before {
+  counter-increment: tip;
+  content: counter(tip);
+  position: absolute;
+  inset-inline-start: 0;
+  top: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #06121a;
+  background: var(--ds-block-3, #fbbf24);
+}
+
+.ranked {
+  border-color: var(--ds-accent, #a78bfa);
+  box-shadow: 0 4px 0 var(--ds-accent, #a78bfa);
+}
+
+.rankedKicker {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ds-accent, #a78bfa);
+}
+
+.rankedTitle {
+  margin: 6px 0 8px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--ds-text, #fff);
+  overflow-wrap: anywhere;
+}
+
+.rankedBody {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ds-text-dim, #94a3b8);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ds-warn, #fbbf24);
+}
+
+.status::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.rankedLink {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mascot { animation: none; }
+  .card { transition: none; }
+  .card:hover { transform: none; }
+}
+
+:global(html[data-reduce-motion="true"]) .mascot { animation: none; }
+:global(html[data-reduce-motion="true"]) .card:hover { transform: none; }
+
+/* Mode bar (teal for Free). Replaces the old header + mascot so the board
+   sits near the top on phones. */
+.modeBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--mode-accent, #2dd4bf);
+  background: var(--mode-soft, rgba(45, 212, 191, 0.14));
+  min-width: 0;
+}
+.modeTitle {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--ds-text, #fff);
+}
+.main[data-mode] .card { border-color: color-mix(in srgb, var(--mode-accent) 40%, transparent); }
+/* Side cards: desktop only. On phones the board and its controls are enough. */
+@media (max-width: 959px) {
+  .side { display: none; }
+}

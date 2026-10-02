@@ -1,0 +1,310 @@
+/* ── Game Map — BLOCKBITEbandinghukum design system ─────────── */
+
+.main {
+  min-height: 100vh;
+  width: 100%;
+  transition: background 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+/* ── Act selector bar ──────────────────────────────────────── */
+.actBar {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  background: rgba(8, 8, 26, 0.92);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border, #1f1f3a);
+  scrollbar-width: none;
+}
+.actBar::-webkit-scrollbar { display: none; }
+
+.actTab {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.actTab:hover { background: var(--surface, rgba(255,255,255,0.04)); }
+.actTabActive {
+  border-bottom-color: var(--act-color, var(--accent, #a78bfa));
+  background: var(--surface, rgba(255,255,255,0.05));
+}
+
+.actIcon { font-size: 16px; }
+.actName {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-dim, #94a3b8);
+}
+.actTabActive .actName { color: var(--act-color, var(--accent, #a78bfa)); }
+
+/* ── Act banner ────────────────────────────────────────────── */
+.actBanner {
+  margin-top: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 32px;
+  background: var(--surface2, rgba(0,0,0,0.35));
+  border-bottom: 1px solid var(--border, #1f1f3a);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.actBannerContent { display: flex; flex-direction: column; gap: 4px; }
+.actMeta { display: flex; align-items: center; gap: 12px; }
+.actNum {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+.actRange {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 11px;
+  color: var(--text-dim, #94a3b8);
+}
+.actTitle {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: clamp(20px, 4vw, 32px);
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+.actDesc {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--text-dim, #94a3b8);
+  margin: 0;
+}
+
+.playerProgress {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  min-width: 160px;
+}
+.progressLabel {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-dim, #94a3b8);
+}
+.progressLevel {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+}
+.progressBar {
+  width: 160px;
+  height: 6px;
+  background: var(--surface, rgba(255,255,255,0.08));
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progressFill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s ease;
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* ── Map scrollable area ────────────────────────────────────── */
+.mapScroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 40px 16px 120px;
+}
+
+.mapContainer {
+  max-width: 380px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Rows ───────────────────────────────────────────────────── */
+.levelRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rowNodes {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  justify-content: center;
+}
+
+.rowConnector {
+  width: 2px;
+  height: 24px;
+  border-left: 2px dashed var(--border, rgba(255,255,255,0.12));
+  margin: 0 auto;
+}
+
+.nodeWrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* Horizontal connector between nodes */
+.connector {
+  width: 20px;
+  height: 3px;
+  background: var(--border, rgba(255,255,255,0.1));
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+.connectorDone { opacity: 0.8; }
+
+/* ── Level nodes ────────────────────────────────────────────── */
+.node {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid var(--border, rgba(255,255,255,0.1));
+  background: var(--surface, rgba(18,18,42,0.8));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  flex-shrink: 0;
+}
+.node:hover:not(:disabled) { transform: scale(1.12); }
+.node:disabled { cursor: default; }
+
+/* Completed */
+.completed {
+  background: linear-gradient(135deg, var(--act-color)33, var(--act-color)22);
+  border-color: var(--act-color)88;
+  box-shadow: 0 0 12px var(--act-glow);
+}
+
+/* Current — pulsing */
+.current {
+  background: linear-gradient(135deg, var(--act-color)55, var(--act-color)33);
+  border-color: var(--act-color);
+  box-shadow: 0 0 20px var(--act-glow), 0 0 40px var(--act-glow);
+  animation: nodePulse 1.8s ease-in-out infinite;
+}
+
+/* Locked */
+.locked {
+  background: var(--surface, rgba(10,10,24,0.6));
+  border-color: var(--border, rgba(255,255,255,0.06));
+  opacity: 0.45;
+}
+
+/* Boss level */
+.boss {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  transform: rotate(45deg);
+}
+.boss .nodeNumber { transform: rotate(-45deg); }
+.boss.current { animation: bossGlow 1.5s ease-in-out infinite; }
+
+.nodeNumber {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text, #fff);
+  line-height: 1;
+}
+.completed .nodeNumber { color: var(--act-color); }
+.locked .nodeNumber { color: var(--text-dim, #94a3b8); opacity: 0.4; }
+
+.checkmark {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--ok, #22c55e);
+  color: #000;
+  font-size: 8px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Start banner ───────────────────────────────────────────── */
+.startBanner {
+  text-align: center;
+  padding: 32px 0 0;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  opacity: 0.4;
+}
+
+/* ── Play bar (fixed bottom) ────────────────────────────────── */
+.playBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px 24px;
+  background: rgba(8, 8, 26, 0.95);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border, #1f1f3a);
+}
+
+/* ── Animations ─────────────────────────────────────────────── */
+@keyframes nodePulse {
+  0%, 100% { box-shadow: 0 0 16px var(--act-glow), 0 0 32px var(--act-glow); }
+  50%       { box-shadow: 0 0 28px var(--act-glow), 0 0 56px var(--act-glow); }
+}
+
+@keyframes bossGlow {
+  0%, 100% { filter: brightness(1)   drop-shadow(0 0 8px  var(--act-color)); }
+  50%       { filter: brightness(1.3) drop-shadow(0 0 20px var(--act-color)); }
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .actBanner { flex-direction: column; align-items: flex-start; }
+  .playerProgress { align-items: flex-start; }
+  .progressBar { width: 100%; }
+  .node { width: 44px; height: 44px; }
+  .boss { width: 52px; height: 52px; }
+  .connector { width: 12px; }
+}

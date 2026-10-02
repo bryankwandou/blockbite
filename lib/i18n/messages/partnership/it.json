@@ -1,0 +1,18 @@
+{
+  "title": "Partnership",
+  "kicker": "Partnership",
+  "sub": "BlockBite è un puzzle di blocchi giornaliero su Solana. Se hai un progetto, una community o un evento e vuoi fare qualcosa insieme, raccontacelo qui.",
+  "email_label": "Email",
+  "email_ph": "tu@progetto.xyz",
+  "project_label": "Progetto o team",
+  "project_ph": "Nome e un link",
+  "notes_label": "Cosa hai in mente? (facoltativo)",
+  "notes_ph": "Bastano poche righe",
+  "submit": "Invia",
+  "submitting": "Invio…",
+  "sent_title": "Inviato.",
+  "sent_desc": "Risponderemo a {email}.",
+  "err": "Impossibile inviare: {msg}",
+  "contact": "Preferisci un messaggio diretto? Siamo su",
+  "contact_x": "X"
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Kerja bareng BlockBite",
+  "kicker": "Kemitraan",
+  "sub": "BlockBite adalah puzzle blok harian di Solana. Kalau kamu punya proyek, komunitas, atau acara dan mau bikin sesuatu bareng, ceritakan di sini.",
+  "email_label": "Email",
+  "email_ph": "kamu@proyek.xyz",
+  "project_label": "Proyek atau tim",
+  "project_ph": "Nama dan link",
+  "notes_label": "Apa yang ada di kepalamu? (opsional)",
+  "notes_ph": "Beberapa baris cukup",
+  "submit": "Kirim",
+  "submitting": "Mengirim…",
+  "sent_title": "Terkirim.",
+  "sent_desc": "Kami akan balas ke {email}.",
+  "err": "Gagal mengirim: {msg}",
+  "contact": "Lebih suka DM langsung? Kami ada di",
+  "contact_x": "X"
+}

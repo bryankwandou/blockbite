@@ -1,0 +1,22 @@
+{
+  "title": "Primește o notificare când se deschide vânzarea de bilete Ranked zilnic",
+  "kicker": "Listă de așteptare",
+  "sub": "Vânzarea de bilete începe când programul de premii e live pe Solana mainnet. Lasă-ți e-mailul și te anunțăm când se deschide.",
+  "email_label": "E-mail",
+  "email_placeholder": "tu@exemplu.com",
+  "submit": "Anunță-mă",
+  "submitting": "Se trimite…",
+  "err_email": "Introdu o adresă de e-mail validă.",
+  "err_rate": "Prea multe încercări. Așteaptă un minut și încearcă din nou.",
+  "err_server": "Ceva a mers prost la noi. Încearcă din nou într-un moment.",
+  "done": "Ești pe listă. Îți vom scrie când se deschide vânzarea de bilete.",
+  "count": "{n} pe listă",
+  "facts_title": "Ce se deschide",
+  "fact_1": "1 bilet = 1 USDC = 1 încercare Ranked.",
+  "fact_2": "Până la 3 încercări pe wallet pe zi UTC. Cea mai bună contează.",
+  "fact_3": "Aceeași tablă și aceleași piese pentru toți în acea zi.",
+  "fact_4": "Top 10 zilnic și lunar câștigă USDC din seiful de premii.",
+  "meanwhile": "Modul Aventură este gratuit și deschis acum.",
+  "cta_play": "Joacă Aventură",
+  "cta_guide": "Cum funcționează"
+}

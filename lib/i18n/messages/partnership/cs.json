@@ -1,0 +1,18 @@
+{
+  "title": "Spolupracuj s BlockBite",
+  "kicker": "Partnerství",
+  "sub": "BlockBite je denní blokové puzzle na Solaně. Pokud vedeš projekt, komunitu nebo akci a chceš spolu něco udělat, napiš nám tady.",
+  "email_label": "E-mail",
+  "email_ph": "ty@projekt.xyz",
+  "project_label": "Projekt nebo tým",
+  "project_ph": "Název a odkaz",
+  "notes_label": "Co máš na mysli? (volitelné)",
+  "notes_ph": "Stačí pár řádků",
+  "submit": "Odeslat",
+  "submitting": "Odesílám…",
+  "sent_title": "Odesláno.",
+  "sent_desc": "Odpovíme na {email}.",
+  "err": "Nepodařilo se odeslat: {msg}",
+  "contact": "Radši přímou zprávu? Najdeš nás na",
+  "contact_x": "X"
+}

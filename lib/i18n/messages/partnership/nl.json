@@ -1,0 +1,18 @@
+{
+  "title": "Werk samen met BlockBite",
+  "kicker": "Partnerschap",
+  "sub": "BlockBite is een dagelijkse blokpuzzel op Solana. Run je een project, community of evenement en wil je samen iets doen, vertel het ons dan hier.",
+  "email_label": "E-mail",
+  "email_ph": "jij@project.xyz",
+  "project_label": "Project of team",
+  "project_ph": "Naam en een link",
+  "notes_label": "Wat heb je in gedachten? (optioneel)",
+  "notes_ph": "Een paar regels is genoeg",
+  "submit": "Versturen",
+  "submitting": "Versturen…",
+  "sent_title": "Verstuurd.",
+  "sent_desc": "We antwoorden naar {email}.",
+  "err": "Versturen mislukt: {msg}",
+  "contact": "Liever een direct bericht? We zitten op",
+  "contact_x": "X"
+}

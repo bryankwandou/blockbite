@@ -1,0 +1,22 @@
+{
+  "title": "Powiadomimy cię, gdy ruszy sprzedaż biletów Daily Ranked",
+  "kicker": "Lista oczekujących",
+  "sub": "Sprzedaż biletów rusza, gdy program nagród zacznie działać na mainnecie Solany. Zostaw e-mail, a damy ci znać, gdy się otworzy.",
+  "email_label": "E-mail",
+  "email_placeholder": "ty@example.com",
+  "submit": "Powiadom mnie",
+  "submitting": "Wysyłam…",
+  "err_email": "Wpisz poprawny adres e-mail.",
+  "err_rate": "Za dużo prób. Poczekaj minutę i spróbuj ponownie.",
+  "err_server": "Coś poszło nie tak po naszej stronie. Spróbuj za chwilę.",
+  "done": "Jesteś na liście. Napiszemy do ciebie, gdy ruszy sprzedaż biletów.",
+  "count": "Na liście: {n}",
+  "facts_title": "Co się otwiera",
+  "fact_1": "1 bilet = 1 USDC = 1 próba Ranked.",
+  "fact_2": "Do 3 prób na portfel na dzień UTC. Liczy się najlepsza.",
+  "fact_3": "Tego dnia ta sama plansza i te same klocki dla wszystkich.",
+  "fact_4": "Dzienna i miesięczna top 10 wygrywa USDC ze skarbca nagród.",
+  "meanwhile": "Tryb Przygoda jest darmowy i już otwarty.",
+  "cta_play": "Graj w Przygodę",
+  "cta_guide": "Jak to działa"
+}

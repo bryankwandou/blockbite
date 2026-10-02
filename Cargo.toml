@@ -1,0 +1,11 @@
+﻿[workspace]
+members = ["programs/blockbite-vesting", "programs/blockbite-prize"]
+resolver = "2"
+
+[profile.release]
+overflow-checks = false
+lto = "fat"
+codegen-units = 1
+opt-level = "z"  # smallest binary: deploy rent < 0.03 SOL (see tests: deploy_rent_is_under_0_03_sol)
+strip = false
+panic = "abort"

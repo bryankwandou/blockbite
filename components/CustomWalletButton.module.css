@@ -1,0 +1,230 @@
+/* CustomWalletButton — all component-scoped styles */
+
+.triggerPill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(18, 18, 42, 0.85);
+  border: 1px solid rgba(0, 245, 255, 0.25);
+  border-radius: 99px;
+  padding: 6px 14px 6px 6px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.triggerPill:hover {
+  border-color: rgba(0, 245, 255, 0.55);
+}
+.triggerPill.open {
+  box-shadow: 0 0 18px rgba(0, 245, 255, 0.25);
+}
+
+.triggerName {
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+.triggerStatus {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px;
+  color: #00FF88;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.triggerInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.chevron {
+  transition: transform 0.2s;
+  margin-left: 3px;
+}
+.chevron.rotated {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown panel ── */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 270px;
+  background: rgba(14, 14, 36, 0.97);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.6);
+  animation: slideInDown 0.18s ease-out;
+  z-index: 1000;
+}
+.dropdown.widePanel {
+  width: 400px;
+}
+
+/* ── Profile header row ── */
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.avatarWrap {
+  position: relative;
+  flex-shrink: 0;
+}
+.avatarEditBtn {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #00F5FF;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  color: #000;
+  font-weight: 900;
+  transition: transform 0.15s;
+}
+.avatarEditBtn:hover {
+  transform: scale(1.15);
+}
+
+.profileMeta {
+  min-width: 0;
+}
+.profileUsername {
+  font-family: 'Orbitron', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.copyBtn {
+  background: none;
+  border: none;
+  color: #8888BB;
+  font-size: 11px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  transition: color 0.15s;
+}
+.copyBtn:hover,
+.copyBtn.copied {
+  color: #00FF88;
+}
+.walletBadge {
+  font-size: 10px;
+  color: #55557A;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.walletBadgeIcon {
+  width: 12px;
+  height: 12px;
+}
+
+/* ── Nav links ── */
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 12px;
+}
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  transition: background 0.15s;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+.navLink:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ── Disconnect button ── */
+.disconnectBtn {
+  width: 100%;
+  padding: 9px;
+  background: rgba(255, 51, 102, 0.08);
+  border: 1px solid rgba(255, 51, 102, 0.2);
+  border-radius: 8px;
+  color: #FF3366;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.15s;
+}
+.disconnectBtn:hover {
+  background: rgba(255, 51, 102, 0.18);
+}
+
+/* ── Avatar picker sub-panel ── */
+.subPanelHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.backBtn {
+  background: none;
+  border: none;
+  color: #8888BB;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.15s;
+}
+.backBtn:hover {
+  color: #fff;
+}
+.subPanelTitle {
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  color: #00F5FF;
+  font-weight: 700;
+}
+.avatarPickerHint {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 11px;
+  color: #55557A;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}

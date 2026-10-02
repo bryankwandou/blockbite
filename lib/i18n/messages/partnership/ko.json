@@ -1,0 +1,18 @@
+{
+  "title": "BlockBite와 함께하기",
+  "kicker": "파트너십",
+  "sub": "BlockBite는 Solana의 매일 즐기는 블록 퍼즐이에요. 프로젝트, 커뮤니티, 이벤트를 운영하면서 함께 무언가를 하고 싶다면 여기에서 알려 주세요.",
+  "email_label": "이메일",
+  "email_ph": "you@project.xyz",
+  "project_label": "프로젝트 또는 팀",
+  "project_ph": "이름과 링크",
+  "notes_label": "어떤 생각을 하고 계세요?(선택)",
+  "notes_ph": "몇 줄이면 충분해요",
+  "submit": "보내기",
+  "submitting": "보내는 중…",
+  "sent_title": "보냈어요.",
+  "sent_desc": "{email}(으)로 답장드릴게요.",
+  "err": "보내지 못했어요: {msg}",
+  "contact": "다이렉트 메시지가 편하신가요? 여기에 있어요:",
+  "contact_x": "X"
+}

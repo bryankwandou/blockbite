@@ -1,0 +1,18 @@
+{
+  "title": "اعمل مع BlockBite",
+  "kicker": "شراكة",
+  "sub": "BlockBite لغز مكعبات يومي على Solana. إذا كان لديك مشروع أو مجتمع أو فعالية وتريد أن نعمل معًا، أخبرنا هنا.",
+  "email_label": "البريد الإلكتروني",
+  "email_ph": "you@project.xyz",
+  "project_label": "المشروع أو الفريق",
+  "project_ph": "الاسم ورابط",
+  "notes_label": "ماذا يدور في ذهنك؟ (اختياري)",
+  "notes_ph": "بضعة أسطر تكفي",
+  "submit": "إرسال",
+  "submitting": "جارٍ الإرسال…",
+  "sent_title": "تم الإرسال.",
+  "sent_desc": "سنرد على {email}.",
+  "err": "تعذّر الإرسال: {msg}",
+  "contact": "تفضّل رسالة مباشرة؟ نحن على",
+  "contact_x": "X"
+}

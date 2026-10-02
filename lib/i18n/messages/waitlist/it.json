@@ -1,0 +1,22 @@
+{
+  "title": "Ricevi un avviso quando apre la vendita dei ticket del Ranked giornaliero",
+  "kicker": "Lista d'attesa",
+  "sub": "La vendita dei ticket inizia quando il programma dei premi sarà attivo su Solana mainnet. Lascia la tua email e ti avvisiamo all'apertura.",
+  "email_label": "Email",
+  "email_placeholder": "tu@esempio.com",
+  "submit": "Avvisami",
+  "submitting": "Invio…",
+  "err_email": "Inserisci un indirizzo email valido.",
+  "err_rate": "Troppi tentativi. Aspetta un minuto e riprova.",
+  "err_server": "Qualcosa è andato storto da parte nostra. Riprova tra un momento.",
+  "done": "Sei nella lista. Ti scriveremo quando apre la vendita dei ticket.",
+  "count": "{n} in lista",
+  "facts_title": "Cosa apre",
+  "fact_1": "1 ticket = 1 USDC = 1 tentativo Ranked.",
+  "fact_2": "Fino a 3 tentativi per wallet per giorno UTC. Conta il migliore.",
+  "fact_3": "Stesso tabellone e stessi pezzi per tutti quel giorno.",
+  "fact_4": "La Top 10 giornaliera e mensile vince USDC dalla cassaforte dei premi.",
+  "meanwhile": "La modalità Avventura è gratis e già aperta.",
+  "cta_play": "Gioca Avventura",
+  "cta_guide": "Come funziona"
+}

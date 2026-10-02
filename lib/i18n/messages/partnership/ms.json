@@ -1,0 +1,18 @@
+{
+  "title": "Bekerjasama dengan BlockBite",
+  "kicker": "Perkongsian",
+  "sub": "BlockBite ialah teka-teki blok harian di Solana. Jika anda mengendalikan projek, komuniti atau acara dan mahu membuat sesuatu bersama, beritahu kami di sini.",
+  "email_label": "E-mel",
+  "email_ph": "anda@projek.xyz",
+  "project_label": "Projek atau pasukan",
+  "project_ph": "Nama dan pautan",
+  "notes_label": "Apa yang anda fikirkan? (pilihan)",
+  "notes_ph": "Beberapa baris sudah cukup",
+  "submit": "Hantar",
+  "submitting": "Menghantar…",
+  "sent_title": "Dihantar.",
+  "sent_desc": "Kami akan membalas kepada {email}.",
+  "err": "Tidak dapat dihantar: {msg}",
+  "contact": "Lebih suka mesej terus? Kami ada di",
+  "contact_x": "X"
+}
