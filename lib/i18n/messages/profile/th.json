@@ -38,5 +38,20 @@
   "featured_more": "แสดงเพิ่ม",
   "classic_title": "อวตารคลาสสิก",
   "combos": "{n} แบบ",
-  "ach_link": "ดูความสำเร็จของคุณ"
+  "ach_link": "ดูความสำเร็จของคุณ",
+  "colors_open": "สีพาสเทลทั้ง {n} สี",
+  "colors_pick": "สี {n}",
+  "gallery_title": "แกลเลอรีอวาตาร์",
+  "gallery_count": "{n} อวาตาร์ · {combos} แบบผสม",
+  "gallery_family": "กลุ่มสี",
+  "gallery_all": "ทั้งหมด",
+  "fam_warm": "โทนอุ่น",
+  "fam_mint": "มิ้นต์",
+  "fam_cool": "โทนเย็น",
+  "fam_lilac": "ไลแลค",
+  "fam_neutral": "กลางๆ",
+  "gallery_surprise": "เซอร์ไพรส์ฉัน",
+  "gallery_page": "หน้า {n} / {total}",
+  "gallery_prev": "หน้าก่อนหน้า",
+  "gallery_next": "หน้าถัดไป"
 }

@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // A second build folder lets a preview server run beside a test server.
+  distDir: process.env.BB_DIST_DIR || '.next',
+  poweredByHeader: false,
 
   // ESLint errors must not block production builds — linting is a CI step,
   // not a deploy gate. TypeScript errors still block builds.

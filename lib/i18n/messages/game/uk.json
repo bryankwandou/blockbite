@@ -97,5 +97,9 @@
   "tut_title_7": "Льодовиковий період",
   "tut_title_8": "Час комбо",
   "tut_title_9": "Зворотна гравітація",
-  "tut_title_10": "Бос: Awakener"
+  "tut_title_10": "Бос: Awakener",
+  "help_open": "Як грати",
+  "help_close": "Закрити",
+  "new_personal_best": "НОВИЙ ОСОБИСТИЙ РЕКОРД!",
+  "top10_place": "ТОП-10: місце {rank}"
 }

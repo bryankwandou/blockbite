@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "The board is waiting.",
   "final_sub": "Warm up in Adventure while ranked gets ready.",
-  "mascots_label": "The BlockBite crew"
+  "mascots_label": "The BlockBite crew",
+  "install_kicker": "Available as a",
+  "install_label": "Web App",
+  "install_ios": "On iPhone or iPad: tap Share, then Add to Home Screen.",
+  "install_other": "Open your browser menu and choose Install app (or Add to Home screen)."
 }

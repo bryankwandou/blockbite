@@ -38,5 +38,20 @@
   "featured_more": "더 보기",
   "classic_title": "클래식 아바타",
   "combos": "조합 {n}가지",
-  "ach_link": "업적 보기"
+  "ach_link": "업적 보기",
+  "colors_open": "파스텔 색상 {n}개 전체",
+  "colors_pick": "색상 {n}",
+  "gallery_title": "아바타 갤러리",
+  "gallery_count": "아바타 {n}개 · 조합 {combos}가지",
+  "gallery_family": "색상 계열",
+  "gallery_all": "전체",
+  "fam_warm": "따뜻한 색",
+  "fam_mint": "민트",
+  "fam_cool": "차가운 색",
+  "fam_lilac": "라일락",
+  "fam_neutral": "뉴트럴",
+  "gallery_surprise": "랜덤 추천",
+  "gallery_page": "{n} / {total} 페이지",
+  "gallery_prev": "이전 페이지",
+  "gallery_next": "다음 페이지"
 }

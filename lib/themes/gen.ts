@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Pastel palette generator. Single source of truth for:
  *   - styles/themes.css           (lib/themes/scripts/build-css.mjs)
  *   - the contrast check           (lib/themes/scripts/contrast-check.mjs)
@@ -136,6 +136,13 @@ export const CONTRAST_PAIRS: [Token, Token][] = [
 // â”€â”€ share codes: <base>-<hue>-<softness>, e.g. "tide-200-3" â”€â”€â”€â”€â”€
 export interface CustomTheme { base: string; accent: number; softness: number }
 
+/**
+ * Pastel studio bases (see pastel.ts). Code "<base>-<hue>-<tier>": hue 0..359 is the colour,
+ * tier 0..4 is the softness. The base picks how much colour the backgrounds carry.
+ * Old preset-based codes keep working unchanged.
+ */
+export const PASTEL_BASES: Record<string, number> = { pastel: 1, muted: 0.45, ashen: 0.12 };
+
 const CODE_RE = /^([a-z]{3,10})-(\d{1,3})-([0-4])$/;
 
 export function parseCode(code: unknown): CustomTheme | null {
@@ -143,7 +150,7 @@ export function parseCode(code: unknown): CustomTheme | null {
   const m = CODE_RE.exec(code.trim().toLowerCase());
   if (!m) return null;
   const accent = Number(m[2]);
-  if (!SEEDS.some((s) => s.id === m[1]) || accent > 359) return null;
+  if ((!SEEDS.some((s) => s.id === m[1]) && !(m[1] in PASTEL_BASES)) || accent > 359) return null;
   return { base: m[1], accent, softness: Number(m[3]) };
 }
 
@@ -152,6 +159,7 @@ export function encodeCode(c: CustomTheme): string {
 }
 
 export function customTokens(c: CustomTheme, mode: Mode): Tokens {
+  if (c.base in PASTEL_BASES) return generate({ hue: c.accent, accent: c.accent, sat: PASTEL_BASES[c.base] }, mode, c.softness);
   const seed = SEEDS.find((s) => s.id === c.base) ?? SEEDS[0];
   return generate({ ...seed, accent: c.accent }, mode, c.softness);
 }

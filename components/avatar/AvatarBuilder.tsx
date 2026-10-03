@@ -1,10 +1,11 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ChevronLeft, ChevronRight, Shuffle } from 'lucide-react';
+import { AvatarGallery } from './AvatarGallery';
+import { ChevronLeft, ChevronRight, Palette, Shuffle } from 'lucide-react';
 import { useT } from '@/lib/i18n';
 import {
-  AVATAR_COMBOS, AVATAR_PARTS, PART_KEYS, avatarSvg, formatCode, parseCode, partsFromSeed, randomParts,
+  AVATAR_COMBOS, AVATAR_PARTS, PALETTES, PART_KEYS, avatarSvg, formatCode, parseCode, partsFromSeed, randomParts,
   type AvatarParts, type PartKey,
 } from './parts';
 
@@ -30,6 +31,7 @@ export function AvatarBuilder({ current, onUse }: Props) {
   const t = useT('profile');
   const [parts, setParts] = useState<AvatarParts>(() => parseCode(current) ?? partsFromSeed(7));
   const [featured, setFeatured] = useState(36);
+  const [palOpen, setPalOpen] = useState(false);
   const code = formatCode(parts);
 
   const step = (k: PartKey, d: number) =>
@@ -52,11 +54,41 @@ export function AvatarBuilder({ current, onUse }: Props) {
                   {parts[k] + 1}/{AVATAR_PARTS[k].length}
                 </span>
                 <button type="button" style={btn} onClick={() => step(k, 1)} aria-label={t('next', { part })}><ChevronRight size={16} /></button>
+                {k === 'p' && (
+                  <button type="button" style={btn} onClick={() => setPalOpen((o) => !o)} aria-expanded={palOpen} aria-controls="bb-pal-grid"
+                    aria-label={t('colors_open', { n: PALETTES.length })} title={t('colors_open', { n: PALETTES.length })}>
+                    <Palette size={16} />
+                  </button>
+                )}
               </div>
             );
           })}
         </div>
       </div>
+      {palOpen && (
+        <div id="bb-pal-grid" role="radiogroup" aria-label={t('colors_open', { n: PALETTES.length })}
+          style={{ marginTop: 14, maxHeight: 190, overflowY: 'auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(30px, 1fr))', gap: 6, padding: 6, borderRadius: 12, border: '1px solid var(--ds-border, rgba(255,255,255,.15))' }}
+          onKeyDown={(e) => {
+            const last = PALETTES.length - 1;
+            let n = parts.p;
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = Math.min(last, n + 1);
+            else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = Math.max(0, n - 1);
+            else if (e.key === 'Home') n = 0;
+            else if (e.key === 'End') n = last;
+            else return;
+            e.preventDefault();
+            setParts((q) => ({ ...q, p: n }));
+            requestAnimationFrame(() => document.getElementById('bb-pal-' + n)?.focus());
+          }}>
+          {PALETTES.map((pal, i) => (
+            <button key={i} id={'bb-pal-' + i} type="button" role="radio" aria-checked={parts.p === i} tabIndex={parts.p === i ? 0 : -1}
+              aria-label={t('colors_pick', { n: i + 1 })} title={String(i + 1)}
+              onClick={() => setParts((q) => ({ ...q, p: i }))}
+              style={{ width: 30, height: 30, borderRadius: 8, cursor: 'pointer', padding: 0, background: `linear-gradient(135deg, ${pal.light} 0 35%, ${pal.main} 35% 75%, ${pal.dark} 75%)`,
+                border: parts.p === i ? '2px solid var(--ds-accent, #a78bfa)' : '1px solid rgba(255,255,255,.25)' }} />
+          ))}
+        </div>
+      )}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 16, alignItems: 'center' }}>
         <button type="button" style={{ ...btn, width: 'auto', padding: '0 14px', gap: 6 }} onClick={() => setParts(randomParts())}>
           <Shuffle size={16} /> {t('randomize')}
@@ -66,6 +98,7 @@ export function AvatarBuilder({ current, onUse }: Props) {
           {t('use_this')}
         </button>
         <span style={{ fontSize: 12, opacity: 0.6 }}>{t('combos', { n: AVATAR_COMBOS.toLocaleString('en-US') })}</span>
+        <span style={{ fontSize: 12, opacity: 0.6, fontFamily: 'monospace' }}>{code}</span>
       </div>
 
       <h3 style={{ fontSize: 15, margin: '22px 0 10px' }}>{t('featured_title')}</h3>
@@ -88,6 +121,9 @@ export function AvatarBuilder({ current, onUse }: Props) {
           {t('featured_more')}
         </button>
       )}
+
+      <h3 style={{ fontSize: 15, margin: '26px 0 6px' }}>{t('gallery_title')}</h3>
+      <AvatarGallery current={parts} onPick={setParts} />
     </div>
   );
 }

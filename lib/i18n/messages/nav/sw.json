@@ -27,5 +27,19 @@
   "wallet_select": "Chagua pochi",
   "wallet_pick": "Chagua pochi yako ya Solana",
   "wallet_detected": "IMEGUNDULIWA",
-  "cancel": "Ghairi"
+  "cancel": "Ghairi",
+  "music": "Muziki",
+  "music_open": "Fungua kicheza muziki",
+  "music_close": "Funga kicheza muziki",
+  "music_nothing": "Hakuna kinachochezwa",
+  "music_prev": "Wimbo uliotangulia",
+  "music_next": "Wimbo unaofuata",
+  "music_play": "Cheza",
+  "music_pause": "Sitisha",
+  "music_shuffle": "Changanya",
+  "music_repeat": "Rudia wimbo",
+  "music_play_track": "Cheza {name}",
+  "music_hint": "Buruta nyimbo, au bonyeza Alt + mshale wa juu/chini kwenye wimbo, ili kupanga upya.",
+  "music_playlist_for": "Orodha ya kucheza ya: {ctx}",
+  "music_paused": "Imesitishwa"
 }

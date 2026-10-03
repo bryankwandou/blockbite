@@ -12,6 +12,7 @@ import { useT } from '@/lib/i18n';
 import Link from 'next/link';
 import { AvatarBuilder } from '@/components/avatar/AvatarBuilder';
 import PartnerRewards from '@/components/partner/PartnerRewards';
+import ReferralStats from '@/components/referral/ReferralStats';
 import k from '@/components/PageKit.module.css';
 import styles from './profile.module.css';
 
@@ -266,6 +267,7 @@ export default function ProfilePage() {
                 </button>
               </div>
               <p className={k.body} style={{ marginTop: 14, fontSize: 13 }}>{RANKED_SALES_OPEN ? t('ref_note_open') : t('ref_note')}</p>
+              <ReferralStats wallet={walletAddr} />
             </div>
           </section>
         </div>

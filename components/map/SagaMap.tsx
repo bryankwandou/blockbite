@@ -22,8 +22,9 @@ import { useT } from '@/lib/i18n';
 import { useNumber } from '@/components/game/useNumber';
 import {
   CHUNK, NODE_DY_MOBILE, NODE_DY_WIDE, TILE,
-  biomeLayers, nodeKind, nodeX, nodeY, seasonFor, worldHeight, type Season,
+  biomeLayers, decoUri, mix, nodeKind, nodeX, nodeY, seasonFor, worldHeight, type Season,
 } from './sagaLayout';
+import { PlayerAvatar, useMyAvatar } from '@/components/CssAvatars';
 import css from './SagaMap.module.css';
 
 interface Props {
@@ -50,6 +51,7 @@ export default function SagaMap({ biome, playerLevel, compact, onEnterLevel, tit
   const t = useT('map');
   const { num } = useNumber();
   const router = useRouter();
+  const myAvatar = useMyAvatar();
 
   const first = biome.range[0];
   const total = biome.range[1] - first + 1;
@@ -70,7 +72,10 @@ export default function SagaMap({ biome, playerLevel, compact, onEnterLevel, tit
   const [mascotIdx, setMascotIdx] = useState(Math.max(0, Math.min(total - 1, curIdx)));
   const [jump, setJump] = useState(String(biome.act));
 
-  const layers = useMemo(() => biomeLayers(biome), [biome]);
+  // Scenery is drawn for the real stage width (rounded so resizing does not
+  // redraw every pixel), so props keep their shape on any screen.
+  const artW = Math.round((size.w || 360) / 40) * 40;
+  const layers = useMemo(() => biomeLayers(biome, artW), [biome, artW]);
 
   useEffect(() => {
     setStars(readStars());
@@ -174,6 +179,9 @@ export default function SagaMap({ biome, playerLevel, compact, onEnterLevel, tit
     }
     path = (
       <svg className={css.path} width={w} height={bot - top} style={{ transform: `translate3d(0,${top}px,0)` }} aria-hidden>
+        <path d={d} className={css.landShadow} />
+        <path d={d} className={css.land} />
+        <path d={d} className={css.landLit} />
         <path d={d} className={css.pathEdge} />
         <path d={d} className={css.pathBody} stroke={biome.path} />
         <path d={d} className={css.pathDash} />
@@ -181,7 +189,8 @@ export default function SagaMap({ biome, playerLevel, compact, onEnterLevel, tit
     );
   }
 
-  const mascotOn = mascotIdx >= win.start - CHUNK && mascotIdx < win.end + CHUNK && total > 0;
+  // The pin says "you are here", so it only appears in the act the player is in.
+  const mascotOn = inAct && mascotIdx >= win.start - CHUNK && mascotIdx < win.end + CHUNK && total > 0;
   const mx = nodeX(first + mascotIdx, w), my = nodeY(mascotIdx, total, dy);
 
   const goAct = (e: React.FormEvent) => {
@@ -196,6 +205,8 @@ export default function SagaMap({ biome, playerLevel, compact, onEnterLevel, tit
 
   const vars = {
     '--accent': biome.accent, '--glow': biome.glow, '--rock': biome.rock, '--fog': biome.fog,
+    '--land': mix(biome.rock, biome.accent, 0.24), '--land-lit': mix(biome.rock, biome.accent, 0.42),
+    '--land-shadow': mix(biome.rock, '#000000', 0.5),
   } as React.CSSProperties;
 
   return (
@@ -234,6 +245,13 @@ export default function SagaMap({ biome, playerLevel, compact, onEnterLevel, tit
                       {cleared && <span className={css.stars} aria-hidden>{'★'.repeat(st) + '☆'.repeat(3 - st)}</span>}
                       {kind === 'boss' && <span className={`${css.prop} ${css.crown}`} aria-hidden />}
                       {kind === 'chest' && <span className={`${css.prop} ${css.chest} ${cleared ? css.chestOpen : ''}`} title={t('chest')} aria-hidden />}
+                      {kind === 'plain' && n.level % 3 === 0 && (
+                        <span
+                          className={`${css.prop} ${css.deco}`}
+                          style={{ [n.x > w / 2 ? 'right' : 'left']: 30, backgroundImage: decoUri(biome, n.level) }}
+                          aria-hidden
+                        />
+                      )}
                       {kind === 'sign' && (
                         <span className={css.sign} style={{ [n.x > w / 2 ? 'right' : 'left']: 34 }} aria-hidden>
                           {titleFor(n.level)}
@@ -244,8 +262,10 @@ export default function SagaMap({ biome, playerLevel, compact, onEnterLevel, tit
                 })}
                 {mascotOn && (
                   <div className={css.mascot} style={{ transform: `translate3d(${mx}px,${my}px,0)` }} aria-hidden>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/mascots/mascot-sunny.png" alt="" width={56} height={56} />
+                    {/* The player's own avatar marks where they are, like a photo pin on a saga map. */}
+                    <div className={css.pin}>
+                      <span className={css.pinFrame}><PlayerAvatar id={myAvatar} size={46} /></span>
+                    </div>
                   </div>
                 )}
               </div>

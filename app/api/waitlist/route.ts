@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sbInsertEmail, sbGetCount, supabaseReady } from '@/lib/supabase-rest';
+import { dbAddEmail, waitlistDbConfigured } from '@/lib/waitlist/db';
+import { kvAddEmail, kvConfigured } from '@/lib/waitlist-kv';
 import { memAdd } from '@/lib/waitlist-store';
 
 export const dynamic = 'force-dynamic';
@@ -13,7 +15,21 @@ export async function POST(req: NextRequest) {
     }
     const normalized = email.toLowerCase().trim();
 
-    // Primary: Supabase
+    // Primary: Postgres
+    if (waitlistDbConfigured()) {
+      const result = await dbAddEmail(normalized);
+      if (result === 'duplicate') {
+        return NextResponse.json({ ok: true, already: true, _src: 'pg-dup' }, { status: 409 });
+      }
+      if (result === 'inserted') return NextResponse.json({ ok: true, _src: 'pg' });
+      console.error('[waitlist POST] postgres insert failed:', result);
+      return NextResponse.json(
+        { error: 'Storage rejected the signup', detail: result },
+        { status: 502 },
+      );
+    }
+
+    // Second: Supabase
     if (supabaseReady()) {
       const result = await sbInsertEmail(normalized);
       if (result === 'duplicate') {
@@ -37,6 +53,14 @@ export async function POST(req: NextRequest) {
         { error: 'Storage rejected the signup', detail: result },
         { status: 502 },
       );
+    }
+
+    // Third: Vercel KV
+    if (kvConfigured()) {
+      const r = await kvAddEmail(normalized);
+      if (r === 'duplicate') return NextResponse.json({ ok: true, already: true, _src: 'kv-dup' }, { status: 409 });
+      if (r === 'inserted') return NextResponse.json({ ok: true, _src: 'kv' });
+      // KV errored: fall through to memory
     }
 
     // Fallback: in-memory

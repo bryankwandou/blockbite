@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "הלוח מחכה.",
   "final_sub": "התחממו בהרפתקה בזמן ש-Ranked מתכונן.",
-  "mascots_label": "הצוות של BlockBite"
+  "mascots_label": "הצוות של BlockBite",
+  "install_kicker": "זמין כ",
+  "install_label": "אפליקציית ווב",
+  "install_ios": "ב-iPhone/iPad: הקישו שיתוף ואז הוספה למסך הבית.",
+  "install_other": "פתחו את תפריט הדפדפן ובחרו התקנת אפליקציה (או הוספה למסך הבית)."
 }

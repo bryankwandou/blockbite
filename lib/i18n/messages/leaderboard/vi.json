@@ -33,5 +33,16 @@
   "step2_desc": "Mọi người nhận cùng bàn và bộ khối mỗi ngày UTC. Lượt tốt nhất của bạn được tính.",
   "step3_title": "Top 10 thắng",
   "step3_desc": "Top 10 ngày và tháng giành USDC. Sau bước kiểm tra 24 giờ, người thắng nhận từ chương trình giải thưởng bằng ví của họ.",
-  "prizes_link": "Cách chia giải thưởng"
+  "prizes_link": "Cách chia giải thưởng",
+  "period_adventure": "Phiêu lưu",
+  "col_level": "Màn",
+  "empty_adventure": "Chưa có ai trên bảng miễn phí. Hoàn thành một ván khi đã kết nối ví để tham gia.",
+  "footer_adventure": "Chế độ Phiêu lưu miễn phí: xếp theo màn cao nhất đạt được, sau đó là điểm cao nhất. Chỉ để giải trí, không có giải thưởng.",
+  "podium_label": "3 người chơi dẫn đầu",
+  "crown_label": "Người thắng",
+  "winner_day_title": "Người thắng hôm qua",
+  "winner_month_title": "Người thắng tháng trước",
+  "winner_empty": "Chưa có vòng nào kết thúc",
+  "winner_empty_desc": "Người thắng mỗi ngày và mỗi tháng sẽ hiện ở đây khi vòng đóng lại.",
+  "winner_share": "Phần lớn nhất {share}%"
 }

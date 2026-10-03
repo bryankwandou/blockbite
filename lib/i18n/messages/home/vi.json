@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "Bàn chơi đang chờ bạn.",
   "final_sub": "Khởi động ở Phiêu lưu trong lúc ranked đang được chuẩn bị.",
-  "mascots_label": "Đội BlockBite"
+  "mascots_label": "Đội BlockBite",
+  "install_kicker": "Có sẵn dạng",
+  "install_label": "Web App",
+  "install_ios": "Trên iPhone/iPad: chạm Chia sẻ, rồi Thêm vào MH chính.",
+  "install_other": "Mở menu trình duyệt và chọn Cài đặt ứng dụng (hoặc Thêm vào màn hình chính)."
 }

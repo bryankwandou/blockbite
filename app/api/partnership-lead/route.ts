@@ -9,6 +9,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { dbAddLead, waitlistDbConfigured } from '@/lib/waitlist/db';
 
 interface Lead {
   email:   string;
@@ -66,6 +67,11 @@ export async function POST(req: NextRequest) {
       }
       // Fall through to memory on any other Supabase error
     } catch { /* fall through */ }
+  }
+
+  // Postgres when Supabase is absent or failed
+  if (waitlistDbConfigured() && (await dbAddLead({ email, project, notes: notes || null }))) {
+    return NextResponse.json({ ok: true, source: 'postgres' });
   }
 
   // In-memory fallback (always succeeds, ring buffer)

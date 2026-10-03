@@ -33,5 +33,16 @@
   "step2_desc": "Everyone gets the same board and the same pieces each UTC day. Your best attempt counts.",
   "step3_title": "Top 10 win",
   "step3_desc": "The daily and monthly top 10 win USDC. After a 24-hour check, winners claim from the prize program with their wallet.",
-  "prizes_link": "How prizes are split"
+  "prizes_link": "How prizes are split",
+  "period_adventure": "Adventure",
+  "col_level": "Level",
+  "empty_adventure": "Nobody is on the free board yet. Finish a game with your wallet connected to join it.",
+  "footer_adventure": "Free Adventure mode: ranked by highest level reached, then best score. Just for fun, no prizes.",
+  "podium_label": "Top 3 players",
+  "crown_label": "Winner",
+  "winner_day_title": "Yesterday's winner",
+  "winner_month_title": "Last month's winner",
+  "winner_empty": "No finished rounds yet",
+  "winner_empty_desc": "The winner of each day and month appears here once that round closes.",
+  "winner_share": "Top share {share}%"
 }

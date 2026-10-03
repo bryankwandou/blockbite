@@ -11,7 +11,7 @@
  *   gem      12  gradient gem badges (pure CSS)
  *   pilot     9  portraits cut from public/assets/avatars/all.png (3x3 sheet)
  *
- * Plus modular block avatars: any valid code "m1-b03-p11-e07-m04-a15-g02"
+ * Plus modular block avatars: any valid code "m1-b03-p11-e07-m04-a15-g02" (m2-...-pXXX for palettes >= 100)
  * (components/avatar/parts.ts) is an avatar id too, over a million of them.
  */
 import { BRAND_MASCOTS, generateMascots, type MascotConfig } from '@/components/Mascot';

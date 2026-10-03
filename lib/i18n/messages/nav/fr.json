@@ -27,5 +27,19 @@
   "wallet_select": "Choisis un wallet",
   "wallet_pick": "Choisis ton wallet Solana",
   "wallet_detected": "DÉTECTÉ",
-  "cancel": "Annuler"
+  "cancel": "Annuler",
+  "music": "Musique",
+  "music_open": "Ouvrir le lecteur de musique",
+  "music_close": "Fermer le lecteur de musique",
+  "music_nothing": "Aucune lecture",
+  "music_prev": "Piste précédente",
+  "music_next": "Piste suivante",
+  "music_play": "Lecture",
+  "music_pause": "Pause",
+  "music_shuffle": "Aléatoire",
+  "music_repeat": "Répéter la piste",
+  "music_play_track": "Lire {name}",
+  "music_hint": "Faites glisser les pistes, ou appuyez sur Alt + flèche haut/bas sur une piste, pour les réorganiser.",
+  "music_playlist_for": "Liste pour : {ctx}",
+  "music_paused": "En pause"
 }

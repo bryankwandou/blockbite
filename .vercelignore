@@ -5,3 +5,13 @@ tests
 programs
 .anchor
 *.so
+.next-preview
+scratchpad
+.env
+.env.local
+.env.*.local
+.env.production
+*.pem
+*.key
+*keypair*.json
+deploy-key.json

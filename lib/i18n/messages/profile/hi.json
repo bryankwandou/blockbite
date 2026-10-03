@@ -38,5 +38,20 @@
   "featured_more": "और दिखाएँ",
   "classic_title": "क्लासिक अवतार",
   "combos": "{n} मेल",
-  "ach_link": "अपनी उपलब्धियाँ देखें"
+  "ach_link": "अपनी उपलब्धियाँ देखें",
+  "colors_open": "सभी {n} पेस्टल रंग",
+  "colors_pick": "रंग {n}",
+  "gallery_title": "अवतार गैलरी",
+  "gallery_count": "{n} अवतार · {combos} संयोजन",
+  "gallery_family": "रंग परिवार",
+  "gallery_all": "सभी",
+  "fam_warm": "गर्म",
+  "fam_mint": "पुदीना",
+  "fam_cool": "ठंडा",
+  "fam_lilac": "लिलैक",
+  "fam_neutral": "न्यूट्रल",
+  "gallery_surprise": "मुझे चौंकाओ",
+  "gallery_page": "पृष्ठ {n} / {total}",
+  "gallery_prev": "पिछला पृष्ठ",
+  "gallery_next": "अगला पृष्ठ"
 }

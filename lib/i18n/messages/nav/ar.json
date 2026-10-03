@@ -27,5 +27,19 @@
   "wallet_select": "اختر محفظة",
   "wallet_pick": "اختر محفظة Solana الخاصة بك",
   "wallet_detected": "تم اكتشافها",
-  "cancel": "إلغاء"
+  "cancel": "إلغاء",
+  "music": "الموسيقى",
+  "music_open": "فتح مشغّل الموسيقى",
+  "music_close": "إغلاق مشغّل الموسيقى",
+  "music_nothing": "لا يوجد تشغيل",
+  "music_prev": "المقطع السابق",
+  "music_next": "المقطع التالي",
+  "music_play": "تشغيل",
+  "music_pause": "إيقاف مؤقت",
+  "music_shuffle": "عشوائي",
+  "music_repeat": "تكرار المقطع",
+  "music_play_track": "تشغيل {name}",
+  "music_hint": "اسحب المقاطع أو اضغط Alt + السهم لأعلى/لأسفل على مقطع لإعادة الترتيب.",
+  "music_playlist_for": "قائمة التشغيل لـ: {ctx}",
+  "music_paused": "متوقف مؤقتاً"
 }

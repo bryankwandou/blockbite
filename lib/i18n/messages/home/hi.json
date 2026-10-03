@@ -59,5 +59,9 @@
   "status_network_v": "Solana मेननेट, USDC",
   "final_title": "बोर्ड इंतज़ार कर रहा है।",
   "final_sub": "रैंक्ड तैयार होने तक एडवेंचर में वार्म-अप करें।",
-  "mascots_label": "BlockBite क्रू"
+  "mascots_label": "BlockBite क्रू",
+  "install_kicker": "इस रूप में उपलब्ध",
+  "install_label": "वेब ऐप",
+  "install_ios": "iPhone/iPad पर: शेयर पर टैप करें, फिर होम स्क्रीन में जोड़ें।",
+  "install_other": "ब्राउज़र मेनू खोलें और ऐप इंस्टॉल करें (या होम स्क्रीन में जोड़ें) चुनें।"
 }

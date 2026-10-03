@@ -1,9 +1,11 @@
 /**
  * POST /api/quests/[id]/submit
- * Body: { wallet: string, proof: string }
+ * Header: Authorization: Bearer <ranked session token> (lib/ranked/auth.ts)
+ * Body: { proof: string }
  *
  * User submits proof for a quest completion. Status starts as 'pending'
- * until admin reviews.
+ * until admin reviews. The wallet is the signed-in one, so nobody can file
+ * (and so block) a submission for someone else's wallet.
  */
 
 import { NextRequest, NextResponse } from 'next/server';
@@ -11,6 +13,7 @@ import {
   getQuest, getCompletion, submitCompletion, listCompletionsForQuest,
   type QuestCompletion,
 } from '@/lib/quests/store';
+import { requireWallet } from '@/lib/ranked/http';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,6 +21,8 @@ export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
+  const wallet = requireWallet(req);
+  if (wallet instanceof Response) return wallet;
   const { id } = await params;
   const quest = await getQuest(id);
   if (!quest)         return NextResponse.json({ error: 'Quest not found' }, { status: 404 });
@@ -25,12 +30,10 @@ export async function POST(
   if (quest.expiresAt && quest.expiresAt < Date.now())
                        return NextResponse.json({ error: 'Quest expired' }, { status: 410 });
 
-  let body: { wallet?: string; proof?: string };
+  let body: { proof?: string };
   try { body = await req.json(); } catch { return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 }); }
 
-  const wallet = (body.wallet ?? '').trim();
   const proof  = (body.proof ?? '').trim();
-  if (!wallet)                 return NextResponse.json({ error: 'wallet required' }, { status: 400 });
   if (!proof || proof.length > 2000) return NextResponse.json({ error: 'proof required (max 2000)' }, { status: 400 });
 
   // Idempotency: if a pending submission already exists, return it.

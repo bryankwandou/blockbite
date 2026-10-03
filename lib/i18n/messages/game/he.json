@@ -97,5 +97,9 @@
   "tut_title_7": "עידן הקרח",
   "tut_title_8": "זמן קומבו",
   "tut_title_9": "היפוך כבידה",
-  "tut_title_10": "בוס: Awakener"
+  "tut_title_10": "בוס: Awakener",
+  "help_open": "איך משחקים",
+  "help_close": "סגירה",
+  "new_personal_best": "שיא אישי חדש!",
+  "top10_place": "10 הראשונים: #{rank}"
 }

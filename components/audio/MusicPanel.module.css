@@ -1,0 +1,33 @@
+.backdrop {
+  position: fixed; inset: 0; z-index: 2000; display: flex; align-items: flex-end; justify-content: center;
+  background: rgba(4, 4, 14, 0.62); backdrop-filter: blur(3px); animation: fade 160ms ease-out;
+}
+.sheet {
+  width: min(560px, 100%); max-height: min(88dvh, 760px); display: flex; flex-direction: column;
+  background: var(--ds-surface, #12122a); color: var(--ds-text, #fff);
+  border: 1px solid var(--ds-border, #1f1f3a); border-radius: 20px 20px 0 0;
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.45); animation: rise 220ms ease-out; overflow: hidden;
+}
+.head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 16px 16px 8px; }
+.headText { min-width: 0; display: grid; gap: 2px; }
+.title { margin: 0; font: 800 20px 'Space Grotesk', system-ui, sans-serif; }
+.now { margin: 0; font-size: 14px; font-weight: 700; color: var(--ds-accent2, #5eead4); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ctx { margin: 0; font-size: 12px; color: var(--ds-text-dim, #94a3b8); }
+.close, .tbtn {
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer;
+  width: 40px; height: 40px; border-radius: 12px; color: var(--ds-text, #fff);
+  background: var(--ds-bg, #08081a); border: 1px solid var(--ds-border, #1f1f3a);
+  transition: transform 120ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+.close:hover, .tbtn:hover { border-color: var(--ds-accent, #a78bfa); }
+.close:active, .tbtn:active { transform: scale(0.94); }
+.close:focus-visible, .tbtn:focus-visible { outline: 2px solid var(--ds-accent, #a78bfa); outline-offset: 2px; }
+.transport { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 8px 16px 12px; border-bottom: 1px solid var(--ds-border, #1f1f3a); }
+.big { width: 54px; height: 54px; border-radius: 50%; background: var(--ds-accent, #a78bfa); color: var(--ds-bg, #08081a); border-color: transparent; }
+.tOn { color: var(--ds-accent2, #5eead4); border-color: var(--ds-accent2, #5eead4); }
+.body { overflow-y: auto; padding: 12px 16px 20px; overscroll-behavior: contain; }
+.hint { margin: 10px 0 0; font-size: 12px; color: var(--ds-text-dim, #94a3b8); }
+@keyframes fade { from { opacity: 0; } }
+@keyframes rise { from { transform: translateY(24px); opacity: 0; } }
+@media (min-width: 700px) { .backdrop { align-items: center; } .sheet { border-radius: 20px; } }
+@media (prefers-reduced-motion: reduce) { .backdrop, .sheet { animation: none; } }

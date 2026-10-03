@@ -33,5 +33,16 @@
   "step2_desc": "UTC 하루마다 모두 같은 보드와 같은 조각을 받아요. 가장 좋은 도전이 반영돼요.",
   "step3_title": "상위 10명이 승리",
   "step3_desc": "일간·월간 상위 10명이 USDC를 받아요. 24시간 확인 후, 우승자는 지갑으로 상금 프로그램에서 받아요.",
-  "prizes_link": "상금 분배 방식"
+  "prizes_link": "상금 분배 방식",
+  "period_adventure": "어드벤처",
+  "col_level": "레벨",
+  "empty_adventure": "아직 무료 보드에 아무도 없습니다. 지갑을 연결한 상태로 한 게임을 끝내면 참여할 수 있습니다.",
+  "footer_adventure": "무료 어드벤처 모드: 도달한 최고 레벨, 그다음 최고 점수 순으로 순위를 매깁니다. 재미로만, 상품은 없습니다.",
+  "podium_label": "상위 3명",
+  "crown_label": "우승",
+  "winner_day_title": "어제의 우승자",
+  "winner_month_title": "지난달 우승자",
+  "winner_empty": "아직 끝난 라운드가 없습니다",
+  "winner_empty_desc": "매일, 매월의 우승자는 라운드가 마감되면 여기에 표시됩니다.",
+  "winner_share": "최대 지분 {share}%"
 }

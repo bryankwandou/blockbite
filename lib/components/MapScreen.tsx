@@ -6,9 +6,10 @@ import type { Biome } from '@/lib/game/biomes';
 import { levelConfig } from '@/lib/game/levelConfig';
 import { getLevelTier } from '@/lib/game/constants';
 import SagaMap from '@/components/map/SagaMap';
-import { BIOMES, biomeForAct, TOTAL_ACTS } from '@/lib/game/biomes';
+import { BIOMES, biomeForAct, biomeForLevel, TOTAL_ACTS } from '@/lib/game/biomes';
 import { useT } from '@/lib/i18n';
 import { useNumber } from '@/components/game/useNumber';
+import { PlayerAvatar, useMyAvatar } from '@/components/CssAvatars';
 
 type T =(key: string, vars?: Record<string, string | number>) => string;
 
@@ -98,16 +99,18 @@ function usePrizePool(): Vault {
   return pool;
 }
 
+/** The player's chosen avatar (profile → avatar), ringed in the act's colour. */
 function Avatar({ biome, small }: { biome: Biome; small?: boolean }) {
-  const size = small ? 36 : 48;
+  const id = useMyAvatar();
+  const size = small ? 40 : 52;
   return (
-    <div style={{
-      width: size, height: size, borderRadius: '50%',
-      background: `radial-gradient(circle at 30% 30%, ${biome.glow}, ${biome.accent}, ${biome.rock})`,
-      border: `2px solid ${biome.glow}`,
-      boxShadow: `0 0 ${small ? 8 : 14}px ${biome.accent}88`,
-      flexShrink: 0,
-    }} />
+    <Link href="/profile" aria-label="Profile" style={{
+      width: size, height: size, borderRadius: '50%', overflow: 'hidden', flexShrink: 0,
+      display: 'grid', placeItems: 'center',
+      boxShadow: `0 0 0 2px ${biome.glow}, 0 0 ${small ? 10 : 16}px ${biome.accent}aa`,
+    }}>
+      <PlayerAvatar id={id} size={size} />
+    </Link>
   );
 }
 
@@ -291,7 +294,8 @@ function TopHeader({ biome, layout, username, tier }: {
       <Avatar biome={biome} />
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontSize: 10, letterSpacing: 2, color: biome.glow, opacity: 0.85 }}>
-          {t('act_n', { n: romanize(biome.act) })} · {t(`cohort_${biome.cohort.toLowerCase()}`)} · {t(tierKey(tier)).toUpperCase()}
+          {[t('act_n', { n: romanize(biome.act) }), t(`cohort_${biome.cohort.toLowerCase()}`).toUpperCase(), t(tierKey(tier)).toUpperCase()]
+            .filter((x, i, all) => all.indexOf(x) === i).join(' · ')}
         </div>
         <div style={{ fontSize: layout === 'mobile' ? 18 : 24, fontWeight: 800, lineHeight: 1.1, overflowWrap: 'anywhere' }}>
           {username || t('explore')}
@@ -324,7 +328,7 @@ function SideCards({
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)', gap: 8 }}>
         <Pill label={t('pill_tier')} value={t(tierKey(getLevelTier(level)))} biome={biome} />
-        <Pill label={t('pill_act')}  value={romanize(biome.act)}               biome={biome} />
+        <Pill label={t('pill_act')}  value={romanize(biomeForLevel(level).act)}               biome={biome} />
       </div>
       <p style={{ margin: 0, fontSize: 12, lineHeight: 1.5, color: '#cbd5e1' }}>{t('free_note')}</p>
       <button
@@ -382,7 +386,7 @@ function BottomCard({
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, margin: '10px 0 12px', alignItems: 'center', minWidth: 0 }}>
         <Pill label={t('pill_tier')} value={t(tierKey(getLevelTier(level)))} biome={biome} small />
-        <Pill label={t('pill_act')}  value={romanize(biome.act)}               biome={biome} small />
+        <Pill label={t('pill_act')}  value={romanize(biomeForLevel(level).act)}               biome={biome} small />
         <button
           type="button"
           onClick={() => onEnterLevel(level)}

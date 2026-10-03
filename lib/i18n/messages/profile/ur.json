@@ -38,5 +38,20 @@
   "featured_more": "مزید دکھائیں",
   "classic_title": "کلاسک اوتار",
   "combos": "{n} امتزاج",
-  "ach_link": "اپنی کامیابیاں دیکھیں"
+  "ach_link": "اپنی کامیابیاں دیکھیں",
+  "colors_open": "تمام {n} پیسٹل رنگ",
+  "colors_pick": "رنگ {n}",
+  "gallery_title": "اوتار گیلری",
+  "gallery_count": "{n} اوتار · {combos} امتزاج",
+  "gallery_family": "رنگوں کا خاندان",
+  "gallery_all": "سب",
+  "fam_warm": "گرم",
+  "fam_mint": "پودینہ",
+  "fam_cool": "ٹھنڈا",
+  "fam_lilac": "ہلکا بنفشی",
+  "fam_neutral": "غیر جانبدار",
+  "gallery_surprise": "مجھے حیران کریں",
+  "gallery_page": "صفحہ {n} / {total}",
+  "gallery_prev": "پچھلا صفحہ",
+  "gallery_next": "اگلا صفحہ"
 }

@@ -27,5 +27,19 @@
   "wallet_select": "เลือกกระเป๋า",
   "wallet_pick": "เลือกกระเป๋า Solana ของคุณ",
   "wallet_detected": "ตรวจพบ",
-  "cancel": "ยกเลิก"
+  "cancel": "ยกเลิก",
+  "music": "เพลง",
+  "music_open": "เปิดเครื่องเล่นเพลง",
+  "music_close": "ปิดเครื่องเล่นเพลง",
+  "music_nothing": "ไม่มีเพลงที่เล่นอยู่",
+  "music_prev": "เพลงก่อนหน้า",
+  "music_next": "เพลงถัดไป",
+  "music_play": "เล่น",
+  "music_pause": "หยุดชั่วคราว",
+  "music_shuffle": "สุ่ม",
+  "music_repeat": "เล่นเพลงซ้ำ",
+  "music_play_track": "เล่น {name}",
+  "music_hint": "ลากเพลง หรือกด Alt + ลูกศรขึ้น/ลงที่เพลงเพื่อจัดลำดับใหม่",
+  "music_playlist_for": "เพลย์ลิสต์สำหรับ: {ctx}",
+  "music_paused": "หยุดชั่วคราว"
 }

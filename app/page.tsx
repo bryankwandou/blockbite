@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useT } from '@/lib/i18n';
 import Navbar from '@/components/Navbar';
 import PlayTogetherCard from '@/components/versus/PlayTogetherCard';
+import InstallButtons from '@/components/InstallButtons';
 import s from './page.module.css';
 
 // The PNG filenames pre-date the final art, so each file is paired here with the
@@ -174,6 +175,7 @@ export default function Home() {
             <a href="#ranked" className={`${s.btn} ${s.btnGhost}`}>{t('cta_ranked')}</a>
           </div>
           <p className={s.status}><span className={s.pulse} aria-hidden="true" />{t('hero_status')}</p>
+          <InstallButtons />
         </div>
         <MiniBoard />
       </section>

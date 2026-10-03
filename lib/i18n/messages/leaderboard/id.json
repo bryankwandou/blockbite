@@ -33,5 +33,16 @@
   "step2_desc": "Semua orang dapat papan dan blok yang sama tiap hari UTC. Percobaan terbaikmu yang dihitung.",
   "step3_title": "Top 10 menang",
   "step3_desc": "Top 10 harian dan bulanan memenangkan USDC. Setelah pengecekan 24 jam, pemenang klaim dari program hadiah dengan wallet mereka.",
-  "prizes_link": "Cara hadiah dibagi"
+  "prizes_link": "Cara hadiah dibagi",
+  "period_adventure": "Petualangan",
+  "col_level": "Level",
+  "empty_adventure": "Belum ada pemain di papan gratis. Selesaikan satu permainan dengan wallet terhubung untuk masuk.",
+  "footer_adventure": "Mode Petualangan gratis: diurutkan dari level tertinggi, lalu skor terbaik. Untuk seru-seruan, tanpa hadiah.",
+  "podium_label": "3 pemain teratas",
+  "crown_label": "Pemenang",
+  "winner_day_title": "Pemenang kemarin",
+  "winner_month_title": "Pemenang bulan lalu",
+  "winner_empty": "Belum ada ronde yang selesai",
+  "winner_empty_desc": "Pemenang tiap hari dan bulan muncul di sini setelah ronde ditutup.",
+  "winner_share": "Bagian terbesar {share}%"
 }

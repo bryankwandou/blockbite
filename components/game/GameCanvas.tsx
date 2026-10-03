@@ -16,6 +16,7 @@ import { useNumber } from './useNumber';
 import { playSfx } from '@/lib/audio';
 import { getStageName } from '@/lib/game/stages';
 import MysteryBoxModal from './MysteryBoxModal';
+import GameOverCelebration from './GameOverCelebration';
 import { BoxResult } from '@/lib/game/mysteryBox';
 import { reportError } from '@/lib/analytics/errorReporter';
 import type { Biome } from '@/lib/game/biomes';
@@ -76,20 +77,91 @@ export default function GameCanvas({ initialLevel = 1, onBack, biome, mode = 'fr
   const CANVAS_W = BOARD_PX + 24;
   const CANVAS_H = TRAY_Y + 130;
 
+  // Read-only snapshot for automated play tests (tests/e2e/realplay.spec.ts).
+  // Only exposed when localStorage 'bb:e2e' is '1'; players never get it.
+  useEffect(() => {
+    try { if (localStorage.getItem('bb:e2e') !== '1') return; } catch { return; }
+    const w = window as unknown as { __bbGame?: unknown };
+    w.__bbGame = {
+      free: state.board.map((row, r) => row.map((_, c) => canPlace(state.board, [[1]], r, c))),
+      tray: state.tray.map((p) => (p ? p.shape : null)),
+      score: state.score, level: state.level, placements: state.placements,
+      isGameOver: state.isGameOver, pendingMysteryBox: state.pendingMysteryBox,
+      geometry: { originX, originY, cell: CELL_SIZE + CELL_GAP, trayY: TRAY_Y, canvasW: CANVAS_W },
+    };
+  }, [state, originX, originY, TRAY_Y, CANVAS_W]);
 
-  const handleStartGame = async () => {
-    // Free mode plays without a wallet; a wallet only attaches scores to an address.
-    if (connected && publicKey) try {
+
+  // ── Saving progress (Adventure board, lib/adventure/db.ts) ─────────────
+  // A server session starts as soon as a wallet is connected, so its length
+  // counts as play time. Each token is single use: after every submit a new
+  // session starts for the play that follows. Results go up whenever a level
+  // is cleared, at game over, and when the page is hidden or closed, so
+  // leaving mid-run never loses cleared levels.
+  const wallet = connected && publicKey ? publicKey.toBase58() : null;
+  const startSession = useCallback(async (lvl: number) => {
+    if (!wallet) return;
+    try {
       const res = await fetch('/api/session/start', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ walletAddress: publicKey.toBase58(), level: initialLevel }),
+        body: JSON.stringify({ walletAddress: wallet, level: lvl }),
       });
-      if (res.ok) {
-        const data = await res.json();
-        sessionTokenRef.current = data.token ?? null;
-      }
-    } catch { /* non-fatal — game proceeds without server session */ }
+      if (res.ok) sessionTokenRef.current = (await res.json()).token ?? null;
+    } catch { /* offline: the next submit starts one */ }
+  }, [wallet]);
+
+  const submitProgress = useCallback(async (lvl: number, score: number) => {
+    if (!wallet) return;
+    const token = sessionTokenRef.current;
+    sessionTokenRef.current = null;
+    if (!token) { await startSession(lvl); return; }
+    try {
+      await fetch('/api/session/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, score, level: lvl, walletAddress: wallet }),
+      });
+    } catch { /* best effort */ }
+    await startSession(lvl);
+  }, [wallet, startSession]);
+
+  useEffect(() => {
+    if (wallet && !sessionTokenRef.current) void startSession(state.level);
+  }, [wallet]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // A cleared level (the engine moves on to the next one) is saved right away.
+  const lastLevelRef = useRef(state.level);
+  useEffect(() => {
+    if (state.level > lastLevelRef.current) void submitProgress(state.level, state.score);
+    lastLevelRef.current = state.level;
+  }, [state.level]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Leaving the page: send what is there without waiting for an answer.
+  const liveRef = useRef({ level: state.level, score: state.score, placements: state.placements });
+  liveRef.current = { level: state.level, score: state.score, placements: state.placements };
+  useEffect(() => {
+    if (!wallet) return;
+    const flush = () => {
+      const token = sessionTokenRef.current;
+      const { level, score, placements } = liveRef.current;
+      if (!token || placements === 0 || document.visibilityState !== 'hidden') return;
+      sessionTokenRef.current = null;
+      const body = JSON.stringify({ token, score, level, walletAddress: wallet });
+      try { navigator.sendBeacon('/api/session/submit', new Blob([body], { type: 'application/json' })); } catch { /* ignore */ }
+    };
+    const onShow = () => { if (document.visibilityState === 'visible' && !sessionTokenRef.current) void startSession(liveRef.current.level); };
+    document.addEventListener('visibilitychange', flush);
+    document.addEventListener('visibilitychange', onShow);
+    window.addEventListener('pagehide', flush);
+    return () => {
+      document.removeEventListener('visibilitychange', flush);
+      document.removeEventListener('visibilitychange', onShow);
+      window.removeEventListener('pagehide', flush);
+    };
+  }, [wallet, startSession]);
+
+  const handleStartGame = async () => {
     if (initialLevel > 1) {
       newGameAt(initialLevel);
     } else {
@@ -129,6 +201,7 @@ export default function GameCanvas({ initialLevel = 1, onBack, biome, mode = 'fr
     } catch { /* storage unavailable */ }
   }, [state.level, state.score, initialLevel, mode]);
 
+  const [celebrate, setCelebrate] = useState<{ pb: boolean; rank: number | null } | null>(null);
   const gameOverHandledRef = useRef(false);
   useEffect(() => {
     if (state.isGameOver && !gameOverHandledRef.current && connected && publicKey) {
@@ -151,42 +224,32 @@ export default function GameCanvas({ initialLevel = 1, onBack, biome, mode = 'fr
         localStorage.setItem('bb_games_played', String(prevGames + 1));
       }
 
-      // ── Score submission: double-database strategy ──────────────────
-      // Primary path: session-token verified submit (when SESSION_SECRET is set)
-      // Fallback path: simplified submit (always runs as safety net)
-      // Both paths write to KV sorted sets (monthly/daily/all-time).
+      // Save the run: level reached and score (the session started when the wallet connected).
+      const runScore = state.score;
+      const saved = submitProgress(state.level, runScore);
 
-      const scorePayload = {
-        score: state.score,
-        level: initialLevel,
-        walletAddress: publicKey.toBase58(),
-      };
-
-      if (sessionTokenRef.current) {
-        // Primary: full HMAC-verified submission
-        fetch('/api/session/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ token: sessionTokenRef.current, ...scorePayload }),
-        }).catch(() => {
-          // Primary failed — fall through to fallback
-          fetch('/api/score/submit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(scorePayload),
-          }).catch(() => { /* best-effort */ });
-        });
-      } else {
-        // Fallback: direct submit (no session token — SESSION_SECRET not set)
-        fetch('/api/score/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(scorePayload),
-        }).catch(() => { /* best-effort */ });
-      }
+      // Celebrate a new personal best (not the very first score), and a top-10
+      // place on the free board once the run is saved. Best effort, never blocks.
+      let pb = false;
+      try {
+        const prev = parseInt(localStorage.getItem('bb_pb_score') ?? '0', 10) || 0;
+        if (runScore > prev) {
+          localStorage.setItem('bb_pb_score', String(runScore));
+          pb = prev > 0;
+        }
+      } catch { /* storage unavailable */ }
+      if (pb) setCelebrate({ pb: true, rank: null });
+      const w = publicKey.toBase58();
+      void saved.then(() => fetch(`/api/adventure/leaderboard?wallet=${w}`, { cache: 'no-store' }))
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => {
+          const rank = d?.me?.rank;
+          if (pb && typeof rank === 'number' && rank >= 1 && rank <= 10) setCelebrate({ pb: true, rank });
+        })
+        .catch(() => { /* best effort */ });
     }
-    if (!state.isGameOver) gameOverHandledRef.current = false;
-  }, [state.isGameOver, connected, publicKey, state.level, state.score, state.sessionId, state.placements]);
+    if (!state.isGameOver) { gameOverHandledRef.current = false; setCelebrate(null); }
+  }, [state.isGameOver, connected, publicKey, state.level, state.score, state.sessionId, state.placements, submitProgress]);
 
   const handleMysteryBoxResult = useCallback((result: BoxResult) => {
     mysteryBoxPicked(result.halvScore, result.pointsDelta, result.nextMultiplier);
@@ -567,11 +630,12 @@ export default function GameCanvas({ initialLevel = 1, onBack, biome, mode = 'fr
         style={{ cursor: selectedTray !== null ? 'crosshair' : 'default' }}
       />
 
-      <div className={styles.hint}>
+      {/* Controls hint until the first move; after that the board is the only thing to look at. */}
+      {state.placements === 0 && !state.isGameOver && <div className={styles.hint}>
         <span><kbd className={styles.hintKey}>1-3</kbd> {t('select_piece')}</span>
         <span>{t('click_to_place')}</span>
         <span><kbd className={styles.hintKey}>{t('key_esc')}</kbd> {t('deselect')}</span>
-      </div>
+      </div>}
 
       {(rules.hints || !connected) && !state.isGameOver && (
         <div className={styles.freeActions}>
@@ -587,6 +651,8 @@ export default function GameCanvas({ initialLevel = 1, onBack, biome, mode = 'fr
           )}
         </div>
       )}
+
+      {state.isGameOver && celebrate && <GameOverCelebration personalBest={celebrate.pb} rank={celebrate.rank} />}
 
       {state.isGameOver && (
         <div className={styles.gameOverActions}>

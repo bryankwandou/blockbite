@@ -27,5 +27,19 @@
   "wallet_select": "Kies een wallet",
   "wallet_pick": "Kies je Solana-wallet",
   "wallet_detected": "GEDETECTEERD",
-  "cancel": "Annuleren"
+  "cancel": "Annuleren",
+  "music": "Muziek",
+  "music_open": "Muziekspeler openen",
+  "music_close": "Muziekspeler sluiten",
+  "music_nothing": "Niets aan het afspelen",
+  "music_prev": "Vorige track",
+  "music_next": "Volgende track",
+  "music_play": "Afspelen",
+  "music_pause": "Pauzeren",
+  "music_shuffle": "Willekeurig",
+  "music_repeat": "Track herhalen",
+  "music_play_track": "{name} afspelen",
+  "music_hint": "Sleep tracks, of druk op Alt + pijl omhoog/omlaag op een track, om de volgorde te wijzigen.",
+  "music_playlist_for": "Afspeellijst voor: {ctx}",
+  "music_paused": "Gepauzeerd"
 }

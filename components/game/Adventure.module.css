@@ -348,3 +348,57 @@
 @media (max-width: 959px) {
   .side { display: none; }
 }
+
+/* ── Focus layout (2026-10-03): one column, board first ─────────────── */
+.focus {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  min-width: 0;
+}
+.barWrap { position: relative; min-width: 0; }
+.focus .modeBar { flex-wrap: nowrap; padding: 8px 8px 8px 14px; }
+.focus .modeTitle { font-size: 14px; white-space: nowrap; }
+.modeRules {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ds-text-dim, #94a3b8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.helpBtn {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--mode-accent, #2dd4bf);
+  background: var(--ds-surface, rgba(255, 255, 255, 0.06));
+  color: var(--ds-text, #fff);
+  font: 800 15px/1 'Space Grotesk', system-ui, sans-serif;
+  cursor: pointer;
+}
+.helpBtn:focus-visible { outline: 3px solid var(--mode-accent, #2dd4bf); outline-offset: 2px; }
+.helpPanel {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(100% + 8px);
+  z-index: 30;
+  display: grid;
+  gap: 16px;
+  max-height: min(70vh, 560px);
+  overflow-y: auto;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--ds-surface-solid, var(--ds-bg, #0b0b1e));
+  border: 1px solid var(--mode-accent, #2dd4bf);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+@media (max-width: 420px) {
+  .modeRules { display: none; }
+}

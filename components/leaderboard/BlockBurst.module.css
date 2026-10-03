@@ -1,0 +1,25 @@
+.burst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 5;
+}
+.burst i {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.45);
+  border-radius: 2px;
+  animation: pop 1.3s cubic-bezier(0.18, 0.8, 0.3, 1) both;
+}
+@keyframes pop {
+  0% { transform: translate(-50%, -50%) scale(0.3) rotate(0); opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy) + 60px)) scale(1) rotate(var(--rot)); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .burst { display: none; } }
+:global(html[data-reduce-motion='true']) .burst,
+:global(html[data-gfx='low']) .burst { display: none; }

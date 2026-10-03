@@ -97,5 +97,9 @@
   "tut_title_7": "빙하기",
   "tut_title_8": "콤보 타임",
   "tut_title_9": "중력 반전",
-  "tut_title_10": "보스: Awakener"
+  "tut_title_10": "보스: Awakener",
+  "help_open": "플레이 방법",
+  "help_close": "닫기",
+  "new_personal_best": "개인 최고 기록 갱신!",
+  "top10_place": "TOP 10: {rank}위"
 }

@@ -38,5 +38,20 @@
   "featured_more": "Pokaż więcej",
   "classic_title": "Klasyczne awatary",
   "combos": "Kombinacji: {n}",
-  "ach_link": "Zobacz swoje osiągnięcia"
+  "ach_link": "Zobacz swoje osiągnięcia",
+  "colors_open": "Wszystkie {n} pastelowe kolory",
+  "colors_pick": "Kolor {n}",
+  "gallery_title": "Galeria awatarów",
+  "gallery_count": "{n} awatarów · {combos} kombinacji",
+  "gallery_family": "Rodzina kolorów",
+  "gallery_all": "Wszystkie",
+  "fam_warm": "Ciepłe",
+  "fam_mint": "Miętowe",
+  "fam_cool": "Chłodne",
+  "fam_lilac": "Liliowe",
+  "fam_neutral": "Neutralne",
+  "gallery_surprise": "Zaskocz mnie",
+  "gallery_page": "Strona {n} / {total}",
+  "gallery_prev": "Poprzednia strona",
+  "gallery_next": "Następna strona"
 }

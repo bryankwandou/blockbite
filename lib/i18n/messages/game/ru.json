@@ -97,5 +97,9 @@
   "tut_title_7": "Ледниковый период",
   "tut_title_8": "Время комбо",
   "tut_title_9": "Обратная гравитация",
-  "tut_title_10": "Босс: Awakener"
+  "tut_title_10": "Босс: Awakener",
+  "help_open": "Как играть",
+  "help_close": "Закрыть",
+  "new_personal_best": "НОВЫЙ ЛИЧНЫЙ РЕКОРД!",
+  "top10_place": "ТОП-10: место {rank}"
 }

@@ -70,6 +70,11 @@ export class RankedClient {
     return new RankedClient(wallet, token);
   }
 
+  /** Authorization header value for other wallet-signed endpoints (quests). */
+  get authorization(): string {
+    return `Bearer ${this.token}`;
+  }
+
   static cached(wallet: string): RankedClient | null {
     const t = readToken(wallet);
     return t ? new RankedClient(wallet, t) : null;

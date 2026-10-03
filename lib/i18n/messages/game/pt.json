@@ -97,5 +97,9 @@
   "tut_title_7": "Era do gelo",
   "tut_title_8": "Hora do combo",
   "tut_title_9": "Gravidade invertida",
-  "tut_title_10": "Chefe: Awakener"
+  "tut_title_10": "Chefe: Awakener",
+  "help_open": "Como jogar",
+  "help_close": "Fechar",
+  "new_personal_best": "NOVO RECORDE PESSOAL!",
+  "top10_place": "TOP 10: #{rank}"
 }

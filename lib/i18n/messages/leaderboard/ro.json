@@ -33,5 +33,16 @@
   "step2_desc": "Same board, same pieces for everyone each day. Best score counts.",
   "step3_title": "Top 10 Wins",
   "step3_desc": "Top 10 zilnic și lunar câștigă USDC. După o verificare de 24 de ore, câștigătorii revendică din programul de premii cu wallet-ul.",
-  "prizes_link": "Cum se împart premiile"
+  "prizes_link": "Cum se împart premiile",
+  "period_adventure": "Aventură",
+  "col_level": "Nivel",
+  "empty_adventure": "Încă nu e nimeni în clasamentul gratuit. Termină un joc cu portofelul conectat ca să intri.",
+  "footer_adventure": "Modul Aventură gratuit: clasament după cel mai înalt nivel atins, apoi după cel mai bun scor. Doar pentru distracție, fără premii.",
+  "podium_label": "Primii 3 jucători",
+  "crown_label": "Câștigător",
+  "winner_day_title": "Câștigătorul de ieri",
+  "winner_month_title": "Câștigătorul lunii trecute",
+  "winner_empty": "Nicio rundă încheiată încă",
+  "winner_empty_desc": "Câștigătorul fiecărei zile și luni apare aici după închiderea rundei.",
+  "winner_share": "Cea mai mare cotă {share}%"
 }

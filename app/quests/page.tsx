@@ -5,6 +5,7 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 import Navbar from '@/components/Navbar';
 import type { Quest, QuestCompletion } from '@/lib/quests/store';
+import { RankedClient } from '@/lib/ranked/client';
 
 /**
  * Public quest feed for users.
@@ -16,7 +17,7 @@ import type { Quest, QuestCompletion } from '@/lib/quests/store';
  * resubmit, wait for review, or move on.
  */
 export default function QuestsPage() {
-  const { publicKey, connected } = useWallet();
+  const { publicKey, connected, signMessage } = useWallet();
   const { setVisible } = useWalletModal();
 
   const [quests,       setQuests]       = useState<Quest[]>([]);
@@ -61,15 +62,17 @@ export default function QuestsPage() {
   useEffect(() => { refresh(); }, [refresh]);
 
   const handleSubmit = useCallback(async (q: Quest) => {
-    if (!publicKey) return;
+    if (!publicKey || !signMessage) return;
     const proof = (proofInput[q.id] ?? '').trim();
     if (!proof) return;
     setBusy(q.id);
     try {
+      // One wallet signature per tab session proves the submission is yours.
+      const client = await RankedClient.connect(publicKey.toBase58(), signMessage);
       const res = await fetch(`/api/quests/${q.id}/submit`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ wallet: publicKey.toBase58(), proof }),
+        headers: { 'Content-Type': 'application/json', Authorization: client.authorization },
+        body: JSON.stringify({ proof }),
       });
       const data = await res.json();
       if (data.completion) {
@@ -80,7 +83,7 @@ export default function QuestsPage() {
     } finally {
       setBusy(null);
     }
-  }, [publicKey, proofInput]);
+  }, [publicKey, signMessage, proofInput]);
 
   return (
     <div style={{

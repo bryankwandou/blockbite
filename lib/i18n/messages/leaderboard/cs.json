@@ -33,5 +33,16 @@
   "step2_desc": "Každý den UTC dostanou všichni stejnou desku a stejné dílky. Počítá se tvůj nejlepší pokus.",
   "step3_title": "Top 10 vyhrává",
   "step3_desc": "Denní a měsíční top 10 vyhrává USDC. Po 24hodinové kontrole si výherci USDC vyzvednou peněženkou z programu cen.",
-  "prizes_link": "Jak se ceny dělí"
+  "prizes_link": "Jak se ceny dělí",
+  "period_adventure": "Dobrodružství",
+  "col_level": "Úroveň",
+  "empty_adventure": "Na bezplatné tabulce zatím nikdo není. Dokonči hru s připojenou peněženkou a připoj se.",
+  "footer_adventure": "Bezplatný režim Dobrodružství: pořadí podle nejvyšší dosažené úrovně, pak podle nejlepšího skóre. Jen pro zábavu, bez cen.",
+  "podium_label": "Top 3 hráči",
+  "crown_label": "Vítěz",
+  "winner_day_title": "Včerejší vítěz",
+  "winner_month_title": "Vítěz minulého měsíce",
+  "winner_empty": "Zatím žádné ukončené kolo",
+  "winner_empty_desc": "Vítěz každého dne a měsíce se tu objeví po uzavření kola.",
+  "winner_share": "Nejvyšší podíl {share} %"
 }

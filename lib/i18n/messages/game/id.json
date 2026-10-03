@@ -97,5 +97,9 @@
   "tut_title_7": "Zaman Es",
   "tut_title_8": "Waktunya Combo",
   "tut_title_9": "Gravitasi Terbalik",
-  "tut_title_10": "Bos: Awakener"
+  "tut_title_10": "Bos: Awakener",
+  "help_open": "Cara bermain",
+  "help_close": "Tutup",
+  "new_personal_best": "REKOR PRIBADI BARU!",
+  "top10_place": "TOP 10: #{rank}"
 }

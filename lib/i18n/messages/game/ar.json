@@ -97,5 +97,9 @@
   "tut_title_7": "العصر الجليدي",
   "tut_title_8": "وقت الكومبو",
   "tut_title_9": "قلب الجاذبية",
-  "tut_title_10": "الزعيم: Awakener"
+  "tut_title_10": "الزعيم: Awakener",
+  "help_open": "طريقة اللعب",
+  "help_close": "إغلاق",
+  "new_personal_best": "رقم شخصي جديد!",
+  "top10_place": "ضمن أفضل 10: #{rank}"
 }

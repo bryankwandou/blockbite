@@ -97,5 +97,9 @@
   "tut_title_7": "عصر یخ",
   "tut_title_8": "وقت کمبو",
   "tut_title_9": "وارونگی جاذبه",
-  "tut_title_10": "باس: Awakener"
+  "tut_title_10": "باس: Awakener",
+  "help_open": "روش بازی",
+  "help_close": "بستن",
+  "new_personal_best": "رکورد شخصی جدید!",
+  "top10_place": "۱۰ نفر برتر: #{rank}"
 }

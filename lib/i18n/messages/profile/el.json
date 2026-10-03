@@ -38,5 +38,20 @@
   "featured_more": "Εμφάνιση περισσότερων",
   "classic_title": "Κλασικά avatars",
   "combos": "{n} συνδυασμοί",
-  "ach_link": "Δείτε τα επιτεύγματά σας"
+  "ach_link": "Δείτε τα επιτεύγματά σας",
+  "colors_open": "Και τα {n} παστέλ χρώματα",
+  "colors_pick": "Χρώμα {n}",
+  "gallery_title": "Συλλογή avatar",
+  "gallery_count": "{n} avatar · {combos} συνδυασμοί",
+  "gallery_family": "Οικογένεια χρωμάτων",
+  "gallery_all": "Όλα",
+  "fam_warm": "Ζεστά",
+  "fam_mint": "Μέντα",
+  "fam_cool": "Ψυχρά",
+  "fam_lilac": "Λιλά",
+  "fam_neutral": "Ουδέτερα",
+  "gallery_surprise": "Εκπλήξτε με",
+  "gallery_page": "Σελίδα {n} / {total}",
+  "gallery_prev": "Προηγούμενη σελίδα",
+  "gallery_next": "Επόμενη σελίδα"
 }

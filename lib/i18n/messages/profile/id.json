@@ -38,5 +38,20 @@
   "featured_more": "Tampilkan lebih banyak",
   "classic_title": "Avatar klasik",
   "combos": "{n} kombinasi",
-  "ach_link": "Lihat pencapaianmu"
+  "ach_link": "Lihat pencapaianmu",
+  "colors_open": "Semua {n} warna pastel",
+  "colors_pick": "Warna {n}",
+  "gallery_title": "Galeri avatar",
+  "gallery_count": "{n} avatar · {combos} kombinasi",
+  "gallery_family": "Keluarga warna",
+  "gallery_all": "Semua",
+  "fam_warm": "Hangat",
+  "fam_mint": "Mint",
+  "fam_cool": "Sejuk",
+  "fam_lilac": "Lilac",
+  "fam_neutral": "Netral",
+  "gallery_surprise": "Kejutkan aku",
+  "gallery_page": "Halaman {n} / {total}",
+  "gallery_prev": "Halaman sebelumnya",
+  "gallery_next": "Halaman berikutnya"
 }

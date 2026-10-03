@@ -97,5 +97,9 @@
   "tut_title_7": "Panahon ng Yelo",
   "tut_title_8": "Oras ng Combo",
   "tut_title_9": "Baligtad na Gravity",
-  "tut_title_10": "Boss: Awakener"
+  "tut_title_10": "Boss: Awakener",
+  "help_open": "Paano maglaro",
+  "help_close": "Isara",
+  "new_personal_best": "BAGONG PERSONAL BEST!",
+  "top10_place": "TOP 10: #{rank}"
 }

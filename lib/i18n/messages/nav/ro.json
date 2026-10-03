@@ -27,5 +27,19 @@
   "wallet_select": "Alege un wallet",
   "wallet_pick": "Alege-ți wallet-ul Solana",
   "wallet_detected": "DETECTAT",
-  "cancel": "Anulează"
+  "cancel": "Anulează",
+  "music": "Muzică",
+  "music_open": "Deschide playerul de muzică",
+  "music_close": "Închide playerul de muzică",
+  "music_nothing": "Nu se redă nimic",
+  "music_prev": "Piesa anterioară",
+  "music_next": "Piesa următoare",
+  "music_play": "Redă",
+  "music_pause": "Pauză",
+  "music_shuffle": "Aleatoriu",
+  "music_repeat": "Repetă piesa",
+  "music_play_track": "Redă {name}",
+  "music_hint": "Trage piesele sau apasă Alt + săgeată sus/jos pe o piesă pentru a le reordona.",
+  "music_playlist_for": "Playlist pentru: {ctx}",
+  "music_paused": "În pauză"
 }

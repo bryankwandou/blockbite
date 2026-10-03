@@ -6,8 +6,9 @@ const KINDS = ['winners', 'acts', 'biomes'] as const;
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: { kind: string } },
+  ctx: { params: Promise<{ kind: string }> },
 ) {
+  const params = await ctx.params;
   if (!KINDS.includes(params.kind as typeof KINDS[number])) {
     return NextResponse.json({ error: 'unknown list kind' }, { status: 404 });
   }

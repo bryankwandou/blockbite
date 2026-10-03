@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet، USDC",
   "final_title": "بورڈ انتظار کر رہا ہے۔",
   "final_sub": "Ranked تیار ہونے تک ایڈونچر میں وارم اپ کریں۔",
-  "mascots_label": "BlockBite کی ٹولی"
+  "mascots_label": "BlockBite کی ٹولی",
+  "install_kicker": "بطور دستیاب",
+  "install_label": "ویب ایپ",
+  "install_ios": "iPhone/iPad پر: شیئر دبائیں، پھر ہوم اسکرین میں شامل کریں۔",
+  "install_other": "براؤزر مینو کھولیں اور ایپ انسٹال کریں (یا ہوم اسکرین میں شامل کریں) منتخب کریں۔"
 }

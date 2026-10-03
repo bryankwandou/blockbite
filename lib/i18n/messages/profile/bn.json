@@ -38,5 +38,20 @@
   "featured_more": "আরও দেখান",
   "classic_title": "ক্লাসিক অ্যাভাটার",
   "combos": "{n}টি সমন্বয়",
-  "ach_link": "আপনার অর্জন দেখুন"
+  "ach_link": "আপনার অর্জন দেখুন",
+  "colors_open": "সব {n}টি প্যাস্টেল রঙ",
+  "colors_pick": "রঙ {n}",
+  "gallery_title": "অবতার গ্যালারি",
+  "gallery_count": "{n}টি অবতার · {combos}টি সমন্বয়",
+  "gallery_family": "রঙের পরিবার",
+  "gallery_all": "সব",
+  "fam_warm": "উষ্ণ",
+  "fam_mint": "পুদিনা",
+  "fam_cool": "শীতল",
+  "fam_lilac": "লাইলাক",
+  "fam_neutral": "নিরপেক্ষ",
+  "gallery_surprise": "আমাকে চমকে দাও",
+  "gallery_page": "পৃষ্ঠা {n} / {total}",
+  "gallery_prev": "আগের পৃষ্ঠা",
+  "gallery_next": "পরের পৃষ্ঠা"
 }

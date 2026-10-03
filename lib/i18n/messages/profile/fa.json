@@ -38,5 +38,20 @@
   "featured_more": "نمایش بیشتر",
   "classic_title": "آواتارهای کلاسیک",
   "combos": "{n} ترکیب",
-  "ach_link": "دیدن دستاوردهایتان"
+  "ach_link": "دیدن دستاوردهایتان",
+  "colors_open": "همهٔ {n} رنگ پاستلی",
+  "colors_pick": "رنگ {n}",
+  "gallery_title": "گالری آواتار",
+  "gallery_count": "{n} آواتار · {combos} ترکیب",
+  "gallery_family": "خانوادهٔ رنگ",
+  "gallery_all": "همه",
+  "fam_warm": "گرم",
+  "fam_mint": "نعنایی",
+  "fam_cool": "سرد",
+  "fam_lilac": "یاسی",
+  "fam_neutral": "خنثی",
+  "gallery_surprise": "غافلگیرم کن",
+  "gallery_page": "صفحهٔ {n} / {total}",
+  "gallery_prev": "صفحهٔ قبل",
+  "gallery_next": "صفحهٔ بعد"
 }

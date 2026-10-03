@@ -33,5 +33,16 @@
   "step2_desc": "Same board, same pieces for everyone each day. Best score counts.",
   "step3_title": "Top 10 Wins",
   "step3_desc": "Günlük ve aylık ilk 10 USDC kazanır. 24 saatlik kontrolden sonra kazananlar ödül programından cüzdanlarıyla alır.",
-  "prizes_link": "Ödüller nasıl paylaşılır"
+  "prizes_link": "Ödüller nasıl paylaşılır",
+  "period_adventure": "Macera",
+  "col_level": "Seviye",
+  "empty_adventure": "Ücretsiz tabloda henüz kimse yok. Katılmak için cüzdanın bağlıyken bir oyunu bitir.",
+  "footer_adventure": "Ücretsiz Macera modu: ulaşılan en yüksek seviyeye, ardından en iyi skora göre sıralanır. Sadece eğlence için, ödül yok.",
+  "podium_label": "İlk 3 oyuncu",
+  "crown_label": "Kazanan",
+  "winner_day_title": "Dünün kazananı",
+  "winner_month_title": "Geçen ayın kazananı",
+  "winner_empty": "Henüz biten tur yok",
+  "winner_empty_desc": "Her günün ve ayın kazananı, tur kapandığında burada görünür.",
+  "winner_share": "En büyük pay %{share}"
 }

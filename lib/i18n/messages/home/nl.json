@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "Het bord wacht.",
   "final_sub": "Warm op in Adventure terwijl Ranked zich klaarmaakt.",
-  "mascots_label": "De BlockBite-crew"
+  "mascots_label": "De BlockBite-crew",
+  "install_kicker": "Beschikbaar als",
+  "install_label": "web-app",
+  "install_ios": "Op iPhone/iPad: tik op Deel en dan Zet op beginscherm.",
+  "install_other": "Open het browsermenu en kies App installeren (of Toevoegen aan startscherm)."
 }

@@ -7,7 +7,8 @@ import { checkRun } from '@/lib/versus/submit';
 export const dynamic = 'force-dynamic';
 
 /** GET → { found: false } or { found: true, challenge }. Always 200 so a dead link is not an error. */
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, ctx: { params: Promise<{ id: string }> }) {
+  const params = await ctx.params;
   const allowed = await limit(`vs:get:${getIP(req)}`, 120, 60_000);
   if (!allowed) return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
   if (!ID_RE.test(params.id)) return NextResponse.json({ found: false });
@@ -20,7 +21,8 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
 }
 
 /** POST { name, log } → the friend's replayed score is added next to the challenger's. */
-export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string }> }) {
+  const params = await ctx.params;
   const allowed = await limit(`vs:reply:${getIP(req)}`, 30, 60 * 60_000);
   if (!allowed) return NextResponse.json({ error: 'Too many tries, try again later' }, { status: 429 });
   if (!ID_RE.test(params.id)) return NextResponse.json({ error: 'not found' }, { status: 404 });

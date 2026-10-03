@@ -33,5 +33,16 @@
   "step2_desc": "Kila mtu hupata ubao na vipande vilevile kila siku ya UTC. Jaribio lako bora ndilo linalohesabiwa.",
   "step3_title": "10 bora hushinda",
   "step3_desc": "10 bora wa kila siku na kila mwezi hushinda USDC. Baada ya ukaguzi wa saa 24, washindi hudai kutoka kwenye programu ya zawadi kwa pochi zao.",
-  "prizes_link": "Jinsi zawadi zinavyogawanywa"
+  "prizes_link": "Jinsi zawadi zinavyogawanywa",
+  "period_adventure": "Matukio",
+  "col_level": "Kiwango",
+  "empty_adventure": "Bado hakuna mtu kwenye ubao wa bure. Maliza mchezo mmoja ukiwa umeunganisha pochi yako ili ujiunge.",
+  "footer_adventure": "Hali ya Matukio ya bure: mpangilio kwa kiwango cha juu zaidi ulichofikia, kisha alama bora. Kwa burudani tu, hakuna zawadi.",
+  "podium_label": "Wachezaji 3 bora",
+  "crown_label": "Mshindi",
+  "winner_day_title": "Mshindi wa jana",
+  "winner_month_title": "Mshindi wa mwezi uliopita",
+  "winner_empty": "Bado hakuna raundi iliyokamilika",
+  "winner_empty_desc": "Mshindi wa kila siku na mwezi ataonekana hapa raundi ikifungwa.",
+  "winner_share": "Sehemu kubwa zaidi {share}%"
 }

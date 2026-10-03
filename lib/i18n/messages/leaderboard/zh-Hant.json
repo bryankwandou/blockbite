@@ -33,5 +33,16 @@
   "step2_desc": "每個 UTC 日，所有人拿到相同的棋盤和方塊。取你最好的一次嘗試。",
   "step3_title": "前 10 名獲獎",
   "step3_desc": "每日和每月前 10 名可獲得 USDC。經過 24 小時檢查後，得獎者用錢包從獎金程式領取。",
-  "prizes_link": "獎金如何分配"
+  "prizes_link": "獎金如何分配",
+  "period_adventure": "冒險",
+  "col_level": "關卡",
+  "empty_adventure": "免費榜上還沒有人。連接錢包後完成一局即可上榜。",
+  "footer_adventure": "免費冒險模式：按達到的最高關卡排名，其次按最高分。僅供娛樂，沒有獎勵。",
+  "podium_label": "前三名玩家",
+  "crown_label": "冠軍",
+  "winner_day_title": "昨日冠軍",
+  "winner_month_title": "上月冠軍",
+  "winner_empty": "還沒有已結束的回合",
+  "winner_empty_desc": "每日和每月的冠軍會在該回合結束後顯示在這裡。",
+  "winner_share": "最高分成 {share}%"
 }

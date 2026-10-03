@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { timingSafeEqual } from 'crypto';
+import { waitlistDbConfigured, dbGetCount } from '@/lib/waitlist/db';
+import { kvConfigured } from '@/lib/waitlist-kv';
 import { sbKeyRole, sbProbe, supabaseReady } from '@/lib/supabase-rest';
 
 export const dynamic = 'force-dynamic';
@@ -30,6 +32,9 @@ export async function GET(req: NextRequest) {
     supabaseReady: supabaseReady(),
     keyRole: sbKeyRole(),
     probe,
+    postgresReady: waitlistDbConfigured(),
+    postgresCount: waitlistDbConfigured() ? await dbGetCount() : null,
+    kvReady: kvConfigured(),
     env: {
       SUPABASE_URL_set: Boolean(process.env.SUPABASE_URL),
       SUPABASE_SERVICE_ROLE_KEY_set: Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY),

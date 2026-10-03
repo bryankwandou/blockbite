@@ -97,5 +97,9 @@
   "tut_title_7": "冰河時代",
   "tut_title_8": "連擊時刻",
   "tut_title_9": "重力翻轉",
-  "tut_title_10": "首領：Awakener"
+  "tut_title_10": "首領：Awakener",
+  "help_open": "玩法說明",
+  "help_close": "關閉",
+  "new_personal_best": "個人最佳紀錄！",
+  "top10_place": "前10名：第 {rank} 名"
 }

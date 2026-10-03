@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "Papan sedang menunggu.",
   "final_sub": "Panaskan badan dalam Pengembaraan sementara berperingkat disiapkan.",
-  "mascots_label": "Krew BlockBite"
+  "mascots_label": "Krew BlockBite",
+  "install_kicker": "Tersedia sebagai",
+  "install_label": "Web App",
+  "install_ios": "Di iPhone/iPad: ketik Kongsi, kemudian Tambah ke Skrin Utama.",
+  "install_other": "Buka menu pelayar dan pilih Pasang aplikasi (atau Tambah ke skrin utama)."
 }

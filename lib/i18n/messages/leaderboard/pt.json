@@ -33,5 +33,16 @@
   "step2_desc": "Same board, same pieces for everyone each day. Best score counts.",
   "step3_title": "Top 10 Wins",
   "step3_desc": "O Top 10 diário e mensal ganha USDC. Após uma verificação de 24 horas, os vencedores resgatam do programa de prêmios com a wallet.",
-  "prizes_link": "Como os prêmios são divididos"
+  "prizes_link": "Como os prêmios são divididos",
+  "period_adventure": "Aventura",
+  "col_level": "Nível",
+  "empty_adventure": "Ainda não há ninguém no placar gratuito. Termine uma partida com a carteira conectada para entrar.",
+  "footer_adventure": "Modo Aventura gratuito: classificação pelo nível mais alto alcançado e depois pela melhor pontuação. Só por diversão, sem prêmios.",
+  "podium_label": "Os 3 melhores jogadores",
+  "crown_label": "Vencedor",
+  "winner_day_title": "Vencedor de ontem",
+  "winner_month_title": "Vencedor do mês passado",
+  "winner_empty": "Ainda não há rodadas encerradas",
+  "winner_empty_desc": "O vencedor de cada dia e mês aparece aqui quando a rodada fecha.",
+  "winner_share": "Maior parte: {share}%"
 }

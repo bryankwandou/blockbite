@@ -38,5 +38,20 @@
   "featured_more": "Arată mai multe",
   "classic_title": "Avatare clasice",
   "combos": "{n} combinații",
-  "ach_link": "Vezi realizările tale"
+  "ach_link": "Vezi realizările tale",
+  "colors_open": "Toate cele {n} culori pastel",
+  "colors_pick": "Culoarea {n}",
+  "gallery_title": "Galerie de avatare",
+  "gallery_count": "{n} avatare · {combos} combinații",
+  "gallery_family": "Familie de culori",
+  "gallery_all": "Toate",
+  "fam_warm": "Cald",
+  "fam_mint": "Mentă",
+  "fam_cool": "Rece",
+  "fam_lilac": "Liliac",
+  "fam_neutral": "Neutru",
+  "gallery_surprise": "Surprinde-mă",
+  "gallery_page": "Pagina {n} / {total}",
+  "gallery_prev": "Pagina anterioară",
+  "gallery_next": "Pagina următoare"
 }

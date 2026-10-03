@@ -102,3 +102,5 @@ wallet-*.json
 /test-results/
 /playwright-report/
 /blob-report/
+
+/.next-preview/

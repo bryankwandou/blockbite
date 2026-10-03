@@ -97,5 +97,9 @@
   "tut_title_7": "氷河期",
   "tut_title_8": "コンボタイム",
   "tut_title_9": "重力反転",
-  "tut_title_10": "ボス：Awakener"
+  "tut_title_10": "ボス：Awakener",
+  "help_open": "遊び方",
+  "help_close": "閉じる",
+  "new_personal_best": "自己ベスト更新！",
+  "top10_place": "TOP 10入り：{rank}位"
 }

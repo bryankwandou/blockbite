@@ -27,5 +27,19 @@
   "wallet_select": "Выберите кошелёк",
   "wallet_pick": "Выберите свой кошелёк Solana",
   "wallet_detected": "НАЙДЕН",
-  "cancel": "Отмена"
+  "cancel": "Отмена",
+  "music": "Музыка",
+  "music_open": "Открыть музыкальный плеер",
+  "music_close": "Закрыть музыкальный плеер",
+  "music_nothing": "Ничего не играет",
+  "music_prev": "Предыдущий трек",
+  "music_next": "Следующий трек",
+  "music_play": "Играть",
+  "music_pause": "Пауза",
+  "music_shuffle": "Перемешать",
+  "music_repeat": "Повтор трека",
+  "music_play_track": "Воспроизвести {name}",
+  "music_hint": "Перетаскивайте треки или нажмите Alt + стрелку вверх/вниз на треке, чтобы изменить порядок.",
+  "music_playlist_for": "Плейлист для: {ctx}",
+  "music_paused": "Пауза"
 }

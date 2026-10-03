@@ -38,5 +38,20 @@
   "featured_more": "Zobrazit víc",
   "classic_title": "Klasické avatary",
   "combos": "Kombinací: {n}",
-  "ach_link": "Zobrazit své úspěchy"
+  "ach_link": "Zobrazit své úspěchy",
+  "colors_open": "Všech {n} pastelových barev",
+  "colors_pick": "Barva {n}",
+  "gallery_title": "Galerie avatarů",
+  "gallery_count": "{n} avatarů · {combos} kombinací",
+  "gallery_family": "Barevná rodina",
+  "gallery_all": "Vše",
+  "fam_warm": "Teplé",
+  "fam_mint": "Mátové",
+  "fam_cool": "Studené",
+  "fam_lilac": "Šeříkové",
+  "fam_neutral": "Neutrální",
+  "gallery_surprise": "Překvap mě",
+  "gallery_page": "Strana {n} / {total}",
+  "gallery_prev": "Předchozí strana",
+  "gallery_next": "Další strana"
 }

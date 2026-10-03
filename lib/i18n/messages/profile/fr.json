@@ -38,5 +38,20 @@
   "featured_more": "Afficher plus",
   "classic_title": "Avatars classiques",
   "combos": "{n} combinaisons",
-  "ach_link": "Voir tes succès"
+  "ach_link": "Voir tes succès",
+  "colors_open": "Les {n} couleurs pastel",
+  "colors_pick": "Couleur {n}",
+  "gallery_title": "Galerie d’avatars",
+  "gallery_count": "{n} avatars · {combos} combinaisons",
+  "gallery_family": "Famille de couleurs",
+  "gallery_all": "Toutes",
+  "fam_warm": "Chaud",
+  "fam_mint": "Menthe",
+  "fam_cool": "Froid",
+  "fam_lilac": "Lilas",
+  "fam_neutral": "Neutre",
+  "gallery_surprise": "Surprends-moi",
+  "gallery_page": "Page {n} / {total}",
+  "gallery_prev": "Page précédente",
+  "gallery_next": "Page suivante"
 }

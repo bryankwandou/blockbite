@@ -38,5 +38,20 @@
   "featured_more": "הצג עוד",
   "classic_title": "אווטארים קלאסיים",
   "combos": "{n} שילובים",
-  "ach_link": "ראו את ההישגים שלכם"
+  "ach_link": "ראו את ההישגים שלכם",
+  "colors_open": "כל {n} צבעי הפסטל",
+  "colors_pick": "צבע {n}",
+  "gallery_title": "גלריית אווטארים",
+  "gallery_count": "{n} אווטארים · {combos} שילובים",
+  "gallery_family": "משפחת צבעים",
+  "gallery_all": "הכול",
+  "fam_warm": "חם",
+  "fam_mint": "מנטה",
+  "fam_cool": "קר",
+  "fam_lilac": "לילך",
+  "fam_neutral": "ניטרלי",
+  "gallery_surprise": "הפתיעו אותי",
+  "gallery_page": "עמוד {n} / {total}",
+  "gallery_prev": "העמוד הקודם",
+  "gallery_next": "העמוד הבא"
 }

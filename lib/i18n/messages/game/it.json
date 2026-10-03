@@ -97,5 +97,9 @@
   "tut_title_7": "Era glaciale",
   "tut_title_8": "Tempo di combo",
   "tut_title_9": "Gravità invertita",
-  "tut_title_10": "Boss: Awakener"
+  "tut_title_10": "Boss: Awakener",
+  "help_open": "Come si gioca",
+  "help_close": "Chiudi",
+  "new_personal_best": "NUOVO RECORD PERSONALE!",
+  "top10_place": "TOP 10: n. {rank}"
 }

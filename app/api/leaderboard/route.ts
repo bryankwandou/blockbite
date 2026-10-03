@@ -15,14 +15,20 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(req: NextRequest) {
   const url    = new URL(req.url);
-  const limit  = Math.min(100, Math.max(1, Number(url.searchParams.get('limit') ?? 20)));
-  const period = (url.searchParams.get('period') ?? 'all') as 'all' | 'monthly' | 'daily';
+  const n      = Math.floor(Number(url.searchParams.get('limit') ?? 20));
+  const limit  = Number.isFinite(n) ? Math.min(100, Math.max(1, n)) : 20;
+  const p      = url.searchParams.get('period');
+  const period = p === 'monthly' || p === 'daily' ? p : 'all';
 
-  // Warm the in-memory cache from KV on cold start
-  await hydrateFromKV();
-
-  // Read from time-partitioned sorted sets (with fallback to legacy hash)
-  const entries = await getTopScores(period, limit);
+  let entries: Awaited<ReturnType<typeof getTopScores>> = [];
+  try {
+    // Warm the in-memory cache from KV on cold start
+    await hydrateFromKV();
+    // Read from time-partitioned sorted sets (with fallback to legacy hash)
+    entries = await getTopScores(period, limit);
+  } catch {
+    return NextResponse.json({ entries: [], total: 0, period, degraded: true });
+  }
 
   const live = entries.map((e, i) => ({
     rank:          i + 1,

@@ -59,5 +59,9 @@
   "status_network_v": "Solana 主網，USDC",
   "final_title": "棋盤在等你。",
   "final_sub": "排位準備好之前，先在冒險模式暖身吧。",
-  "mascots_label": "BlockBite 夥伴們"
+  "mascots_label": "BlockBite 夥伴們",
+  "install_kicker": "可作為",
+  "install_label": "網頁應用程式",
+  "install_ios": "在 iPhone/iPad 上：點「分享」，再點「加入主畫面」。",
+  "install_other": "打開瀏覽器選單，選擇「安裝應用程式」（或「新增至主畫面」）。"
 }

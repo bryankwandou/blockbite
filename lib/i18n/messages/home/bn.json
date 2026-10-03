@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "বোর্ড অপেক্ষা করছে।",
   "final_sub": "র‍্যাংকড তৈরি হতে হতে অ্যাডভেঞ্চারে গা গরম করুন।",
-  "mascots_label": "BlockBite ক্রু"
+  "mascots_label": "BlockBite ক্রু",
+  "install_kicker": "হিসেবে পাওয়া যায়",
+  "install_label": "ওয়েব অ্যাপ",
+  "install_ios": "iPhone/iPad-এ: শেয়ার ট্যাপ করুন, তারপর হোম স্ক্রিনে যোগ করুন।",
+  "install_other": "ব্রাউজারের মেনু খুলে অ্যাপ ইনস্টল করুন (বা হোম স্ক্রিনে যোগ করুন) বেছে নিন।"
 }

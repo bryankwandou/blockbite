@@ -58,7 +58,7 @@ export default function MysteryBoxModal({ level, currentScore, picksInSession, o
 
   return (
     <div className={styles.overlay}>
-      <div className={styles.modal}>
+      <div className={styles.modal} role="dialog" aria-modal="true" aria-label={t('box_title')}>
         <div className={styles.header}>
           <div className={styles.title}>{t('box_title')}</div>
           <div className={styles.subtitle}>{t('box_subtitle', { level })}</div>

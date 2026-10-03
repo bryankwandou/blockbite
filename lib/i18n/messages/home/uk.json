@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "Дошка чекає.",
   "final_sub": "Розімнися в Пригоді, поки Ranked готується.",
-  "mascots_label": "Команда BlockBite"
+  "mascots_label": "Команда BlockBite",
+  "install_kicker": "Доступно як",
+  "install_label": "вебзастосунок",
+  "install_ios": "На iPhone/iPad: натисніть «Поділитися», потім «На початковий екран».",
+  "install_other": "Відкрийте меню браузера й виберіть «Встановити застосунок» (або «Додати на головний екран»)."
 }

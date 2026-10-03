@@ -38,5 +38,20 @@
   "featured_more": "显示更多",
   "classic_title": "经典头像",
   "combos": "{n} 种组合",
-  "ach_link": "查看你的成就"
+  "ach_link": "查看你的成就",
+  "colors_open": "全部 {n} 种粉彩色",
+  "colors_pick": "颜色 {n}",
+  "gallery_title": "头像画廊",
+  "gallery_count": "{n} 个头像 · {combos} 种组合",
+  "gallery_family": "色系",
+  "gallery_all": "全部",
+  "fam_warm": "暖色",
+  "fam_mint": "薄荷",
+  "fam_cool": "冷色",
+  "fam_lilac": "淡紫",
+  "fam_neutral": "中性",
+  "gallery_surprise": "随机惊喜",
+  "gallery_page": "第 {n} / {total} 页",
+  "gallery_prev": "上一页",
+  "gallery_next": "下一页"
 }

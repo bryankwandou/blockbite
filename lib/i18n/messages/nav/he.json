@@ -27,5 +27,19 @@
   "wallet_select": "בחר ארנק",
   "wallet_pick": "בחרו את ארנק ה-Solana שלכם",
   "wallet_detected": "זוהה",
-  "cancel": "ביטול"
+  "cancel": "ביטול",
+  "music": "מוזיקה",
+  "music_open": "פתיחת נגן המוזיקה",
+  "music_close": "סגירת נגן המוזיקה",
+  "music_nothing": "שום דבר לא מתנגן",
+  "music_prev": "הרצועה הקודמת",
+  "music_next": "הרצועה הבאה",
+  "music_play": "נגן",
+  "music_pause": "השהה",
+  "music_shuffle": "ערבוב",
+  "music_repeat": "חזרה על הרצועה",
+  "music_play_track": "נגן את {name}",
+  "music_hint": "גררו רצועות, או לחצו Alt + חץ למעלה/למטה על רצועה, כדי לשנות את הסדר.",
+  "music_playlist_for": "רשימת השמעה עבור: {ctx}",
+  "music_paused": "מושהה"
 }

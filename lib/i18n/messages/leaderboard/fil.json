@@ -33,5 +33,16 @@
   "step2_desc": "Pareho ang board at mga piraso ng lahat bawat UTC day. Ang pinakamagaling mong subok ang binibilang.",
   "step3_title": "Panalo ang top 10",
   "step3_desc": "Ang daily at monthly top 10 ay nananalo ng USDC. Pagkatapos ng 24-oras na pagsusuri, kinukuha ng mga nanalo mula sa prize program gamit ang wallet nila.",
-  "prizes_link": "Paano hinahati ang mga premyo"
+  "prizes_link": "Paano hinahati ang mga premyo",
+  "period_adventure": "Adventure",
+  "col_level": "Level",
+  "empty_adventure": "Wala pang nasa libreng board. Tapusin ang isang laro nang naka-connect ang wallet mo para makasali.",
+  "footer_adventure": "Libreng Adventure mode: niraranggo ayon sa pinakamataas na level na naabot, saka pinakamataas na score. Para sa kasiyahan lang, walang premyo.",
+  "podium_label": "Top 3 na manlalaro",
+  "crown_label": "Panalo",
+  "winner_day_title": "Panalo kahapon",
+  "winner_month_title": "Panalo noong nakaraang buwan",
+  "winner_empty": "Wala pang natapos na round",
+  "winner_empty_desc": "Lalabas dito ang panalo ng bawat araw at buwan kapag nagsara ang round.",
+  "winner_share": "Pinakamalaking bahagi {share}%"
 }

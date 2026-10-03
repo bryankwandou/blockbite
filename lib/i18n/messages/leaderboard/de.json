@@ -33,5 +33,16 @@
   "step2_desc": "Alle bekommen jeden UTC-Tag dasselbe Brett und dieselben Teile. Dein bester Versuch zählt.",
   "step3_title": "Top 10 gewinnen",
   "step3_desc": "Die täglichen und monatlichen Top 10 gewinnen USDC. Nach einer 24-Stunden-Prüfung holen die Gewinner es mit ihrer Wallet vom Preisprogramm ab.",
-  "prizes_link": "So werden Preise verteilt"
+  "prizes_link": "So werden Preise verteilt",
+  "period_adventure": "Abenteuer",
+  "col_level": "Level",
+  "empty_adventure": "Auf der kostenlosen Tabelle ist noch niemand. Beende ein Spiel mit verbundener Wallet, um dabei zu sein.",
+  "footer_adventure": "Kostenloser Abenteuermodus: Rangfolge nach höchstem erreichtem Level, dann nach bester Punktzahl. Nur zum Spaß, keine Preise.",
+  "podium_label": "Top 3 Spieler",
+  "crown_label": "Sieger",
+  "winner_day_title": "Sieger von gestern",
+  "winner_month_title": "Sieger des letzten Monats",
+  "winner_empty": "Noch keine abgeschlossenen Runden",
+  "winner_empty_desc": "Der Sieger jedes Tages und Monats erscheint hier, sobald die Runde endet.",
+  "winner_share": "Höchster Anteil {share} %"
 }

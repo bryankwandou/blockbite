@@ -97,5 +97,9 @@
   "tut_title_7": "Doba ledová",
   "tut_title_8": "Čas na kombo",
   "tut_title_9": "Obrácená gravitace",
-  "tut_title_10": "Boss: Awakener"
+  "tut_title_10": "Boss: Awakener",
+  "help_open": "Jak hrát",
+  "help_close": "Zavřít",
+  "new_personal_best": "NOVÝ OSOBNÍ REKORD!",
+  "top10_place": "TOP 10: #{rank}"
 }

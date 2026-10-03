@@ -33,5 +33,16 @@
   "step2_desc": "Iedereen krijgt elke UTC-dag hetzelfde bord en dezelfde stukken. Je beste poging telt.",
   "step3_title": "Top 10 wint",
   "step3_desc": "De dagelijkse en maandelijkse top 10 winnen USDC. Na een controle van 24 uur halen winnaars het met hun wallet op bij het prijzenprogramma.",
-  "prizes_link": "Hoe prijzen worden verdeeld"
+  "prizes_link": "Hoe prijzen worden verdeeld",
+  "period_adventure": "Avontuur",
+  "col_level": "Level",
+  "empty_adventure": "Er staat nog niemand op het gratis bord. Rond een spel af met je wallet verbonden om mee te doen.",
+  "footer_adventure": "Gratis Avontuur-modus: gerangschikt op hoogst bereikte level, daarna beste score. Gewoon voor de lol, geen prijzen.",
+  "podium_label": "Top 3 spelers",
+  "crown_label": "Winnaar",
+  "winner_day_title": "Winnaar van gisteren",
+  "winner_month_title": "Winnaar van vorige maand",
+  "winner_empty": "Nog geen afgeronde rondes",
+  "winner_empty_desc": "De winnaar van elke dag en maand verschijnt hier zodra de ronde sluit.",
+  "winner_share": "Grootste deel {share}%"
 }

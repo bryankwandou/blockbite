@@ -7,7 +7,12 @@
 const KV_EMAIL_SET = 'bb:waitlist:emails';
 const KV_COUNT_KEY = 'bb:waitlist:count';
 
+export function kvConfigured(): boolean {
+  return Boolean(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
+}
+
 async function getKV() {
+  if (!kvConfigured()) return null;
   try {
     const { kv } = await import('@vercel/kv');
     return kv;

@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "Tabla te așteaptă.",
   "final_sub": "Încălzește-te în Aventură cât se pregătește Ranked.",
-  "mascots_label": "Echipa BlockBite"
+  "mascots_label": "Echipa BlockBite",
+  "install_kicker": "Disponibil ca",
+  "install_label": "aplicație web",
+  "install_ios": "Pe iPhone/iPad: atinge Partajează, apoi Adaugă pe ecranul principal.",
+  "install_other": "Deschide meniul browserului și alege Instalează aplicația (sau Adaugă pe ecranul principal)."
 }

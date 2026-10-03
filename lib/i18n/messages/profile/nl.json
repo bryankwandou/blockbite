@@ -38,5 +38,20 @@
   "featured_more": "Toon meer",
   "classic_title": "Klassieke avatars",
   "combos": "{n} combinaties",
-  "ach_link": "Bekijk je prestaties"
+  "ach_link": "Bekijk je prestaties",
+  "colors_open": "Alle {n} pastelkleuren",
+  "colors_pick": "Kleur {n}",
+  "gallery_title": "Avatargalerij",
+  "gallery_count": "{n} avatars · {combos} combinaties",
+  "gallery_family": "Kleurfamilie",
+  "gallery_all": "Alle",
+  "fam_warm": "Warm",
+  "fam_mint": "Munt",
+  "fam_cool": "Koel",
+  "fam_lilac": "Lila",
+  "fam_neutral": "Neutraal",
+  "gallery_surprise": "Verras me",
+  "gallery_page": "Pagina {n} / {total}",
+  "gallery_prev": "Vorige pagina",
+  "gallery_next": "Volgende pagina"
 }

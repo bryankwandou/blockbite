@@ -19,6 +19,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createHmac, timingSafeEqual } from 'crypto';
 import { recordScore } from '@/lib/leaderboard/store';
 import { getUser, setUser } from '@/lib/store';
+import { adventureConfigured, claimSession, recordAdventure } from '@/lib/adventure/db';
+import { isWallet } from '@/lib/ranked/auth';
 import { levelConfig } from '@/lib/game/levelConfig';
 import { MAX_GAME_LEVEL } from '@/lib/game/constants';
 import { rateLimit, getIP } from '@/lib/rate-limit';
@@ -27,7 +29,7 @@ const SESSION_SECRET = process.env.SESSION_SECRET;
 const MAX_SCORE_PER_MOVE = 200_000;
 
 function verifyToken(token: string): {
-  sessionId: string; walletAddress: string; expiresAt: number; nonce: string;
+  sessionId: string; walletAddress: string; issuedAt: number; expiresAt: number; nonce: string;
 } | null {
   try {
     if (!SESSION_SECRET) return null;
@@ -41,7 +43,7 @@ function verifyToken(token: string): {
     // Timing-safe comparison (BBT-006)
     if (sig.length !== expected.length) return null;
     if (!timingSafeEqual(Buffer.from(sig), Buffer.from(expected))) return null;
-    return { sessionId, walletAddress: wallet, expiresAt: Number(expiresAt), nonce };
+    return { sessionId, walletAddress: wallet, issuedAt: Number(issuedAt), expiresAt: Number(expiresAt), nonce };
   } catch {
     return null;
   }
@@ -120,8 +122,20 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Score implausible' }, { status: 422 });
   }
 
-  // 6. Persist score to KV + in-memory leaderboard
-  await recordScore({ walletAddress, score, level: lvl, submittedAt: Date.now() });
+  // 6. Free-mode progress and board (Postgres). KV below is legacy and is
+  //    not configured in production, so this is the copy that persists.
+  let maxLevel: number | null = null;
+  if (adventureConfigured() && isWallet(walletAddress)) {
+    try {
+      // Single use, enforced in Postgres (the KV nonce check above is a no-op without KV).
+      if (!(await claimSession(session.sessionId))) {
+        return NextResponse.json({ error: 'Token already used' }, { status: 401 });
+      }
+      const playedS = Math.max(0, (Date.now() - session.issuedAt) / 1000);
+      maxLevel = await recordAdventure(walletAddress, lvl, score, playedS);
+    } catch (e) { console.error('adventure', e); }
+  }
+  try { await recordScore({ walletAddress, score, level: lvl, submittedAt: Date.now() }); } catch { /* KV absent */ }
 
   // 7. Update profile currentLevel if player advanced
   try {
@@ -131,5 +145,5 @@ export async function POST(req: NextRequest) {
     }
   } catch { /* non-critical */ }
 
-  return NextResponse.json({ ok: true, recorded: true });
+  return NextResponse.json({ ok: true, recorded: true, maxLevel });
 }

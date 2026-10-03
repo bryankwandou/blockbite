@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import GameCanvas from '@/components/game/GameCanvas';
 import { useT } from '@/lib/i18n';
 import { MODES, modeStyle } from '@/lib/game/modes';
@@ -14,60 +15,84 @@ const SCORING = [
   { lines: 5, pts: 2000, mult: '×5', color: 'var(--ds-block-4, #f472b6)' },
 ];
 
+/**
+ * /game: the board and nothing else competing with it. One slim bar names
+ * the mode; scoring and tips live behind the "?" button (closed by default,
+ * Esc or a click outside closes it again).
+ */
 export default function AdventureShell() {
   const t = useT('game');
   const rules = MODES.free;
+  const [help, setHelp] = useState(false);
+  const wrap = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!help) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setHelp(false); };
+    const onDown = (e: PointerEvent) => { if (!wrap.current?.contains(e.target as Node)) setHelp(false); };
+    window.addEventListener('keydown', onKey);
+    window.addEventListener('pointerdown', onDown);
+    return () => { window.removeEventListener('keydown', onKey); window.removeEventListener('pointerdown', onDown); };
+  }, [help]);
 
   return (
     <main className={s.main} data-mode="free" style={modeStyle('free')}>
-      <div className={s.layout}>
-        <aside className={s.side}>
-          <section className={s.card} aria-labelledby="adv-scoring">
-            <h2 id="adv-scoring" className={s.cardTitle}>{t('scoring_title')}</h2>
-            <ul className={s.rows}>
-              {SCORING.map((r) => (
-                <li key={r.lines} className={s.row}>
-                  <span className={s.bars} aria-hidden>
-                    {Array.from({ length: Math.min(r.lines, 5) }).map((_, i) => (
-                      <span key={i} className={s.bar} style={{ background: r.color }} />
-                    ))}
-                  </span>
-                  <span className={s.rowLabel}>
-                    {r.lines === 1 ? t('scoring_lines_1') : r.lines >= 5 ? t('scoring_lines_5') : t('scoring_lines_n', { n: r.lines })}
-                    {' · '}
-                    {t('scoring_points', { n: r.pts })}
-                  </span>
-                  <span className={s.mult}>{r.mult}</span>
-                </li>
-              ))}
-            </ul>
-            <p className={s.note}>{t('scoring_chain')}</p>
-          </section>
-        </aside>
-
-        <div className={s.center}>
-          {/* Board first: one slim mode bar, rules read from lib/game/modes.ts. */}
+      <div className={s.focus}>
+        <div className={s.barWrap} ref={wrap}>
           <header className={s.modeBar}>
             <h1 className={s.modeTitle}>{t(rules.nameKey)}</h1>
-            <ul className={s.chips}>
-              <li className={s.chip}>{t('rule_level_goal')}</li>
-              {!rules.timer && <li className={s.chip}>{t('rule_no_timer')}</li>}
-              {rules.hints && <li className={s.chip}>{t('rule_hints_on')}</li>}
-            </ul>
+            <span className={s.modeRules}>
+              {[t('rule_level_goal'), !rules.timer && t('rule_no_timer'), rules.hints && t('rule_hints_on')].filter(Boolean).join(' · ')}
+            </span>
+            <button
+              type="button"
+              className={s.helpBtn}
+              aria-expanded={help}
+              aria-controls="adv-help"
+              aria-label={help ? t('help_close') : t('help_open')}
+              title={help ? t('help_close') : t('help_open')}
+              onClick={() => setHelp((v) => !v)}
+            >
+              {help ? '×' : '?'}
+            </button>
           </header>
-          <GameCanvas />
+
+          {help && (
+            <div id="adv-help" className={s.helpPanel} role="region" aria-label={t('help_open')}>
+              <section aria-labelledby="adv-scoring">
+                <h2 id="adv-scoring" className={s.cardTitle}>{t('scoring_title')}</h2>
+                <ul className={s.rows}>
+                  {SCORING.map((r) => (
+                    <li key={r.lines} className={s.row}>
+                      <span className={s.bars} aria-hidden>
+                        {Array.from({ length: Math.min(r.lines, 5) }).map((_, i) => (
+                          <span key={i} className={s.bar} style={{ background: r.color }} />
+                        ))}
+                      </span>
+                      <span className={s.rowLabel}>
+                        {r.lines === 1 ? t('scoring_lines_1') : r.lines >= 5 ? t('scoring_lines_5') : t('scoring_lines_n', { n: r.lines })}
+                        {' · '}
+                        {t('scoring_points', { n: r.pts })}
+                      </span>
+                      <span className={s.mult}>{r.mult}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className={s.note}>{t('scoring_chain')}</p>
+              </section>
+              <section aria-labelledby="adv-tips">
+                <h2 id="adv-tips" className={s.cardTitle}>{t('tips_title')}</h2>
+                <ol className={s.tips}>
+                  <li className={s.tip}>{t('tip_keys')}</li>
+                  <li className={s.tip}>{t('tip_click')}</li>
+                  <li className={s.tip}>{t('tip_space')}</li>
+                </ol>
+              </section>
+            </div>
+          )}
         </div>
 
-        <aside className={`${s.side} ${s.sideEnd}`}>
-          <section className={s.card} aria-labelledby="adv-tips">
-            <h2 id="adv-tips" className={s.cardTitle}>{t('tips_title')}</h2>
-            <ol className={s.tips}>
-              <li className={s.tip}>{t('tip_keys')}</li>
-              <li className={s.tip}>{t('tip_click')}</li>
-              <li className={s.tip}>{t('tip_space')}</li>
-            </ol>
-          </section>
-        </aside>
+        <GameCanvas />
       </div>
     </main>
   );

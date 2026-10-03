@@ -281,6 +281,17 @@
   white-space: normal;
   cursor: pointer;
   transition: transform 150ms var(--ds-ease-out, ease-out), box-shadow 150ms var(--ds-ease-out, ease-out);
+  position: relative;
+}
+
+/* Hit area a little taller than the button: the 2px hover lift must not slide
+   the button out from under a pointer resting on its edge, or it flickers
+   between hovered and not hovered. */
+.btnMain::after,
+.btnGhost::after {
+  content: '';
+  position: absolute;
+  inset: -5px -2px;
 }
 
 .btnMain {
@@ -365,3 +376,6 @@
   font-weight: 700;
   color: var(--ds-text, #fff);
 }
+
+/* Keyboard hints mean nothing on touch screens. */
+@media (pointer: coarse) { .hint { display: none; } }

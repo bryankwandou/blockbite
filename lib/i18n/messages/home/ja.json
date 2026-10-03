@@ -59,5 +59,9 @@
   "status_network_v": "Solana メインネット、USDC",
   "final_title": "ボードが待っています。",
   "final_sub": "ランクの準備ができるまで、アドベンチャーで準備運動を。",
-  "mascots_label": "BlockBite の仲間たち"
+  "mascots_label": "BlockBite の仲間たち",
+  "install_kicker": "こちらで利用可能",
+  "install_label": "Web アプリ",
+  "install_ios": "iPhone/iPad：共有をタップし「ホーム画面に追加」。",
+  "install_other": "ブラウザのメニューから「アプリをインストール」（または「ホーム画面に追加」）を選んでください。"
 }

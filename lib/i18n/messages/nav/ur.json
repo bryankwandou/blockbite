@@ -27,5 +27,19 @@
   "wallet_select": "والیٹ چنیں",
   "wallet_pick": "اپنا Solana والیٹ چنیں",
   "wallet_detected": "ملا",
-  "cancel": "منسوخ"
+  "cancel": "منسوخ",
+  "music": "موسیقی",
+  "music_open": "میوزک پلیئر کھولیں",
+  "music_close": "میوزک پلیئر بند کریں",
+  "music_nothing": "کچھ نہیں چل رہا",
+  "music_prev": "پچھلا ٹریک",
+  "music_next": "اگلا ٹریک",
+  "music_play": "چلائیں",
+  "music_pause": "روکیں",
+  "music_shuffle": "شفل",
+  "music_repeat": "ٹریک دہرائیں",
+  "music_play_track": "{name} چلائیں",
+  "music_hint": "ترتیب بدلنے کے لیے ٹریکس کو گھسیٹیں، یا کسی ٹریک پر Alt + اوپر/نیچے تیر دبائیں۔",
+  "music_playlist_for": "پلے لسٹ برائے: {ctx}",
+  "music_paused": "رکا ہوا"
 }

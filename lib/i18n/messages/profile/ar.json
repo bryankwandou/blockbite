@@ -38,5 +38,20 @@
   "featured_more": "عرض المزيد",
   "classic_title": "صور رمزية كلاسيكية",
   "combos": "{n} تركيبة",
-  "ach_link": "شاهد إنجازاتك"
+  "ach_link": "شاهد إنجازاتك",
+  "colors_open": "كل ألوان الباستيل ({n})",
+  "colors_pick": "اللون {n}",
+  "gallery_title": "معرض الأفاتار",
+  "gallery_count": "{n} أفاتار · {combos} تركيبة",
+  "gallery_family": "عائلة اللون",
+  "gallery_all": "الكل",
+  "fam_warm": "دافئ",
+  "fam_mint": "نعناعي",
+  "fam_cool": "بارد",
+  "fam_lilac": "ليلكي",
+  "fam_neutral": "محايد",
+  "gallery_surprise": "فاجئني",
+  "gallery_page": "الصفحة {n} / {total}",
+  "gallery_prev": "الصفحة السابقة",
+  "gallery_next": "الصفحة التالية"
 }

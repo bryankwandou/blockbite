@@ -38,5 +38,20 @@
   "featured_more": "Daha fazla göster",
   "classic_title": "Klasik avatarlar",
   "combos": "{n} kombinasyon",
-  "ach_link": "Başarılarına bak"
+  "ach_link": "Başarılarına bak",
+  "colors_open": "Tüm {n} pastel renk",
+  "colors_pick": "Renk {n}",
+  "gallery_title": "Avatar galerisi",
+  "gallery_count": "{n} avatar · {combos} kombinasyon",
+  "gallery_family": "Renk ailesi",
+  "gallery_all": "Tümü",
+  "fam_warm": "Sıcak",
+  "fam_mint": "Nane",
+  "fam_cool": "Soğuk",
+  "fam_lilac": "Leylak",
+  "fam_neutral": "Nötr",
+  "gallery_surprise": "Beni şaşırt",
+  "gallery_page": "Sayfa {n} / {total}",
+  "gallery_prev": "Önceki sayfa",
+  "gallery_next": "Sonraki sayfa"
 }

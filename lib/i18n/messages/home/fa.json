@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet، USDC",
   "final_title": "صفحه منتظر است.",
   "final_sub": "تا آماده شدن Ranked، در ماجراجویی گرم کنید.",
-  "mascots_label": "گروه BlockBite"
+  "mascots_label": "گروه BlockBite",
+  "install_kicker": "در دسترس به‌صورت",
+  "install_label": "وب‌اپ",
+  "install_ios": "در iPhone/iPad: اشتراک‌گذاری را بزنید، سپس افزودن به صفحهٔ اصلی.",
+  "install_other": "منوی مرورگر را باز کنید و «نصب برنامه» (یا افزودن به صفحهٔ اصلی) را انتخاب کنید."
 }

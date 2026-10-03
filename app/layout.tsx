@@ -9,6 +9,8 @@ import { Suspense } from 'react';
 import { GFX_INIT_SCRIPT } from '@/lib/gfx';
 import MusicController from '@/components/audio/MusicController';
 import PwaRegister from '@/components/PwaRegister';
+import { PageTracker } from '@/components/PageTracker';
+import { WalletTracker } from '@/components/WalletTracker';
 
 export const metadata: Metadata = {
   title: 'BlockBite · Block puzzle on Solana',
@@ -75,8 +77,10 @@ export default function RootLayout({
             {children}
             <Suspense fallback={null}><MusicController /></Suspense>
             <PwaRegister />
+            <WalletTracker />
           </AppWalletProvider>
         </AppProvider>
+        <PageTracker />
       </body>
     </html>
   );

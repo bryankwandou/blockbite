@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "Deska čeká.",
   "final_sub": "Rozehřej se v Dobrodružství, než se Ranked připraví.",
-  "mascots_label": "Parta BlockBite"
+  "mascots_label": "Parta BlockBite",
+  "install_kicker": "K dispozici jako",
+  "install_label": "webová aplikace",
+  "install_ios": "Na iPhonu/iPadu: klepněte na Sdílet a pak Přidat na plochu.",
+  "install_other": "Otevřete nabídku prohlížeče a zvolte Instalovat aplikaci (nebo Přidat na plochu)."
 }

@@ -97,5 +97,9 @@
   "tut_title_7": "हिम युग",
   "tut_title_8": "कॉम्बो टाइम",
   "tut_title_9": "उलटा गुरुत्व",
-  "tut_title_10": "बॉस: Awakener"
+  "tut_title_10": "बॉस: Awakener",
+  "help_open": "कैसे खेलें",
+  "help_close": "बंद करें",
+  "new_personal_best": "नया निजी रिकॉर्ड!",
+  "top10_place": "टॉप 10: #{rank}"
 }

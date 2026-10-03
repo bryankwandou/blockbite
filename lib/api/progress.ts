@@ -11,9 +11,13 @@ export async function getPlayerProgress(wallet: string): Promise<PlayerProgress>
       if (res.ok) {
         const user = await res.json();
         if (typeof user.currentLevel === 'number' && user.currentLevel >= 1) {
-          // Sync localStorage to match server so offline reads stay consistent
-          localStorage.setItem('bb_max_level', String(user.currentLevel));
-          return { currentLevel: user.currentLevel, wallet };
+          // Take the higher of server and this browser: the server only
+          // believes a few levels per game, so it can trail a local record,
+          // and progress must never go backwards.
+          const local = parseInt(localStorage.getItem('bb_max_level') ?? '0', 10) || 0;
+          const best = Math.max(user.currentLevel, local);
+          localStorage.setItem('bb_max_level', String(best));
+          return { currentLevel: best, wallet };
         }
       }
     } catch { /* fall through to localStorage */ }

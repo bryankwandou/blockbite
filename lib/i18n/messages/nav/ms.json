@@ -27,5 +27,19 @@
   "wallet_select": "Pilih dompet",
   "wallet_pick": "Pilih dompet Solana anda",
   "wallet_detected": "DIKESAN",
-  "cancel": "Batal"
+  "cancel": "Batal",
+  "music": "Muzik",
+  "music_open": "Buka pemain muzik",
+  "music_close": "Tutup pemain muzik",
+  "music_nothing": "Tiada yang dimainkan",
+  "music_prev": "Lagu sebelumnya",
+  "music_next": "Lagu seterusnya",
+  "music_play": "Main",
+  "music_pause": "Jeda",
+  "music_shuffle": "Rawak",
+  "music_repeat": "Ulang lagu",
+  "music_play_track": "Main {name}",
+  "music_hint": "Seret lagu, atau tekan Alt + anak panah atas/bawah pada lagu, untuk menyusun semula.",
+  "music_playlist_for": "Senarai main untuk: {ctx}",
+  "music_paused": "Dijeda"
 }

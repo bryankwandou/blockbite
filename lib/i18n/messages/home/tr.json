@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "Tahta seni bekliyor.",
   "final_sub": "Ranked hazırlanırken Macerada ısın.",
-  "mascots_label": "BlockBite ekibi"
+  "mascots_label": "BlockBite ekibi",
+  "install_kicker": "Şu şekilde mevcut",
+  "install_label": "Web Uygulaması",
+  "install_ios": "iPhone/iPad'de: Paylaş'a, ardından Ana Ekrana Ekle'ye dokun.",
+  "install_other": "Tarayıcı menüsünü aç ve Uygulamayı yükle'yi (veya Ana ekrana ekle'yi) seç."
 }

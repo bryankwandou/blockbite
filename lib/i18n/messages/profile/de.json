@@ -38,5 +38,20 @@
   "featured_more": "Mehr zeigen",
   "classic_title": "Klassische Avatare",
   "combos": "{n} Kombinationen",
-  "ach_link": "Deine Erfolge ansehen"
+  "ach_link": "Deine Erfolge ansehen",
+  "colors_open": "Alle {n} Pastellfarben",
+  "colors_pick": "Farbe {n}",
+  "gallery_title": "Avatar-Galerie",
+  "gallery_count": "{n} Avatare · {combos} Kombinationen",
+  "gallery_family": "Farbfamilie",
+  "gallery_all": "Alle",
+  "fam_warm": "Warm",
+  "fam_mint": "Mint",
+  "fam_cool": "Kühl",
+  "fam_lilac": "Flieder",
+  "fam_neutral": "Neutral",
+  "gallery_surprise": "Überrasch mich",
+  "gallery_page": "Seite {n} / {total}",
+  "gallery_prev": "Vorherige Seite",
+  "gallery_next": "Nächste Seite"
 }

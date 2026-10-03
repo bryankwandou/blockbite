@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "Поле ждёт.",
   "final_sub": "Разомнитесь в Приключении, пока Ranked готовится.",
-  "mascots_label": "Команда BlockBite"
+  "mascots_label": "Команда BlockBite",
+  "install_kicker": "Доступно как",
+  "install_label": "веб-приложение",
+  "install_ios": "На iPhone/iPad: нажмите «Поделиться», затем «На экран «Домой»».",
+  "install_other": "Откройте меню браузера и выберите «Установить приложение» (или «Добавить на главный экран»)."
 }

@@ -38,5 +38,20 @@
   "featured_more": "もっと見る",
   "classic_title": "クラシックアバター",
   "combos": "{n} 通りの組み合わせ",
-  "ach_link": "実績を見る"
+  "ach_link": "実績を見る",
+  "colors_open": "全{n}色のパステル",
+  "colors_pick": "カラー {n}",
+  "gallery_title": "アバターギャラリー",
+  "gallery_count": "{n}体のアバター · {combos}通りの組み合わせ",
+  "gallery_family": "色のグループ",
+  "gallery_all": "すべて",
+  "fam_warm": "ウォーム",
+  "fam_mint": "ミント",
+  "fam_cool": "クール",
+  "fam_lilac": "ライラック",
+  "fam_neutral": "ニュートラル",
+  "gallery_surprise": "おまかせ",
+  "gallery_page": "{n} / {total} ページ",
+  "gallery_prev": "前のページ",
+  "gallery_next": "次のページ"
 }

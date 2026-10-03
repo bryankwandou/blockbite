@@ -38,5 +38,20 @@
   "featured_more": "Xem thêm",
   "classic_title": "Avatar cổ điển",
   "combos": "{n} tổ hợp",
-  "ach_link": "Xem thành tích của bạn"
+  "ach_link": "Xem thành tích của bạn",
+  "colors_open": "Tất cả {n} màu pastel",
+  "colors_pick": "Màu {n}",
+  "gallery_title": "Thư viện avatar",
+  "gallery_count": "{n} avatar · {combos} tổ hợp",
+  "gallery_family": "Nhóm màu",
+  "gallery_all": "Tất cả",
+  "fam_warm": "Ấm",
+  "fam_mint": "Bạc hà",
+  "fam_cool": "Lạnh",
+  "fam_lilac": "Tím lilac",
+  "fam_neutral": "Trung tính",
+  "gallery_surprise": "Bất ngờ cho tôi",
+  "gallery_page": "Trang {n} / {total}",
+  "gallery_prev": "Trang trước",
+  "gallery_next": "Trang sau"
 }

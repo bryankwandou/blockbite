@@ -27,5 +27,19 @@
   "wallet_select": "ウォレットを選択",
   "wallet_pick": "Solana ウォレットを選んでください",
   "wallet_detected": "検出済み",
-  "cancel": "キャンセル"
+  "cancel": "キャンセル",
+  "music": "音楽",
+  "music_open": "ミュージックプレーヤーを開く",
+  "music_close": "ミュージックプレーヤーを閉じる",
+  "music_nothing": "再生中の曲はありません",
+  "music_prev": "前のトラック",
+  "music_next": "次のトラック",
+  "music_play": "再生",
+  "music_pause": "一時停止",
+  "music_shuffle": "シャッフル",
+  "music_repeat": "トラックをリピート",
+  "music_play_track": "{name} を再生",
+  "music_hint": "トラックをドラッグするか、トラックで Alt + 上/下矢印キーを押して並べ替えます。",
+  "music_playlist_for": "プレイリスト: {ctx}",
+  "music_paused": "一時停止中"
 }

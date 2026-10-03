@@ -22,7 +22,8 @@ import partner from './messages/partner/en.json';
 import versus from './messages/versus/en.json';
 import challenge from './messages/challenge/en.json';
 import themes from './messages/themes/en.json';
+import referral from './messages/referral/en.json';
 
-export const EN = { common, nav, home, game, map, ranked, shop, leaderboard, guide, profile, achievements, waitlist, partnership, settings, account, admin, partner, versus, challenge, themes } as Record<string, Record<string, string>>;
+export const EN = { common, nav, home, game, map, ranked, shop, leaderboard, guide, profile, achievements, waitlist, partnership, settings, account, admin, partner, versus, challenge, themes, referral } as Record<string, Record<string, string>>;
 
-export type Namespace = 'common' | 'nav' | 'home' | 'game' | 'map' | 'ranked' | 'shop' | 'leaderboard' | 'guide' | 'profile' | 'achievements' | 'waitlist' | 'partnership' | 'settings' | 'account' | 'admin' | 'partner' | 'versus' | 'challenge' | 'themes';
+export type Namespace = 'common' | 'nav' | 'home' | 'game' | 'map' | 'ranked' | 'shop' | 'leaderboard' | 'guide' | 'profile' | 'achievements' | 'waitlist' | 'partnership' | 'settings' | 'account' | 'admin' | 'partner' | 'versus' | 'challenge' | 'themes' | 'referral';

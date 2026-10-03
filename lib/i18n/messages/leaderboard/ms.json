@@ -33,5 +33,16 @@
   "step2_desc": "Semua orang mendapat papan dan blok yang sama setiap hari UTC. Percubaan terbaik anda dikira.",
   "step3_title": "10 teratas menang",
   "step3_desc": "10 teratas harian dan bulanan memenangi USDC. Selepas semakan 24 jam, pemenang menuntut daripada program hadiah dengan dompet mereka.",
-  "prizes_link": "Cara hadiah dibahagi"
+  "prizes_link": "Cara hadiah dibahagi",
+  "period_adventure": "Pengembaraan",
+  "col_level": "Tahap",
+  "empty_adventure": "Belum ada pemain di papan percuma. Habiskan satu permainan dengan dompet disambungkan untuk menyertainya.",
+  "footer_adventure": "Mod Pengembaraan percuma: disusun mengikut tahap tertinggi, kemudian skor terbaik. Untuk suka-suka, tiada hadiah.",
+  "podium_label": "3 pemain teratas",
+  "crown_label": "Pemenang",
+  "winner_day_title": "Pemenang semalam",
+  "winner_month_title": "Pemenang bulan lepas",
+  "winner_empty": "Belum ada pusingan yang tamat",
+  "winner_empty_desc": "Pemenang setiap hari dan bulan muncul di sini selepas pusingan ditutup.",
+  "winner_share": "Bahagian terbesar {share}%"
 }

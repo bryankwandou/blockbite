@@ -27,5 +27,19 @@
   "wallet_select": "یک کیف پول انتخاب کنید",
   "wallet_pick": "کیف پول Solana خود را انتخاب کنید",
   "wallet_detected": "شناسایی شد",
-  "cancel": "انصراف"
+  "cancel": "انصراف",
+  "music": "موسیقی",
+  "music_open": "باز کردن پخش‌کننده موسیقی",
+  "music_close": "بستن پخش‌کننده موسیقی",
+  "music_nothing": "چیزی پخش نمی‌شود",
+  "music_prev": "آهنگ قبلی",
+  "music_next": "آهنگ بعدی",
+  "music_play": "پخش",
+  "music_pause": "توقف",
+  "music_shuffle": "تصادفی",
+  "music_repeat": "تکرار آهنگ",
+  "music_play_track": "پخش {name}",
+  "music_hint": "آهنگ‌ها را بکشید یا روی یک آهنگ Alt + فلش بالا/پایین را بزنید تا ترتیب عوض شود.",
+  "music_playlist_for": "فهرست پخش برای: {ctx}",
+  "music_paused": "متوقف شده"
 }

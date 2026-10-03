@@ -97,5 +97,9 @@
   "tut_title_7": "Zaman Ais",
   "tut_title_8": "Masa Kombo",
   "tut_title_9": "Graviti Terbalik",
-  "tut_title_10": "Bos: Awakener"
+  "tut_title_10": "Bos: Awakener",
+  "help_open": "Cara bermain",
+  "help_close": "Tutup",
+  "new_personal_best": "REKOD PERIBADI BAHARU!",
+  "top10_place": "TOP 10: #{rank}"
 }

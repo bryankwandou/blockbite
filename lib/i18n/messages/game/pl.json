@@ -97,5 +97,9 @@
   "tut_title_7": "Epoka lodowcowa",
   "tut_title_8": "Czas na combo",
   "tut_title_9": "Odwrócona grawitacja",
-  "tut_title_10": "Boss: Awakener"
+  "tut_title_10": "Boss: Awakener",
+  "help_open": "Jak grać",
+  "help_close": "Zamknij",
+  "new_personal_best": "NOWY REKORD OSOBISTY!",
+  "top10_place": "TOP 10: miejsce {rank}"
 }

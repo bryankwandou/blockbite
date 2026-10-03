@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "El tablero te espera.",
   "final_sub": "Calienta en Aventura mientras Ranked se prepara.",
-  "mascots_label": "El equipo de BlockBite"
+  "mascots_label": "El equipo de BlockBite",
+  "install_kicker": "Disponible como",
+  "install_label": "Web App",
+  "install_ios": "En iPhone/iPad: toca Compartir y luego Añadir a pantalla de inicio.",
+  "install_other": "Abre el menú del navegador y elige Instalar aplicación (o Añadir a la pantalla de inicio)."
 }

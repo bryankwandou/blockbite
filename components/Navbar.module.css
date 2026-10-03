@@ -79,6 +79,7 @@
   justify-content: center;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 .link {
@@ -102,39 +103,40 @@
 }
 
 .link.active {
-  color: var(--ds-text, #fff);
-}
-
-.link.active::after {
-  content: '';
-  position: absolute;
-  inset-inline: 14px;
-  bottom: 2px;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--ds-accent, #a78bfa);
-}
-
-/* "Play" reads like a chunky arcade key */
-.playLink {
   color: #0a0a14;
+}
+
+.link.active:hover {
+  background: transparent;
+}
+
+/* Sliding "arcade key" pill: marks whichever link is the current page */
+.pill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 10px;
   background: var(--ds-accent2, #5eead4);
   box-shadow: 0 3px 0 color-mix(in srgb, var(--ds-accent2, #5eead4) 55%, #000);
-  margin-inline-end: 6px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: transform 300ms ease, width 300ms ease, opacity 200ms ease;
 }
 
-.playLink:hover {
-  color: #0a0a14;
-  background: var(--ds-accent2, #5eead4);
-  transform: translateY(-1px);
-}
+.pillVisible { opacity: 1; }
 
-.playLink:active {
-  transform: translateY(2px);
-  box-shadow: 0 1px 0 color-mix(in srgb, var(--ds-accent2, #5eead4) 55%, #000);
-}
+.pillInstant { transition: none; }
 
-.playLink.active::after { display: none; }
+.links > li:not(.pill) { position: relative; z-index: 1; }
+
+:global(html[data-gfx='low']) .pill { transition: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pill { transition: none; }
+}
 
 /* ── Right cluster ── */
 .right {

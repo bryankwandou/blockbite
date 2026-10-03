@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import NameForm from '@/components/versus/NameForm';
 import SoloRun from '@/components/versus/SoloRun';
@@ -12,7 +13,8 @@ import s from '@/components/versus/versus.module.css';
 
 type Load = { state: 'loading' } | { state: 'missing' } | { state: 'ok'; c: Challenge };
 
-export default function ChallengePage({ params }: { params: { id: string } }) {
+export default function ChallengePage() {
+  const params = useParams<{ id: string }>();
   const t = useT('challenge');
   const [load, setLoad] = useState<Load>({ state: 'loading' });
   const [phase, setPhase] = useState<'view' | 'play' | 'done' | 'sent'>('view');

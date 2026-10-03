@@ -4,8 +4,9 @@ import { MAX_GAME_LEVEL } from '@/lib/game/constants';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } },
+  ctx: { params: Promise<{ id: string }> },
 ) {
+  const params = await ctx.params;
   const level  = parseInt(params.id, 10);
   const player = req.nextUrl.searchParams.get('player') ?? 'anonymous';
 

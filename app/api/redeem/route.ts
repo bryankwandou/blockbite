@@ -13,12 +13,21 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
   }
 
+  let input: { addr?: unknown; act?: unknown; sig?: unknown };
   try {
-    const { addr, act, sig } = await req.json();
+    input = await req.json();
+  } catch {
+    return NextResponse.json({ error: 'invalid JSON' }, { status: 400 });
+  }
+  try {
+    const { addr, act, sig } = input ?? {};
     if (!addr || act == null || !sig) {
       return NextResponse.json({ error: 'missing fields' }, { status: 400 });
     }
 
+    if (typeof sig !== 'string') {
+      return NextResponse.json({ error: 'invalid sig' }, { status: 400 });
+    }
     if (typeof addr !== 'string' || !SOLANA_ADDR_RE.test(addr)) {
       return NextResponse.json({ error: 'invalid addr' }, { status: 400 });
     }

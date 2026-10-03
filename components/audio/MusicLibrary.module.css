@@ -73,3 +73,4 @@
 
 @media (hover: none) { .grip { display: none; } }
 @media (max-width: 420px) { .iconBtn { width: 30px; height: 30px; } .tab { padding: 8px; font-size: 13px; } }
+.item:focus-visible { outline: 2px solid var(--ds-accent, #a78bfa); outline-offset: 2px; }

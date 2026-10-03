@@ -97,5 +97,9 @@
   "tut_title_7": "Buz Devri",
   "tut_title_8": "Kombo Zamanı",
   "tut_title_9": "Ters Yerçekimi",
-  "tut_title_10": "Boss: Awakener"
+  "tut_title_10": "Boss: Awakener",
+  "help_open": "Nasıl oynanır",
+  "help_close": "Kapat",
+  "new_personal_best": "YENİ KİŞİSEL REKOR!",
+  "top10_place": "İLK 10: {rank}. sıra"
 }

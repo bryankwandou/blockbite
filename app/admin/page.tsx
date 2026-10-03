@@ -191,7 +191,9 @@ function Players({ d, t }: { d: Any; t: TT }) {
   const daily = d.daily as { day: string; dau: number; fresh: number }[];
   const last = daily[daily.length - 1];
   const pct = (a: number, b: number) => `${fmt((100 * a) / b, 1)}%`;
+  const r = d.referrals as { source: string; total: number; referrers: number; played: number; days: { day: string; n: number }[]; top: { k: string; n: number; played: number }[] } | null;
   return (
+    <>
     <section className={s.card}>
       <h2 className={s.cardTitle}>{t('tab_players')}</h2>
       <div className={s.kpis}>
@@ -207,6 +209,26 @@ function Players({ d, t }: { d: Any; t: TT }) {
       {d.retention && <p className={s.note}>{t('cohort', { n: d.retention.cohort })}</p>}
       <Source label={t('source')}>{d.source.ranked}; {d.source.visitors}</Source>
     </section>
+    <section className={s.card}>
+      <h2 className={s.cardTitle}>{t('referrals')}</h2>
+      {r ? (
+        <>
+          <div className={s.kpis}>
+            <Kpi label={t('ref_signups')} value={fmt(r.total, 0)} empty={t('no_data')} />
+            <Kpi label={t('ref_referrers')} value={fmt(r.referrers, 0)} empty={t('no_data')} />
+            <Kpi label={t('ref_played')} value={fmt(r.played, 0)} empty={t('no_data')} />
+            <Kpi label={t('ref_30d')} value={fmt(r.days.reduce((a, x) => a + x.n, 0), 0)} empty={t('no_data')} />
+          </div>
+          <Bars label={t('ref_per_day')} data={r.days.map((x) => ({ k: x.day, a: x.n }))} />
+          <h3 className={s.cardTitle}>{t('top_referrers')}</h3>
+          {r.top.length
+            ? <Table head={[t('referrer'), t('ref_signups'), t('ref_played')]} rows={r.top.map((x) => [<span key="r" className={s.mono}>{x.k}</span>, x.n, x.played])} />
+            : <Empty>{t('no_data')}</Empty>}
+          <Source label={t('source')}>{r.source}</Source>
+        </>
+      ) : <Empty>{t('no_data')}</Empty>}
+    </section>
+    </>
   );
 }
 

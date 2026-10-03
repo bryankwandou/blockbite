@@ -7,6 +7,8 @@ import {
   type CustomTheme, type Tokens,
 } from '@/lib/themes/store';
 import { useThemesT } from '@/lib/themes/useThemesT';
+import PastelStudio from './PastelStudio';
+import { isPastelBase, pastelName } from '@/lib/themes/pastel';
 import s from './theme.module.css';
 
 // Classic look (app/globals.css) for the "default" swatch preview.
@@ -67,8 +69,9 @@ export default function ThemePicker({ builder = false }: { builder?: boolean }) 
             on={palette === seed.id} badge={t('selected')} onClick={() => setPalette(seed.id)} />
         ))}
       </div>
-      {current && <p className={s.note} style={{ marginTop: 10 }}>{t('using_custom')}: <code>{encodeCode(current)}</code></p>}
-      {builder ? <ThemeBuilder initial={current ?? undefined} /> : (
+      {current && <p className={s.note} style={{ marginTop: 10 }}>{t('using_custom')}: <code>{encodeCode(current)}</code>{isPastelBase(current.base) ? ` (${pastelName(current)})` : ''}</p>}
+      <PastelStudio />
+      {builder ? <ThemeBuilder initial={current && !isPastelBase(current.base) ? current : undefined} /> : (
         <p style={{ marginTop: 12 }}><Link className={s.link} href="/themes">{t('more_themes')}</Link></p>
       )}
     </div>

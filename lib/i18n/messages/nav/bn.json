@@ -27,5 +27,19 @@
   "wallet_select": "একটি ওয়ালেট বাছুন",
   "wallet_pick": "আপনার Solana ওয়ালেট বাছুন",
   "wallet_detected": "শনাক্ত",
-  "cancel": "বাতিল"
+  "cancel": "বাতিল",
+  "music": "সঙ্গীত",
+  "music_open": "মিউজিক প্লেয়ার খুলুন",
+  "music_close": "মিউজিক প্লেয়ার বন্ধ করুন",
+  "music_nothing": "কিছু চলছে না",
+  "music_prev": "আগের ট্র্যাক",
+  "music_next": "পরের ট্র্যাক",
+  "music_play": "চালান",
+  "music_pause": "বিরতি",
+  "music_shuffle": "শাফল",
+  "music_repeat": "ট্র্যাক পুনরাবৃত্তি",
+  "music_play_track": "{name} চালান",
+  "music_hint": "ক্রম বদলাতে ট্র্যাক টেনে আনুন, অথবা কোনো ট্র্যাকে Alt + উপর/নিচ তীর চাপুন।",
+  "music_playlist_for": "এর প্লেলিস্ট: {ctx}",
+  "music_paused": "বিরতিতে আছে"
 }

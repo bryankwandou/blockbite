@@ -27,5 +27,19 @@
   "wallet_select": "Pilih wallet",
   "wallet_pick": "Pilih wallet Solana kamu",
   "wallet_detected": "TERDETEKSI",
-  "cancel": "Batal"
+  "cancel": "Batal",
+  "music": "Musik",
+  "music_open": "Buka pemutar musik",
+  "music_close": "Tutup pemutar musik",
+  "music_nothing": "Tidak ada yang diputar",
+  "music_prev": "Lagu sebelumnya",
+  "music_next": "Lagu berikutnya",
+  "music_play": "Putar",
+  "music_pause": "Jeda",
+  "music_shuffle": "Acak",
+  "music_repeat": "Ulangi lagu",
+  "music_play_track": "Putar {name}",
+  "music_hint": "Seret lagu, atau tekan Alt + panah atas/bawah pada lagu, untuk mengubah urutan.",
+  "music_playlist_for": "Playlist untuk: {ctx}",
+  "music_paused": "Dijeda"
 }

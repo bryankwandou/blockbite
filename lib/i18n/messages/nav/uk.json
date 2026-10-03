@@ -27,5 +27,19 @@
   "wallet_select": "Обери гаманець",
   "wallet_pick": "Обери свій гаманець Solana",
   "wallet_detected": "ВИЯВЛЕНО",
-  "cancel": "Скасувати"
+  "cancel": "Скасувати",
+  "music": "Музика",
+  "music_open": "Відкрити музичний плеєр",
+  "music_close": "Закрити музичний плеєр",
+  "music_nothing": "Нічого не грає",
+  "music_prev": "Попередній трек",
+  "music_next": "Наступний трек",
+  "music_play": "Грати",
+  "music_pause": "Пауза",
+  "music_shuffle": "Перемішати",
+  "music_repeat": "Повтор треку",
+  "music_play_track": "Відтворити {name}",
+  "music_hint": "Перетягуйте треки або натисніть Alt + стрілку вгору/вниз на треку, щоб змінити порядок.",
+  "music_playlist_for": "Плейлист для: {ctx}",
+  "music_paused": "Пауза"
 }

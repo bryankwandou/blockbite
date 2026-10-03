@@ -97,5 +97,9 @@
   "tut_title_7": "ยุคน้ำแข็ง",
   "tut_title_8": "เวลาคอมโบ",
   "tut_title_9": "พลิกแรงโน้มถ่วง",
-  "tut_title_10": "บอส: Awakener"
+  "tut_title_10": "บอส: Awakener",
+  "help_open": "วิธีเล่น",
+  "help_close": "ปิด",
+  "new_personal_best": "สถิติส่วนตัวใหม่!",
+  "top10_place": "ท็อป 10: อันดับ {rank}"
 }

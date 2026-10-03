@@ -21,6 +21,7 @@ const OPEN_RISKS = [
 ];
 import { T, q, qMaybe } from './db';
 import { rpc, rpcUrl } from './rpc';
+import { adminStats as adminReferralStats } from '@/lib/referrals/db';
 
 const rpcHost = () => { try { return new URL(rpcUrl()).host; } catch { return 'rpc'; } };
 
@@ -122,7 +123,10 @@ export async function players() {
        count(*) FILTER (WHERE EXISTS (SELECT 1 FROM ${T.runs} r WHERE r.wallet = f.wallet AND r.day = f.first + 7))::int AS d7
      FROM f WHERE f.first <= current_date - 7`);
   const visitors = await q<{ n: number }>(`SELECT count(DISTINCT visitor)::int AS n FROM ${T.pageviews} WHERE at > now() - interval '1 day'`);
+  let referrals: Awaited<ReturnType<typeof adminReferralStats>> | null = null;
+  try { referrals = await adminReferralStats(); } catch { /* shown as no data */ }
   return {
+    referrals,
     source: { ranked: 'rk_runs (wallets with a ranked run)', visitors: 'adm_pageviews (distinct visitor hash, 24 h)' },
     daily: daily ?? [],
     mau: mau?.[0]?.n ? mau[0].n : null,

@@ -1,14 +1,14 @@
 /**
  * GET  /api/quests           → list active quests
- * POST /api/quests           → create quest (body: { adminWallet, title, ... })
+ * POST /api/quests           → create quest (body: { title, ... })
  *
- * No wallet-signature gating for Phase 0 — admin identity is asserted by
- * the body and recorded as-is. Week 7 will add ed25519 message signing
- * + an admin allow-list keyed by Vercel env.
+ * Creating needs the admin console session (wallet signature + ADMIN_WALLETS,
+ * see lib/admin/session.ts); the quest's adminWallet is that signed-in wallet.
  */
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createQuest, listQuests, type Quest, type QuestType } from '@/lib/quests/store';
+import { requireRole } from '@/lib/admin/http';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,15 +20,10 @@ export async function GET() {
       .filter((q) => q.active && (!q.expiresAt || q.expiresAt > now))
       .sort((a, b) => b.createdAt - a.createdAt);
     return NextResponse.json({ quests: visible });
-  } catch (e) {
+  } catch {
     // KV misconfig in prod was returning empty 500. Honest empty state
-    // is the right fallback — the in-memory map will catch up once a
-    // quest is created.
-    return NextResponse.json({
-      quests: [],
-      degraded: true,
-      error: e instanceof Error ? e.message : String(e),
-    });
+    // is the right fallback (no internal error text to the public).
+    return NextResponse.json({ quests: [], degraded: true });
   }
 }
 
@@ -37,11 +32,12 @@ function isValidType(t: string): t is QuestType {
 }
 
 export async function POST(req: NextRequest) {
+  const adminWallet = requireRole(req, 'admin');
+  if (adminWallet instanceof Response) return adminWallet;
   let body: Partial<Quest>;
   try { body = await req.json(); } catch { return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 }); }
 
-  const { adminWallet, title, description, type, rewardLabel, maxCompletions, expiresAt } = body;
-  if (!adminWallet || typeof adminWallet !== 'string') return NextResponse.json({ error: 'adminWallet required' }, { status: 400 });
+  const { title, description, type, rewardLabel, maxCompletions, expiresAt } = body;
   if (!title || typeof title !== 'string' || title.length > 200) return NextResponse.json({ error: 'title required (max 200)' }, { status: 400 });
   if (!description || typeof description !== 'string' || description.length > 2000) return NextResponse.json({ error: 'description required (max 2000)' }, { status: 400 });
   if (!type || !isValidType(String(type))) return NextResponse.json({ error: 'type must be one of follow/onchain/gameplay/referral/custom' }, { status: 400 });

@@ -38,5 +38,20 @@
   "featured_more": "Show more",
   "classic_title": "Classic avatars",
   "combos": "{n} combinations",
-  "ach_link": "See your achievements"
+  "ach_link": "See your achievements",
+  "colors_open": "All {n} pastel colours",
+  "colors_pick": "Colour {n}",
+  "gallery_title": "Avatar gallery",
+  "gallery_count": "{n} avatars · {combos} combinations",
+  "gallery_family": "Colour family",
+  "gallery_all": "All",
+  "fam_warm": "Warm",
+  "fam_mint": "Mint",
+  "fam_cool": "Cool",
+  "fam_lilac": "Lilac",
+  "fam_neutral": "Neutral",
+  "gallery_surprise": "Surprise me",
+  "gallery_page": "Page {n} / {total}",
+  "gallery_prev": "Previous page",
+  "gallery_next": "Next page"
 }

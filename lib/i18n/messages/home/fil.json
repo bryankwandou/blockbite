@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "Naghihintay ang board.",
   "final_sub": "Mag-warm up sa Adventure habang inihahanda ang ranked.",
-  "mascots_label": "Ang crew ng BlockBite"
+  "mascots_label": "Ang crew ng BlockBite",
+  "install_kicker": "Available bilang",
+  "install_label": "Web App",
+  "install_ios": "Sa iPhone/iPad: i-tap ang Share, saka Add to Home Screen.",
+  "install_other": "Buksan ang menu ng browser at piliin ang Install app (o Add to Home screen)."
 }

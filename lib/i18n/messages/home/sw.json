@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "Ubao unasubiri.",
   "final_sub": "Jipashe joto kwenye Matukio huku ranked ikiandaliwa.",
-  "mascots_label": "Kikosi cha BlockBite"
+  "mascots_label": "Kikosi cha BlockBite",
+  "install_kicker": "Inapatikana kama",
+  "install_label": "Programu ya Wavuti",
+  "install_ios": "Kwenye iPhone/iPad: gusa Shiriki, kisha Ongeza kwenye Skrini ya Nyumbani.",
+  "install_other": "Fungua menyu ya kivinjari na uchague Sakinisha programu (au Ongeza kwenye skrini ya nyumbani)."
 }

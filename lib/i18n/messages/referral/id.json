@@ -1,0 +1,18 @@
+{
+  "board_title": "Referral",
+  "board_empty": "Belum ada referral. Bagikan link dari halaman profil.",
+  "joined_total": "{n} pemain sudah bergabung lewat link referral",
+  "top_referrers": "Pengajak teratas",
+  "referred_count": "{n} diajak",
+  "loading": "Memuat…",
+  "error": "Gagal memuat angka referral.",
+  "signed_up": "Mendaftar",
+  "signed_up_note": "Pemain yang bergabung lewat link kamu",
+  "played": "Bermain",
+  "played_note": "Dari mereka, yang sudah menyelesaikan minimal satu game",
+  "recent": "Pendaftar terbaru",
+  "none_yet": "Belum ada yang memakai link kamu.",
+  "status_played": "Bermain",
+  "status_joined": "Bergabung",
+  "see_board": "Lihat papan referral"
+}

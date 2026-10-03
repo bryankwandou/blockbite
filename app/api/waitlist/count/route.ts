@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { kvGetCount, kvSeedFromExternal } from '@/lib/waitlist-kv';
 import { sbGetCount, supabaseReady } from '@/lib/supabase-rest';
+import { dbGetCount, waitlistDbConfigured } from '@/lib/waitlist/db';
 import { memGetCount } from '@/lib/waitlist-store';
 
 // Must be force-dynamic — GET routes are statically cached at build time by default.
@@ -10,7 +11,13 @@ export async function GET() {
   const headers = { 'Cache-Control': 'no-store, max-age=0' };
 
   try {
-    // 1. Primary source of truth: Supabase — same store the dashboard reads,
+    // 1. Postgres (public.waitlist on DATABASE_URL, same as the corporation site)
+    if (waitlistDbConfigured()) {
+      const n = await dbGetCount();
+      if (n !== null) return NextResponse.json({ count: n, source: 'neon' }, { headers });
+    }
+
+    // 2. Supabase: primary source of truth: Supabase — same store the dashboard reads,
     //    guarantees public count and admin dashboard always show the same number.
     if (supabaseReady()) {
       const sbCount = await sbGetCount();
@@ -21,13 +28,13 @@ export async function GET() {
       }
     }
 
-    // 2. Fallback: Vercel KV (use set cardinality — never drifts from incr bugs)
+    // 3. Fallback: Vercel KV (use set cardinality — never drifts from incr bugs)
     const kvCount = await kvGetCount();
     if (kvCount !== null) {
       return NextResponse.json({ count: kvCount, source: 'kv' }, { headers });
     }
 
-    // 3. Last resort: in-memory (always 0 on cold start, but never hides real data)
+    // 4. Last resort: in-memory (always 0 on cold start, but never hides real data)
     return NextResponse.json({ count: memGetCount(), source: 'memory' }, { headers });
   } catch {
     return NextResponse.json({ count: 0, source: 'error' }, { headers });

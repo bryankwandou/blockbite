@@ -27,5 +27,19 @@
   "wallet_select": "Chọn ví",
   "wallet_pick": "Chọn ví Solana của bạn",
   "wallet_detected": "ĐÃ PHÁT HIỆN",
-  "cancel": "Hủy"
+  "cancel": "Hủy",
+  "music": "Nhạc",
+  "music_open": "Mở trình phát nhạc",
+  "music_close": "Đóng trình phát nhạc",
+  "music_nothing": "Không có bài nào đang phát",
+  "music_prev": "Bài trước",
+  "music_next": "Bài tiếp theo",
+  "music_play": "Phát",
+  "music_pause": "Tạm dừng",
+  "music_shuffle": "Phát ngẫu nhiên",
+  "music_repeat": "Lặp lại bài",
+  "music_play_track": "Phát {name}",
+  "music_hint": "Kéo các bài hát, hoặc nhấn Alt + mũi tên lên/xuống trên một bài, để sắp xếp lại.",
+  "music_playlist_for": "Danh sách phát cho: {ctx}",
+  "music_paused": "Đã tạm dừng"
 }

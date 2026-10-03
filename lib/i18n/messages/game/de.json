@@ -97,5 +97,9 @@
   "tut_title_7": "Eiszeit",
   "tut_title_8": "Combo-Zeit",
   "tut_title_9": "Schwerkraft-Dreh",
-  "tut_title_10": "Boss: Awakener"
+  "tut_title_10": "Boss: Awakener",
+  "help_open": "So wird gespielt",
+  "help_close": "Schließen",
+  "new_personal_best": "NEUER PERSÖNLICHER REKORD!",
+  "top10_place": "TOP 10: Platz {rank}"
 }

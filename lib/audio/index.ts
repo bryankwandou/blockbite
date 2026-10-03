@@ -102,8 +102,8 @@ function ensureCtx(): AudioContext | null {
 export function unlockAudio(): Promise<void> {
   const c = ensureCtx();
   if (!c) return Promise.resolve();
-  if (c.state === 'suspended') return c.resume().then(() => { if (wanted && !playing) startContext(); }).catch(() => {});
-  if (wanted && !playing) startContext();
+  if (c.state === 'suspended') return c.resume().then(() => { if (wanted && !playing && !paused) startContext(); }).catch(() => {});
+  if (wanted && !playing && !paused) startContext();
   return Promise.resolve();
 }
 
@@ -228,7 +228,11 @@ export function setPlaylist(ctxId: PlayContext, patch: Partial<Playlist>) {
   try { localStorage.setItem(PL_KEY, JSON.stringify(playlists)); } catch { /* ignore */ }
   playerChanged();
   // If this context is on air, restart it so the change is heard.
-  if (wanted && ctxOf(wanted) === ctxId && !previewing) { playing = null; startContext(); }
+  // Reordering or toggling tracks must not cut the song that is playing.
+  if (wanted && ctxOf(wanted) === ctxId && !previewing && !paused) {
+    const stillValid = !!playing && !patch.album && enabled(next).includes(playing);
+    if (!stillValid) { playing = null; startContext(); }
+  }
 }
 
 export function resetPlaylist(ctxId: PlayContext) { setPlaylist(ctxId, defaultPlaylist(ctxId, playlists[ctxId].album)); }
@@ -240,6 +244,7 @@ export const PLAY_CONTEXTS = CONTEXTS;
 let wanted: TrackId | null = null;
 let playing: string | null = null;     // "album/track"
 let previewing = false;
+let paused = false;
 let previewTimer: number | undefined;
 let trackGain: GainNode | null = null;
 let timer: number | undefined;
@@ -247,15 +252,16 @@ let step = 0;
 let nextAt = 0;
 
 const playerListeners = new Set<() => void>();
-let nowSnap: { key: string | null; preview: boolean } = { key: null, preview: false };
+export type NowPlaying = { key: string | null; preview: boolean; paused: boolean };
+let nowSnap: NowPlaying = { key: null, preview: false, paused: false };
 function playerChanged() {
-  if (nowSnap.key !== playing || nowSnap.preview !== previewing) nowSnap = { key: playing, preview: previewing };
+  if (nowSnap.key !== playing || nowSnap.preview !== previewing || nowSnap.paused !== paused) nowSnap = { key: playing, preview: previewing, paused };
   playerListeners.forEach((f) => f());
 }
 export function subscribePlayer(f: () => void) { playerListeners.add(f); return () => { playerListeners.delete(f); }; }
 export function getNowPlaying() { return nowSnap; }
-const SERVER_NOW = { key: null, preview: false };
-export function getServerNowPlaying(): { key: string | null; preview: boolean } { return SERVER_NOW; }
+const SERVER_NOW: NowPlaying = { key: null, preview: false, paused: false };
+export function getServerNowPlaying(): NowPlaying { return SERVER_NOW; }
 
 const ctxOf = (id: TrackId): PlayContext => (id === 'monthly' ? 'ranked' : id);
 
@@ -348,7 +354,7 @@ function startKey(key: string) {
 }
 
 function startContext() {
-  if (!wanted) return;
+  if (!wanted || paused) return;
   const key = firstFor(wanted);
   if (key) startKey(key);
 }
@@ -382,10 +388,62 @@ export function stopPreview() {
   playerChanged();
 }
 
+/** The play context (menu / adventure / ranked) whose playlist is on air for this page. */
+export function getWantedContext(): PlayContext | null { return wanted ? ctxOf(wanted) : null; }
+
+function enabledForWanted(): string[] { return wanted ? enabled(getPlaylists()[ctxOf(wanted)]) : []; }
+
+/** Play a specific track of the current playlist (not a 20 s preview). */
+export function playTrack(key: string) {
+  if (!wanted || !getTrackDef(key)) return;
+  void unlockAudio().then(() => {
+    window.clearTimeout(previewTimer);
+    previewing = false;
+    paused = false;
+    playing = null;
+    startKey(key);
+    playerChanged();
+  });
+}
+
+/** Skip to the next (1) or previous (-1) enabled track of the current playlist. */
+export function skipTrack(dir: 1 | -1) {
+  if (!wanted) return;
+  const p = getPlaylists()[ctxOf(wanted)];
+  const list = enabled(p);
+  if (!list.length) return;
+  const cur = playing && list.includes(playing) ? list.indexOf(playing) : (dir === 1 ? -1 : 0);
+  let key = list[(cur + dir + list.length) % list.length];
+  if (p.mode === 'shuffle' && list.length > 1 && dir === 1) {
+    const others = list.filter((k) => k !== playing);
+    key = others[Math.floor(Math.random() * others.length)];
+  }
+  playTrack(key);
+}
+
+/** Pause or resume the music without losing the place in the playlist. */
+export function setPaused(p: boolean) {
+  if (p === paused) return;
+  paused = p;
+  if (p) {
+    window.clearTimeout(previewTimer);
+    previewing = false;
+    if (timer !== undefined) { window.clearInterval(timer); timer = undefined; }
+    if (trackGain && ctx) { const g = trackGain; g.gain.setTargetAtTime(0, ctx.currentTime, 0.08); window.setTimeout(() => g.disconnect(), 600); }
+    trackGain = null;
+    playerChanged();
+  } else {
+    const resumeKey = playing && enabledForWanted().includes(playing) ? playing : null;
+    playing = null;
+    void unlockAudio().then(() => { if (resumeKey) startKey(resumeKey); else startContext(); playerChanged(); });
+  }
+}
+export function isPaused() { return paused; }
+
 export function stopMusic() {
   if (timer !== undefined) { window.clearInterval(timer); timer = undefined; }
   if (trackGain && ctx) { const g = trackGain; g.gain.setTargetAtTime(0, ctx.currentTime, 0.1); window.setTimeout(() => g.disconnect(), 800); }
-  trackGain = null; playing = null;
+  trackGain = null; playing = null; paused = false;
   playerChanged();
 }
 

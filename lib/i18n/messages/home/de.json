@@ -59,5 +59,9 @@
   "status_network_v": "Solana Mainnet, USDC",
   "final_title": "Das Brett wartet.",
   "final_sub": "Wärm dich im Abenteuer auf, während Ranked sich bereitmacht.",
-  "mascots_label": "Die BlockBite-Crew"
+  "mascots_label": "Die BlockBite-Crew",
+  "install_kicker": "Verfügbar als",
+  "install_label": "Web-App",
+  "install_ios": "Auf iPhone/iPad: Teilen tippen, dann Zum Home-Bildschirm.",
+  "install_other": "Öffne das Browsermenü und wähle App installieren (oder Zum Startbildschirm hinzufügen)."
 }

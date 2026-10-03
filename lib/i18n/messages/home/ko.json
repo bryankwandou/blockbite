@@ -59,5 +59,9 @@
   "status_network_v": "Solana 메인넷, USDC",
   "final_title": "보드가 기다리고 있어요.",
   "final_sub": "랭크가 준비되는 동안 어드벤처에서 워밍업하세요.",
-  "mascots_label": "BlockBite 크루"
+  "mascots_label": "BlockBite 크루",
+  "install_kicker": "다음으로 이용 가능",
+  "install_label": "웹 앱",
+  "install_ios": "iPhone/iPad: 공유를 누른 뒤 홈 화면에 추가를 선택하세요.",
+  "install_other": "브라우저 메뉴에서 앱 설치(또는 홈 화면에 추가)를 선택하세요."
 }

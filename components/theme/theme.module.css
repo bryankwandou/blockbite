@@ -30,3 +30,22 @@
 .note { font-size: 13px; color: var(--text-dim); margin: 0; }
 .banner { padding: 14px; border-radius: 14px; border: 2px solid var(--accent); background: var(--surface); display: grid; gap: 10px; margin-bottom: 18px; }
 .link { color: var(--accent); font-weight: 700; }
+.pgroup { content-visibility: auto; contain-intrinsic-size: auto 120px; margin-top: 10px; }
+.ptitle { margin: 0 0 6px; font-size: 13px; font-weight: 800; color: var(--text); }
+.ptitle span { font-weight: 600; color: var(--text-dim); }
+.pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(34px, 1fr)); gap: 6px; }
+.pdot { aspect-ratio: 1; min-height: 34px; border-radius: 10px; border: 2px solid var(--border); cursor: pointer; padding: 0; }
+.pdot:hover { border-color: var(--text-dim); }
+.pdot:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.pdot[aria-pressed='true'] { border-color: var(--text); box-shadow: 0 0 0 2px var(--accent); }
+.pstatus { min-height: 1.4em; margin: 0; font-size: 13px; font-weight: 700; color: var(--text); }
+.chip { display: inline-block; width: 14px; height: 14px; border-radius: 4px; border: 1px solid var(--border); margin-inline-end: 8px; vertical-align: -2px; }
+.saved { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.savedItem { display: flex; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); overflow: hidden; }
+.savedUse, .savedDel { background: none; border: 0; color: var(--text); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; padding: 8px 12px; }
+.savedUse[aria-pressed='true'] { box-shadow: inset 0 0 0 2px var(--accent); }
+.savedDel { padding-inline: 10px; color: var(--text-dim); }
+.savedUse:focus-visible, .savedDel:focus-visible, .action:focus-visible { outline: 3px solid var(--accent); outline-offset: -2px; }
+.action:disabled { opacity: .55; cursor: default; }
+html[data-gfx='low'] .pdot, html[data-gfx='low'] .swatch { transition: none; }
+@media (prefers-reduced-motion: reduce) { .pdot, .swatch { transition: none; } }

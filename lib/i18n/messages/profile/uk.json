@@ -38,5 +38,20 @@
   "featured_more": "Показати більше",
   "classic_title": "Класичні аватари",
   "combos": "Комбінацій: {n}",
-  "ach_link": "Дивитися свої досягнення"
+  "ach_link": "Дивитися свої досягнення",
+  "colors_open": "Усі {n} пастельних кольорів",
+  "colors_pick": "Колір {n}",
+  "gallery_title": "Галерея аватарів",
+  "gallery_count": "{n} аватарів · {combos} комбінацій",
+  "gallery_family": "Родина кольорів",
+  "gallery_all": "Усі",
+  "fam_warm": "Теплі",
+  "fam_mint": "М’ятні",
+  "fam_cool": "Холодні",
+  "fam_lilac": "Бузкові",
+  "fam_neutral": "Нейтральні",
+  "gallery_surprise": "Здивуй мене",
+  "gallery_page": "Сторінка {n} / {total}",
+  "gallery_prev": "Попередня сторінка",
+  "gallery_next": "Наступна сторінка"
 }

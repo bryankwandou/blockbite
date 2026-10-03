@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect, Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MuteToggle from '@/components/audio/MuteToggle';
+import MusicPanel, { MusicIcon } from '@/components/audio/MusicPanel';
 import { usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import styles from './Navbar.module.css';
@@ -17,11 +18,11 @@ const CustomWalletButton = dynamic(
 );
 
 const NAV_LINKS = [
-  { key: 'play',        href: '/game',        play: true  },
-  { key: 'ranked',      href: '/ranked',      play: false },
-  { key: 'leaderboard', href: '/leaderboard', play: false },
-  { key: 'shop',        href: '/shop',        play: false },
-  { key: 'guide',       href: '/how-to-play', play: false },
+  { key: 'play',        href: '/game'        },
+  { key: 'ranked',      href: '/ranked'      },
+  { key: 'leaderboard', href: '/leaderboard' },
+  { key: 'shop',        href: '/shop'        },
+  { key: 'guide',       href: '/how-to-play' },
 ] as const;
 
 export function SunIcon() {
@@ -58,6 +59,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [langMenuOpen, setLangMenuOpen] = useState(false);
+  const [musicOpen, setMusicOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const lang = useLang();
@@ -92,7 +94,46 @@ export default function Navbar() {
   const pickLang = (l: Locale) => { setLang(l); setLangMenuOpen(false); };
   const nextTheme = theme === 'dark' ? 'light' : 'dark';
   const themeLabel = theme === 'dark' ? t('switch_to_light') : t('switch_to_dark');
-  const isActive = (href: string) => pathname === href || (href !== '/' && pathname?.startsWith(href + '/'));
+  const isActive = (href: string) => {
+    const on = (p: string) => pathname === p || !!pathname?.startsWith(p + '/');
+    if (href === '/game') return on('/game') || on('/play') || on('/map');
+    return href !== '/' && on(href);
+  };
+
+  // Sliding pill under the active desktop link.
+  const ulRef = useRef<HTMLUListElement>(null);
+  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const pillRef = useRef<HTMLLIElement>(null);
+  const measured = useRef(false);
+  const activeKey = NAV_LINKS.find((l) => isActive(l.href))?.key ?? null;
+
+  useLayoutEffect(() => {
+    const place = () => {
+      const pill = pillRef.current;
+      if (!pill) return;
+      const el = activeKey ? linkRefs.current[activeKey] : null;
+      if (!el || el.offsetWidth === 0) { pill.classList.remove(styles.pillVisible); return; }
+      if (!measured.current) pill.classList.add(styles.pillInstant);
+      const ul = ulRef.current;
+      const left = ul ? el.getBoundingClientRect().left - ul.getBoundingClientRect().left - ul.clientLeft : el.offsetLeft;
+      pill.style.width = `${el.offsetWidth}px`;
+      pill.style.transform = `translateX(${left}px)`;
+      pill.classList.add(styles.pillVisible);
+      if (!measured.current) {
+        measured.current = true;
+        void pill.offsetWidth; // flush so the first placement does not animate
+        pill.classList.remove(styles.pillInstant);
+      }
+    };
+    place();
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(place) : null;
+    if (ro && ulRef.current) ro.observe(ulRef.current);
+    window.addEventListener('resize', place);
+    let cancelled = false;
+    document.fonts?.ready.then(() => { if (!cancelled) place(); });
+    return () => { cancelled = true; ro?.disconnect(); window.removeEventListener('resize', place); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname, activeKey, lang]);
 
   const THEMES: { id: Theme; label: string; icon: React.ReactNode }[] = [
     { id: 'light', label: t('theme_light'), icon: <SunIcon /> },
@@ -112,12 +153,14 @@ export default function Navbar() {
           <span className={styles.logoText} aria-hidden="true" />
         </Link>
 
-        <ul className={styles.links}>
+        <ul className={styles.links} ref={ulRef}>
+          <li className={styles.pill} ref={pillRef} aria-hidden="true" />
           {NAV_LINKS.map((link) => (
             <li key={link.key}>
               <Link
                 href={link.href}
-                className={`${styles.link} ${link.play ? styles.playLink : ''} ${isActive(link.href) ? styles.active : ''}`}
+                ref={(el) => { linkRefs.current[link.key] = el; }}
+                className={`${styles.link} ${isActive(link.href) ? styles.active : ''}`}
                 aria-current={isActive(link.href) ? 'page' : undefined}
               >
                 {t(link.key)}
@@ -159,6 +202,18 @@ export default function Navbar() {
               </div>
             )}
           </div>
+
+          <button
+            type="button"
+            className={styles.iconToggle}
+            onClick={() => { setMenuOpen(false); setMusicOpen(true); }}
+            aria-label={t('music_open')}
+            aria-haspopup="dialog"
+            aria-expanded={musicOpen}
+            title={t('music_open')}
+          >
+            <MusicIcon />
+          </button>
 
           <MuteToggle className={styles.iconToggle} />
 
@@ -224,6 +279,16 @@ export default function Navbar() {
             </Link>
           </div>
 
+          <button
+            type="button"
+            className={styles.mobileLink}
+            style={{ animationDelay: `${(NAV_LINKS.length + 1) * 30}ms`, background: 'none', border: 0, font: 'inherit', textAlign: 'start', cursor: 'pointer' }}
+            onClick={() => { setMenuOpen(false); setMusicOpen(true); }}
+          >
+            <span className={styles.mobileDot} aria-hidden="true" />
+            {t('music')}
+          </button>
+
           <div className={styles.mobilePrefs}>
             <label className={styles.prefRow}>
               <span className={styles.prefLabel}><GlobeIcon />{t('language')}</span>
@@ -259,6 +324,7 @@ export default function Navbar() {
           </div>
         </div>
       )}
+      <Suspense fallback={null}><MusicPanel open={musicOpen} onClose={() => setMusicOpen(false)} /></Suspense>
     </nav>
   );
 }

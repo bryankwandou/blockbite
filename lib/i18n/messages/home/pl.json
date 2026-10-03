@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "Plansza czeka.",
   "final_sub": "Rozgrzej się w Przygodzie, aż Ranked będzie gotowy.",
-  "mascots_label": "Ekipa BlockBite"
+  "mascots_label": "Ekipa BlockBite",
+  "install_kicker": "Dostępne jako",
+  "install_label": "aplikacja webowa",
+  "install_ios": "Na iPhonie/iPadzie: stuknij Udostępnij, potem Do ekranu początkowego.",
+  "install_other": "Otwórz menu przeglądarki i wybierz Zainstaluj aplikację (lub Dodaj do ekranu głównego)."
 }

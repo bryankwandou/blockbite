@@ -38,5 +38,20 @@
   "featured_more": "Mostra altro",
   "classic_title": "Avatar classici",
   "combos": "{n} combinazioni",
-  "ach_link": "Vedi i tuoi traguardi"
+  "ach_link": "Vedi i tuoi traguardi",
+  "colors_open": "Tutti i {n} colori pastello",
+  "colors_pick": "Colore {n}",
+  "gallery_title": "Galleria di avatar",
+  "gallery_count": "{n} avatar · {combos} combinazioni",
+  "gallery_family": "Famiglia di colori",
+  "gallery_all": "Tutti",
+  "fam_warm": "Caldo",
+  "fam_mint": "Menta",
+  "fam_cool": "Freddo",
+  "fam_lilac": "Lilla",
+  "fam_neutral": "Neutro",
+  "gallery_surprise": "Sorprendimi",
+  "gallery_page": "Pagina {n} / {total}",
+  "gallery_prev": "Pagina precedente",
+  "gallery_next": "Pagina successiva"
 }

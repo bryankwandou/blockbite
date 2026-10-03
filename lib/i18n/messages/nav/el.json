@@ -27,5 +27,19 @@
   "wallet_select": "Επιλέξτε πορτοφόλι",
   "wallet_pick": "Διαλέξτε το πορτοφόλι Solana σας",
   "wallet_detected": "ΑΝΙΧΝΕΥΤΗΚΕ",
-  "cancel": "Ακύρωση"
+  "cancel": "Ακύρωση",
+  "music": "Μουσική",
+  "music_open": "Άνοιγμα αναπαραγωγέα μουσικής",
+  "music_close": "Κλείσιμο αναπαραγωγέα μουσικής",
+  "music_nothing": "Δεν παίζει τίποτα",
+  "music_prev": "Προηγούμενο κομμάτι",
+  "music_next": "Επόμενο κομμάτι",
+  "music_play": "Αναπαραγωγή",
+  "music_pause": "Παύση",
+  "music_shuffle": "Τυχαία σειρά",
+  "music_repeat": "Επανάληψη κομματιού",
+  "music_play_track": "Αναπαραγωγή {name}",
+  "music_hint": "Σύρετε τα κομμάτια ή πατήστε Alt + βέλος πάνω/κάτω σε ένα κομμάτι για αναδιάταξη.",
+  "music_playlist_for": "Λίστα για: {ctx}",
+  "music_paused": "Σε παύση"
 }

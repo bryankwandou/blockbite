@@ -27,5 +27,19 @@
   "wallet_select": "选择钱包",
   "wallet_pick": "选择你的 Solana 钱包",
   "wallet_detected": "已检测到",
-  "cancel": "取消"
+  "cancel": "取消",
+  "music": "音乐",
+  "music_open": "打开音乐播放器",
+  "music_close": "关闭音乐播放器",
+  "music_nothing": "没有正在播放的内容",
+  "music_prev": "上一首",
+  "music_next": "下一首",
+  "music_play": "播放",
+  "music_pause": "暂停",
+  "music_shuffle": "随机播放",
+  "music_repeat": "单曲循环",
+  "music_play_track": "播放 {name}",
+  "music_hint": "拖动曲目，或在曲目上按 Alt + 上/下箭头来调整顺序。",
+  "music_playlist_for": "播放列表：{ctx}",
+  "music_paused": "已暂停"
 }

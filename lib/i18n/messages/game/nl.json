@@ -97,5 +97,9 @@
   "tut_title_7": "IJstijd",
   "tut_title_8": "Combotijd",
   "tut_title_9": "Omgekeerde zwaartekracht",
-  "tut_title_10": "Baas: Awakener"
+  "tut_title_10": "Baas: Awakener",
+  "help_open": "Zo speel je",
+  "help_close": "Sluiten",
+  "new_personal_best": "NIEUW PERSOONLIJK RECORD!",
+  "top10_place": "TOP 10: #{rank}"
 }

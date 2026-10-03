@@ -97,5 +97,9 @@
   "tut_title_7": "Εποχή των παγετώνων",
   "tut_title_8": "Ώρα για combo",
   "tut_title_9": "Αντίστροφη βαρύτητα",
-  "tut_title_10": "Αφεντικό: Awakener"
+  "tut_title_10": "Αφεντικό: Awakener",
+  "help_open": "Πώς παίζεται",
+  "help_close": "Κλείσιμο",
+  "new_personal_best": "ΝΕΟ ΠΡΟΣΩΠΙΚΟ ΡΕΚΟΡ!",
+  "top10_place": "TOP 10: #{rank}"
 }

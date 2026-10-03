@@ -4,6 +4,8 @@
  */
 
 async function kv() {
+  // @vercel/kv imports fine without its env vars and throws on first use.
+  if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) return null;
   try {
     const m = await import('@vercel/kv');
     return m.kv;

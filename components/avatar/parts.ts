@@ -9,9 +9,10 @@
  * Rendering is one inline SVG string built from flat shapes, no images.
  */
 
-type Pal = { name: string; main: string; dark: string; light: string; ink: string };
+export type PalFamily = 'warm' | 'mint' | 'cool' | 'lilac' | 'neutral';
+type Pal = { name: string; main: string; dark: string; light: string; ink: string; fam: PalFamily };
 
-export const PALETTES: Pal[] = [
+const CLASSIC: Omit<Pal, 'fam'>[] = [
   { name: 'Grape',   main: '#9945FF', dark: '#5B1FB0', light: '#D7B8FF', ink: '#1A0B33' },
   { name: 'Aqua',    main: '#14F1D9', dark: '#0A9E8E', light: '#B9FFF6', ink: '#05302B' },
   { name: 'Lava',    main: '#FF5A1F', dark: '#B32C00', light: '#FFC2A6', ink: '#3A0F00' },
@@ -29,6 +30,47 @@ export const PALETTES: Pal[] = [
   { name: 'Violet',  main: '#C026D3', dark: '#7A0E87', light: '#F2B8FA', ink: '#2A0230' },
   { name: 'Copper',  main: '#C27C3E', dark: '#7C4719', light: '#EBC7A5', ink: '#2B1606' },
 ];
+
+const CLASSIC_FAM: PalFamily[] = ['lilac', 'mint', 'warm', 'mint', 'warm', 'warm', 'cool', 'mint', 'neutral', 'neutral', 'warm', 'cool', 'warm', 'mint', 'lilac', 'warm'];
+
+function hex(h: number, sat: number, l: number): string {
+  const a = (sat / 100) * Math.min(l / 100, 1 - l / 100);
+  const f = (n: number) => {
+    const k = (n + h / 30) % 12;
+    const v = l / 100 - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
+    return Math.round(v * 255).toString(16).padStart(2, '0');
+  };
+  return '#' + f(0) + f(8) + f(4);
+}
+const famOf = (h: number): PalFamily => (h >= 345 || h < 65 ? 'warm' : h < 170 ? 'mint' : h < 255 ? 'cool' : 'lilac');
+
+/** 240 deterministic soft pastels: 22 hues x 10 (saturation, lightness) steps + 20 neutral tints. */
+function pastel(i: number): Pal {
+  let h: number, s: number, l: number, fam: PalFamily;
+  if (i < 220) {
+    h = Math.round(((i % 22) * 360) / 22);
+    const v = Math.floor(i / 22);
+    s = v < 9 ? [35, 55, 75][v % 3] : 90;
+    l = v < 9 ? [74, 80, 86][Math.floor(v / 3)] : 82;
+    fam = famOf(h);
+  } else {
+    const n = i - 220;
+    h = n * 18;
+    s = 8 + (n % 4) * 4;
+    l = 72 + (n * 7 % 19);
+    fam = 'neutral';
+  }
+  return {
+    name: 'Pastel ' + (i + 1), fam,
+    main: hex(h, s, l), dark: hex(h, Math.min(s + 8, 85), l - 30), light: hex(h, s, 94), ink: hex(h, Math.min(s, 40), 15),
+  };
+}
+
+export const PALETTES: Pal[] = [
+  ...CLASSIC.map((p, i) => ({ ...p, fam: CLASSIC_FAM[i] })),
+  ...Array.from({ length: 240 }, (_, i) => pastel(i)),
+];
+export const CLASSIC_PALETTE_COUNT = CLASSIC.length;
 
 type Body = { name: string; draw: (p: Pal) => string; top: number; cy: number };
 
@@ -138,12 +180,15 @@ export type AvatarParts = Record<PartKey, number>;
 
 export const AVATAR_COMBOS = PART_KEYS.reduce((n, k) => n * AVATAR_PARTS[k].length, 1);
 
-export const CODE_RE = /^m1-b(\d{2})-p(\d{2})-e(\d{2})-m(\d{2})-a(\d{2})-g(\d{2})$/;
+/** m1 = 2-digit palette (legacy, first 100 palettes); m2 = 3-digit palette. */
+export const CODE_RE = /^m[12]-b\d{2}-p\d{2,3}-e\d{2}-m\d{2}-a\d{2}-g\d{2}$/;
+const RE_M1 = /^m1-b(\d{2})-p(\d{2})-e(\d{2})-m(\d{2})-a(\d{2})-g(\d{2})$/;
+const RE_M2 = /^m2-b(\d{2})-p(\d{3})-e(\d{2})-m(\d{2})-a(\d{2})-g(\d{2})$/;
 
 /** Parses a code; null when it is malformed or names a part that does not exist. */
 export function parseCode(code: unknown): AvatarParts | null {
   if (typeof code !== 'string') return null;
-  const m = CODE_RE.exec(code);
+  const m = RE_M1.exec(code) ?? RE_M2.exec(code);
   if (!m) return null;
   const out = {} as AvatarParts;
   for (let i = 0; i < PART_KEYS.length; i++) {
@@ -156,7 +201,9 @@ export function parseCode(code: unknown): AvatarParts | null {
 }
 
 export function formatCode(p: AvatarParts): string {
-  return 'm1-' + PART_KEYS.map((k) => k + String(p[k]).padStart(2, '0')).join('-');
+  // m1 stays for palettes < 100 so every old code keeps its exact string; m2 only when p needs 3 digits.
+  const v2 = p.p >= 100;
+  return (v2 ? 'm2-' : 'm1-') + PART_KEYS.map((k) => k + String(p[k]).padStart(k === 'p' && v2 ? 3 : 2, '0')).join('-');
 }
 
 export const isAvatarCode = (code: unknown): code is string => parseCode(code) !== null;
@@ -167,13 +214,26 @@ export function partsFromSeed(seed: number): AvatarParts {
   const out = {} as AvatarParts;
   for (const k of PART_KEYS) {
     x = (x ^ (x >>> 13)) * 1103515245 + 12345 >>> 0;
-    out[k] = (x >>> 8) % AVATAR_PARTS[k].length;
+    out[k] = (x >>> 8) % (k === 'p' ? CLASSIC_PALETTE_COUNT : AVATAR_PARTS[k].length);
+  }
+  return out;
+}
+
+/** Gallery size and the deterministic index -> parts map (a bijection for i < AVATAR_COMBOS). */
+export const GALLERY_SIZE = 5040;
+export function galleryParts(i: number): AvatarParts {
+  let x = (i * 1000003 + 12345) % AVATAR_COMBOS;
+  const out = {} as AvatarParts;
+  for (const k of PART_KEYS) {
+    const n = AVATAR_PARTS[k].length;
+    out[k] = x % n;
+    x = Math.floor(x / n);
   }
   return out;
 }
 
 export function randomParts(): AvatarParts {
-  return partsFromSeed(Math.floor(Math.random() * 2 ** 31));
+  return galleryParts(Math.floor(Math.random() * AVATAR_COMBOS));
 }
 
 export function avatarName(p: AvatarParts): string {

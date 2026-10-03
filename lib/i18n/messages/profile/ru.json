@@ -38,5 +38,20 @@
   "featured_more": "Показать ещё",
   "classic_title": "Классические аватары",
   "combos": "{n} комбинаций",
-  "ach_link": "Смотреть достижения"
+  "ach_link": "Смотреть достижения",
+  "colors_open": "Все {n} пастельных цветов",
+  "colors_pick": "Цвет {n}",
+  "gallery_title": "Галерея аватаров",
+  "gallery_count": "{n} аватаров · {combos} комбинаций",
+  "gallery_family": "Семейство цветов",
+  "gallery_all": "Все",
+  "fam_warm": "Тёплые",
+  "fam_mint": "Мятные",
+  "fam_cool": "Холодные",
+  "fam_lilac": "Сиреневые",
+  "fam_neutral": "Нейтральные",
+  "gallery_surprise": "Удиви меня",
+  "gallery_page": "Страница {n} / {total}",
+  "gallery_prev": "Предыдущая страница",
+  "gallery_next": "Следующая страница"
 }

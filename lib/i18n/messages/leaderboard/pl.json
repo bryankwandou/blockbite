@@ -33,5 +33,16 @@
   "step2_desc": "Każdego dnia UTC wszyscy dostają tę samą planszę i te same klocki. Liczy się twoja najlepsza próba.",
   "step3_title": "Top 10 wygrywa",
   "step3_desc": "Dzienna i miesięczna top 10 wygrywa USDC. Po 24-godzinnej kontroli zwycięzcy odbierają je portfelem z programu nagród.",
-  "prizes_link": "Jak dzielone są nagrody"
+  "prizes_link": "Jak dzielone są nagrody",
+  "period_adventure": "Przygoda",
+  "col_level": "Poziom",
+  "empty_adventure": "Na darmowej tablicy nie ma jeszcze nikogo. Ukończ grę z podłączonym portfelem, aby na nią trafić.",
+  "footer_adventure": "Darmowy tryb Przygoda: ranking według najwyższego osiągniętego poziomu, potem najlepszego wyniku. Dla zabawy, bez nagród.",
+  "podium_label": "Top 3 graczy",
+  "crown_label": "Zwycięzca",
+  "winner_day_title": "Wczorajszy zwycięzca",
+  "winner_month_title": "Zwycięzca z zeszłego miesiąca",
+  "winner_empty": "Brak zakończonych rund",
+  "winner_empty_desc": "Zwycięzca każdego dnia i miesiąca pojawi się tu po zamknięciu rundy.",
+  "winner_share": "Największy udział {share}%"
 }

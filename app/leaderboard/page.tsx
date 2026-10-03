@@ -7,7 +7,10 @@ import Navbar from '@/components/Navbar';
 import PoolBalance from '@/components/PoolBalance';
 import ResetClock from '@/components/ResetClock';
 import { PlayerAvatar } from '@/components/CssAvatars';
-import { MONTHLY_BEST_DAYS, PAYOUT_CURVE_BPS } from '@/lib/ranked/config';
+import ReferralBoard from '@/components/referral/ReferralBoard';
+import Podium from '@/components/leaderboard/Podium';
+import WinnerReveal from '@/components/leaderboard/WinnerReveal';
+import { MONTHLY_BEST_DAYS, PAYOUT_CURVE_BPS, RANKED_SALES_OPEN } from '@/lib/ranked/config';
 import { useT } from '@/lib/i18n';
 import k from '@/components/PageKit.module.css';
 import s from './leaderboard.module.css';
@@ -18,8 +21,11 @@ interface RankedRow {
   avatarId: string | null;
 }
 
-type Period = 'day' | 'month';
-const PERIODS: readonly Period[] = ['day', 'month'];
+/** day / month: paid Ranked (prizes). adventure: free mode, level reached, no prizes. */
+type Period = 'day' | 'month' | 'adventure';
+// While ticket sales are closed nobody can be on Today/This month, so the
+// free board comes first and opens by default.
+const PERIODS: readonly Period[] = RANKED_SALES_OPEN ? ['day', 'month', 'adventure'] : ['adventure', 'day', 'month'];
 
 function shortWallet(addr: string) {
   if (addr.length < 12) return addr;
@@ -30,6 +36,8 @@ function shortWallet(addr: string) {
 function toRow(x: unknown): RankedRow | null {
   if (!x || typeof x !== 'object') return null;
   const r = x as Record<string, unknown>;
+  // Adventure rows rank by level reached; show that as the score column.
+  if (typeof r.level === 'number') r.score = r.level;
   if (typeof r.wallet !== 'string' || typeof r.score !== 'number' || !Number.isFinite(r.score)) return null;
   const avatar = r.avatarId ?? r.avatar_id;
   return { wallet: r.wallet, score: r.score, avatarId: typeof avatar === 'string' ? avatar : null };
@@ -42,9 +50,10 @@ export default function LeaderboardPage() {
   const t = useT('leaderboard');
   const { publicKey } = useWallet();
   const me = publicKey?.toBase58() ?? null;
-  const [period, setPeriod] = useState<Period>('day');
+  const [period, setPeriod] = useState<Period>(PERIODS[0]);
   const [rows, setRows] = useState<RankedRow[]>([]);
   const [day, setDay] = useState<string | null>(null);
+  const [advMe, setAdvMe] = useState<{ rank: number; level: number } | null>(null);
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
@@ -54,13 +63,17 @@ export default function LeaderboardPage() {
     let alive = true;
     setLoading(true);
     setFailed(false);
-    fetch(`/api/ranked/leaderboard?period=${period}`, { cache: 'no-store' })
+    const url = period === 'adventure'
+      ? `/api/adventure/leaderboard${me ? `?wallet=${me}` : ''}`
+      : `/api/ranked/leaderboard?period=${period}`;
+    fetch(url, { cache: 'no-store' })
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
       .then((data) => {
         if (!alive) return;
         const list: unknown[] = Array.isArray(data?.rows) ? data.rows : [];
         setRows(list.map(toRow).filter((x): x is RankedRow => x !== null));
         if (typeof data?.day === 'string') setDay(data.day);
+        setAdvMe(period === 'adventure' && data?.me && typeof data.me.rank === 'number' ? data.me : null);
       })
       .catch(() => {
         if (!alive) return;
@@ -69,7 +82,7 @@ export default function LeaderboardPage() {
       })
       .finally(() => { if (alive) setLoading(false); });
     return () => { alive = false; };
-  }, [period, attempt]);
+  }, [period, attempt, me]);
 
   const retry = useCallback(() => setAttempt((n) => n + 1), []);
   const daysLabel = (n: number) => t('days_short', { n });
@@ -90,6 +103,8 @@ export default function LeaderboardPage() {
   };
 
   const mineIdx = me ? rows.findIndex((r) => r.wallet === me) : -1;
+  const adventure = period === 'adventure';
+  const myRank = adventure && advMe ? advMe.rank : mineIdx >= 0 ? mineIdx + 1 : null;
 
   return (
     <>
@@ -106,14 +121,16 @@ export default function LeaderboardPage() {
                 <PoolBalance className={k.statV} />
                 <span className={k.statNote}>{t('pool_note')}</span>
               </div>
-              <div className={`${k.card} ${k.stat}`}>
-                <span className={k.statK}>{period === 'day' ? t('closes_in') : t('closes_in_month')}</span>
-                <ResetClock key={period} kind={period} className={k.statV} daysLabel={daysLabel} />
-              </div>
-              {mineIdx >= 0 && (
+              {!adventure && (
+                <div className={`${k.card} ${k.stat}`}>
+                  <span className={k.statK}>{period === 'day' ? t('closes_in') : t('closes_in_month')}</span>
+                  <ResetClock key={period} kind={period === 'month' ? 'month' : 'day'} className={k.statV} daysLabel={daysLabel} />
+                </div>
+              )}
+              {myRank !== null && (
                 <div className={`${k.card} ${k.stat}`}>
                   <span className={k.statK}>{t('your_rank')}</span>
-                  <span className={k.statV} dir="ltr">#{mineIdx + 1}</span>
+                  <span className={k.statV} dir="ltr">#{myRank}</span>
                 </div>
               )}
             </div>
@@ -137,10 +154,15 @@ export default function LeaderboardPage() {
                   onKeyDown={(e) => onTabKey(e, i)}
                   className={`${s.tab} ${period === p ? s.tabOn : ''}`}
                 >
-                  {p === 'day' ? t('period_daily') : t('period_monthly')}
+                  {p === 'day' ? t('period_daily') : p === 'month' ? t('period_monthly') : t('period_adventure')}
                 </button>
               ))}
             </div>
+
+            {!loading && !failed && rows.length > 0 && (
+              <Podium rows={rows.slice(0, 3)} tabKey={period} unit={adventure ? t('col_level') : t('col_score')} me={me} />
+            )}
+            {!adventure && <WinnerReveal key={period} kind={period === 'month' ? 'month' : 'day'} />}
 
             <div
               id="lb-panel"
@@ -152,8 +174,8 @@ export default function LeaderboardPage() {
               <div className={s.rowHead}>
                 <span>{t('col_rank')}</span>
                 <span>{t('col_player')}</span>
-                <span className={s.shareHead}>{t('col_share')}</span>
-                <span style={{ textAlign: 'end' }}>{t('col_score')}</span>
+                <span className={s.shareHead}>{adventure ? '' : t('col_share')}</span>
+                <span style={{ textAlign: 'end' }}>{adventure ? t('col_level') : t('col_score')}</span>
               </div>
 
               {loading && (
@@ -179,8 +201,8 @@ export default function LeaderboardPage() {
                     {Array.from({ length: 64 }, (_, i) => <i key={i} className={GHOST.has(i) ? s.on : undefined} />)}
                   </div>
                   <span className={`${k.tag} ${k.tagAccent}`}>{t('empty_tag')}</span>
-                  <p className={s.stateTitle}>{period === 'day' ? t('empty_daily') : t('empty_monthly')}</p>
-                  <p className={k.body} style={{ maxWidth: 380 }}>{t('empty_desc')}</p>
+                  <p className={s.stateTitle}>{period === 'day' ? t('empty_daily') : period === 'month' ? t('empty_monthly') : t('empty_adventure')}</p>
+                  {!adventure && <p className={k.body} style={{ maxWidth: 380 }}>{t('empty_desc')}</p>}
                   <Link href="/game" className={k.btn}>{t('empty_cta')}</Link>
                 </div>
               )}
@@ -191,7 +213,7 @@ export default function LeaderboardPage() {
                     const mine = row.wallet === me;
                     const cls = [s.row];
                     if (i < 3) cls.push(s.top3);
-                    if (i === 10) cls.push(s.cut);
+                    if (i === 10 && !adventure) cls.push(s.cut);
                     if (mine) cls.push(s.mine);
                     return (
                       <li key={row.wallet} className={cls.join(' ')} style={{ animationDelay: `${Math.min(i, 12) * 30}ms` }}>
@@ -202,7 +224,7 @@ export default function LeaderboardPage() {
                           {mine && <span className={s.you}>{t('you')}</span>}
                         </span>
                         <span className={s.share} dir="ltr">
-                          {i < PAYOUT_CURVE_BPS.length ? `${PAYOUT_CURVE_BPS[i] / 100}%` : ''}
+                          {!adventure && i < PAYOUT_CURVE_BPS.length ? `${PAYOUT_CURVE_BPS[i] / 100}%` : ''}
                         </span>
                         <span className={s.score}>{row.score.toLocaleString('en-US')}</span>
                       </li>
@@ -213,7 +235,7 @@ export default function LeaderboardPage() {
 
               {!loading && !failed && (
                 <div className={s.foot}>
-                  <span>{period === 'day' ? t('footer_daily') : t('footer_monthly', { n: MONTHLY_BEST_DAYS })}</span>
+                  <span>{period === 'day' ? t('footer_daily') : period === 'month' ? t('footer_monthly', { n: MONTHLY_BEST_DAYS }) : t('footer_adventure')}</span>
                   {period === 'day' && day && (
                     <a href={`/api/ranked/day?d=${day}`} target="_blank" rel="noopener noreferrer">{t('verify_link')}</a>
                   )}
@@ -222,6 +244,8 @@ export default function LeaderboardPage() {
               )}
             </div>
           </section>
+
+          <ReferralBoard />
 
           <section className={k.section}>
             <h2 className={k.h2}>{t('how_it_works')}</h2>

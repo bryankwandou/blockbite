@@ -59,5 +59,9 @@
   "status_network_v": "Solana mainnet, USDC",
   "final_title": "Papannya sudah menunggu.",
   "final_sub": "Pemanasan di Adventure sambil ranked disiapkan.",
-  "mascots_label": "Kru BlockBite"
+  "mascots_label": "Kru BlockBite",
+  "install_kicker": "Tersedia sebagai",
+  "install_label": "Web App",
+  "install_ios": "Di iPhone/iPad: ketuk Bagikan, lalu Tambah ke Layar Utama.",
+  "install_other": "Buka menu browser lalu pilih Instal aplikasi (atau Tambahkan ke layar utama)."
 }

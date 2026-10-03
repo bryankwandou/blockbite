@@ -39,8 +39,9 @@ const BUNDLES: Record<string, Record<string, string>> = {
 
 export async function GET(
   _req: Request,
-  { params }: { params: { lang: string } },
+  ctx: { params: Promise<{ lang: string }> },
 ) {
+  const params = await ctx.params;
   const lang = params.lang === 'id' ? 'id' : 'en';
 
   // Try KV override (designers can hot-edit without redeploy)

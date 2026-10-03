@@ -27,5 +27,19 @@
   "wallet_select": "Wybierz portfel",
   "wallet_pick": "Wybierz swój portfel Solana",
   "wallet_detected": "WYKRYTO",
-  "cancel": "Anuluj"
+  "cancel": "Anuluj",
+  "music": "Muzyka",
+  "music_open": "Otwórz odtwarzacz muzyki",
+  "music_close": "Zamknij odtwarzacz muzyki",
+  "music_nothing": "Nic nie gra",
+  "music_prev": "Poprzedni utwór",
+  "music_next": "Następny utwór",
+  "music_play": "Odtwórz",
+  "music_pause": "Pauza",
+  "music_shuffle": "Losowo",
+  "music_repeat": "Powtarzaj utwór",
+  "music_play_track": "Odtwórz {name}",
+  "music_hint": "Przeciągnij utwory lub naciśnij Alt + strzałkę w górę/dół na utworze, aby zmienić kolejność.",
+  "music_playlist_for": "Playlista dla: {ctx}",
+  "music_paused": "Wstrzymano"
 }

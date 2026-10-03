@@ -33,5 +33,16 @@
   "step2_desc": "UTC の毎日、全員が同じボードと同じピースで遊びます。ベストの挑戦が有効です。",
   "step3_title": "トップ10が勝ち",
   "step3_desc": "日次・月次のトップ10が USDC を受け取ります。24時間のチェックのあと、勝者は自分のウォレットで賞金プログラムから受け取ります。",
-  "prizes_link": "賞金の分け方"
+  "prizes_link": "賞金の分け方",
+  "period_adventure": "アドベンチャー",
+  "col_level": "レベル",
+  "empty_adventure": "無料ボードにはまだ誰もいません。ウォレットを接続して1ゲーム終えると参加できます。",
+  "footer_adventure": "無料のアドベンチャーモード：到達した最高レベル、次にベストスコアで順位付け。お楽しみ用で、賞品はありません。",
+  "podium_label": "トップ3プレイヤー",
+  "crown_label": "優勝",
+  "winner_day_title": "昨日の優勝者",
+  "winner_month_title": "先月の優勝者",
+  "winner_empty": "終了したラウンドはまだありません",
+  "winner_empty_desc": "毎日・毎月の優勝者は、ラウンド終了後にここに表示されます。",
+  "winner_share": "最大取り分 {share}%"
 }

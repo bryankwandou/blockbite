@@ -97,5 +97,9 @@
   "tut_title_7": "Ice Age",
   "tut_title_8": "Combo Time",
   "tut_title_9": "Gravity Flip",
-  "tut_title_10": "Boss: Awakener"
+  "tut_title_10": "Boss: Awakener",
+  "help_open": "How to play",
+  "help_close": "Close",
+  "new_personal_best": "NEW PERSONAL BEST!",
+  "top10_place": "TOP 10: #{rank}"
 }

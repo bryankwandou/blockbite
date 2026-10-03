@@ -27,5 +27,19 @@
   "wallet_select": "Vyber peněženku",
   "wallet_pick": "Vyber svou peněženku Solana",
   "wallet_detected": "NALEZENO",
-  "cancel": "Zrušit"
+  "cancel": "Zrušit",
+  "music": "Hudba",
+  "music_open": "Otevřít hudební přehrávač",
+  "music_close": "Zavřít hudební přehrávač",
+  "music_nothing": "Nic nehraje",
+  "music_prev": "Předchozí skladba",
+  "music_next": "Další skladba",
+  "music_play": "Přehrát",
+  "music_pause": "Pozastavit",
+  "music_shuffle": "Náhodně",
+  "music_repeat": "Opakovat skladbu",
+  "music_play_track": "Přehrát {name}",
+  "music_hint": "Skladby přetáhněte, nebo na skladbě stiskněte Alt + šipku nahoru/dolů a změňte pořadí.",
+  "music_playlist_for": "Playlist pro: {ctx}",
+  "music_paused": "Pozastaveno"
 }

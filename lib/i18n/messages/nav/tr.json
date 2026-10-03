@@ -27,5 +27,19 @@
   "wallet_select": "Cüzdan seç",
   "wallet_pick": "Solana cüzdanını seç",
   "wallet_detected": "ALGILANDI",
-  "cancel": "İptal"
+  "cancel": "İptal",
+  "music": "Müzik",
+  "music_open": "Müzik çaları aç",
+  "music_close": "Müzik çaları kapat",
+  "music_nothing": "Hiçbir şey çalmıyor",
+  "music_prev": "Önceki parça",
+  "music_next": "Sonraki parça",
+  "music_play": "Oynat",
+  "music_pause": "Duraklat",
+  "music_shuffle": "Karıştır",
+  "music_repeat": "Parçayı tekrarla",
+  "music_play_track": "{name} parçasını oynat",
+  "music_hint": "Sırayı değiştirmek için parçaları sürükleyin veya bir parçada Alt + Yukarı/Aşağı ok tuşuna basın.",
+  "music_playlist_for": "Çalma listesi: {ctx}",
+  "music_paused": "Duraklatıldı"
 }

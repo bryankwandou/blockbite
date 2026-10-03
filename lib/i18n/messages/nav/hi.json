@@ -27,5 +27,19 @@
   "wallet_select": "वॉलेट चुनें",
   "wallet_pick": "अपना Solana वॉलेट चुनें",
   "wallet_detected": "मिला",
-  "cancel": "रद्द करें"
+  "cancel": "रद्द करें",
+  "music": "संगीत",
+  "music_open": "म्यूज़िक प्लेयर खोलें",
+  "music_close": "म्यूज़िक प्लेयर बंद करें",
+  "music_nothing": "कुछ नहीं चल रहा",
+  "music_prev": "पिछला ट्रैक",
+  "music_next": "अगला ट्रैक",
+  "music_play": "चलाएँ",
+  "music_pause": "रोकें",
+  "music_shuffle": "शफ़ल",
+  "music_repeat": "ट्रैक दोहराएँ",
+  "music_play_track": "{name} चलाएँ",
+  "music_hint": "क्रम बदलने के लिए ट्रैक खींचें, या किसी ट्रैक पर Alt + ऊपर/नीचे तीर दबाएँ।",
+  "music_playlist_for": "इसके लिए प्लेलिस्ट: {ctx}",
+  "music_paused": "रुका हुआ"
 }

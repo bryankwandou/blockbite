@@ -27,5 +27,19 @@
   "wallet_select": "Pumili ng wallet",
   "wallet_pick": "Piliin ang Solana wallet mo",
   "wallet_detected": "NAKITA",
-  "cancel": "Kanselahin"
+  "cancel": "Kanselahin",
+  "music": "Musika",
+  "music_open": "Buksan ang music player",
+  "music_close": "Isara ang music player",
+  "music_nothing": "Walang pinapatugtog",
+  "music_prev": "Nakaraang track",
+  "music_next": "Susunod na track",
+  "music_play": "I-play",
+  "music_pause": "I-pause",
+  "music_shuffle": "Shuffle",
+  "music_repeat": "Ulitin ang track",
+  "music_play_track": "I-play ang {name}",
+  "music_hint": "I-drag ang mga track, o pindutin ang Alt + pataas/pababang arrow sa isang track, para ayusin ang pagkakasunod.",
+  "music_playlist_for": "Playlist para sa: {ctx}",
+  "music_paused": "Naka-pause"
 }
