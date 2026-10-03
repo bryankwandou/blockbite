@@ -68,14 +68,24 @@ export async function money() {
   let vaultBalance: number | null = null;
   let vaultReserved: number | null = null;
   let vaultError: string | null = null;
+  let vaultNote: string | null = null;
   try {
-    const r = await rpc<{ value: { amount: string } }>('getTokenAccountBalance', [PRIZE_VAULT.toBase58()]);
-    vaultBalance = Number(r.value.amount) / 1e6;
-    // PrizeState.reserved: u64 at byte 8 (same layout app/api/prizepool reads).
-    const st = await rpc<{ value: { owner: string; data: [string, string] } | null }>(
-      'getAccountInfo', [PRIZE_STATE.toBase58(), { encoding: 'base64' }]);
-    if (st.value && st.value.owner === PRIZE_PROGRAM_ID.toBase58()) {
-      vaultReserved = Number(Buffer.from(st.value.data[0], 'base64').readBigUInt64LE(8)) / 1e6;
+    // The vault token account is created with the first ticket sale; until then it does not exist
+    // and getTokenAccountBalance errors. That is "0 USDC, not opened yet", not an RPC failure.
+    const acct = await rpc<{ value: unknown }>('getAccountInfo', [PRIZE_VAULT.toBase58(), { encoding: 'base64' }]);
+    if (!acct.value) {
+      vaultBalance = 0;
+      vaultReserved = 0;
+      vaultNote = 'Prize vault not created on mainnet yet: ranked ticket sales are closed, so no USDC has been paid in.';
+    } else {
+      const r = await rpc<{ value: { amount: string } }>('getTokenAccountBalance', [PRIZE_VAULT.toBase58()]);
+      vaultBalance = Number(r.value.amount) / 1e6;
+      // PrizeState.reserved: u64 at byte 8 (same layout app/api/prizepool reads).
+      const st = await rpc<{ value: { owner: string; data: [string, string] } | null }>(
+        'getAccountInfo', [PRIZE_STATE.toBase58(), { encoding: 'base64' }]);
+      if (st.value && st.value.owner === PRIZE_PROGRAM_ID.toBase58()) {
+        vaultReserved = Number(Buffer.from(st.value.data[0], 'base64').readBigUInt64LE(8)) / 1e6;
+      }
     }
   } catch (e) {
     vaultError = 'RPC read failed'; // RPC errors can echo a keyed URL; keep it out of the UI
@@ -97,7 +107,7 @@ export async function money() {
     },
     days,
     topReferrers: (top ?? []).map((r) => ({ k: r.k, tickets: r.tickets, usdc: (r.tickets * REFERRAL_SHARE) / 1e6 })),
-    vaultBalance, vaultError, vaultReserved,
+    vaultBalance, vaultError, vaultNote, vaultReserved,
     vaultFree: vaultBalance === null ? null : Math.max(0, vaultBalance - (vaultReserved ?? 0)),
     openRisks: OPEN_RISKS,
     payouts: r0 && (r0.posted || r0.pending)

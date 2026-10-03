@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import { useT } from '@/lib/i18n';
 import { api, useConsoleAuth } from '@/lib/admin/useConsoleAuth';
@@ -15,28 +15,34 @@ export default function AdminPage() {
   const t = useT('admin');
   const auth = useConsoleAuth('admin');
   const [tab, setTab] = useState<Tab>('traffic');
-  const [data, setData] = useState<Any | null>(null);
+  // Tagged with the tab it was fetched for, so a tab never renders another tab's data.
+  const [loaded, setLoaded] = useState<{ tab: Tab; d: Any } | null>(null);
+  const latest = useRef<Tab | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const load = useCallback(async (which: Tab) => {
+    latest.current = which;
     setLoading(true);
     setErr(null);
-    setData(null);
+    setLoaded(null);
     try {
       const url = which === 'errors' ? '/api/admin/errors' : which === 'partners' ? '/api/admin/partners' : `/api/admin/stats?tab=${which}`;
-      setData(await api<Any>(url));
+      const d = await api<Any>(url);
+      if (latest.current === which) setLoaded({ tab: which, d });
     } catch (e) {
+      if (latest.current !== which) return;
       const m = e instanceof Error ? e.message : String(e);
       if (/sign in first/.test(m)) auth.setSession(null);
       setErr(m);
     } finally {
-      setLoading(false);
+      if (latest.current === which) setLoading(false);
     }
   }, [auth.setSession]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => { if (auth.session) load(tab); }, [auth.session, tab, load]);
 
+  const data = loaded && loaded.tab === tab ? loaded.d : null;
   const nd = t('no_data');
   const kv = (rows: KN[] | undefined, head: string) => rows?.length
     ? <Table head={[head, t('count')]} rows={rows.map((r) => [r.k, fmt(r.n, 0)])} />
@@ -155,6 +161,7 @@ function Money({ d, t }: { d: Any; t: TT }) {
             <Kpi label={t('vault_free')} value={d.vaultFree === null ? null : `${fmt(d.vaultFree)} USDC`} empty={t('no_data')} />
           </div>
           <p className={s.note}>{t('pool_rule', { vp: d.split.vaultPct, dp: d.split.dailyPct, dn: d.split.dailyTop, mp: d.split.monthlyPct, mn: d.split.monthlyTop })}</p>
+          {d.vaultNote && <p className={s.note}>{d.vaultNote}</p>}
           {d.vaultError && <p className={s.error}>{d.vaultError}</p>}
           <Source label={t('source')}>{d.source.vault}</Source>
         </section>
