@@ -14,7 +14,7 @@ export class RankedApiError extends Error {
 
 const tokenKey = (wallet: string) => `bb_rk_session_${wallet}`;
 
-function readToken(wallet: string): string | null {
+export function readToken(wallet: string): string | null {
   try {
     const t = sessionStorage.getItem(tokenKey(wallet));
     if (!t) return null;
@@ -67,6 +67,8 @@ export class RankedClient {
     try {
       sessionStorage.setItem(tokenKey(wallet), token);
     } catch { /* session still works for this page */ }
+    // WalletTracker waits for a session to attribute a pending referral.
+    window.dispatchEvent(new CustomEvent('bb:ranked-session', { detail: { wallet, token } }));
     return new RankedClient(wallet, token);
   }
 

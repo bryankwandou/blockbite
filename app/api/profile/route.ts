@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getUser, setUser } from '@/lib/store';
-import { verifySig } from '@/lib/sig';
+import { walletFromRequest } from '@/lib/ranked/auth';
 import { adventureConfigured, adventureLevel } from '@/lib/adventure/db';
 import { isAvatarId } from '@/lib/avatars';
 import { isLocale } from '@/lib/i18n/locales';
@@ -47,29 +47,24 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const rl = await rateLimit(`profile:${getIP(req)}`, 30, 60 * 60_000).catch(() => null);
   if (rl && !rl.allowed) return NextResponse.json({ error: 'too many changes, try again later' }, { status: 429 });
-  let input: { addr?: unknown; patch?: unknown; sig?: unknown };
+  // The wallet comes from its signed-in session (a short-lived token from a
+  // signed challenge). A bare signature over the patch could be replayed forever.
+  const addr = walletFromRequest(req);
+  if (!addr) return NextResponse.json({ error: 'sign in with your wallet first' }, { status: 401 });
+  let input: { addr?: unknown; patch?: unknown };
   try {
     input = await req.json();
   } catch {
     return NextResponse.json({ error: 'invalid JSON' }, { status: 400 });
   }
   try {
-    const { addr, sig } = input ?? {};
     const patch = input?.patch as Record<string, unknown> | undefined;
-    if (!addr || !patch || !sig) {
-      return NextResponse.json({ error: 'missing fields' }, { status: 400 });
-    }
-    if (typeof patch !== 'object' || Array.isArray(patch)) {
+    if (!patch || typeof patch !== 'object' || Array.isArray(patch)) {
       return NextResponse.json({ error: 'patch must be an object' }, { status: 400 });
     }
-    if (typeof sig !== 'string') {
-      return NextResponse.json({ error: 'invalid sig' }, { status: 400 });
+    if (input.addr !== undefined && input.addr !== addr) {
+      return NextResponse.json({ error: 'addr does not match the signed-in wallet' }, { status: 403 });
     }
-    if (typeof addr !== 'string' || !SOLANA_ADDR_RE.test(addr)) {
-      return NextResponse.json({ error: 'invalid addr' }, { status: 400 });
-    }
-    const ok = await verifySig(addr, JSON.stringify(patch), sig);
-    if (!ok) return NextResponse.json({ error: 'bad signature' }, { status: 403 });
 
     const ALLOWED = ['displayName', 'avatarId', 'language', 'theme'];
     const clean: Record<string, unknown> = {};

@@ -12,7 +12,7 @@ import {
 /** "NOT HANDLED / residual risk" from lib/ranked/AUDIT.md, condensed. Read-only; update when the audit changes. */
 const OPEN_RISKS = [
   'Re-posting a closed round id: after close the round account is deleted, so post accepts the same round_id again (POSTER key only; off-chain guard + 24 h veto). Program fix pending.',
-  'POSTER key compromise: a stolen hot key can post any root up to the free vault balance. No automatic watcher compares posted roots with rk_rounds and alerts the VETO holder.',
+  'POSTER key compromise: a stolen hot key can post any root up to the free vault balance. /api/cron/prize-watch compares every on-chain round with rk_rounds (GitHub Action hourly, Vercel cron daily); a mismatch fails the Action (GitHub emails the owner) and posts to ALERT_WEBHOOK_URL if set.',
   'No refund path for tickets bought but never played; the 70% stays in the pool. Must be stated in player copy.',
   'Rounds with zero winners: that day\'s 40% is never paid and not carried into the month; the USDC stays stuck in the vault with no payout rule.',
   'Unallocated dust and short-board slots accumulate in the vault (same issue as zero-winner rounds).',

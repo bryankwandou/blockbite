@@ -22,6 +22,9 @@
       ]
     }
   ],
+  "crons": [
+    { "path": "/api/cron/prize-watch", "schedule": "17 3 * * *" }
+  ],
   "rewrites": [
     { "source": "/health", "destination": "/api/health" }
   ]

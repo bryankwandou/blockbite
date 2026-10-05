@@ -13,9 +13,12 @@ export const ACTIVE_NETWORK: WalletAdapterNetwork = WalletAdapterNetwork.Mainnet
 // ── RPC endpoint ───────────────────────────────────────────────────
 // Set NEXT_PUBLIC_RPC_URL to a private mainnet node in production. A devnet or
 // testnet URL is ignored so a stale env var can never point the app off mainnet.
-const ENV_RPC = process.env.NEXT_PUBLIC_RPC_URL;
-export const RPC_URL =
-  ENV_RPC && !/devnet|testnet/i.test(ENV_RPC) ? ENV_RPC : 'https://api.mainnet-beta.solana.com';
+// On the server, SERVER_RPC_URL (never sent to browsers) wins, so the public key
+// can be locked to the site's domain without breaking server-side checks, which
+// send no Origin header.
+const mainnetOnly = (u: string | undefined) => (u && !/devnet|testnet/i.test(u) ? u : undefined);
+const SERVER_RPC = typeof window === 'undefined' ? mainnetOnly(process.env.SERVER_RPC_URL) : undefined;
+export const RPC_URL = SERVER_RPC ?? mainnetOnly(process.env.NEXT_PUBLIC_RPC_URL) ?? 'https://api.mainnet-beta.solana.com';
 
 // ── USDC ───────────────────────────────────────────────────────────
 // Circle's USDC on Solana mainnet.
