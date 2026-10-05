@@ -63,5 +63,6 @@
   "preview_track": "I-preview ang {name}",
   "stop_preview": "Ihinto ang preview",
   "move_up": "Itaas ang {name}",
-  "move_down": "Ibaba ang {name}"
+  "move_down": "Ibaba ang {name}",
+  "ticket_sales_open": "Open"
 }

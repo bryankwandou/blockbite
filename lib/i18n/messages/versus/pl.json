@@ -21,7 +21,7 @@
   "bot_board": "Plansza bota",
   "time_left": "Pozostały czas",
   "same_pieces": "Te same klocki dla obu",
-  "how_to": "Dotknij klocka, potem planszy.",
+  "how_to": "Przeciągnij klocek na planszę lub dotknij klocka, a potem pola.",
   "thinking": "Myśli…",
   "cell": "Rząd {row}, kolumna {col}",
   "piece": "Klocek {n}",

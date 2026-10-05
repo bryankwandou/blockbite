@@ -80,5 +80,6 @@
   "monthly_play_daily": "Speel het bord van vandaag",
   "monthly_connect": "Verbind een wallet om je maandscore en plek te zien.",
   "monthly_players": "{n} spelers deze maand",
-  "monthly_offline": "Het maandbord kon niet worden geladen. Probeer het later opnieuw."
+  "monthly_offline": "Het maandbord kon niet worden geladen. Probeer het later opnieuw.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

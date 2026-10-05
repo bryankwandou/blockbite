@@ -63,5 +63,9 @@
   "install_kicker": "Доступно как",
   "install_label": "веб-приложение",
   "install_ios": "На iPhone/iPad: нажмите «Поделиться», затем «На экран «Домой»».",
-  "install_other": "Откройте меню браузера и выберите «Установить приложение» (или «Добавить на главный экран»)."
+  "install_other": "Откройте меню браузера и выберите «Установить приложение» (или «Добавить на главный экран»).",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

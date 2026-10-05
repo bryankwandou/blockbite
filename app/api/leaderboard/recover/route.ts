@@ -12,21 +12,28 @@
  *   through the sorted-set layer without downgrading any existing score
  *   (uses the GT flag).
  *
- * Auth: requires ?secret=ADMIN_SECRET query param (or ADMIN_SECRET env var).
+ * Auth: ADMIN_SECRET via ?secret=, x-admin-secret, or Authorization: Bearer.
  * Safe to call multiple times — idempotent via GT flag.
  */
 
+import { timingSafeEqual } from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { recoverLegacyData } from '@/lib/leaderboard/store';
 
 export const dynamic = 'force-dynamic';
 
+function safeEqual(a: string, b: string): boolean {
+  const x = Buffer.from(a), y = Buffer.from(b);
+  return x.length === y.length && timingSafeEqual(x, y);
+}
+
 export async function POST(req: NextRequest) {
+  const bearer = req.headers.get('authorization')?.replace(/^Bearer\s+/i, '') || null;
   const secret = req.nextUrl.searchParams.get('secret')
-    ?? req.headers.get('x-admin-secret');
+    ?? req.headers.get('x-admin-secret') ?? bearer;
 
   const adminSecret = process.env.ADMIN_SECRET;
-  if (!adminSecret || secret !== adminSecret) {
+  if (!adminSecret || !secret || !safeEqual(secret, adminSecret)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

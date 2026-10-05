@@ -63,5 +63,9 @@
   "install_kicker": "可作为",
   "install_label": "网页应用",
   "install_ios": "在 iPhone/iPad 上：点“分享”，再点“添加到主屏幕”。",
-  "install_other": "打开浏览器菜单，选择“安装应用”（或“添加到主屏幕”）。"
+  "install_other": "打开浏览器菜单，选择“安装应用”（或“添加到主屏幕”）。",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

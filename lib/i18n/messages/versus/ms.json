@@ -21,7 +21,7 @@
   "bot_board": "Papan bot",
   "time_left": "Masa berbaki",
   "same_pieces": "Blok sama untuk kedua-duanya",
-  "how_to": "Ketik satu blok, kemudian ketik papan.",
+  "how_to": "Seret blok ke papan, atau ketik blok kemudian ketik petak.",
   "thinking": "Sedang berfikir…",
   "cell": "Baris {row}, lajur {col}",
   "piece": "Blok {n}",

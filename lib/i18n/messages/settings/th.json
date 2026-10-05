@@ -63,5 +63,6 @@
   "preview_track": "ฟังตัวอย่าง {name}",
   "stop_preview": "หยุดตัวอย่าง",
   "move_up": "เลื่อน {name} ขึ้น",
-  "move_down": "เลื่อน {name} ลง"
+  "move_down": "เลื่อน {name} ลง",
+  "ticket_sales_open": "Open"
 }

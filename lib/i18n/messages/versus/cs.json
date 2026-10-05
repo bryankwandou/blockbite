@@ -21,7 +21,7 @@
   "bot_board": "Deska bota",
   "time_left": "Zbývající čas",
   "same_pieces": "Stejné dílky pro oba",
-  "how_to": "Klepni na dílek, pak na desku.",
+  "how_to": "Přetáhni dílek na desku, nebo klepni na dílek a pak na políčko.",
   "thinking": "Přemýšlí…",
   "cell": "Řada {row}, sloupec {col}",
   "piece": "Dílek {n}",

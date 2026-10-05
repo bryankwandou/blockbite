@@ -63,5 +63,9 @@
   "install_kicker": "พร้อมใช้งานเป็น",
   "install_label": "Web App",
   "install_ios": "บน iPhone/iPad: แตะแชร์ แล้วเลือกเพิ่มไปยังหน้าจอโฮม",
-  "install_other": "เปิดเมนูเบราว์เซอร์แล้วเลือกติดตั้งแอป (หรือเพิ่มไปยังหน้าจอหลัก)"
+  "install_other": "เปิดเมนูเบราว์เซอร์แล้วเลือกติดตั้งแอป (หรือเพิ่มไปยังหน้าจอหลัก)",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

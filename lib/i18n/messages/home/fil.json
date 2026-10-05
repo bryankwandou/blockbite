@@ -63,5 +63,9 @@
   "install_kicker": "Available bilang",
   "install_label": "Web App",
   "install_ios": "Sa iPhone/iPad: i-tap ang Share, saka Add to Home Screen.",
-  "install_other": "Buksan ang menu ng browser at piliin ang Install app (o Add to Home screen)."
+  "install_other": "Buksan ang menu ng browser at piliin ang Install app (o Add to Home screen).",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

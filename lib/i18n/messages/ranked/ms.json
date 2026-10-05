@@ -80,5 +80,6 @@
   "monthly_play_daily": "Main papan hari ini",
   "monthly_connect": "Sambung dompet untuk melihat skor dan kedudukan bulanan anda.",
   "monthly_players": "{n} pemain bulan ini",
-  "monthly_offline": "Tidak dapat memuatkan papan bulanan. Cuba lagi nanti."
+  "monthly_offline": "Tidak dapat memuatkan papan bulanan. Cuba lagi nanti.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

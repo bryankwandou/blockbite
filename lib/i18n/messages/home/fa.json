@@ -63,5 +63,9 @@
   "install_kicker": "در دسترس به‌صورت",
   "install_label": "وب‌اپ",
   "install_ios": "در iPhone/iPad: اشتراک‌گذاری را بزنید، سپس افزودن به صفحهٔ اصلی.",
-  "install_other": "منوی مرورگر را باز کنید و «نصب برنامه» (یا افزودن به صفحهٔ اصلی) را انتخاب کنید."
+  "install_other": "منوی مرورگر را باز کنید و «نصب برنامه» (یا افزودن به صفحهٔ اصلی) را انتخاب کنید.",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

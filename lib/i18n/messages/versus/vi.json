@@ -21,7 +21,7 @@
   "bot_board": "Bàn của bot",
   "time_left": "Thời gian còn lại",
   "same_pieces": "Cùng bộ khối cho cả hai",
-  "how_to": "Chạm vào một khối, rồi chạm vào bàn.",
+  "how_to": "Kéo một khối vào bàn, hoặc chạm vào một khối rồi chạm vào một ô.",
   "thinking": "Đang suy nghĩ…",
   "cell": "Hàng {row}, cột {col}",
   "piece": "Khối {n}",

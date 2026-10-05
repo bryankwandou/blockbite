@@ -63,5 +63,6 @@
   "preview_track": "{name} 미리듣기",
   "stop_preview": "미리듣기 중지",
   "move_up": "{name} 위로 이동",
-  "move_down": "{name} 아래로 이동"
+  "move_down": "{name} 아래로 이동",
+  "ticket_sales_open": "Open"
 }

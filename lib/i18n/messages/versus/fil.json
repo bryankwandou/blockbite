@@ -21,7 +21,7 @@
   "bot_board": "Board ng bot",
   "time_left": "Natitirang oras",
   "same_pieces": "Parehong piraso para sa dalawa",
-  "how_to": "I-tap ang isang piraso, saka i-tap ang board.",
+  "how_to": "I-drag ang isang piraso sa board, o i-tap ang piraso, saka ang isang cell.",
   "thinking": "Nag-iisip…",
   "cell": "Row {row}, column {col}",
   "piece": "Piraso {n}",

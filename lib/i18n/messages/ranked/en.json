@@ -80,5 +80,6 @@
   "monthly_play_daily": "Play today's board",
   "monthly_connect": "Connect a wallet to see your monthly score and rank.",
   "monthly_players": "{n} players this month",
-  "monthly_offline": "Could not load the monthly board. Try again later."
+  "monthly_offline": "Could not load the monthly board. Try again later.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

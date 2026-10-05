@@ -21,7 +21,7 @@
   "bot_board": "Tabla botului",
   "time_left": "Timp rămas",
   "same_pieces": "Aceleași piese pentru amândoi",
-  "how_to": "Atinge o piesă, apoi atinge tabla.",
+  "how_to": "Trage o piesă pe tablă sau atinge o piesă, apoi o căsuță.",
   "thinking": "Se gândește…",
   "cell": "Rândul {row}, coloana {col}",
   "piece": "Piesa {n}",

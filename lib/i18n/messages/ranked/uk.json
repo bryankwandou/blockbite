@@ -80,5 +80,6 @@
   "monthly_play_daily": "Зіграти сьогоднішню дошку",
   "monthly_connect": "Підключи гаманець, щоб побачити місячний результат і місце.",
   "monthly_players": "Гравців цього місяця: {n}",
-  "monthly_offline": "Не вдалося завантажити місячний рейтинг. Спробуй пізніше."
+  "monthly_offline": "Не вдалося завантажити місячний рейтинг. Спробуй пізніше.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

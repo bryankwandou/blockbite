@@ -95,7 +95,7 @@ export default function PartnershipPage() {
 
           <p className={k.fine}>
             {t('contact')}{' '}
-            <a href="https://x.com/blockbite_gg" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--ds-accent, #a78bfa)', fontWeight: 700 }}>{t('contact_x')}</a>.
+            <a href="https://x.com/blockbitegame" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--ds-accent, #a78bfa)', fontWeight: 700 }}>{t('contact_x')}</a>.
           </p>
         </div>
       </main>

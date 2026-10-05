@@ -80,5 +80,6 @@
   "monthly_play_daily": "آج کا بورڈ کھیلیں",
   "monthly_connect": "اپنا ماہانہ اسکور اور رینک دیکھنے کے لیے والیٹ جوڑیں۔",
   "monthly_players": "اس مہینے {n} کھلاڑی",
-  "monthly_offline": "ماہانہ بورڈ لوڈ نہیں ہو سکا۔ بعد میں دوبارہ کوشش کریں۔"
+  "monthly_offline": "ماہانہ بورڈ لوڈ نہیں ہو سکا۔ بعد میں دوبارہ کوشش کریں۔",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

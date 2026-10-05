@@ -80,5 +80,6 @@
   "monthly_play_daily": "Joacă tabla de azi",
   "monthly_connect": "Conectează un wallet ca să-ți vezi scorul lunar și locul.",
   "monthly_players": "{n} jucători luna aceasta",
-  "monthly_offline": "Nu s-a putut încărca clasamentul lunar. Încearcă mai târziu."
+  "monthly_offline": "Nu s-a putut încărca clasamentul lunar. Încearcă mai târziu.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

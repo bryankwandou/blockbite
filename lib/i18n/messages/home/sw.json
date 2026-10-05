@@ -63,5 +63,9 @@
   "install_kicker": "Inapatikana kama",
   "install_label": "Programu ya Wavuti",
   "install_ios": "Kwenye iPhone/iPad: gusa Shiriki, kisha Ongeza kwenye Skrini ya Nyumbani.",
-  "install_other": "Fungua menyu ya kivinjari na uchague Sakinisha programu (au Ongeza kwenye skrini ya nyumbani)."
+  "install_other": "Fungua menyu ya kivinjari na uchague Sakinisha programu (au Ongeza kwenye skrini ya nyumbani).",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

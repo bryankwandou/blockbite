@@ -80,5 +80,6 @@
   "monthly_play_daily": "Chơi bàn hôm nay",
   "monthly_connect": "Kết nối ví để xem điểm tháng và thứ hạng của bạn.",
   "monthly_players": "{n} người chơi tháng này",
-  "monthly_offline": "Không tải được bảng tháng. Hãy thử lại sau."
+  "monthly_offline": "Không tải được bảng tháng. Hãy thử lại sau.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

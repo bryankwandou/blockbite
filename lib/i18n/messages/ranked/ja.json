@@ -80,5 +80,6 @@
   "monthly_play_daily": "今日のボードを遊ぶ",
   "monthly_connect": "月間スコアと順位を見るには、ウォレットを接続してください。",
   "monthly_players": "今月 {n} 人のプレイヤー",
-  "monthly_offline": "月間ボードを読み込めませんでした。後でもう一度お試しください。"
+  "monthly_offline": "月間ボードを読み込めませんでした。後でもう一度お試しください。",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

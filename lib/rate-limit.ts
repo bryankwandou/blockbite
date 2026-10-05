@@ -75,7 +75,8 @@ export async function rateLimit(
       resetAt,
     };
   } catch {
-    return { allowed: true, remaining: limit, resetAt: Date.now() + windowMs };
+    // KV unreachable: count in memory rather than letting everything through.
+    return memoryLimit(key, limit, windowMs);
   }
 }
 

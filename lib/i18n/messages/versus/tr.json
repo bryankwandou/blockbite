@@ -21,7 +21,7 @@
   "bot_board": "Botun tahtası",
   "time_left": "Kalan süre",
   "same_pieces": "İkiniz için aynı parçalar",
-  "how_to": "Bir parçaya dokun, sonra tahtaya dokun.",
+  "how_to": "Bir parçayı tahtaya sürükle ya da bir parçaya, sonra bir kareye dokun.",
   "thinking": "Düşünüyor…",
   "cell": "Satır {row}, sütun {col}",
   "piece": "Parça {n}",

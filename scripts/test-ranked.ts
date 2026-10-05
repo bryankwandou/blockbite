@@ -393,9 +393,11 @@ async function main() {
     assert.equal((await call(routes.me, '/me')).status, 401);
     assert.equal((await call(routes.start, '/start', 'garbage', {})).status, 401);
   });
-  await test('ticket sales stay closed until the program is live', async () => {
-    assert.equal(cfg.RANKED_SALES_OPEN, false);
-    assert.equal((await call(routes.credit, '/credit', ta, { signature: '1'.repeat(88) })).status, 503);
+  await test('ticket sales are open; an unreadable purchase credits nothing', async () => {
+    assert.equal(cfg.RANKED_SALES_OPEN, true);
+    // The test RPC is unreachable: the route must answer 502 and leave credits at 0.
+    assert.equal((await call(routes.credit, '/credit', ta, { signature: '1'.repeat(88) })).status, 502);
+    assert.equal((await call(routes.me, '/me', ta)).body.credits, 0);
   });
   await test('starting without tickets costs nothing and is refused', async () => {
     assert.equal((await call(routes.start, '/start', ta, {})).status, 402);
@@ -702,11 +704,11 @@ async function main() {
       assert.equal((await callAt(routes.avatarPost, path, ta, { wallet: alice.address, avatarId: bad })).status, 400, JSON.stringify(bad));
     }
     assert.equal((await callAt(routes.avatarPost, path, ta, { avatarId: 'rex' })).status, 400, 'wallet is required');
-    const ok = await callAt(routes.avatarPost, path, ta, { wallet: alice.address, avatarId: 'bite-magenta-happy-007' });
+    const ok = await callAt(routes.avatarPost, path, ta, { wallet: alice.address, avatarId: 'pilot-sky-eye' });
     assert.equal(ok.status, 200);
-    assert.deepEqual(ok.body, { wallet: alice.address, avatarId: 'bite-magenta-happy-007' });
-    assert.equal((await callAt(routes.avatarGet, `${path}?wallet=${alice.address}`)).body.avatarId, 'bite-magenta-happy-007');
-    assert.equal((await callAt(routes.avatarPost, path, ta, { wallet: alice.address, avatarId: 'a'.repeat(40) })).status, 200);
+    assert.deepEqual(ok.body, { wallet: alice.address, avatarId: 'pilot-sky-eye' });
+    assert.equal((await callAt(routes.avatarGet, `${path}?wallet=${alice.address}`)).body.avatarId, 'pilot-sky-eye');
+    assert.equal((await callAt(routes.avatarPost, path, ta, { wallet: alice.address, avatarId: 'a'.repeat(40) })).status, 400, 'a well-formed slug that is no avatar is refused');
     assert.equal((await callAt(routes.avatarPost, path, ta, { wallet: alice.address, avatarId: null })).status, 200);
     assert.equal((await callAt(routes.avatarGet, `${path}?wallet=${alice.address}`)).body.avatarId, null);
     assert.equal((await callAt(routes.avatarPost, path, ta, { wallet: alice.address, avatarId: 'pilot-neon-hack' })).status, 200);

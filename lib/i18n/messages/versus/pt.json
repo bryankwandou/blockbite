@@ -21,7 +21,7 @@
   "bot_board": "Tabuleiro do bot",
   "time_left": "Tempo restante",
   "same_pieces": "As mesmas peças para ambos",
-  "how_to": "Toque em uma peça e depois no tabuleiro.",
+  "how_to": "Arraste uma peça para o tabuleiro, ou toque numa peça e depois numa casa.",
   "thinking": "Pensando…",
   "cell": "Linha {row}, coluna {col}",
   "piece": "Peça {n}",

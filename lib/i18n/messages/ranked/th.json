@@ -80,5 +80,6 @@
   "monthly_play_daily": "เล่นกระดานวันนี้",
   "monthly_connect": "เชื่อมต่อกระเป๋าเพื่อดูคะแนนรายเดือนและอันดับของคุณ",
   "monthly_players": "เดือนนี้มีผู้เล่น {n} คน",
-  "monthly_offline": "โหลดกระดานรายเดือนไม่ได้ ลองใหม่ภายหลัง"
+  "monthly_offline": "โหลดกระดานรายเดือนไม่ได้ ลองใหม่ภายหลัง",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { neonTrackWallet } from '@/lib/neon-analytics';
 
+import { getIP, rateLimit } from '@/lib/rate-limit';
+
 export const runtime = 'nodejs';
 
 export async function POST(req: NextRequest) {
+  const rl = await rateLimit(`wallet-connect:${getIP(req)}`, 30, 10 * 60_000).catch(() => null);
+  if (rl && !rl.allowed) return NextResponse.json({ ok: false }, { status: 429 });
   try {
     const body = await req.json().catch(() => ({}));
     const anon       = typeof body?.anon       === 'string' ? body.anon.slice(0, 20)       : 'unknown';

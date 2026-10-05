@@ -63,5 +63,6 @@
   "preview_track": "תצוגה מקדימה של {name}",
   "stop_preview": "עצור תצוגה מקדימה",
   "move_up": "הזז את {name} למעלה",
-  "move_down": "הזז את {name} למטה"
+  "move_down": "הזז את {name} למטה",
+  "ticket_sales_open": "Open"
 }

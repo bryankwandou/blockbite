@@ -63,5 +63,9 @@
   "install_kicker": "इस रूप में उपलब्ध",
   "install_label": "वेब ऐप",
   "install_ios": "iPhone/iPad पर: शेयर पर टैप करें, फिर होम स्क्रीन में जोड़ें।",
-  "install_other": "ब्राउज़र मेनू खोलें और ऐप इंस्टॉल करें (या होम स्क्रीन में जोड़ें) चुनें।"
+  "install_other": "ब्राउज़र मेनू खोलें और ऐप इंस्टॉल करें (या होम स्क्रीन में जोड़ें) चुनें।",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

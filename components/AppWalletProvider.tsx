@@ -8,9 +8,31 @@ import { TrustWalletAdapter } from '@solana/wallet-adapter-trust';
 import { LedgerWalletAdapter } from '@solana/wallet-adapter-ledger';
 import { CoinbaseWalletAdapter } from '@solana/wallet-adapter-coinbase';
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
+import { WalletNotReadyError, WalletReadyState } from '@solana/wallet-adapter-base';
 import { ACTIVE_NETWORK, RPC_URL } from '@/lib/solana/config';
 
 import '@solana/wallet-adapter-react-ui/styles.css';
+
+/**
+ * Without the Solflare extension the stock adapter frames connect.solflare.com,
+ * which refuses to be framed (X-Frame-Options: sameorigin), leaving a grey
+ * "This content is blocked" page. Instead: Android opens this page inside the
+ * Solflare app, desktop opens the Solflare download page.
+ */
+class SolflareAdapter extends SolflareWalletAdapter {
+  async connect() {
+    if (this.readyState === WalletReadyState.Loadable && typeof window !== 'undefined' && !/iphone|ipad|ipod/i.test(navigator.userAgent)) {
+      if (/android/i.test(navigator.userAgent)) {
+        const here = encodeURIComponent(window.location.href);
+        window.location.href = `https://solflare.com/ul/v1/browse/${here}?ref=${encodeURIComponent(window.location.origin)}`;
+      } else {
+        window.open('https://solflare.com/download', '_blank', 'noopener');
+      }
+      throw new WalletNotReadyError('Solflare extension not installed');
+    }
+    return super.connect();
+  }
+}
 
 export default function AppWalletProvider({ children }: { children: React.ReactNode }) {
   const network = ACTIVE_NETWORK;
@@ -19,7 +41,7 @@ export default function AppWalletProvider({ children }: { children: React.ReactN
   const wallets = useMemo(
     () => [
       new PhantomWalletAdapter(),
-      new SolflareWalletAdapter(),
+      new SolflareAdapter(),
       new TrustWalletAdapter(),
       new CoinbaseWalletAdapter(),
       new LedgerWalletAdapter(),

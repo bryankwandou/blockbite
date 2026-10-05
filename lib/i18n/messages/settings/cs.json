@@ -63,5 +63,6 @@
   "preview_track": "Náhled: {name}",
   "stop_preview": "Zastavit náhled",
   "move_up": "Posunout {name} nahoru",
-  "move_down": "Posunout {name} dolů"
+  "move_down": "Posunout {name} dolů",
+  "ticket_sales_open": "Open"
 }

@@ -2,9 +2,31 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getUser, setUser } from '@/lib/store';
 import { verifySig } from '@/lib/sig';
 import { adventureConfigured, adventureLevel } from '@/lib/adventure/db';
+import { isAvatarId } from '@/lib/avatars';
+import { isLocale } from '@/lib/i18n/locales';
+import { getIP, rateLimit } from '@/lib/rate-limit';
 
 // Solana base58 address: 32–44 chars, no 0/O/I/l
 const SOLANA_ADDR_RE = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/;
+// Same cap as the name input on app/profile/page.tsx (maxLength={24}).
+const NAME_MAX = 24;
+// eslint-disable-next-line no-control-regex
+const CONTROL_RE = /[\u0000-\u001f\u007f-\u009f\u2028\u2029]/;
+// Theme ids offered in settings and the navbar.
+const THEMES = new Set(['light', 'dark', 'system']);
+
+/** Returns the cleaned value, or null when the field is not acceptable. */
+function validField(k: string, v: unknown): unknown {
+  if (k === 'displayName') {
+    if (typeof v !== 'string') return null;
+    const name = v.trim();
+    return name.length >= 1 && [...name].length <= NAME_MAX && !CONTROL_RE.test(name) ? name : null;
+  }
+  if (k === 'avatarId') return isAvatarId(v) ? v : null;
+  if (k === 'language') return isLocale(v) ? v : null;
+  if (k === 'theme') return typeof v === 'string' && THEMES.has(v) ? v : null;
+  return null;
+}
 
 export async function GET(req: NextRequest) {
   const addr = req.nextUrl.searchParams.get('addr') ?? '';
@@ -23,6 +45,8 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
+  const rl = await rateLimit(`profile:${getIP(req)}`, 30, 60 * 60_000).catch(() => null);
+  if (rl && !rl.allowed) return NextResponse.json({ error: 'too many changes, try again later' }, { status: 429 });
   let input: { addr?: unknown; patch?: unknown; sig?: unknown };
   try {
     input = await req.json();
@@ -49,7 +73,12 @@ export async function POST(req: NextRequest) {
 
     const ALLOWED = ['displayName', 'avatarId', 'language', 'theme'];
     const clean: Record<string, unknown> = {};
-    for (const k of ALLOWED) if (k in patch) clean[k] = patch[k];
+    for (const k of ALLOWED) {
+      if (!(k in patch)) continue;
+      const v = validField(k, patch[k]);
+      if (v === null) return NextResponse.json({ error: `invalid ${k}` }, { status: 400 });
+      clean[k] = v;
+    }
     await setUser(addr, clean as Parameters<typeof setUser>[1]);
     return NextResponse.json({ ok: true, patch: clean });
   } catch {

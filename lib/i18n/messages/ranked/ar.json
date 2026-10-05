@@ -80,5 +80,6 @@
   "monthly_play_daily": "العب لوحة اليوم",
   "monthly_connect": "اربط محفظة لترى نتيجتك الشهرية وترتيبك.",
   "monthly_players": "{n} لاعبين هذا الشهر",
-  "monthly_offline": "تعذّر تحميل اللوحة الشهرية. حاول لاحقًا."
+  "monthly_offline": "تعذّر تحميل اللوحة الشهرية. حاول لاحقًا.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

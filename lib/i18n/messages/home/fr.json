@@ -63,5 +63,9 @@
   "install_kicker": "Disponible en",
   "install_label": "Web App",
   "install_ios": "Sur iPhone/iPad : touchez Partager, puis Sur l'écran d'accueil.",
-  "install_other": "Ouvrez le menu du navigateur et choisissez Installer l'application (ou Ajouter à l'écran d'accueil)."
+  "install_other": "Ouvrez le menu du navigateur et choisissez Installer l'application (ou Ajouter à l'écran d'accueil).",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

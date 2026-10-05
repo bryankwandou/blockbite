@@ -63,5 +63,6 @@
   "preview_track": "Nghe thử {name}",
   "stop_preview": "Dừng nghe thử",
   "move_up": "Đưa {name} lên",
-  "move_down": "Đưa {name} xuống"
+  "move_down": "Đưa {name} xuống",
+  "ticket_sales_open": "Open"
 }

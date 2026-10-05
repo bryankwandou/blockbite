@@ -63,5 +63,6 @@
   "preview_track": "{name} anhören",
   "stop_preview": "Vorschau stoppen",
   "move_up": "{name} nach oben",
-  "move_down": "{name} nach unten"
+  "move_down": "{name} nach unten",
+  "ticket_sales_open": "Open"
 }

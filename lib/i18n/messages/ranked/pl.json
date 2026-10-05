@@ -80,5 +80,6 @@
   "monthly_play_daily": "Zagraj dzisiejszą planszę",
   "monthly_connect": "Połącz portfel, aby zobaczyć wynik miesięczny i miejsce.",
   "monthly_players": "Graczy w tym miesiącu: {n}",
-  "monthly_offline": "Nie udało się załadować rankingu miesięcznego. Spróbuj później."
+  "monthly_offline": "Nie udało się załadować rankingu miesięcznego. Spróbuj później.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

@@ -63,5 +63,6 @@
   "preview_track": "Anteprima di {name}",
   "stop_preview": "Interrompi anteprima",
   "move_up": "Sposta su {name}",
-  "move_down": "Sposta giù {name}"
+  "move_down": "Sposta giù {name}",
+  "ticket_sales_open": "Open"
 }

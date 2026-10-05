@@ -63,5 +63,9 @@
   "install_kicker": "হিসেবে পাওয়া যায়",
   "install_label": "ওয়েব অ্যাপ",
   "install_ios": "iPhone/iPad-এ: শেয়ার ট্যাপ করুন, তারপর হোম স্ক্রিনে যোগ করুন।",
-  "install_other": "ব্রাউজারের মেনু খুলে অ্যাপ ইনস্টল করুন (বা হোম স্ক্রিনে যোগ করুন) বেছে নিন।"
+  "install_other": "ব্রাউজারের মেনু খুলে অ্যাপ ইনস্টল করুন (বা হোম স্ক্রিনে যোগ করুন) বেছে নিন।",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

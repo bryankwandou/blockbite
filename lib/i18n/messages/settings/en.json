@@ -63,5 +63,6 @@
   "preview_track": "Preview {name}",
   "stop_preview": "Stop preview",
   "move_up": "Move {name} up",
-  "move_down": "Move {name} down"
+  "move_down": "Move {name} down",
+  "ticket_sales_open": "Open"
 }

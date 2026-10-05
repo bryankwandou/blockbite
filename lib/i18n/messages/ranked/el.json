@@ -80,5 +80,6 @@
   "monthly_play_daily": "Παίξτε τον σημερινό πίνακα",
   "monthly_connect": "Συνδέστε ένα πορτοφόλι για να δείτε το μηνιαίο σκορ και τη θέση σας.",
   "monthly_players": "{n} παίκτες αυτό το μήνα",
-  "monthly_offline": "Δεν φορτώθηκε ο μηνιαίος πίνακας. Δοκιμάστε αργότερα."
+  "monthly_offline": "Δεν φορτώθηκε ο μηνιαίος πίνακας. Δοκιμάστε αργότερα.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

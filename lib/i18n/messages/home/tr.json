@@ -63,5 +63,9 @@
   "install_kicker": "Şu şekilde mevcut",
   "install_label": "Web Uygulaması",
   "install_ios": "iPhone/iPad'de: Paylaş'a, ardından Ana Ekrana Ekle'ye dokun.",
-  "install_other": "Tarayıcı menüsünü aç ve Uygulamayı yükle'yi (veya Ana ekrana ekle'yi) seç."
+  "install_other": "Tarayıcı menüsünü aç ve Uygulamayı yükle'yi (veya Ana ekrana ekle'yi) seç.",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

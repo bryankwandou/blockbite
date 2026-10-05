@@ -104,3 +104,6 @@ wallet-*.json
 /blob-report/
 
 /.next-preview/
+
+# Built launcher (the published copy is public/downloads/BlockBite.exe)
+apps/windows/BlockBite.exe

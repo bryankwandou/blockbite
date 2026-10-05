@@ -80,5 +80,6 @@
   "monthly_play_daily": "আজকের বোর্ড খেলুন",
   "monthly_connect": "মাসিক স্কোর ও র‍্যাংক দেখতে ওয়ালেট সংযুক্ত করুন।",
   "monthly_players": "এই মাসে {n} জন খেলোয়াড়",
-  "monthly_offline": "মাসিক বোর্ড লোড করা যায়নি। পরে আবার চেষ্টা করুন।"
+  "monthly_offline": "মাসিক বোর্ড লোড করা যায়নি। পরে আবার চেষ্টা করুন।",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

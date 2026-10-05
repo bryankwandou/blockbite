@@ -63,5 +63,9 @@
   "install_kicker": "こちらで利用可能",
   "install_label": "Web アプリ",
   "install_ios": "iPhone/iPad：共有をタップし「ホーム画面に追加」。",
-  "install_other": "ブラウザのメニューから「アプリをインストール」（または「ホーム画面に追加」）を選んでください。"
+  "install_other": "ブラウザのメニューから「アプリをインストール」（または「ホーム画面に追加」）を選んでください。",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

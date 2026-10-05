@@ -21,7 +21,7 @@
   "bot_board": "Plateau du bot",
   "time_left": "Temps restant",
   "same_pieces": "Mêmes pièces pour les deux",
-  "how_to": "Touche une pièce, puis touche le plateau.",
+  "how_to": "Glisse une pièce sur le plateau, ou touche une pièce, puis une case.",
   "thinking": "Réflexion…",
   "cell": "Ligne {row}, colonne {col}",
   "piece": "Pièce {n}",

@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { RANKED_SALES_OPEN } from '@/lib/ranked/config';
 import Navbar, { SunIcon, MoonIcon, SystemIcon } from '@/components/Navbar';
 import { useApp, type Theme } from '@/lib/useApp';
 import { useT, LOCALES, type Locale } from '@/lib/i18n';
@@ -37,7 +38,7 @@ export default function SettingsPage() {
   const ABOUT: [string, string, 'ok' | 'wait' | 'plain'][] = [
     [t('adventure'), t('adventure_value'), 'ok'],
     [t('network'), t('network_value'), 'plain'],
-    [t('ticket_sales'), t('ticket_sales_value'), 'wait'],
+    [t('ticket_sales'), RANKED_SALES_OPEN ? t('ticket_sales_open') : t('ticket_sales_value'), RANKED_SALES_OPEN ? 'ok' : 'wait'],
     [t('audit'), t('audit_value'), 'wait'],
   ];
 
@@ -222,7 +223,7 @@ export default function SettingsPage() {
             <div className={styles.fact}>
               <dt>{t('source')}</dt>
               <dd>
-                <a href="https://github.com/nayrbryanGaming/blockblast" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                <a href="https://github.com/bryankwandou/blockbite" target="_blank" rel="noopener noreferrer" className={styles.link}>
                   {t('source_value')}
                 </a>
               </dd>

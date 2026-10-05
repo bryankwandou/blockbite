@@ -80,5 +80,6 @@
   "monthly_play_daily": "Bugünün tahtasını oyna",
   "monthly_connect": "Aylık skorunu ve sıranı görmek için bir cüzdan bağla.",
   "monthly_players": "Bu ay {n} oyuncu",
-  "monthly_offline": "Aylık tablo yüklenemedi. Daha sonra tekrar dene."
+  "monthly_offline": "Aylık tablo yüklenemedi. Daha sonra tekrar dene.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

@@ -63,5 +63,6 @@
   "preview_track": "Podgląd: {name}",
   "stop_preview": "Zatrzymaj podgląd",
   "move_up": "Przesuń {name} w górę",
-  "move_down": "Przesuń {name} w dół"
+  "move_down": "Przesuń {name} w dół",
+  "ticket_sales_open": "Open"
 }

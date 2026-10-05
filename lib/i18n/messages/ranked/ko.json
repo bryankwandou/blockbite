@@ -80,5 +80,6 @@
   "monthly_play_daily": "오늘 보드 플레이",
   "monthly_connect": "월간 점수와 순위를 보려면 지갑을 연결하세요.",
   "monthly_players": "이번 달 플레이어 {n}명",
-  "monthly_offline": "월간 보드를 불러오지 못했어요. 나중에 다시 시도하세요."
+  "monthly_offline": "월간 보드를 불러오지 못했어요. 나중에 다시 시도하세요.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

@@ -60,8 +60,12 @@
   "final_title": "The board is waiting.",
   "final_sub": "Warm up in Adventure while ranked gets ready.",
   "mascots_label": "The BlockBite crew",
-  "install_kicker": "Available as a",
-  "install_label": "Web App",
+  "install_kicker": "Install on",
+  "install_label": "iPhone · Mac",
   "install_ios": "On iPhone or iPad: tap Share, then Add to Home Screen.",
-  "install_other": "Open your browser menu and choose Install app (or Add to Home screen)."
+  "install_other": "Open your browser menu and choose Install app (or Add to Home screen).",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

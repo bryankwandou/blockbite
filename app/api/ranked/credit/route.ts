@@ -8,6 +8,8 @@ import { RANKED_SALES_OPEN } from '@/lib/ranked/config';
 import { creditPurchase, getCredits } from '@/lib/ranked/db';
 import { body, fail, json, rankedConfigured, requireWallet } from '@/lib/ranked/http';
 import { fetchParsedTx, verifyPurchaseTx } from '@/lib/ranked/purchase-verify';
+import { getIP } from '@/lib/rate-limit';
+import { limit } from '@/lib/versus/limit';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,6 +23,13 @@ export async function POST(req: Request) {
   const b = await body(req);
   const sig = b?.signature;
   if (typeof sig !== 'string' || !SIG_RE.test(sig)) return fail(400, 'bad signature');
+  // Every call costs an RPC read: cap it per wallet and per IP (shared count in
+  // Postgres) so a loop of junk signatures cannot drain the RPC plan for everyone.
+  // A real buyer polls every few seconds until finality, far below this. The IP
+  // cap is loose because mobile carriers put many players behind one IP.
+  if (!(await limit(`rk:credit:w:${wallet}`, 120, 10 * 60_000)) || !(await limit(`rk:credit:ip:${getIP(req)}`, 3000, 10 * 60_000))) {
+    return fail(429, 'too many requests, try again in a few minutes');
+  }
 
   let tx;
   try {

@@ -63,5 +63,9 @@
   "install_kicker": "بطور دستیاب",
   "install_label": "ویب ایپ",
   "install_ios": "iPhone/iPad پر: شیئر دبائیں، پھر ہوم اسکرین میں شامل کریں۔",
-  "install_other": "براؤزر مینو کھولیں اور ایپ انسٹال کریں (یا ہوم اسکرین میں شامل کریں) منتخب کریں۔"
+  "install_other": "براؤزر مینو کھولیں اور ایپ انسٹال کریں (یا ہوم اسکرین میں شامل کریں) منتخب کریں۔",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

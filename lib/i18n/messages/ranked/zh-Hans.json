@@ -80,5 +80,6 @@
   "monthly_play_daily": "玩今天的棋盘",
   "monthly_connect": "连接钱包以查看你的月得分和名次。",
   "monthly_players": "本月 {n} 名玩家",
-  "monthly_offline": "无法加载月榜，请稍后再试。"
+  "monthly_offline": "无法加载月榜，请稍后再试。",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

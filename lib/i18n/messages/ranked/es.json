@@ -80,5 +80,6 @@
   "monthly_play_daily": "Jugar el tablero de hoy",
   "monthly_connect": "Conecta una wallet para ver tu puntuación mensual y tu puesto.",
   "monthly_players": "{n} jugadores este mes",
-  "monthly_offline": "No se pudo cargar la clasificación mensual. Inténtalo más tarde."
+  "monthly_offline": "No se pudo cargar la clasificación mensual. Inténtalo más tarde.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

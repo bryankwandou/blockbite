@@ -80,5 +80,6 @@
   "monthly_play_daily": "Hrát dnešní desku",
   "monthly_connect": "Připoj peněženku a uvidíš své měsíční skóre a umístění.",
   "monthly_players": "Hráčů tento měsíc: {n}",
-  "monthly_offline": "Měsíční žebříček se nepodařilo načíst. Zkus to později."
+  "monthly_offline": "Měsíční žebříček se nepodařilo načíst. Zkus to později.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

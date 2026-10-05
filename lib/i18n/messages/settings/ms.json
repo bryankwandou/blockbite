@@ -63,5 +63,6 @@
   "preview_track": "Pratonton {name}",
   "stop_preview": "Henti pratonton",
   "move_up": "Naikkan {name}",
-  "move_down": "Turunkan {name}"
+  "move_down": "Turunkan {name}",
+  "ticket_sales_open": "Open"
 }

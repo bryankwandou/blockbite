@@ -63,5 +63,9 @@
   "install_kicker": "Dostępne jako",
   "install_label": "aplikacja webowa",
   "install_ios": "Na iPhonie/iPadzie: stuknij Udostępnij, potem Do ekranu początkowego.",
-  "install_other": "Otwórz menu przeglądarki i wybierz Zainstaluj aplikację (lub Dodaj do ekranu głównego)."
+  "install_other": "Otwórz menu przeglądarki i wybierz Zainstaluj aplikację (lub Dodaj do ekranu głównego).",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

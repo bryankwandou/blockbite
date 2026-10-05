@@ -21,7 +21,7 @@
   "bot_board": "机器人的棋盘",
   "time_left": "剩余时间",
   "same_pieces": "双方方块相同",
-  "how_to": "点一个方块，再点棋盘。",
+  "how_to": "把方块拖到棋盘上，或点一个方块，再点格子。",
   "thinking": "思考中…",
   "cell": "第 {row} 行，第 {col} 列",
   "piece": "方块 {n}",

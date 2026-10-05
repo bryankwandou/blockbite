@@ -80,5 +80,6 @@
   "monthly_play_daily": "Cheza ubao wa leo",
   "monthly_connect": "Unganisha pochi uone alama na nafasi yako ya mwezi.",
   "monthly_players": "Wachezaji {n} mwezi huu",
-  "monthly_offline": "Haikuweza kupakia ubao wa mwezi. Jaribu tena baadaye."
+  "monthly_offline": "Haikuweza kupakia ubao wa mwezi. Jaribu tena baadaye.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

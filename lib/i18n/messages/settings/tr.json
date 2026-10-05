@@ -63,5 +63,6 @@
   "preview_track": "{name} önizle",
   "stop_preview": "Önizlemeyi durdur",
   "move_up": "{name} yukarı taşı",
-  "move_down": "{name} aşağı taşı"
+  "move_down": "{name} aşağı taşı",
+  "ticket_sales_open": "Open"
 }

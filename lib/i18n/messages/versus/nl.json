@@ -21,7 +21,7 @@
   "bot_board": "Botbord",
   "time_left": "Resterende tijd",
   "same_pieces": "Dezelfde stukken voor beide",
-  "how_to": "Tik op een stuk en tik dan op het bord.",
+  "how_to": "Sleep een stuk naar het bord, of tik op een stuk en dan op een vakje.",
   "thinking": "Denkt na…",
   "cell": "Rij {row}, kolom {col}",
   "piece": "Stuk {n}",

@@ -10,6 +10,7 @@
  */
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { RANKED_SALES_OPEN } from '@/lib/ranked/config';
 import Link from 'next/link';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { useWalletModal } from '@solana/wallet-adapter-react-ui';
@@ -420,7 +421,7 @@ export default function RankedCanvas() {
         <h1 className={rs.title}>{t('daily_ranked')}</h1>
         <p className={rs.lede}>{t('lede', RANKED_VARS)}</p>
         {rules}
-        <p className={rs.status}>{t('sales_soon')}</p>
+        <p className={rs.status}>{RANKED_SALES_OPEN ? t('sales_open_now') : t('sales_soon')}</p>
         {split}
         <div className={rs.actions}>
           <button type="button" className={styles.btnMain} onClick={() => setVisible(true)}>

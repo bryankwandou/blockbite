@@ -63,5 +63,9 @@
   "install_kicker": "Có sẵn dạng",
   "install_label": "Web App",
   "install_ios": "Trên iPhone/iPad: chạm Chia sẻ, rồi Thêm vào MH chính.",
-  "install_other": "Mở menu trình duyệt và chọn Cài đặt ứng dụng (hoặc Thêm vào màn hình chính)."
+  "install_other": "Mở menu trình duyệt và chọn Cài đặt ứng dụng (hoặc Thêm vào màn hình chính).",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

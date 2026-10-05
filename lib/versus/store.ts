@@ -36,6 +36,8 @@ async function q<R = Record<string, unknown>>(s: Sql, text: string, params: unkn
       name text NOT NULL, score integer NOT NULL, moves integer NOT NULL, curve jsonb NOT NULL,
       created_at timestamptz NOT NULL DEFAULT now())`),
     s.query(`CREATE INDEX IF NOT EXISTS vs_replies_cid ON ${SCHEMA}.vs_replies (challenge_id, score DESC)`),
+    s.query(`CREATE TABLE IF NOT EXISTS ${SCHEMA}.vs_rate (key text NOT NULL, at timestamptz NOT NULL DEFAULT now())`),
+    s.query(`CREATE INDEX IF NOT EXISTS vs_rate_key ON ${SCHEMA}.vs_rate (key, at)`),
   ]).then(() => undefined).catch((e) => { ready = null; throw e; }));
   return (await s.query(text, params)) as R[];
 }
@@ -67,6 +69,22 @@ export async function getChallenge(id: string): Promise<Challenge | null> {
   const rs = await q<Row>(s, `SELECT name, score, moves, curve, created_at FROM ${SCHEMA}.vs_replies WHERE challenge_id = $1 ORDER BY score DESC LIMIT ${MAX_REPLIES}`, [id]);
   const ent = (r: Row): Entry => ({ name: r.name, score: r.score, moves: r.moves, curve: r.curve, at: new Date(r.created_at).toISOString() });
   return { id: c.id, seed: c.seed, ...ent(c), replies: rs.map(ent) };
+}
+
+/**
+ * Records one hit for `key` and returns how many hits it has inside the window,
+ * counted in the database so every server instance shares one count.
+ * Returns null without a database (the caller falls back to memory).
+ */
+export async function countHit(key: string, windowMs: number): Promise<number | null> {
+  const s = sql();
+  if (!s) return null;
+  const secs = Math.ceil(windowMs / 1000);
+  // Old hits are pruned as we go, so the table stays small.
+  const [r] = await q<{ n: number }>(s, `WITH gone AS (DELETE FROM ${SCHEMA}.vs_rate WHERE key = $1 AND at < now() - make_interval(secs => $2)),
+    ins AS (INSERT INTO ${SCHEMA}.vs_rate (key) VALUES ($1))
+    SELECT (count(*) + 1)::int AS n FROM ${SCHEMA}.vs_rate WHERE key = $1 AND at >= now() - make_interval(secs => $2)`, [key, secs]);
+  return r.n;
 }
 
 /** Adds a reply. Returns false if the challenge is missing or full. */

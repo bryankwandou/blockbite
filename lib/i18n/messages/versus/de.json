@@ -21,7 +21,7 @@
   "bot_board": "Bot-Brett",
   "time_left": "Verbleibende Zeit",
   "same_pieces": "Gleiche Teile für beide",
-  "how_to": "Tippe auf ein Teil, dann auf das Brett.",
+  "how_to": "Ziehe ein Teil aufs Brett oder tippe auf ein Teil und dann auf ein Feld.",
   "thinking": "Denkt nach…",
   "cell": "Reihe {row}, Spalte {col}",
   "piece": "Teil {n}",

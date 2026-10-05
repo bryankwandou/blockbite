@@ -80,5 +80,6 @@
   "monthly_play_daily": "שחקו בלוח של היום",
   "monthly_connect": "חברו ארנק כדי לראות את הניקוד והדירוג החודשיים שלכם.",
   "monthly_players": "{n} שחקנים החודש",
-  "monthly_offline": "לא ניתן לטעון את הלוח החודשי. נסו שוב מאוחר יותר."
+  "monthly_offline": "לא ניתן לטעון את הלוח החודשי. נסו שוב מאוחר יותר.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

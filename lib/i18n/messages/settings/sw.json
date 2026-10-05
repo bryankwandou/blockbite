@@ -63,5 +63,6 @@
   "preview_track": "Hakiki {name}",
   "stop_preview": "Acha kuhakiki",
   "move_up": "Sogeza {name} juu",
-  "move_down": "Sogeza {name} chini"
+  "move_down": "Sogeza {name} chini",
+  "ticket_sales_open": "Open"
 }

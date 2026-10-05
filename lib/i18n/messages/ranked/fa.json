@@ -80,5 +80,6 @@
   "monthly_play_daily": "صفحه امروز را بازی کنید",
   "monthly_connect": "برای دیدن امتیاز و رتبه ماهانه‌تان کیف پول وصل کنید.",
   "monthly_players": "{n} بازیکن در این ماه",
-  "monthly_offline": "جدول ماهانه بارگذاری نشد. بعداً دوباره امتحان کنید."
+  "monthly_offline": "جدول ماهانه بارگذاری نشد. بعداً دوباره امتحان کنید.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

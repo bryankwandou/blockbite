@@ -237,7 +237,7 @@ export default function LeaderboardPage() {
                 <div className={s.foot}>
                   <span>{period === 'day' ? t('footer_daily') : period === 'month' ? t('footer_monthly', { n: MONTHLY_BEST_DAYS }) : t('footer_adventure')}</span>
                   {period === 'day' && day && (
-                    <a href={`/api/ranked/day?d=${day}`} target="_blank" rel="noopener noreferrer">{t('verify_link')}</a>
+                    <Link href={`/leaderboard/day?d=${day}`}>{t('verify_link')}</Link>
                   )}
                   {period === 'month' && <Link href="/how-to-play#prizes-title">{t('prizes_link')}</Link>}
                 </div>

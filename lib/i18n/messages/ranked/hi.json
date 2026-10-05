@@ -80,5 +80,6 @@
   "monthly_play_daily": "आज का बोर्ड खेलें",
   "monthly_connect": "अपना मंथली स्कोर और रैंक देखने के लिए वॉलेट कनेक्ट करें।",
   "monthly_players": "इस महीने {n} खिलाड़ी",
-  "monthly_offline": "मंथली बोर्ड लोड नहीं हो सका। बाद में फिर कोशिश करें।"
+  "monthly_offline": "मंथली बोर्ड लोड नहीं हो सका। बाद में फिर कोशिश करें।",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

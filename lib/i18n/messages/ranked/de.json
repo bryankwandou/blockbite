@@ -80,5 +80,6 @@
   "monthly_play_daily": "Heutiges Brett spielen",
   "monthly_connect": "Verbinde eine Wallet, um deinen Monatswert und Rang zu sehen.",
   "monthly_players": "{n} Spieler in diesem Monat",
-  "monthly_offline": "Das Monatsbrett konnte nicht geladen werden. Versuch es später nochmal."
+  "monthly_offline": "Das Monatsbrett konnte nicht geladen werden. Versuch es später nochmal.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

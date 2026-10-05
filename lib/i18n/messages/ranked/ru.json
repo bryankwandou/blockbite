@@ -80,5 +80,6 @@
   "monthly_play_daily": "Играть сегодняшнее поле",
   "monthly_connect": "Подключите кошелёк, чтобы увидеть месячный счёт и место.",
   "monthly_players": "{n} игроков в этом месяце",
-  "monthly_offline": "Не удалось загрузить месячный рейтинг. Повторите позже."
+  "monthly_offline": "Не удалось загрузить месячный рейтинг. Повторите позже.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

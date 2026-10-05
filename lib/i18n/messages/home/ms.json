@@ -63,5 +63,9 @@
   "install_kicker": "Tersedia sebagai",
   "install_label": "Web App",
   "install_ios": "Di iPhone/iPad: ketik Kongsi, kemudian Tambah ke Skrin Utama.",
-  "install_other": "Buka menu pelayar dan pilih Pasang aplikasi (atau Tambah ke skrin utama)."
+  "install_other": "Buka menu pelayar dan pilih Pasang aplikasi (atau Tambah ke skrin utama).",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

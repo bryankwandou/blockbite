@@ -63,5 +63,6 @@
   "preview_track": "Previzualizează {name}",
   "stop_preview": "Oprește previzualizarea",
   "move_up": "Mută {name} în sus",
-  "move_down": "Mută {name} în jos"
+  "move_down": "Mută {name} în jos",
+  "ticket_sales_open": "Open"
 }

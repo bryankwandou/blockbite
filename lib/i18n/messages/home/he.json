@@ -63,5 +63,9 @@
   "install_kicker": "זמין כ",
   "install_label": "אפליקציית ווב",
   "install_ios": "ב-iPhone/iPad: הקישו שיתוף ואז הוספה למסך הבית.",
-  "install_other": "פתחו את תפריט הדפדפן ובחרו התקנת אפליקציה (או הוספה למסך הבית)."
+  "install_other": "פתחו את תפריט הדפדפן ובחרו התקנת אפליקציה (או הוספה למסך הבית).",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

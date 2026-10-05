@@ -21,7 +21,7 @@
   "bot_board": "Bot board",
   "time_left": "Time left",
   "same_pieces": "Same pieces for both",
-  "how_to": "Tap a piece, then tap the board.",
+  "how_to": "Drag a piece onto the board, or tap a piece, then a cell.",
   "thinking": "Thinking…",
   "cell": "Row {row}, column {col}",
   "piece": "Piece {n}",

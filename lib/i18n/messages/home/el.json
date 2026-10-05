@@ -63,5 +63,9 @@
   "install_kicker": "Διαθέσιμο ως",
   "install_label": "εφαρμογή web",
   "install_ios": "Σε iPhone/iPad: πάτησε Κοινοποίηση και μετά Προσθήκη στην οθόνη Αφετηρίας.",
-  "install_other": "Άνοιξε το μενού του προγράμματος περιήγησης και επίλεξε Εγκατάσταση εφαρμογής (ή Προσθήκη στην αρχική οθόνη)."
+  "install_other": "Άνοιξε το μενού του προγράμματος περιήγησης και επίλεξε Εγκατάσταση εφαρμογής (ή Προσθήκη στην αρχική οθόνη).",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

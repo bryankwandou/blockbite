@@ -63,5 +63,6 @@
   "preview_track": "Pratinjau {name}",
   "stop_preview": "Hentikan pratinjau",
   "move_up": "Naikkan {name}",
-  "move_down": "Turunkan {name}"
+  "move_down": "Turunkan {name}",
+  "ticket_sales_open": "Sudah buka"
 }

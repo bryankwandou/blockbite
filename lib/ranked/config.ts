@@ -18,7 +18,7 @@ export const TEAM_USDC_ACCOUNT = new PublicKey('9pNzhqU19MXiTaBWhEZNCMuamwuSu498
  * Ticket sales stay closed until the prize program is deployed and verified
  * on mainnet: before that, nothing could ever pay prizes out of the vault.
  */
-export const RANKED_SALES_OPEN = false;
+export const RANKED_SALES_OPEN = true;
 
 /** USDC has 6 decimals: every amount in ranked code is an integer count of base units. */
 export const USDC_DECIMALS = 6;

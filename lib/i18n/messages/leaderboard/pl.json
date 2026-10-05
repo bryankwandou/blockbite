@@ -44,5 +44,19 @@
   "winner_month_title": "Zwycięzca z zeszłego miesiąca",
   "winner_empty": "Brak zakończonych rund",
   "winner_empty_desc": "Zwycięzca każdego dnia i miesiąca pojawi się tu po zamknięciu rundy.",
-  "winner_share": "Największy udział {share}%"
+  "winner_share": "Największy udział {share}%",
+  "day_kicker": "Daily ranked results",
+  "day_title": "Results for {day}",
+  "day_error": "Could not load this day. Try again in a moment.",
+  "day_live": "Round in progress",
+  "day_sealed": "Results lock at midnight UTC",
+  "day_sealed_desc": "The day's seed stays sealed until the round ends, so nobody can see the trays ahead of time. Its fingerprint is published now so you can check it later.",
+  "day_fingerprint": "Seed fingerprint (sha256)",
+  "day_final": "Final results",
+  "day_nobody": "Nobody played ranked this day.",
+  "day_runs": "Runs played",
+  "day_players": "Players ranked",
+  "day_seed": "Revealed seed",
+  "day_back": "Back to leaderboard",
+  "day_raw": "Raw data (JSON)"
 }

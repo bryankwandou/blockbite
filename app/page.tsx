@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { RANKED_SALES_OPEN } from '@/lib/ranked/config';
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useT } from '@/lib/i18n';
@@ -174,7 +175,7 @@ export default function Home() {
             <Link href="/game" className={`${s.btn} ${s.btnPrimary}`}>{t('cta_adventure')}</Link>
             <a href="#ranked" className={`${s.btn} ${s.btnGhost}`}>{t('cta_ranked')}</a>
           </div>
-          <p className={s.status}><span className={s.pulse} aria-hidden="true" />{t('hero_status')}</p>
+          <p className={s.status}><span className={s.pulse} aria-hidden="true" />{RANKED_SALES_OPEN ? t('hero_status_open') : t('hero_status')}</p>
           <InstallButtons />
         </div>
         <MiniBoard />
@@ -196,7 +197,7 @@ export default function Home() {
           </article>
           <article className={`${s.mode} ${s.modeRanked}`} id="ranked" data-reveal>
             <Image src={CREW.brawler} alt="" width={132} height={132} className={s.modeMascot} aria-hidden="true" />
-            <span className={`${s.tag} ${s.tagWait}`}>{t('ranked_tag')}</span>
+            <span className={`${s.tag} ${RANKED_SALES_OPEN ? '' : s.tagWait}`}>{RANKED_SALES_OPEN ? t('ranked_tag_open') : t('ranked_tag')}</span>
             <h3 className={s.h3}>{t('ranked_title')}</h3>
             <p className={s.body}>{t('ranked_body')}</p>
             <ul className={s.points}>
@@ -241,8 +242,8 @@ export default function Home() {
           <Link href="/settings">{tn('settings')}</Link>
         </nav>
         <div className={s.social}>
-          <a href="https://x.com/blockbite_gg" target="_blank" rel="noopener noreferrer" aria-label={tc('social_x')} title={tc('social_x')}><XIcon /></a>
-          <a href="https://github.com/nayrbryanGaming/blockblast" target="_blank" rel="noopener noreferrer" aria-label={tc('social_github')} title={tc('social_github')}><GitHubIcon /></a>
+          <a href="https://x.com/blockbitegame" target="_blank" rel="noopener noreferrer" aria-label={tc('social_x')} title={tc('social_x')}><XIcon /></a>
+          <a href="https://github.com/bryankwandou/blockbite" target="_blank" rel="noopener noreferrer" aria-label={tc('social_github')} title={tc('social_github')}><GitHubIcon /></a>
         </div>
       </footer>
     </div>

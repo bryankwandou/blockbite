@@ -63,5 +63,6 @@
   "preview_track": "{name} প্রিভিউ",
   "stop_preview": "প্রিভিউ থামান",
   "move_up": "{name} উপরে নিন",
-  "move_down": "{name} নিচে নিন"
+  "move_down": "{name} নিচে নিন",
+  "ticket_sales_open": "Open"
 }

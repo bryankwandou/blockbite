@@ -80,5 +80,6 @@
   "monthly_play_daily": "Laruin ang board ngayon",
   "monthly_connect": "Mag-connect ng wallet para makita ang buwanang score at ranggo mo.",
   "monthly_players": "{n} manlalaro ngayong buwan",
-  "monthly_offline": "Hindi ma-load ang monthly board. Subukan ulit mamaya."
+  "monthly_offline": "Hindi ma-load ang monthly board. Subukan ulit mamaya.",
+  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
 }

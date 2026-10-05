@@ -21,7 +21,7 @@
   "bot_board": "Tabellone del bot",
   "time_left": "Tempo rimasto",
   "same_pieces": "Gli stessi pezzi per entrambi",
-  "how_to": "Tocca un pezzo, poi tocca il tabellone.",
+  "how_to": "Trascina un pezzo sul tabellone, oppure tocca un pezzo e poi una casella.",
   "thinking": "Sta pensando…",
   "cell": "Riga {row}, colonna {col}",
   "piece": "Pezzo {n}",

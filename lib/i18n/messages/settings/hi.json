@@ -63,5 +63,6 @@
   "preview_track": "{name} का पूर्वावलोकन",
   "stop_preview": "पूर्वावलोकन रोकें",
   "move_up": "{name} को ऊपर ले जाएँ",
-  "move_down": "{name} को नीचे ले जाएँ"
+  "move_down": "{name} को नीचे ले जाएँ",
+  "ticket_sales_open": "Open"
 }

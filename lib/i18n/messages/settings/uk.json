@@ -63,5 +63,6 @@
   "preview_track": "Прослухати {name}",
   "stop_preview": "Зупинити прослуховування",
   "move_up": "Підняти {name} вгору",
-  "move_down": "Опустити {name} вниз"
+  "move_down": "Опустити {name} вниз",
+  "ticket_sales_open": "Open"
 }

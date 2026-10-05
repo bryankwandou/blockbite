@@ -63,5 +63,6 @@
   "preview_track": "Voorbeeld van {name}",
   "stop_preview": "Voorbeeld stoppen",
   "move_up": "{name} omhoog",
-  "move_down": "{name} omlaag"
+  "move_down": "{name} omlaag",
+  "ticket_sales_open": "Open"
 }

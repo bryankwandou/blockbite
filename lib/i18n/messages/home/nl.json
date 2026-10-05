@@ -63,5 +63,9 @@
   "install_kicker": "Beschikbaar als",
   "install_label": "web-app",
   "install_ios": "Op iPhone/iPad: tik op Deel en dan Zet op beginscherm.",
-  "install_other": "Open het browsermenu en kies App installeren (of Toevoegen aan startscherm)."
+  "install_other": "Open het browsermenu en kies App installeren (of Toevoegen aan startscherm).",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

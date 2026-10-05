@@ -63,5 +63,6 @@
   "preview_track": "試聽 {name}",
   "stop_preview": "停止試聽",
   "move_up": "將 {name} 上移",
-  "move_down": "將 {name} 下移"
+  "move_down": "將 {name} 下移",
+  "ticket_sales_open": "Open"
 }

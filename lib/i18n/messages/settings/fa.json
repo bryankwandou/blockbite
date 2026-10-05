@@ -63,5 +63,6 @@
   "preview_track": "پیش‌نمایش {name}",
   "stop_preview": "توقف پیش‌نمایش",
   "move_up": "بردن {name} به بالا",
-  "move_down": "بردن {name} به پایین"
+  "move_down": "بردن {name} به پایین",
+  "ticket_sales_open": "Open"
 }

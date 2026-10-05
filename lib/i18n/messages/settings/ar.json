@@ -63,5 +63,6 @@
   "preview_track": "معاينة {name}",
   "stop_preview": "إيقاف المعاينة",
   "move_up": "حرّك {name} للأعلى",
-  "move_down": "حرّك {name} للأسفل"
+  "move_down": "حرّك {name} للأسفل",
+  "ticket_sales_open": "Open"
 }

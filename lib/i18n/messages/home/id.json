@@ -60,8 +60,12 @@
   "final_title": "Papannya sudah menunggu.",
   "final_sub": "Pemanasan di Adventure sambil ranked disiapkan.",
   "mascots_label": "Kru BlockBite",
-  "install_kicker": "Tersedia sebagai",
-  "install_label": "Web App",
+  "install_kicker": "Pasang di",
+  "install_label": "iPhone · Mac",
   "install_ios": "Di iPhone/iPad: ketuk Bagikan, lalu Tambah ke Layar Utama.",
-  "install_other": "Buka menu browser lalu pilih Instal aplikasi (atau Tambahkan ke layar utama)."
+  "install_other": "Buka menu browser lalu pilih Instal aplikasi (atau Tambahkan ke layar utama).",
+  "hero_status_open": "Adventure dan Ranked sudah buka. Tiket Ranked 1 USDC.",
+  "ranked_tag_open": "Sudah buka",
+  "download_kicker": "Unduh untuk",
+  "install_mac": "Di Mac: buka halaman ini di Safari, lalu File → Tambahkan ke Dock."
 }

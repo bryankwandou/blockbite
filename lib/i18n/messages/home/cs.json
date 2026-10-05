@@ -63,5 +63,9 @@
   "install_kicker": "K dispozici jako",
   "install_label": "webová aplikace",
   "install_ios": "Na iPhonu/iPadu: klepněte na Sdílet a pak Přidat na plochu.",
-  "install_other": "Otevřete nabídku prohlížeče a zvolte Instalovat aplikaci (nebo Přidat na plochu)."
+  "install_other": "Otevřete nabídku prohlížeče a zvolte Instalovat aplikaci (nebo Přidat na plochu).",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }

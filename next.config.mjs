@@ -92,8 +92,10 @@ const nextConfig = {
                 "data:",
                 "blob:",
               ].join(' '),
-              // Wallet popups + WalletConnect QR modal may iframe themselves
-              "frame-src 'self' https://*.walletconnect.com https://*.walletconnect.org https://*.coinbase.com",
+              // Wallet popups + WalletConnect QR modal may iframe themselves.
+              // Without the Solflare extension, its adapter opens connect.solflare.com
+              // as a full-page iframe; leaving it out showed "This content is blocked".
+              "frame-src 'self' https://connect.solflare.com https://*.solflare.com https://*.walletconnect.com https://*.walletconnect.org https://*.coinbase.com",
               "img-src 'self' data: https: blob:",
               "worker-src 'self' blob:",
               "frame-ancestors 'none'",

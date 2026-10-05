@@ -134,6 +134,19 @@ span.cell { cursor: default; }
   cursor: pointer;
 }
 span.slot { cursor: default; }
+/* The page must not scroll while a finger drags a piece out of the tray. */
+.slotDrag { touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none; }
+.slotDrag:active { cursor: grabbing; }
+.dragGhost {
+  position: fixed;
+  z-index: 50;
+  display: grid;
+  gap: 3px;
+  pointer-events: none;
+  opacity: .9;
+  filter: drop-shadow(0 8px 14px rgba(0,0,0,.35));
+}
+.dragGhost > span { border-radius: 4px; }
 .compact .slot { min-height: 40px; padding: 4px; }
 .slotSel { border-color: var(--accent, #a78bfa); box-shadow: 0 0 0 2px var(--accent, #a78bfa) inset; }
 .mini { display: grid; gap: 2px; width: auto; height: 44px; max-width: 100%; }

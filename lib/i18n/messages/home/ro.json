@@ -63,5 +63,9 @@
   "install_kicker": "Disponibil ca",
   "install_label": "aplicație web",
   "install_ios": "Pe iPhone/iPad: atinge Partajează, apoi Adaugă pe ecranul principal.",
-  "install_other": "Deschide meniul browserului și alege Instalează aplicația (sau Adaugă pe ecranul principal)."
+  "install_other": "Deschide meniul browserului și alege Instalează aplicația (sau Adaugă pe ecranul principal).",
+  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "ranked_tag_open": "Open now",
+  "download_kicker": "Download for",
+  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
 }
