@@ -1,6 +1,6 @@
 /* BlockBite service worker: installability + offline fallback for navigations only.
    API, wallet and RPC traffic is never cached. Registered by components/PwaRegister.tsx. */
-const CACHE = 'bb-shell-v1';
+const CACHE = 'bb-shell-v2';
 const SHELL = ['/', '/icons/icon-192.png', '/icons/icon-512.png', '/manifest.webmanifest'];
 
 self.addEventListener('install', (e) => {
@@ -18,5 +18,13 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET' || req.mode !== 'navigate') return;
-  e.respondWith(fetch(req).catch(() => caches.match('/')));
+  // Network first; keep a copy of each page so offline shows that page, not home.
+  e.respondWith(
+    fetch(req)
+      .then((res) => {
+        if (res.ok) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(req, copy)); }
+        return res;
+      })
+      .catch(() => caches.match(req).then((hit) => hit || caches.match('/')))
+  );
 });
