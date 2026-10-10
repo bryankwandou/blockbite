@@ -15,7 +15,6 @@ function checkToken(provided: string): boolean {
 export async function GET(req: NextRequest) {
   const token =
     req.headers.get('x-admin-token') ||
-    req.nextUrl.searchParams.get('token') ||
     '';
   if (!checkToken(token)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

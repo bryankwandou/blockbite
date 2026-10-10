@@ -89,6 +89,8 @@ const COMMON = new Set([
   'iloveyou', 'monkey', 'dragon', 'football', 'baseball', 'sunshine', 'princess', 'master', 'shadow',
   'superman', 'trustno', 'abc', 'abcdef', 'abcdefghij', 'blockbite', 'solana', 'phantom', 'bitcoin',
   'crypto', 'changeme', 'secret', 'login', 'starwars', 'whatever', 'qazwsx', 'pokemon',
+  'summer', 'winter', 'spring', 'autumn', 'hello', 'test', 'user', 'love', 'money', 'liverpool',
+  'chelsea', 'arsenal', 'barcelona', 'jakarta', 'indonesia', 'bismillah', 'sayang', 'rahasia',
 ]);
 
 /** Null when acceptable, else a reason code. Basic checks only; this is not a breach database. */
@@ -101,6 +103,8 @@ export function passwordProblem(pw: unknown, email?: string | null): string | nu
   const letters = lower.replace(/[^a-z]/g, '');
   if (COMMON.has(letters) || COMMON.has(lower)) return 'password_common';
   if (/^(0123456789|1234567890|9876543210|0987654321)+\d*$/.test(lower)) return 'password_common';
+  // A digit run with only a couple of letters around it ("1234567890ab").
+  if (/(0123456789|1234567890|9876543210|0987654321)/.test(lower) && letters.length <= 3) return 'password_common';
   if (/^(.{1,3})\1+$/.test(lower)) return 'password_common';
   const local = email?.split('@')[0];
   if (local && local.length >= 4 && lower.includes(local)) return 'password_email';

@@ -11,8 +11,9 @@ import { readJson } from '@/lib/http/body';
 const SOLANA_ADDR_RE = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/;
 // Same cap as the name input on app/profile/page.tsx (maxLength={24}).
 const NAME_MAX = 24;
-// eslint-disable-next-line no-control-regex
-const CONTROL_RE = /[\u0000-\u001f\u007f-\u009f\u2028\u2029]/;
+// Control characters plus invisible and bidi-override ones (a name must not reorder or hide text).
+// eslint-disable-next-line no-control-regex, no-misleading-character-class
+const CONTROL_RE = /[\u0000-\u001f\u007f-\u009f\u00ad\u061c\u200b-\u200f\u2028-\u202e\u2060-\u2069\ufeff]/;
 // Theme ids offered in settings and the navbar.
 const THEMES = new Set(['light', 'dark', 'system']);
 
