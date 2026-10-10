@@ -480,3 +480,23 @@ h1, h2, h3 {
   0%,100% { transform:translateY(0) rotate(0deg); }
   50%      { transform:translateY(-10px) rotate(5deg); }
 }
+
+/* Keyboard: skip link (components/SkipLink.tsx), shown only when focused. */
+.bb-skip-link {
+  position: fixed; top: 8px; left: 8px; z-index: 10000;
+  padding: 10px 16px; border-radius: 10px;
+  background: var(--ds-accent, #a78bfa); color: var(--ds-bg, #08081a);
+  font-weight: 800; text-decoration: none;
+  transform: translateY(-200%);
+}
+.bb-skip-link:focus-visible { transform: none; outline: 3px solid var(--ds-text, #fff); outline-offset: 2px; }
+:root[dir='rtl'] .bb-skip-link { left: auto; right: 8px; }
+
+/* Default focus ring for links/buttons without their own (module rules are more specific and win). */
+a:focus-visible, button:focus-visible, [role='button']:focus-visible, [tabindex]:not([tabindex='-1']):focus-visible {
+  outline: 3px solid var(--ds-accent, #a78bfa);
+  outline-offset: 2px;
+}
+
+/* Visible to screen readers only. */
+.bb-sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }

@@ -65,6 +65,7 @@ function MapLoading() {
 export default function MapView({ act }: { act?: number }) {
   const router = useRouter();
   const layout = useLayout();
+  const t = useT('map');
   const { publicKey } = useWallet();
   const wallet = publicKey?.toBase58() ?? '';
   const [level, setLevel] = useState<number | null>(null);
@@ -83,12 +84,16 @@ export default function MapView({ act }: { act?: number }) {
   const currentLevel = Math.max(1, level);
 
   return (
-    <MapScreen
-      biome={biome}
-      currentLevel={currentLevel}
-      layout={layout}
-      onEnterLevel={(lvl) => router.push(`/play/${lvl}`)}
-      walletAddress={wallet || undefined}
-    />
+    <main>
+      {/* The map is drawn, so screen readers and the outline get its title here. */}
+      <h1 className="bb-sr-only">{t('act_n', { n: biome.act })} · {biome.name}</h1>
+      <MapScreen
+        biome={biome}
+        currentLevel={currentLevel}
+        layout={layout}
+        onEnterLevel={(lvl) => router.push(`/play/${lvl}`)}
+        walletAddress={wallet || undefined}
+      />
+    </main>
   );
 }

@@ -41,5 +41,6 @@
   "music_play_track": "Play {name}",
   "music_hint": "Drag tracks, or press Alt + Up/Down arrow on a track, to reorder.",
   "music_playlist_for": "Playlist for: {ctx}",
-  "music_paused": "Paused"
+  "music_paused": "Paused",
+  "skip_to_content": "Skip to content"
 }

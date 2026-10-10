@@ -61,6 +61,8 @@ export default function Navbar() {
   const [langMenuOpen, setLangMenuOpen] = useState(false);
   const [musicOpen, setMusicOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
+  const langBtnRef = useRef<HTMLButtonElement>(null);
+  const menuBtnRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
   const lang = useLang();
   const { theme, themePref, setTheme } = useApp();
@@ -84,7 +86,11 @@ export default function Navbar() {
       if (langMenuOpen && langRef.current && !langRef.current.contains(e.target as Node)) setLangMenuOpen(false);
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { setLangMenuOpen(false); setMenuOpen(false); }
+      if (e.key !== 'Escape') return;
+      // Return focus to the button that opened the menu (keyboard users would otherwise land on <body>).
+      if (langMenuOpen) langBtnRef.current?.focus();
+      else if (menuOpen) menuBtnRef.current?.focus();
+      setLangMenuOpen(false); setMenuOpen(false);
     };
     document.addEventListener('mousedown', onDown);
     document.addEventListener('keydown', onKey);
@@ -172,6 +178,7 @@ export default function Navbar() {
         <div className={styles.right}>
           <div className={`${styles.langMenuContainer} ${styles.deskOnly}`} ref={langRef}>
             <button
+              ref={langBtnRef}
               type="button"
               className={styles.iconToggle}
               onClick={() => setLangMenuOpen((o) => !o)}
@@ -241,6 +248,7 @@ export default function Navbar() {
           </div>
 
           <button
+            ref={menuBtnRef}
             type="button"
             className={`${styles.menuToggle} ${menuOpen ? styles.menuToggleOpen : ''}`}
             onClick={() => setMenuOpen((o) => !o)}

@@ -161,6 +161,7 @@ export default function Home() {
     <div className={s.page} ref={root}>
       <Navbar />
 
+      <main>
       {/* ── HERO ── */}
       <section className={s.hero}>
         <div className={s.heroText}>
@@ -224,6 +225,7 @@ export default function Home() {
           <Link href="/game" className={`${s.btn} ${s.btnPrimary}`}>{t('cta_adventure')}</Link>
         </div>
       </section>
+      </main>
 
       {/* ── FOOTER ── */}
       <footer className={s.footer}>

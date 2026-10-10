@@ -11,6 +11,7 @@ import MusicController from '@/components/audio/MusicController';
 import PwaRegister from '@/components/PwaRegister';
 import { PageTracker } from '@/components/PageTracker';
 import { WalletTracker } from '@/components/WalletTracker';
+import SkipLink from '@/components/SkipLink';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://blockbite.vercel.app'),
@@ -74,6 +75,7 @@ export default function RootLayout({
         {/* favicon is auto-injected from app/icon.png by Next.js Metadata Files convention */}
       </head>
       <body>
+        <SkipLink />
         <AppProvider>
           <AppWalletProvider>
             {children}
