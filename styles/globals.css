@@ -1,7 +1,7 @@
 /* -------------------------------------------------------------------------- */
 /* BLOCKBITE WEB3 - DEEP SPACE NEON ARCADE THEME (HDR ULTRA)                  */
 /* -------------------------------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+/* Web fonts: one <link> in app/layout.tsx (an @import here started them only after this CSS loaded). */
 
 :root {
   /* Core Colors */
