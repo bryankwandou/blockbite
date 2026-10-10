@@ -1,0 +1,16 @@
+{
+  "title": "Misiones",
+  "sub": "Tareas publicadas por socios. Envía una prueba y un revisor la comprueba.",
+  "connect_msg": "Conecta una billetera para enviar misiones completadas.",
+  "connect_btn": "CONECTAR BILLETERA",
+  "loading": "Cargando misiones…",
+  "empty": "No hay misiones activas ahora mismo. Vuelve pronto.",
+  "cancel": "CANCELAR",
+  "submit": "ENVIAR",
+  "proof_label": "Prueba (enlace, firma de transacción, URL de captura, etc.)",
+  "submitting": "ENVIANDO…",
+  "submit_review": "ENVIAR A REVISIÓN",
+  "st_approved": "APROBADA",
+  "st_rejected": "RECHAZADA",
+  "st_pending": "PENDIENTE"
+}

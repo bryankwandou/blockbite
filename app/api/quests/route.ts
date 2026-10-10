@@ -9,10 +9,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createQuest, listQuests, type Quest, type QuestType } from '@/lib/quests/store';
 import { requireRole } from '@/lib/admin/http';
+import { walletFromRequestAsync } from '@/lib/ranked/auth';
+import { badBearer, readJson } from '@/lib/http/body';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+// Public list (app/quests/page.tsx calls it anonymously). A bad Authorization header is a 401.
+export async function GET(req: Request) {
+  const bad = await badBearer(req, walletFromRequestAsync);
+  if (bad) return bad;
   try {
     const all = await listQuests();
     const now = Date.now();
@@ -34,8 +39,9 @@ function isValidType(t: string): t is QuestType {
 export async function POST(req: NextRequest) {
   const adminWallet = requireRole(req, 'admin');
   if (adminWallet instanceof Response) return adminWallet;
-  let body: Partial<Quest>;
-  try { body = await req.json(); } catch { return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 }); }
+  const parsed = await readJson(req, 16 * 1024);
+  if (parsed instanceof Response) return parsed;
+  const body = parsed as Partial<Quest>;
 
   const { title, description, type, rewardLabel, maxCompletions, expiresAt } = body;
   if (!title || typeof title !== 'string' || title.length > 200) return NextResponse.json({ error: 'title required (max 200)' }, { status: 400 });
@@ -54,8 +60,8 @@ export async function POST(req: NextRequest) {
     description:    description.trim(),
     type:           type as QuestType,
     rewardLabel:    rewardLabel.trim(),
-    maxCompletions: Math.max(0, Math.floor(Number(maxCompletions) || 0)),
-    expiresAt:      expiresAt ? Number(expiresAt) : null,
+    maxCompletions: Math.min(1e9, Math.max(0, Math.floor(Number(maxCompletions) || 0))),
+    expiresAt:      Number.isFinite(Number(expiresAt)) && Number(expiresAt) > 0 && Number(expiresAt) < 8.64e15 ? Math.floor(Number(expiresAt)) : null,
     createdAt:      Date.now(),
     active:         true,
   };

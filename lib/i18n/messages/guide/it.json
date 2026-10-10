@@ -1,7 +1,7 @@
 {
   "kicker": "Guida",
   "title": "How to Play",
-  "subtitle": "Un tabellone al giorno. Gli stessi pezzi per tutti. Conta il migliore di 3 tentativi.",
+  "subtitle": "Una griglia al giorno. Ogni tentativo distribuisce i propri pezzi. Conta il migliore di 3 tentativi.",
   "status_note": "La vendita dei ticket non è ancora aperta. La modalità Avventura è gratis e già aperta.",
   "tut_kicker": "Tabellone di prova",
   "tut_title": "Prova tre mosse",
@@ -94,7 +94,7 @@
   "risk_4_desc": "I concorsi di abilità a pagamento seguono regole diverse nei vari paesi. Controlla le tue. Solo maggiorenni (18+).",
   "faq_title": "FAQ",
   "q_skill_title": "È gioco d'azzardo?",
-  "q_skill_desc": "Il tuo punteggio dipende da dove posizioni i pezzi, e tutti ricevono gli stessi pezzi quel giorno. Alcuni paesi hanno comunque regole speciali per i concorsi a pagamento, quindi controlla le tue. Solo maggiorenni (18+).",
+  "q_skill_desc": "Il tuo punteggio dipende da dove piazzi i pezzi, e i pezzi sono distribuiti in modo equo da un seed registrato prima dell'inizio del giorno e pubblicato dopo. Alcuni paesi hanno ancora regole speciali per i concorsi a pagamento, quindi controlla le tue. Solo 18+.",
   "q_disconnect_title": "What if I disconnect?",
   "q_disconnect_desc": "Il ticket è stato speso all'inizio del tentativo. Il server salva ogni mossa mentre giochi e, quando finisce il giorno UTC, vale il punteggio raggiunto.",
   "q_ticket_title": "Posso riutilizzare un ticket?",

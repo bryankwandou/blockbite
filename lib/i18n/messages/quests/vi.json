@@ -1,0 +1,16 @@
+{
+  "title": "Nhiệm vụ",
+  "sub": "Nhiệm vụ do đối tác đăng. Gửi bằng chứng và người duyệt sẽ kiểm tra.",
+  "connect_msg": "Kết nối ví để gửi nhiệm vụ đã hoàn thành.",
+  "connect_btn": "KẾT NỐI VÍ",
+  "loading": "Đang tải nhiệm vụ…",
+  "empty": "Hiện chưa có nhiệm vụ nào. Hãy quay lại sớm.",
+  "cancel": "HỦY",
+  "submit": "GỬI",
+  "proof_label": "Bằng chứng (liên kết, chữ ký giao dịch, URL ảnh chụp màn hình, v.v.)",
+  "submitting": "ĐANG GỬI…",
+  "submit_review": "GỬI ĐỂ DUYỆT",
+  "st_approved": "ĐÃ DUYỆT",
+  "st_rejected": "BỊ TỪ CHỐI",
+  "st_pending": "ĐANG CHỜ"
+}

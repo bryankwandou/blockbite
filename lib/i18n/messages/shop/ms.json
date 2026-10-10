@@ -40,6 +40,7 @@
   "err_funds": "USDC tidak cukup. Anda ada {have}, pek ini perlukan {need}.",
   "err_no_account": "Dompet ini belum ada akaun USDC.",
   "err_tx": "Transaksi gagal: {msg}",
+  "err_day_closing": "Hari ini hampir ditutup. Beli semula beberapa minit selepas 00:00 UTC.",
   "err_not_credited": "Dibayar (tx {sig}…) tetapi belum dikreditkan: {msg}. Buka semula halaman ini untuk cuba lagi.",
   "info_credits_title": "Tiket mengikut dompet anda",
   "info_credits_desc": "Pelayan kami menyemak transaksi on-chain, kemudian menambah tiket ke dompet anda. Simpan pautan transaksi sebagai resit.",

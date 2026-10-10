@@ -18,7 +18,7 @@
   "connecting": "MENYAMBUNG…",
   "waiting_for_wallet": "MENUNGGU DOMPET…",
   "kicker": "Satu papan sehari",
-  "lede": "Papan dan blok yang sama untuk semua orang setiap hari UTC. Yang terbaik daripada {attempts} percubaan dikira.",
+  "lede": "Satu papan sehari. Setiap percubaan mendapat kepingan sendiri, jadi tiada siapa boleh menghafal urutannya. Yang terbaik daripada {attempts} percubaan dikira.",
   "connect_btn": "SAMBUNG DOMPET",
   "mascot_alt": "Rex, maskot BlockBite, menilai papan hari ini",
   "rules_title": "Cara ia berfungsi",
@@ -65,7 +65,7 @@
   "tab_daily": "Harian",
   "tab_monthly": "Bulanan",
   "tabs_label": "Paparan berperingkat",
-  "rule_same_seed": "Papan sama untuk semua hari ini (UTC)",
+  "rule_same_seed": "Papan permulaan sama untuk semua hari ini (UTC). Kepingan berbeza setiap percubaan.",
   "rule_no_hints": "Tiada petunjuk",
   "rule_no_undo": "Tiada buat asal",
   "attempt_of": "Percubaan {n}/{max}",
@@ -81,5 +81,5 @@
   "monthly_connect": "Sambung dompet untuk melihat skor dan kedudukan bulanan anda.",
   "monthly_players": "{n} pemain bulan ini",
   "monthly_offline": "Tidak dapat memuatkan papan bulanan. Cuba lagi nanti.",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "Jualan tiket dibuka: 1 USDC bagi setiap percubaan ranked."
 }

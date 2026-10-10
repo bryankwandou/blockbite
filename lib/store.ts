@@ -50,14 +50,17 @@ export async function getGlobal(): Promise<AppState> {
   return v ?? ZERO_STATE;
 }
 
+/** Only a plain object may be spread into state (a string would spread into index keys). */
+const plain = (v: unknown): Record<string, unknown> => (v && typeof v === 'object' && !Array.isArray(v) ? (v as Record<string, unknown>) : {});
+
 export async function setGlobal(patch: Partial<AppState>): Promise<void> {
   const db = await kv();
   if (!db) return;
   const cur = await getGlobal();
   // Deep merge one level to preserve nested fields (vault.lastUpdate, admin.*)
   const merged: AppState = {
-    vault: { ...cur.vault, ...(patch.vault ?? {}) },
-    admin: { ...cur.admin, ...(patch.admin ?? {}) },
+    vault: { ...cur.vault, ...plain(patch.vault) },
+    admin: { ...cur.admin, ...plain(patch.admin) },
   };
   await db.set('blockbite:global', merged);
 }

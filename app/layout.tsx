@@ -13,21 +13,23 @@ import { PageTracker } from '@/components/PageTracker';
 import { WalletTracker } from '@/components/WalletTracker';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://blockbite.vercel.app'),
   title: 'BlockBite · Block puzzle on Solana',
-  description: 'An 8×8 block puzzle on Solana. Adventure mode is free. Daily Ranked: one board per UTC day, the same pieces for everyone, 1 USDC per try, best of 3 counts.',
+  description: 'An 8×8 block puzzle on Solana. Adventure mode is free. Daily Ranked: one board per UTC day, every try deals its own pieces, 1 USDC per try, best of 3 counts.',
   manifest: '/manifest.webmanifest',
   appleWebApp: { capable: true, title: 'BlockBite', statusBarStyle: 'black-translucent' },
   keywords: ['BlockBite', 'block puzzle', 'Solana', 'USDC', 'daily puzzle', 'skill game', 'arcade'],
   openGraph: {
     title: 'BlockBite · One board a day. Best score wins.',
-    description: 'An 8×8 block puzzle on Solana. Free Adventure mode, plus a daily ranked board that is the same for everyone.',
+    description: 'An 8×8 block puzzle on Solana. Free Adventure mode, plus a daily ranked board: same start for everyone, own pieces every try.',
     type: 'website',
-    url: process.env.NEXT_PUBLIC_APP_URL ?? 'https://blockbite-game.vercel.app',
+    url: 'https://blockbite.vercel.app',
+    siteName: 'BlockBite',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'BlockBite · Block puzzle on Solana',
-    description: 'One board a day, the same pieces for everyone. Adventure mode is free.',
+    description: 'One board a day. Every try deals its own pieces. Adventure mode is free.',
   },
 };
 

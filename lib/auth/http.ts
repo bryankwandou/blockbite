@@ -1,8 +1,11 @@
 /** Route helpers for /api/auth/* (server only). */
 
 import { NextResponse } from 'next/server';
+import { isCrossSiteMutation } from '@/lib/http/origin';
 import { getIP, rateLimit } from '@/lib/rate-limit';
-import { SESSION_TTL_MS, seal, unseal } from './core';
+import { body as cappedBody } from '@/lib/ranked/http';
+import { consumeNonce, nonceOf } from '@/lib/safeEqual';
+import { CHALLENGE_TTL_MS, SESSION_TTL_MS, seal, unseal } from './core';
 import { dbConfigured, type RecoveryMethod } from './db';
 
 export const COOKIE = { wallet: 'bb_acct_w', recover: 'bb_acct_r', oauth: 'bb_acct_o', passkey: 'bb_acct_pk' } as const;
@@ -13,13 +16,20 @@ export function json(body: unknown, status = 200) {
 }
 export const fail = (status: number, error: string, extra: Record<string, unknown> = {}) => json({ error, ...extra }, status);
 
-export async function body(req: Request): Promise<Record<string, unknown> | null> {
-  try {
-    const b = await req.json();
-    return b && typeof b === 'object' ? (b as Record<string, unknown>) : null;
-  } catch {
-    return null;
-  }
+/** JSON object body, capped at 256 KiB while streaming (see lib/ranked/http.ts); null if oversize, malformed or not an object. */
+export const body = cappedBody;
+
+/**
+ * Makes a signed wallet challenge single-use: its nonce is recorded in Postgres on the first
+ * accepted request and refused afterwards (same table and TTL as the ranked and console sign-ins).
+ * Throws if the database is down; callers answer 503.
+ */
+export async function consumeChallenge(message: unknown): Promise<boolean> {
+  if (typeof message !== 'string') return false;
+  const nonce = nonceOf(message);
+  const issued = Number(/^Issued: (\d+)$/m.exec(message)?.[1]);
+  if (!nonce || !Number.isFinite(issued)) return false;
+  return consumeNonce('account', nonce, issued + CHALLENGE_TTL_MS + 60_000);
 }
 
 export function accountsConfigured(): boolean {
@@ -38,7 +48,13 @@ export function clearCookie(res: NextResponse, name: string) {
 function readCookie(req: Request, name: string): string | null {
   for (const part of (req.headers.get('cookie') ?? '').split(';')) {
     const i = part.indexOf('=');
-    if (i > 0 && part.slice(0, i).trim() === name) return decodeURIComponent(part.slice(i + 1).trim());
+    if (i > 0 && part.slice(0, i).trim() === name) {
+      try {
+        return decodeURIComponent(part.slice(i + 1).trim());
+      } catch {
+        return null; // malformed %-escape: treat as signed out, not a 500
+      }
+    }
   }
   return null;
 }
@@ -49,8 +65,9 @@ export interface OAuthState { st: string; v: string; n: string; mode: 'bind' | '
 
 export interface PasskeyChallenge { c: string; mode: 'bind' | 'recover'; w: string | null; e: number }
 
-export const walletSession = (req: Request) => unseal<WalletSession>('wallet', readCookie(req, COOKIE.wallet));
-export const recoverySession = (req: Request) => unseal<RecoverySession>('recover', readCookie(req, COOKIE.recover));
+// A mutation that a browser marks as cross-site never counts as signed in (second layer behind SameSite=Lax).
+export const walletSession = (req: Request) => (isCrossSiteMutation(req) ? null : unseal<WalletSession>('wallet', readCookie(req, COOKIE.wallet)));
+export const recoverySession = (req: Request) => (isCrossSiteMutation(req) ? null : unseal<RecoverySession>('recover', readCookie(req, COOKIE.recover)));
 export const oauthState = (req: Request) => unseal<OAuthState>('oauth', readCookie(req, COOKIE.oauth));
 
 export const passkeyChallenge = (req: Request) => unseal<PasskeyChallenge>('passkey', readCookie(req, COOKIE.passkey));

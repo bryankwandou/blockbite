@@ -77,8 +77,11 @@ function usePlayerData(currentLevel: number) {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const u = localStorage.getItem('bb_username') || '';
-    const g = parseInt(localStorage.getItem('bb_games_played') ?? '0');
+    let u = '', g = 0;
+    try {
+      u = localStorage.getItem('bb_username') || '';
+      g = parseInt(localStorage.getItem('bb_games_played') ?? '0');
+    } catch { /* storage blocked */ }
     setUsername(u === 'Explorer' ? '' : u);
     setGamesPlayed(isNaN(g) ? 0 : g);
   }, [currentLevel]);
@@ -158,7 +161,7 @@ function ActSelector({ biome }: { biome: Biome }) {
             key={b.act}
             href={`/map/${b.act}`}
             style={{
-              flexShrink: 0,
+              flexShrink: 0, minHeight: 40,
               padding: '7px 13px', borderRadius: 999,
               background: active
                 ? `linear-gradient(135deg, ${b.accent}, ${b.glow})`

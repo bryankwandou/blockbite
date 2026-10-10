@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { neonTrackView } from '@/lib/neon-analytics';
 
+import { readJson } from '@/lib/http/body';
 import { getIP, rateLimit } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
@@ -9,7 +10,8 @@ export async function POST(req: NextRequest) {
   const rl = await rateLimit(`track:${getIP(req)}`, 300, 10 * 60_000).catch(() => null);
   if (rl && !rl.allowed) return NextResponse.json({ ok: false }, { status: 429 });
   try {
-    const body = await req.json().catch(() => ({}));
+    const body = await readJson(req, 2048);
+    if (body instanceof Response) return NextResponse.json({ ok: false }, { status: body.status });
     const rawPath = body?.path;
     if (typeof rawPath !== 'string' || !rawPath.startsWith('/') || rawPath.length > 200) {
       return NextResponse.json({ ok: false }, { status: 400 });

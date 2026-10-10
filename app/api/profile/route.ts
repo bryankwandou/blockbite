@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getUser, setUser } from '@/lib/store';
-import { walletFromRequest } from '@/lib/ranked/auth';
+import { walletFromRequestAsync } from '@/lib/ranked/auth';
 import { adventureConfigured, adventureLevel } from '@/lib/adventure/db';
 import { isAvatarId } from '@/lib/avatars';
 import { isLocale } from '@/lib/i18n/locales';
 import { getIP, rateLimit } from '@/lib/rate-limit';
+import { readJson } from '@/lib/http/body';
 
 // Solana base58 address: 32–44 chars, no 0/O/I/l
 const SOLANA_ADDR_RE = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/;
@@ -49,14 +50,16 @@ export async function POST(req: NextRequest) {
   if (rl && !rl.allowed) return NextResponse.json({ error: 'too many changes, try again later' }, { status: 429 });
   // The wallet comes from its signed-in session (a short-lived token from a
   // signed challenge). A bare signature over the patch could be replayed forever.
-  const addr = walletFromRequest(req);
-  if (!addr) return NextResponse.json({ error: 'sign in with your wallet first' }, { status: 401 });
-  let input: { addr?: unknown; patch?: unknown };
+  let addr: string | null;
   try {
-    input = await req.json();
+    addr = await walletFromRequestAsync(req);
   } catch {
-    return NextResponse.json({ error: 'invalid JSON' }, { status: 400 });
+    return NextResponse.json({ error: 'session check unavailable, try again' }, { status: 503 });
   }
+  if (!addr) return NextResponse.json({ error: 'sign in with your wallet first' }, { status: 401 });
+  const parsed = await readJson(req, 4096);
+  if (parsed instanceof Response) return parsed;
+  const input: { addr?: unknown; patch?: unknown } = parsed;
   try {
     const patch = input?.patch as Record<string, unknown> | undefined;
     if (!patch || typeof patch !== 'object' || Array.isArray(patch)) {

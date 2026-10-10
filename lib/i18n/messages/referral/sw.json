@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "Bado hakuna rufaa. Shiriki kiungo chako kutoka kwenye wasifu.",
+  "joined_total": "Wachezaji {n} wamejiunga kupitia kiungo cha rufaa",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "Imeshindwa kupakia takwimu za rufaa.",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "Wachezaji waliojiunga kwa kiungo chako",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "Kati yao, waliomaliza angalau mchezo mmoja",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "Bado hakuna aliyetumia kiungo chako.",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "Tazama ubao wa rufaa"
 }

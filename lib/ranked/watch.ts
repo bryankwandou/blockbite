@@ -12,7 +12,7 @@
 import bs58 from 'bs58';
 import { Connection, PublicKey } from '@solana/web3.js';
 import { getRound } from './db';
-import { PRIZE_PROGRAM_ID, PRIZE_VETO_WINDOW_S } from './config';
+import { PRIZE_PROGRAM_ID, PRIZE_VETO_WINDOW_S, PRIZE_CLAIM_WINDOW_S } from './config';
 import { roundAddress, ROUND_HDR } from './prize-ix';
 
 export interface ChainRound {
@@ -37,6 +37,28 @@ export interface WatchReport {
   issues: WatchIssue[];
   /** Issues still inside the veto window: act now. */
   urgent: number;
+  /** Rounds the DB says were posted (inside the claim window) that the chain does not hold. */
+  missing: MissingRound[];
+}
+
+export interface MissingRound { roundId: string; postedSig: string; postedAt: number; problem: 'missing on chain' }
+
+/**
+ * rk_rounds rows with posted_sig set that were posted inside the claim window.
+ * The DB does not record a close, and the program only closes a round after the
+ * claim window (or earlier if fully claimed / vetoed, which no server code does),
+ * so a row inside the window with no account is reported.
+ */
+export async function listPostedRounds(sinceMs: number): Promise<{ roundId: string; postedSig: string; postedMs: number }[]> {
+  const { neon } = await import('@neondatabase/serverless');
+  const url = process.env.blockbite_DATABASE_URL ?? process.env.RANKED_DATABASE_URL;
+  if (!url) throw new Error('Ranked database is not configured');
+  const schema = process.env.RANKED_DB_SCHEMA ?? 'public';
+  if (!/^[a-z_][a-z0-9_]*$/.test(schema)) throw new Error('bad RANKED_DB_SCHEMA');
+  const rows = await neon(url).query(
+    `SELECT round_id::text AS round_id, posted_sig, (extract(epoch FROM posted_at) * 1000)::float8 AS posted_ms
+     FROM ${schema}.rk_rounds WHERE posted_sig IS NOT NULL AND posted_at > to_timestamp($1::float8 / 1000)`, [sinceMs]) as any[];
+  return rows.map((r) => ({ roundId: r.round_id, postedSig: r.posted_sig, postedMs: Number(r.posted_ms) }));
 }
 
 export function parseRound(address: PublicKey, data: Buffer): ChainRound | null {
@@ -57,15 +79,21 @@ export function parseRound(address: PublicKey, data: Buffer): ChainRound | null 
 
 export async function watchRounds(rpcUrl: string, now = Date.now()): Promise<WatchReport> {
   const conn = new Connection(rpcUrl, 'confirmed');
-  const accounts = await conn.getProgramAccounts(PRIZE_PROGRAM_ID, {
+  const fetchRounds = async () => (await conn.getProgramAccounts(PRIZE_PROGRAM_ID, {
     filters: [{ memcmp: { offset: 0, bytes: bs58.encode(Buffer.from([2])) } }],
-  });
-  const rounds = accounts.map((a) => parseRound(a.pubkey, a.account.data)).filter((r): r is ChainRound => r !== null);
-  return checkRounds(rounds, now);
+  })).map((a) => parseRound(a.pubkey, a.account.data)).filter((r): r is ChainRound => r !== null);
+  const posted = await listPostedRounds(now - PRIZE_CLAIM_WINDOW_S * 1000);
+  let rounds = await fetchRounds();
+  // An empty answer while the DB holds posted rounds may be a truncated RPC reply: ask once more.
+  if (!rounds.length && posted.length) rounds = await fetchRounds();
+  return checkRounds(rounds, now, posted);
 }
 
 /** Matches parsed on-chain rounds against rk_rounds. */
-export async function checkRounds(rounds: ChainRound[], now = Date.now()): Promise<WatchReport> {
+export async function checkRounds(
+  rounds: ChainRound[], now = Date.now(),
+  posted: { roundId: string; postedSig: string; postedMs: number }[] = [],
+): Promise<WatchReport> {
   const issues: WatchIssue[] = [];
   for (const r of rounds) {
     if (r.vetoed) continue;
@@ -80,17 +108,22 @@ export async function checkRounds(rounds: ChainRound[], now = Date.now()): Promi
   // A round the server posted but has not recorded yet is normal for a moment;
   // every other problem is a post the server did not make.
   const urgent = issues.filter((i) => i.vetoSecondsLeft > 0 && i.problem !== 'not marked posted').length;
-  return { checkedAt: new Date(now).toISOString(), rounds: rounds.length, issues, urgent };
+  const onChain = new Set(rounds.map((r) => r.roundId));
+  const missing: MissingRound[] = posted
+    .filter((p) => !onChain.has(p.roundId) && p.postedMs > now - PRIZE_CLAIM_WINDOW_S * 1000)
+    .map((p) => ({ roundId: p.roundId, postedSig: p.postedSig, postedAt: Math.floor(p.postedMs / 1000), problem: 'missing on chain' as const }));
+  return { checkedAt: new Date(now).toISOString(), rounds: rounds.length, issues, urgent, missing };
 }
 
 /** Posts a short alert to ALERT_WEBHOOK_URL (Discord or Slack incoming webhook), if set. */
 export async function sendAlert(report: WatchReport): Promise<boolean> {
   const url = process.env.ALERT_WEBHOOK_URL;
-  if (!url || !report.issues.length) return false;
+  if (!url || !(report.issues.length || report.missing.length)) return false;
   const lines = report.issues.map((i) =>
     `round ${i.roundId}: ${i.problem}, total ${Number(i.total) / 1e6} USDC, ` +
     (i.vetoSecondsLeft > 0 ? `VETO WITHIN ${Math.floor(i.vetoSecondsLeft / 3600)}h ${Math.floor((i.vetoSecondsLeft % 3600) / 60)}m` : 'veto window over'));
-  const text = `BlockBite prize watcher: ${report.urgent} round(s) need a veto now\n${lines.join('\n')}`;
+  for (const m of report.missing) lines.push(`round ${m.roundId}: ${m.problem} (posted ${new Date(m.postedAt * 1000).toISOString()}, sig ${m.postedSig.slice(0, 12)}...)`);
+  const text = `BlockBite prize watcher: ${report.urgent} round(s) need a veto now, ${report.issues.length + report.missing.length} problem(s) in all\n${lines.join('\n')}`;
   const res = await fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ content: text, text }) });
   return res.ok;
 }

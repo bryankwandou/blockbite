@@ -18,7 +18,7 @@
   "connecting": "در حال اتصال…",
   "waiting_for_wallet": "در انتظار کیف پول…",
   "kicker": "هر روز یک صفحه",
-  "lede": "هر روز UTC صفحه و مهره‌ها برای همه یکسان است. بهترین از {attempts} تلاش شما حساب می‌شود.",
+  "lede": "هر روز یک صفحه. هر تلاش مهره‌های خودش را می‌گیرد، پس هیچ‌کس نمی‌تواند ترتیب را از قبل یاد بگیرد. بهترین نتیجه از {attempts} تلاش حساب می‌شود.",
   "connect_btn": "اتصال کیف پول",
   "mascot_alt": "Rex، نماد BlockBite، در حال سبک‌سنگین کردن صفحه امروز",
   "rules_title": "چطور کار می‌کند",
@@ -65,7 +65,7 @@
   "tab_daily": "روزانه",
   "tab_monthly": "ماهانه",
   "tabs_label": "نمای Ranked",
-  "rule_same_seed": "امروز (UTC) صفحه برای همه یکسان است",
+  "rule_same_seed": "امروز (UTC) صفحه شروع برای همه یکسان است. مهره‌ها در هر تلاش فرق می‌کنند.",
   "rule_no_hints": "بدون راهنما",
   "rule_no_undo": "بدون بازگردانی",
   "attempt_of": "تلاش {n}/{max}",
@@ -81,5 +81,5 @@
   "monthly_connect": "برای دیدن امتیاز و رتبه ماهانه‌تان کیف پول وصل کنید.",
   "monthly_players": "{n} بازیکن در این ماه",
   "monthly_offline": "جدول ماهانه بارگذاری نشد. بعداً دوباره امتحان کنید.",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "فروش بلیت باز است: ۱ USDC برای هر تلاش Ranked."
 }

@@ -12,28 +12,32 @@
  *   through the sorted-set layer without downgrading any existing score
  *   (uses the GT flag).
  *
- * Auth: ADMIN_SECRET via ?secret=, x-admin-secret, or Authorization: Bearer.
+ * Auth: ADMIN_SECRET (>= 16 chars) as `Authorization: Bearer <secret>`.
+ * Query-string secrets are rejected (they end up in logs and history).
  * Safe to call multiple times — idempotent via GT flag.
  */
 
-import { timingSafeEqual } from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { recoverLegacyData } from '@/lib/leaderboard/store';
+import { getIP, rateLimit } from '@/lib/rate-limit';
+import { safeEqual } from '@/lib/safeEqual';
 
 export const dynamic = 'force-dynamic';
 
-function safeEqual(a: string, b: string): boolean {
-  const x = Buffer.from(a), y = Buffer.from(b);
-  return x.length === y.length && timingSafeEqual(x, y);
-}
-
 export async function POST(req: NextRequest) {
-  const bearer = req.headers.get('authorization')?.replace(/^Bearer\s+/i, '') || null;
-  const secret = req.nextUrl.searchParams.get('secret')
-    ?? req.headers.get('x-admin-secret') ?? bearer;
-
+  if (req.nextUrl.searchParams.has('secret')) {
+    return NextResponse.json({ error: 'Send the secret as an Authorization: Bearer header, not in the URL' }, { status: 400 });
+  }
   const adminSecret = process.env.ADMIN_SECRET;
-  if (!adminSecret || !secret || !safeEqual(secret, adminSecret)) {
+  if (!adminSecret || adminSecret.length < 16) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+  const rl = await rateLimit(`recover:${getIP(req)}`, 10, 15 * 60_000).catch(() => null);
+  if (rl && !rl.allowed) {
+    return NextResponse.json({ error: 'Too many attempts' }, { status: 429, headers: { 'Retry-After': '900' } });
+  }
+  const m = /^Bearer\s+(.+)$/i.exec(req.headers.get('authorization') ?? '');
+  if (!m || !safeEqual(m[1], adminSecret)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -46,7 +50,6 @@ export async function POST(req: NextRequest) {
   });
 }
 
-// Also allow GET for easy browser-triggered recovery (same auth required)
-export async function GET(req: NextRequest) {
-  return POST(req);
+export async function GET() {
+  return NextResponse.json({ error: 'Use POST with Authorization: Bearer' }, { status: 405, headers: { Allow: 'POST' } });
 }

@@ -13,7 +13,7 @@ const grad = (c: keyof typeof BLOCK_COLORS) => `linear-gradient(135deg, ${BLOCK_
 function Mini({ piece, dim }: { piece: number; dim?: boolean }) {
   const p = PIECES[piece];
   return (
-    <span className={s.mini} style={{ gridTemplateColumns: `repeat(${p.cols}, 1fr)`, aspectRatio: `${p.cols} / ${p.rows}`, opacity: dim ? 0.35 : 1 }}>
+    <span className={s.mini} style={{ gridTemplateColumns: `repeat(${p.cols}, var(--mc))`, opacity: dim ? 0.35 : 1 }}>
       {p.shape.flat().map((v, i) => (
         <span key={i} style={v ? { background: grad(pieceColor(piece)) } : undefined} />
       ))}
@@ -78,13 +78,21 @@ export default function Board({ view, label, onMove, compact }: {
     const g = gridRef.current?.getBoundingClientRect();
     return g ? g.width / 8 : 40;
   };
-  /** Board cell under a screen point, or null when off the board. */
-  const cellAt = (x: number, y: number): number | null => {
+  /**
+   * Cell that makes the piece land where the ghost is drawn. The ghost is centred
+   * on the pointer, so the origin is the nearest whole cell to (pointer - half the
+   * piece); taking the cell under the pointer instead put even-sized pieces up to
+   * a cell away from the ghost. Returns the anchor cell originFor() maps back to it.
+   */
+  const dragCell = (x: number, y: number, slot: 0 | 1 | 2): number | null => {
+    const piece = run.tray[slot];
     const g = gridRef.current?.getBoundingClientRect();
-    if (!g || x < g.left || y < g.top || x >= g.right || y >= g.bottom) return null;
-    const c = Math.min(7, Math.floor(((x - g.left) / g.width) * 8));
-    const r = Math.min(7, Math.floor(((y - g.top) / g.height) * 8));
-    return r * 8 + c;
+    if (piece === null || !g || x < g.left || y < g.top || x >= g.right || y >= g.bottom) return null;
+    const p = PIECES[piece];
+    const size = g.width / 8;
+    const row = Math.min(8 - p.rows, Math.max(0, Math.round((y - g.top) / size - p.rows / 2)));
+    const col = Math.min(8 - p.cols, Math.max(0, Math.round((x - g.left) / size - p.cols / 2)));
+    return (row + Math.floor((p.rows - 1) / 2)) * 8 + col + Math.floor((p.cols - 1) / 2);
   };
 
   const onSlotDown = (e: React.PointerEvent, slot: 0 | 1 | 2) => {
@@ -100,7 +108,7 @@ export default function Board({ view, label, onMove, compact }: {
     if (!dragged.current) { dragged.current = true; setSel(p.slot); }
     // On touch the piece rides above the finger so the finger does not hide it.
     const lift = p.touch ? cellSize() * 1.6 : 0;
-    const cell = cellAt(e.clientX, e.clientY - lift);
+    const cell = dragCell(e.clientX, e.clientY - lift, p.slot);
     setDrag({ slot: p.slot, x: e.clientX, y: e.clientY - lift, cell: cell ?? -1, lift });
     setHover(cell);
   };

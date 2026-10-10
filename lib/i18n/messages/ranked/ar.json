@@ -18,7 +18,7 @@
   "connecting": "جارٍ الربط…",
   "waiting_for_wallet": "بانتظار المحفظة…",
   "kicker": "لوحة واحدة كل يوم",
-  "lede": "اللوحة نفسها والقطع نفسها للجميع في كل يوم UTC. تُحتسب أفضل محاولاتك الـ{attempts}.",
+  "lede": "لوحة واحدة كل يوم. كل محاولة تحصل على قطعها الخاصة، فلا يستطيع أحد حفظ التسلسل مسبقًا. تُحسب أفضل محاولة من {attempts}.",
   "connect_btn": "ربط المحفظة",
   "mascot_alt": "ريكس، تميمة BlockBite، يتفحّص لوحة اليوم",
   "rules_title": "كيف يعمل",
@@ -65,7 +65,7 @@
   "tab_daily": "يومي",
   "tab_monthly": "شهري",
   "tabs_label": "عرض Ranked",
-  "rule_same_seed": "اللوحة نفسها للجميع اليوم (UTC)",
+  "rule_same_seed": "اليوم (UTC) لوحة البداية نفسها للجميع. القطع تختلف في كل محاولة.",
   "rule_no_hints": "بلا تلميحات",
   "rule_no_undo": "بلا تراجع",
   "attempt_of": "المحاولة {n}/{max}",
@@ -81,5 +81,5 @@
   "monthly_connect": "اربط محفظة لترى نتيجتك الشهرية وترتيبك.",
   "monthly_players": "{n} لاعبين هذا الشهر",
   "monthly_offline": "تعذّر تحميل اللوحة الشهرية. حاول لاحقًا.",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "بيع التذاكر مفتوح: 1 USDC لكل محاولة في Ranked."
 }

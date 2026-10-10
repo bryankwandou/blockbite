@@ -2,7 +2,7 @@
   "hero_kicker": "Puzzle de blocs sur Solana",
   "hero_title": "Un plateau par jour. Le meilleur score gagne.",
   "hero_boards": "Le Top 10 de chaque jour et le Top 10 de chaque mois gagnent des USDC. Ton score mensuel est la somme de tes 10 meilleurs scores quotidiens. Les prix quotidiens prennent 40 % de la cagnotte, les mensuels 60 %.",
-  "hero_sub": "Pose trois pièces, efface des lignes et des colonnes, et recommence. Joue à l'Aventure gratuitement, ou attaque le plateau quotidien, le même pour tous.",
+  "hero_sub": "Placez trois pièces, effacez lignes et colonnes, recommencez. Jouez à Adventure gratuitement, ou relevez le plateau du jour : même départ pour tous, pièces différentes à chaque essai.",
   "cta_adventure": "Jouer à l'Aventure gratuitement",
   "cta_ranked": "Comment fonctionne le Ranked quotidien",
   "hero_status": "L'Aventure est ouverte. La vente de tickets Ranked ouvre bientôt.",
@@ -13,7 +13,7 @@
   "board_reset": "Réinitialiser le plateau",
   "num_price": "par ticket, un essai chacun",
   "num_tries": "essais par wallet et par jour UTC",
-  "num_board": "même plateau et mêmes pièces pour tous",
+  "num_board": "même plateau, pièces propres à chaque essai",
   "num_winners": "gagnants chaque jour, plus 10 chaque mois",
   "modes_kicker": "Deux modes",
   "modes_title": "Entraîne-toi gratuitement. Affronte-toi une fois par jour.",
@@ -23,7 +23,7 @@
   "adventure_cta": "Ouvrir la carte",
   "ranked_title": "Ranked quotidien",
   "ranked_tag": "Ouverture bientôt",
-  "ranked_body": "Un plateau par jour UTC, distribué de la même façon à tous les joueurs. Chaque ticket coûte 1 USDC et donne un essai.",
+  "ranked_body": "Un plateau par jour UTC. Chaque essai distribue ses propres pièces. Chaque ticket coûte 1 USDC et donne un essai.",
   "ranked_point_1": "Jusqu'à 3 essais par wallet et par jour",
   "ranked_point_2": "Seul ton meilleur essai compte",
   "ranked_point_3": "Classements quotidien et mensuel",
@@ -64,8 +64,8 @@
   "install_label": "Web App",
   "install_ios": "Sur iPhone/iPad : touchez Partager, puis Sur l'écran d'accueil.",
   "install_other": "Ouvrez le menu du navigateur et choisissez Installer l'application (ou Ajouter à l'écran d'accueil).",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Adventure et Ranked sont ouverts. Le ticket Ranked coûte 1 USDC.",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "Sur Mac : ouvre cette page dans Safari, puis Fichier → Ajouter au Dock."
 }

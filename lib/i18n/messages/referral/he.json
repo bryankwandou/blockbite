@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "עדיין אין הפניות. שתפו את הקישור שלכם מהפרופיל.",
+  "joined_total": "{n} שחקנים הצטרפו דרך קישור הפניה",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "לא ניתן לטעון את נתוני ההפניות.",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "שחקנים שהצטרפו עם הקישור שלכם",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "מתוכם, מי שסיימו לפחות משחק אחד",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "עדיין אף אחד לא השתמש בקישור שלכם.",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "צפייה בטבלת ההפניות"
 }

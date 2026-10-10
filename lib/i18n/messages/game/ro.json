@@ -45,7 +45,7 @@
   "tip_combo": "O piesă care completează un rând și o coloană contează ca două linii.",
   "tip_space": "Lasă undeva un gol drept de 4. Barele lungi au nevoie de el.",
   "ranked_cta_kicker": "Ranked zilnic",
-  "ranked_cta_title": "O tablă pe zi, aceeași pentru toți",
+  "ranked_cta_title": "O tablă pe zi, piese proprii la fiecare încercare",
   "ranked_cta_body": "1 bilet = 1 încercare = {price} USDC, până la {attempts} încercări pe zi UTC; contează cea mai bună. {daily}% din seiful de premii al fiecărei zile merge la Top 10 zilnic și {monthly}% la Top 10 lunar, după suma celor mai bune {days} zile ale fiecărui jucător.",
   "ranked_cta_status": "Vânzare de bilete: se deschide în curând",
   "ranked_cta_link": "Vezi Ranked zilnic",

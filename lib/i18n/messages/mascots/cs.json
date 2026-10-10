@@ -1,0 +1,21 @@
+{
+  "play_now": "HRÁT TEĎ",
+  "universe": "VESMÍR BLOCKBITE",
+  "meet": "Seznamte se s {crew}",
+  "crew": "Partou",
+  "sub": "Čtyři postavy. Jedna mise. Dobyjte 4 000 úrovní a získejte odměny on-chain.",
+  "choose": "Vyberte si postavu.",
+  "choose_desc": "Vstupte do hry, zvolte styl a bojujte o místo na vrcholu žebříčku on-chain.",
+  "rex_title": "Král",
+  "rex_tag": "Královský",
+  "rex_bio": "Korunovaný vládce hrací plochy. Rex hraje s železnou disciplínou: každý tah je vypočítaný, každý blok umístěný pro maximální nadvládu. Bojte se koruny.",
+  "tide_title": "Vlna",
+  "tide_tag": "Proud",
+  "tide_bio": "Klidný jako hluboká voda. Tide čte plochu jako oceánské proudy: plynule, přizpůsobivě, nezastavitelně. Blok po bloku příliv vždy stoupá.",
+  "brawler_title": "Bojovník",
+  "brawler_tag": "Síla",
+  "brawler_bio": "Žádná milost, žádný ústup. Brawler útočí na každé dějství zpříma a drtí překážky čistou agresí. Plocha praskne dřív než on.",
+  "sunny_title": "Jiskra",
+  "sunny_tag": "Energie",
+  "sunny_bio": "Čistá radost, čistý chaos. Sunny promění i nejtěžší úrovně v párty: stále se usmívá, stále překvapuje, stále krade vítězství."
+}

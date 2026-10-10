@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "還沒有推薦。到個人檔案分享你的連結吧。",
+  "joined_total": "已有 {n} 位玩家透過推薦連結加入",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "無法載入推薦資料。",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "透過你的連結加入的玩家",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "其中至少完成一局的人數",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "還沒有人使用你的連結。",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "查看推薦榜"
 }

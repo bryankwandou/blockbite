@@ -1,0 +1,16 @@
+{
+  "title": "Quests",
+  "sub": "Taken geplaatst door partners. Dien bewijs in en een controleur beoordeelt het.",
+  "connect_msg": "Verbind een wallet om voltooide quests in te dienen.",
+  "connect_btn": "WALLET VERBINDEN",
+  "loading": "Quests laden…",
+  "empty": "Op dit moment geen actieve quests. Kom snel terug.",
+  "cancel": "ANNULEREN",
+  "submit": "INDIENEN",
+  "proof_label": "Bewijs (link, transactiehandtekening, screenshot-URL, enz.)",
+  "submitting": "BEZIG MET INDIENEN…",
+  "submit_review": "INDIENEN VOOR BEOORDELING",
+  "st_approved": "GOEDGEKEURD",
+  "st_rejected": "AFGEWEZEN",
+  "st_pending": "IN BEHANDELING"
+}

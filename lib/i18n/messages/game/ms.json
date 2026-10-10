@@ -45,7 +45,7 @@
   "tip_combo": "Satu blok yang melengkapkan baris dan lajur sekali gus dikira dua baris.",
   "tip_space": "Tinggalkan ruang lurus sepanjang 4 di mana-mana. Bar panjang memerlukannya.",
   "ranked_cta_kicker": "Berperingkat Harian",
-  "ranked_cta_title": "Satu papan sehari, sama untuk semua orang",
+  "ranked_cta_title": "Satu papan sehari, kepingan sendiri setiap percubaan",
   "ranked_cta_body": "1 tiket = 1 percubaan = {price} USDC, sehingga {attempts} percubaan setiap hari UTC; yang terbaik dikira. {daily}% daripada peti hadiah setiap hari pergi ke 10 teratas harian dan {monthly}% ke 10 teratas bulanan, disusun mengikut jumlah {days} hari terbaik setiap pemain.",
   "ranked_cta_status": "Jualan tiket: dibuka tidak lama lagi",
   "ranked_cta_link": "Lihat Berperingkat Harian",

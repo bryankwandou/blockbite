@@ -1,7 +1,7 @@
 {
   "kicker": "Poradnik",
   "title": "Jak grać",
-  "subtitle": "Jedna plansza dziennie. Te same klocki dla wszystkich. Liczy się najlepsza z 3 prób.",
+  "subtitle": "Jedna plansza dziennie. Każda próba rozdaje własne klocki. Liczy się najlepsza z 3 prób.",
   "status_note": "Sprzedaż biletów jeszcze się nie zaczęła. Tryb Przygoda jest darmowy i już otwarty.",
   "tut_kicker": "Plansza treningowa",
   "tut_title": "Spróbuj trzech ruchów",
@@ -94,7 +94,7 @@
   "risk_4_desc": "Płatne konkursy umiejętności podlegają w różnych krajach różnym zasadom. Sprawdź swoje. Tylko 18+.",
   "faq_title": "Pytania",
   "q_skill_title": "Czy to hazard?",
-  "q_skill_desc": "Twój wynik zależy od tego, gdzie stawiasz klocki, a wszyscy dostają tego dnia te same klocki. Niektóre kraje mają jednak szczególne przepisy o płatnych konkursach, więc sprawdź swoje. Tylko 18+.",
+  "q_skill_desc": "Wynik zależy od tego, gdzie układasz klocki, a klocki są rozdawane uczciwie z ziarna zatwierdzonego przed początkiem dnia i opublikowanego po jego końcu. Niektóre kraje wciąż mają specjalne przepisy dla płatnych konkursów, więc sprawdź swoje. Tylko 18+.",
   "q_disconnect_title": "Co, jeśli rozłączę się w trakcie gry?",
   "q_disconnect_desc": "Bilet został zużyty w chwili startu próby. Serwer zapisuje każdy ruch w trakcie gry, a gdy dzień UTC się kończy, osiągnięty wynik zostaje.",
   "q_ticket_title": "Czy mogę użyć biletu ponownie?",

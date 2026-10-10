@@ -1,0 +1,16 @@
+{
+  "title": "Zadania",
+  "sub": "Zadania od partnerów. Prześlij dowód, a weryfikator go sprawdzi.",
+  "connect_msg": "Połącz portfel, aby przesyłać wykonane zadania.",
+  "connect_btn": "POŁĄCZ PORTFEL",
+  "loading": "Wczytywanie zadań…",
+  "empty": "Brak aktywnych zadań. Wróć wkrótce.",
+  "cancel": "ANULUJ",
+  "submit": "PRZEŚLIJ",
+  "proof_label": "Dowód (link, sygnatura transakcji, adres zrzutu ekranu itp.)",
+  "submitting": "WYSYŁANIE…",
+  "submit_review": "PRZEŚLIJ DO WERYFIKACJI",
+  "st_approved": "ZATWIERDZONE",
+  "st_rejected": "ODRZUCONE",
+  "st_pending": "OCZEKUJE"
+}

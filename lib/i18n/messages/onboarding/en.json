@@ -1,0 +1,12 @@
+{
+  "s1_t": "Welcome",
+  "s1_d": "On-chain match-3 with real USDC rewards.",
+  "s2_t": "Buy Tickets",
+  "s2_d": "Starts at $1 USDC.",
+  "s3_t": "Clear Acts",
+  "s3_d": "500 levels → on-chain proof → claim USDC.",
+  "s4_t": "24h Cooldown",
+  "s4_d": "Enforced by the Solana program.",
+  "next": "Next",
+  "start": "Get Started"
+}

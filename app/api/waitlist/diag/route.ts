@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { timingSafeEqual } from 'crypto';
+import { safeEqual } from '@/lib/safeEqual';
 import { waitlistDbConfigured, dbGetCount } from '@/lib/waitlist/db';
 import { kvConfigured } from '@/lib/waitlist-kv';
 import { sbKeyRole, sbProbe, supabaseReady } from '@/lib/supabase-rest';
@@ -9,12 +9,7 @@ export const dynamic = 'force-dynamic';
 function checkToken(provided: string): boolean {
   const secret = process.env.ADMIN_TOKEN;
   if (!secret) return false;
-  try {
-    return provided.length === secret.length &&
-      timingSafeEqual(Buffer.from(provided), Buffer.from(secret));
-  } catch {
-    return false;
-  }
+  return safeEqual(provided, secret);
 }
 
 export async function GET(req: NextRequest) {

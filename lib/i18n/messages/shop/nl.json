@@ -40,6 +40,7 @@
   "err_funds": "Niet genoeg USDC. Je hebt {have}, dit pakket vraagt {need}.",
   "err_no_account": "Deze wallet heeft nog geen USDC-account.",
   "err_tx": "Transactie mislukt: {msg}",
+  "err_day_closing": "De dag sluit bijna af. Koop opnieuw een paar minuten na 00:00 UTC.",
   "err_not_credited": "Betaald (tx {sig}…) maar nog niet bijgeschreven: {msg}. Open deze pagina opnieuw om het nog eens te proberen.",
   "info_credits_title": "Tickets volgen je wallet",
   "info_credits_desc": "Onze server controleert de transactie on-chain en voegt de tickets dan toe aan je wallet. Bewaar de transactielink als bewijs.",

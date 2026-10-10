@@ -7,9 +7,11 @@ import PoolBalance from '@/components/PoolBalance';
 import ResetClock from '@/components/ResetClock';
 import { TICKET_PACKAGES } from '@/lib/game/constants';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
-import { PublicKey } from '@solana/web3.js';
-import { purchaseTickets, getUsdcBalance, InsufficientFundsError, NoTokenAccountError, SalesClosedError } from '@/lib/solana/usdc';
-import { RankedClient } from '@/lib/ranked/client';
+import {
+  purchaseTickets, getUsdcBalance, fetchRecordedReferrer, purchaseWindowOpen,
+  InsufficientFundsError, NoTokenAccountError, SalesClosedError,
+} from '@/lib/solana/usdc';
+import { RankedApiError, RankedClient } from '@/lib/ranked/client';
 import { RANKED_SALES_OPEN } from '@/lib/ranked/config';
 import { autoconvertSolForUsdc, SwapUnavailableError, SwapFailedError } from '@/lib/solana/jupiter-swap';
 import { explorerTx } from '@/lib/solana/config';
@@ -18,6 +20,39 @@ import k from '@/components/PageKit.module.css';
 import s from './shop.module.css';
 
 /** 100 blocks = 1 USDC: 70 prize vault, 25 team, 5 referrer. */
+// Signatures paid but not yet credited, per wallet. The server credits a tx
+// only within 6 h of its block time, so a lost credit call is retried on the
+// next visit instead of being forgotten.
+const pendingKey = (w: string) => `bb_rk_pending_credit_${w}`;
+function readPending(w: string): string[] {
+  try { return JSON.parse(localStorage.getItem(pendingKey(w)) ?? '[]') as string[]; } catch { return []; }
+}
+function writePending(w: string, sigs: string[]) {
+  try {
+    if (sigs.length) localStorage.setItem(pendingKey(w), JSON.stringify(sigs));
+    else localStorage.removeItem(pendingKey(w));
+  } catch { /* recovery only */ }
+}
+
+/**
+ * Credits `sig`, retrying while the server cannot see it yet (it reads the tx
+ * at 'finalized', ~15-30 s after confirmation). A 4xx other than 404/429 is a
+ * final refusal and is thrown at once.
+ */
+async function creditWithRetry(client: RankedClient, sig: string): Promise<number> {
+  const deadline = Date.now() + 3 * 60_000;
+  for (let i = 0; ; i++) {
+    try {
+      return (await client.credit(sig)).credits;
+    } catch (e) {
+      const status = e instanceof RankedApiError ? e.status : 0;
+      const retry = status === 0 || status === 404 || status === 429 || status >= 500;
+      if (!retry || Date.now() > deadline) throw e;
+      await new Promise((r) => setTimeout(r, Math.min(2500 * 2 ** Math.min(i, 3), 15_000)));
+    }
+  }
+}
+
 const CELLS = Array.from({ length: 100 }, (_, i) => (i < 70 ? 'vault' : i < 95 ? 'team' : 'ref'));
 
 export default function ShopPage() {
@@ -33,9 +68,25 @@ export default function ShopPage() {
   // Ticket credits live on the server (bought on-chain, verified there).
   useEffect(() => {
     if (!publicKey) return;
-    const c = RankedClient.cached(publicKey.toBase58());
-    if (c) c.me().then((m) => setTicketBalance(m.credits)).catch(() => {});
-  }, [publicKey]);
+    const w = publicKey.toBase58();
+    const c = RankedClient.cached(w);
+    if (!c) return;
+    c.me().then((m) => setTicketBalance(m.credits)).catch(() => {});
+    // Finish credits a previous visit paid for but could not record.
+    (async () => {
+      for (const sig of readPending(w)) {
+        try {
+          setTicketBalance(await creditWithRetry(c, sig));
+          writePending(w, readPending(w).filter((x) => x !== sig));
+        } catch (e) {
+          if (e instanceof RankedApiError && e.status === 422) {
+            writePending(w, readPending(w).filter((x) => x !== sig));
+            setTxError(t('err_not_credited', { sig: sig.slice(0, 8), msg: e.message }));
+          }
+        }
+      }
+    })();
+  }, [publicKey, t]);
 
   // Fetch real on-chain USDC balance
   useEffect(() => {
@@ -52,6 +103,10 @@ export default function ShopPage() {
     setTxSig(null);
     if (!RANKED_SALES_OPEN) {
       setTxError(t('err_closed'));
+      return;
+    }
+    if (!purchaseWindowOpen()) {
+      setTxError(t('err_day_closing'));
       return;
     }
     if (!signMessage) {
@@ -96,33 +151,30 @@ export default function ShopPage() {
         }
       }
 
-      // Plain USDC transfers: 70% vault · 5% referrer · rest team.
-      // Referrer from /r/<wallet>; an invalid or missing code pays the team.
-      let referrer: PublicKey | undefined;
-      try {
-        const code = localStorage.getItem('bb_referrer_code');
-        if (code) referrer = new PublicKey(code);
-      } catch { referrer = undefined; }
+      // Plain USDC transfers: 70% vault · 5% referrer · rest team. The
+      // referrer is the one the SERVER recorded for this wallet (it only
+      // accepts that one); a /r/ code in localStorage never picks the recipient.
+      const wallet = publicKey.toBase58();
+      const recordedReferrer = await fetchRecordedReferrer(client.authorization);
       const sig = await purchaseTickets({
         connection,
         payer: publicKey,
         tickets: pkg.tickets,
-        referrer,
+        recordedReferrer,
         sendTransaction,
+        onSent: (x) => writePending(wallet, [...readPending(wallet).filter((p) => p !== x), x]),
       });
 
       setTxSig(sig);
-      // The server checks the transaction on-chain before crediting; retry
-      // while the RPC catches up. Crediting is idempotent per signature.
-      let credited = false;
-      for (let i = 0; i < 6 && !credited; i++) {
-        try {
-          setTicketBalance((await client.credit(sig)).credits);
-          credited = true;
-        } catch (e) {
-          if (i === 5) throw new Error(t('err_not_credited', { sig: sig.slice(0, 8), msg: e instanceof Error ? e.message : String(e) }));
-          await new Promise((r) => setTimeout(r, 2500));
-        }
+      // Credit now: the server only credits within 6 h of the block time.
+      // Crediting is idempotent per signature; a failure stays pending and is
+      // retried on the next visit.
+      try {
+        setTicketBalance(await creditWithRetry(client, sig));
+        writePending(wallet, readPending(wallet).filter((p) => p !== sig));
+      } catch (e) {
+        if (e instanceof RankedApiError && e.status === 422) writePending(wallet, readPending(wallet).filter((p) => p !== sig));
+        throw new Error(t('err_not_credited', { sig: sig.slice(0, 8), msg: e instanceof Error ? e.message : String(e) }));
       }
 
       // Refresh USDC balance

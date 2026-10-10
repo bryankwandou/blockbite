@@ -1,7 +1,7 @@
 {
   "kicker": "Hướng dẫn",
   "title": "Cách chơi",
-  "subtitle": "Mỗi ngày một bàn. Cùng bộ khối cho mọi người. Lượt tốt nhất trong 3 lượt được tính.",
+  "subtitle": "Mỗi ngày một bàn. Mỗi lượt chơi có bộ khối riêng. Lượt tốt nhất trong 3 lượt được tính.",
   "status_note": "Chưa mở bán vé. Chế độ Phiêu lưu miễn phí và đang mở.",
   "tut_kicker": "Bàn luyện tập",
   "tut_title": "Thử ba nước đi",
@@ -94,7 +94,7 @@
   "risk_4_desc": "Các cuộc thi kỹ năng có phí có quy định khác nhau ở mỗi nước. Hãy kiểm tra nước của bạn. Chỉ từ 18 tuổi.",
   "faq_title": "Câu hỏi",
   "q_skill_title": "Đây có phải cờ bạc không?",
-  "q_skill_desc": "Điểm của bạn đến từ cách bạn đặt khối, và mọi người nhận cùng bộ khối trong ngày. Một số nước vẫn có quy định riêng cho các cuộc thi có phí, nên hãy kiểm tra nước của bạn. Chỉ từ 18 tuổi.",
+  "q_skill_desc": "Điểm của bạn đến từ cách bạn đặt khối, và các khối được chia công bằng từ một seed được cam kết trước khi ngày bắt đầu và công bố sau đó. Một số quốc gia vẫn có quy định riêng cho cuộc thi có phí, nên hãy kiểm tra quy định nơi bạn ở. Chỉ từ 18 tuổi.",
   "q_disconnect_title": "Nếu mất kết nối giữa lượt chơi thì sao?",
   "q_disconnect_desc": "Vé đã được dùng khi lượt bắt đầu. Máy chủ lưu từng nước đi khi bạn chơi, và khi ngày UTC kết thúc, điểm bạn đã đạt vẫn được giữ.",
   "q_ticket_title": "Có dùng lại vé được không?",

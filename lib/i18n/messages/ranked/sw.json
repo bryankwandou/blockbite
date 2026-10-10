@@ -18,7 +18,7 @@
   "connecting": "INAUNGANISHA…",
   "waiting_for_wallet": "INASUBIRI POCHI…",
   "kicker": "Ubao mmoja kwa siku",
-  "lede": "Ubao na vipande vilevile kwa wote kila siku ya UTC. Bora kati ya majaribio yako {attempts} ndiyo inahesabiwa.",
+  "lede": "Ubao mmoja kwa siku. Kila jaribio hupata vipande vyake, kwa hiyo hakuna anayeweza kukariri mpangilio kabla. Jaribio bora kati ya {attempts} ndilo linalohesabiwa.",
   "connect_btn": "UNGANISHA POCHI",
   "mascot_alt": "Rex, kinyago cha BlockBite, akipima ubao wa leo",
   "rules_title": "Jinsi inavyofanya kazi",
@@ -65,7 +65,7 @@
   "tab_daily": "Kila siku",
   "tab_monthly": "Kila mwezi",
   "tabs_label": "Muonekano wa ranked",
-  "rule_same_seed": "Ubao uleule kwa wote leo (UTC)",
+  "rule_same_seed": "Leo (UTC) ubao wa kuanzia ni uleule kwa kila mtu. Vipande hutofautiana kila jaribio.",
   "rule_no_hints": "Hakuna vidokezo",
   "rule_no_undo": "Hakuna kutendua",
   "attempt_of": "Jaribio {n}/{max}",
@@ -81,5 +81,5 @@
   "monthly_connect": "Unganisha pochi uone alama na nafasi yako ya mwezi.",
   "monthly_players": "Wachezaji {n} mwezi huu",
   "monthly_offline": "Haikuweza kupakia ubao wa mwezi. Jaribu tena baadaye.",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "Uuzaji wa tiketi umefunguliwa: USDC 1 kwa kila jaribio la ranked."
 }

@@ -79,7 +79,7 @@ function MiniBoard() {
   return (
     <div className={s.boardWrap}>
       <div className={s.boardPeek} aria-hidden="true">
-        <Image src={CREW.rex} alt="" width={132} height={132} priority className={cheer ? s.hop : undefined} key={cheer} />
+        <Image src={CREW.rex} alt="" aria-hidden="true" width={132} height={132} priority className={cheer ? s.hop : undefined} key={cheer} />
         {cheer > 0 && <span className={s.bubble} key={`b${cheer}`}>{t('board_cheer')}</span>}
       </div>
       <div className={s.board} role="group" aria-label={t('board_label')}>
@@ -215,7 +215,7 @@ export default function Home() {
       <section className={s.final} data-reveal>
         <div className={s.crew} aria-label={t('mascots_label')} role="img">
           {[CREW.rex, CREW.tide, CREW.brawler, CREW.sunny].map((src, i) => (
-            <Image key={src} src={src} alt="" width={96} height={96} className={s.crewOne} style={{ animationDelay: `${i * 180}ms` }} />
+            <Image key={src} src={src} alt="" aria-hidden="true" width={96} height={96} className={s.crewOne} style={{ animationDelay: `${i * 180}ms` }} />
           ))}
         </div>
         <h2 className={s.finalTitle}>{t('final_title')}</h2>
@@ -228,7 +228,7 @@ export default function Home() {
       {/* ── FOOTER ── */}
       <footer className={s.footer}>
         <div className={s.footBrand}>
-          <Image src="/logo.png" alt="" width={36} height={36} />
+          <Image src="/logo.png" alt="" aria-hidden="true" width={36} height={36} />
           <div>
             <p className={s.footTag}>{tc('footer_tagline')}</p>
             <p className={s.footSmall}>{tc('footer_rights', { year: 2026 })} · {tc('footer_network')}</p>

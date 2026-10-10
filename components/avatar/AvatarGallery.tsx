@@ -20,7 +20,7 @@ html[data-gfx='low'] .bb-gal-item:hover,html[data-gfx='low'] .bb-gal-item:focus-
 `;
 
 const btn: React.CSSProperties = {
-  display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 34, borderRadius: 10, padding: '0 12px', gap: 6,
+  display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 40, borderRadius: 10, padding: '0 12px', gap: 6,
   border: '1px solid var(--ds-border, rgba(255,255,255,.15))', background: 'var(--ds-surface-2, rgba(255,255,255,.04))',
   color: 'inherit', cursor: 'pointer', fontSize: 13,
 };

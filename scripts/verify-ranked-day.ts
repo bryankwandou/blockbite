@@ -4,12 +4,14 @@
  *   npx tsx scripts/verify-ranked-day.ts 2026-10-01 [https://blockbite.vercel.app]
  *
  * 1. sha256(revealed seed) must equal the commitment published before the day.
- * 2. Every run is replayed from its move log with the public rules; its score
- *    must match the published score.
+ * 2. Every run is replayed from its move log with the public rules and its own
+ *    seed runSeed(seed, run id); its score must match the published score.
  * 3. The leaderboard (best run per wallet) must match the published one.
  */
+import { PUBLISHED_BOARD_LIMIT } from '../lib/ranked/config';
 import { replayRun } from '../lib/ranked/replay';
-import { commitment } from '../lib/ranked/seed';
+import { boardProblems } from '../lib/ranked/verify-board';
+import { commitment, runSeed } from '../lib/ranked/seed';
 
 async function main() {
   const [day, base = 'https://blockbite.vercel.app'] = process.argv.slice(2);
@@ -27,7 +29,8 @@ async function main() {
   for (const run of pub.runs) {
     let score: number;
     try {
-      score = replayRun(pub.seed, run.log).score;
+      // Each run deals from its own seed: HMAC(day seed, "run:<id>").
+      score = replayRun(runSeed(pub.seed, run.id), run.log).score;
     } catch (e) {
       console.log(`FAIL run ${run.id}: replay rejected a move (${(e as Error).message})`);
       bad++;
@@ -39,14 +42,8 @@ async function main() {
     }
     if (score > 0) best.set(run.wallet, Math.max(best.get(run.wallet) ?? 0, score));
   }
-  for (const row of pub.leaderboard) {
-    if (best.get(row.wallet) !== row.score) {
-      console.log(`FAIL leaderboard ${row.wallet}: published ${row.score}, replay ${best.get(row.wallet)}`);
-      bad++;
-    }
-  }
-  if (best.size !== pub.leaderboard.length) {
-    console.log(`FAIL leaderboard has ${pub.leaderboard.length} wallets, replay has ${best.size}`);
+  for (const problem of boardProblems(best, pub.leaderboard, PUBLISHED_BOARD_LIMIT)) {
+    console.log(`FAIL ${problem}`);
     bad++;
   }
   const flagged = pub.runs.filter((r: { flags: number }) => r.flags > 0).length;

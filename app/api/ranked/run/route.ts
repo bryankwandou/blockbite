@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(req: Request) {
   if (!rankedConfigured()) return fail(503, 'ranked is not available');
-  const wallet = requireWallet(req);
+  const wallet = await requireWallet(req);
   if (typeof wallet !== 'string') return wallet;
   const id = new URL(req.url).searchParams.get('id');
   const run = id ? await getRun(id) : null;

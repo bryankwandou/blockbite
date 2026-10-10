@@ -77,7 +77,7 @@ export default function PlayLevelPage() {
             type="button"
             onClick={() => router.push(`/map/${biome.act}`)}
             style={{
-              minHeight: 36, padding: '7px 16px', borderRadius: 10, maxWidth: '100%',
+              minHeight: 44, padding: '7px 16px', borderRadius: 10, maxWidth: '100%',
               border: `1px solid ${biome.accent}`,
               background: 'var(--ds-surface, rgba(255,255,255,0.05))', color: 'var(--ds-text, #fff)',
               fontFamily: "'Orbitron', monospace", fontSize: 11, fontWeight: 700,

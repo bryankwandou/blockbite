@@ -1,0 +1,21 @@
+{
+  "play_now": "JOUER",
+  "universe": "UNIVERS BLOCKBITE",
+  "meet": "Rencontrez la {crew}",
+  "crew": "Bande",
+  "sub": "Quatre personnages. Une mission. Conquérez 4 000 niveaux et réclamez des récompenses on-chain.",
+  "choose": "Choisissez votre personnage.",
+  "choose_desc": "Entrez dans le jeu, choisissez votre style et battez-vous pour une place en haut du classement on-chain.",
+  "rex_title": "Le Roi",
+  "rex_tag": "Royauté",
+  "rex_bio": "Souverain couronné du plateau. Rex joue avec une discipline de fer : chaque coup est calculé, chaque bloc posé pour dominer. Craignez la couronne.",
+  "tide_title": "La Vague",
+  "tide_tag": "Fluidité",
+  "tide_bio": "Calme comme l'eau profonde. Tide lit le plateau comme les courants de l'océan : fluide, adaptable, imparable. Bloc après bloc, la marée monte toujours.",
+  "brawler_title": "Le Combattant",
+  "brawler_tag": "Puissance",
+  "brawler_bio": "Sans pitié, sans retraite. Brawler aborde chaque Acte de front et fracasse les obstacles avec agressivité. Le plateau cédera avant lui.",
+  "sunny_title": "L'Étincelle",
+  "sunny_tag": "Énergie",
+  "sunny_bio": "Pure joie, pur chaos. Sunny transforme même les niveaux les plus durs en fête : toujours souriant, toujours surprenant, toujours volant la victoire."
+}

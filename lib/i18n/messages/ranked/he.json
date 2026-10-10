@@ -18,7 +18,7 @@
   "connecting": "מתחבר…",
   "waiting_for_wallet": "ממתין לארנק…",
   "kicker": "לוח אחד ביום",
-  "lede": "אותו לוח ואותן חתיכות לכולם בכל יום UTC. הטוב מבין {attempts} הניסיונות שלכם נספר.",
+  "lede": "לוח אחד ביום. כל ניסיון מקבל חלקים משלו, כך שאף אחד לא יכול ללמוד את הרצף מראש. הטוב מבין {attempts} נספר.",
   "connect_btn": "חבר ארנק",
   "mascot_alt": "Rex, הקמע של BlockBite, בוחן את הלוח של היום",
   "rules_title": "איך זה עובד",
@@ -65,7 +65,7 @@
   "tab_daily": "יומי",
   "tab_monthly": "חודשי",
   "tabs_label": "תצוגת Ranked",
-  "rule_same_seed": "אותו לוח לכולם היום (UTC)",
+  "rule_same_seed": "היום (UTC) אותו לוח פתיחה לכולם. החלקים שונים בכל ניסיון.",
   "rule_no_hints": "בלי רמזים",
   "rule_no_undo": "בלי ביטול",
   "attempt_of": "ניסיון {n}/{max}",
@@ -81,5 +81,5 @@
   "monthly_connect": "חברו ארנק כדי לראות את הניקוד והדירוג החודשיים שלכם.",
   "monthly_players": "{n} שחקנים החודש",
   "monthly_offline": "לא ניתן לטעון את הלוח החודשי. נסו שוב מאוחר יותר.",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "מכירת הכרטיסים פתוחה: 1 USDC לכל ניסיון Ranked."
 }

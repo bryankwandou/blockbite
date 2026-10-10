@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "अभी कोई रेफ़रल नहीं। प्रोफ़ाइल से अपना लिंक शेयर करें।",
+  "joined_total": "{n} खिलाड़ी रेफ़रल लिंक से जुड़े",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "रेफ़रल के आँकड़े लोड नहीं हो सके।",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "आपके लिंक से जुड़े खिलाड़ी",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "इनमें से जिन्होंने कम से कम एक गेम पूरा किया",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "अभी तक किसी ने आपका लिंक इस्तेमाल नहीं किया।",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "रेफ़रल बोर्ड देखें"
 }

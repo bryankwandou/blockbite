@@ -2,7 +2,7 @@
   "hero_kicker": "Solana 上的方块益智",
   "hero_title": "每天一块棋盘，最高分获胜。",
   "hero_boards": "每天前 10 名和每月前 10 名获得 USDC。你的月得分是你最好的 10 个每日得分之和。每日奖金占奖金库的 40%，每月奖金占 60%。",
-  "hero_sub": "放置三个方块，消除行和列，再来一局。可以免费玩冒险模式，也可以挑战人人相同的每日棋盘。",
+  "hero_sub": "放下三个方块，消除行和列，再来一局。可以免费玩冒险模式，也可以挑战每日棋盘：起点人人相同，每次尝试的方块不同。",
   "cta_adventure": "免费玩冒险模式",
   "cta_ranked": "每日排位怎么玩",
   "hero_status": "冒险模式现已开放。排位门票即将开售。",
@@ -13,7 +13,7 @@
   "board_reset": "重置棋盘",
   "num_price": "每张票，各一次尝试",
   "num_tries": "每个钱包每个 UTC 日的尝试次数",
-  "num_board": "人人相同的棋盘和方块",
+  "num_board": "同一棋盘，每次尝试方块不同",
   "num_winners": "每天的获奖者，另加每月 10 位",
   "modes_kicker": "两种模式",
   "modes_title": "免费练习，每天竞技一次。",
@@ -23,7 +23,7 @@
   "adventure_cta": "打开地图",
   "ranked_title": "每日排位",
   "ranked_tag": "即将开放",
-  "ranked_body": "每个 UTC 日一块棋盘，对每位玩家的发牌方式相同。每张票 1 USDC，可玩一次。",
+  "ranked_body": "每个 UTC 日一块棋盘。每次尝试都会发放各自的方块。每张票 1 USDC，可尝试一次。",
   "ranked_point_1": "每个钱包每天最多 3 次尝试",
   "ranked_point_2": "只计算你最好的一次",
   "ranked_point_3": "每日和每月排行榜",
@@ -64,8 +64,8 @@
   "install_label": "网页应用",
   "install_ios": "在 iPhone/iPad 上：点“分享”，再点“添加到主屏幕”。",
   "install_other": "打开浏览器菜单，选择“安装应用”（或“添加到主屏幕”）。",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Adventure 和排位均已开放。排位门票 1 USDC。",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "在 Mac 上：用 Safari 打开此页面，然后选择“文件”→“添加到 Dock”。"
 }

@@ -45,7 +45,7 @@
   "tip_combo": "Uma peça que completa uma linha e uma coluna conta como duas linhas.",
   "tip_space": "Deixe um vão reto de 4 em algum lugar. As barras longas precisam dele.",
   "ranked_cta_kicker": "Ranked diário",
-  "ranked_cta_title": "Um tabuleiro por dia, igual para todos",
+  "ranked_cta_title": "Um tabuleiro por dia, peças próprias a cada tentativa",
   "ranked_cta_body": "1 ticket = 1 tentativa = {price} USDC, até {attempts} tentativas por dia UTC; vale a sua melhor. {daily}% do cofre de prêmios de cada dia vai para o Top 10 diário e {monthly}% para o Top 10 mensal, pela soma dos {days} melhores dias de cada jogador.",
   "ranked_cta_status": "Venda de tickets: abre em breve",
   "ranked_cta_link": "Ver Ranked diário",

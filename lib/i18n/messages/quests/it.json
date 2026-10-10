@@ -1,0 +1,16 @@
+{
+  "title": "Missioni",
+  "sub": "Compiti pubblicati dai partner. Invia una prova e un revisore la controlla.",
+  "connect_msg": "Collega un wallet per inviare le missioni completate.",
+  "connect_btn": "COLLEGA WALLET",
+  "loading": "Caricamento missioni…",
+  "empty": "Nessuna missione attiva al momento. Torna presto.",
+  "cancel": "ANNULLA",
+  "submit": "INVIA",
+  "proof_label": "Prova (link, firma della transazione, URL dello screenshot, ecc.)",
+  "submitting": "INVIO…",
+  "submit_review": "INVIA PER LA REVISIONE",
+  "st_approved": "APPROVATA",
+  "st_rejected": "RIFIUTATA",
+  "st_pending": "IN ATTESA"
+}

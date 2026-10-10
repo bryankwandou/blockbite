@@ -18,7 +18,7 @@
   "connecting": "VERBINDEN…",
   "waiting_for_wallet": "WACHTEN OP WALLET…",
   "kicker": "Eén bord per dag",
-  "lede": "Elke UTC-dag hetzelfde bord en dezelfde stukken voor iedereen. Je beste van {attempts} pogingen telt.",
+  "lede": "Eén bord per dag. Elke poging deelt eigen stukken uit, dus niemand kan de volgorde vooraf leren. De beste van {attempts} telt.",
   "connect_btn": "WALLET VERBINDEN",
   "mascot_alt": "Rex, de BlockBite-mascotte, taxeert het bord van vandaag",
   "rules_title": "Hoe het werkt",
@@ -65,7 +65,7 @@
   "tab_daily": "Dagelijks",
   "tab_monthly": "Maandelijks",
   "tabs_label": "Ranked-weergave",
-  "rule_same_seed": "Vandaag hetzelfde bord voor iedereen (UTC)",
+  "rule_same_seed": "Vandaag (UTC) voor iedereen hetzelfde startbord. De stukken verschillen per poging.",
   "rule_no_hints": "Geen hints",
   "rule_no_undo": "Geen ongedaan maken",
   "attempt_of": "Poging {n}/{max}",
@@ -81,5 +81,5 @@
   "monthly_connect": "Verbind een wallet om je maandscore en plek te zien.",
   "monthly_players": "{n} spelers deze maand",
   "monthly_offline": "Het maandbord kon niet worden geladen. Probeer het later opnieuw.",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "Ticketverkoop is open: 1 USDC per ranked-poging."
 }

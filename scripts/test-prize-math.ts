@@ -144,17 +144,121 @@ async function main() {
     program: 'spl-token',
     parsed: { type: 'transferChecked', info: { authority: W, destination: dest, mint, source: 's', tokenAmount: { amount: String(amount) } } },
   });
+  // Mid-day, so the age and results-cut rules never trigger by accident.
+  const NOW = Date.parse('2026-10-06T12:00:00Z');
+  const BT = Math.floor(NOW / 1000) - 30;
   const tx = (ixs: unknown[]) => ({
+    blockTime: BT,
     meta: { err: null, innerInstructions: [], postTokenBalances: [] },
     transaction: { message: { accountKeys: [{ pubkey: W, signer: true }], instructions: ixs } },
   });
   await test('wrong mint, wrong recipient and partial payments credit nothing', () => {
-    assert.deepEqual(verifyPurchaseTx(tx([xfer(VAULT, 700_000), xfer(TEAM, 300_000)]) as never, W), { tickets: 1, vaultAmount: 700_000n, referralAccount: null });
+    assert.deepEqual(verifyPurchaseTx(tx([xfer(VAULT, 700_000), xfer(TEAM, 300_000)]) as never, W, null, NOW),
+      { tickets: 1, vaultAmount: 700_000n, referralAccount: null, blockTimeMs: BT * 1000 });
     const junk = 'So11111111111111111111111111111111111111112';
-    assert.equal(typeof verifyPurchaseTx(tx([xfer(VAULT, 700_000, junk), xfer(TEAM, 300_000, junk)]) as never, W), 'string', 'wrong mint');
-    assert.equal(typeof verifyPurchaseTx(tx([xfer(wallets[9], 700_000), xfer(TEAM, 300_000)]) as never, W), 'string', 'wrong recipient');
-    assert.equal(typeof verifyPurchaseTx(tx([xfer(VAULT, 1_050_000), xfer(TEAM, 450_000)]) as never, W), 'string', 'half a ticket');
-    assert.equal(typeof verifyPurchaseTx(tx([xfer(VAULT, 700_000)]) as never, W), 'string', 'team unpaid');
+    assert.equal(typeof verifyPurchaseTx(tx([xfer(VAULT, 700_000, junk), xfer(TEAM, 300_000, junk)]) as never, W, null, NOW), 'string', 'wrong mint');
+    assert.equal(typeof verifyPurchaseTx(tx([xfer(wallets[9], 700_000), xfer(TEAM, 300_000)]) as never, W, null, NOW), 'string', 'wrong recipient');
+    assert.equal(typeof verifyPurchaseTx(tx([xfer(VAULT, 1_050_000), xfer(TEAM, 450_000)]) as never, W, null, NOW), 'string', 'half a ticket');
+    assert.equal(typeof verifyPurchaseTx(tx([xfer(VAULT, 700_000)]) as never, W, null, NOW), 'string', 'team unpaid');
+  });
+
+  // The shop builds the tx with lib/solana/usdc.ts; the server verifies it with
+  // purchase-verify.ts. A mismatch takes real USDC and credits nothing, so
+  // build with a mocked RPC, parse it the way jsonParsed does, and verify.
+  console.log('client build = server accept');
+  const usdc = await import('../lib/solana/usdc');
+  const spl = await import('@solana/spl-token');
+  const { USDC_MINT } = await import('../lib/solana/config');
+  const asParsed = (t: import('@solana/web3.js').Transaction, blockTime: number) => ({
+    blockTime,
+    meta: { err: null, innerInstructions: [], postTokenBalances: [] },
+    transaction: { message: {
+      accountKeys: [{ pubkey: t.feePayer!.toBase58(), signer: true }],
+      instructions: t.instructions.map((ix) => {
+        if (ix.programId.equals(spl.ASSOCIATED_TOKEN_PROGRAM_ID)) {
+          return { program: 'spl-associated-token-account', parsed: { type: ix.data[0] === 1 ? 'createIdempotent' : 'create', info: {} } };
+        }
+        if (!ix.programId.equals(spl.TOKEN_PROGRAM_ID) || ix.data[0] !== 12) return { programId: ix.programId.toBase58(), accounts: [], data: '' };
+        const [src, mint, dest, owner] = ix.keys.map((k) => k.pubkey.toBase58());
+        return { program: 'spl-token', parsed: { type: 'transferChecked', info: {
+          source: src, mint, destination: dest, authority: owner,
+          tokenAmount: { amount: Buffer.from(ix.data).readBigUInt64LE(1).toString() } } } };
+      }),
+    } },
+  });
+  const mockConn = (payer: PublicKey, existing: Set<string>) => {
+    const ata = spl.getAssociatedTokenAddressSync(USDC_MINT, payer).toBase58();
+    const data = Buffer.alloc(spl.ACCOUNT_SIZE);
+    spl.AccountLayout.encode({
+      mint: USDC_MINT, owner: payer, amount: 100_000_000n, delegateOption: 0, delegate: PublicKey.default, state: 1,
+      isNativeOption: 0, isNative: 0n, delegatedAmount: 0n, closeAuthorityOption: 0, closeAuthority: PublicKey.default,
+    }, data);
+    return {
+      getAccountInfo: async (k: PublicKey) => {
+        const s = k.toBase58();
+        if (s === ata) return { data, owner: spl.TOKEN_PROGRAM_ID, lamports: 2_039_280, executable: false };
+        if (s === VAULT || existing.has(s)) return { data: Buffer.alloc(0), owner: spl.TOKEN_PROGRAM_ID, lamports: 1, executable: false };
+        return null;
+      },
+      getLatestBlockhash: async () => ({ blockhash: Keypair.generate().publicKey.toBase58(), lastValidBlockHeight: 1 }),
+    } as unknown as import('@solana/web3.js').Connection;
+  };
+  const buyer = new PublicKey(W);
+  const friend = Keypair.generate().publicKey;
+  const friendAta = spl.getAssociatedTokenAddressSync(USDC_MINT, friend).toBase58();
+  const now = Date.now();
+  const bt = Math.floor(now / 1000);
+  const ifOpen = usdc.purchaseWindowOpen(now);
+  await test('no recorded referrer: the shop tx pays vault + team 30% and the server accepts it', async () => {
+    if (!ifOpen) return console.log('       (skipped: within 3 min of 00:00 UTC, the shop refuses to build)');
+    for (const n of [1, 5, 30]) {
+      const t = await usdc.buildTicketPurchaseTx(mockConn(buyer, new Set()), buyer, n, null);
+      assert.equal(t.instructions.length, 2);
+      const v = verifyPurchaseTx(asParsed(t, bt) as never, W, null, now);
+      assert.equal(typeof v, 'object', String(v));
+      assert.equal((v as { tickets: number }).tickets, n);
+    }
+  });
+  await test('recorded referrer with no USDC account: ATA is created in the same tx and the server accepts it', async () => {
+    if (!ifOpen) return;
+    const t = await usdc.buildTicketPurchaseTx(mockConn(buyer, new Set()), buyer, 3, friend.toBase58());
+    assert.ok(t.instructions[0].programId.equals(spl.ASSOCIATED_TOKEN_PROGRAM_ID));
+    assert.equal(t.instructions[0].data[0], 1, 'createIdempotent');
+    const v = verifyPurchaseTx(asParsed(t, bt) as never, W, friend.toBase58(), now);
+    assert.deepEqual(v, { tickets: 3, vaultAmount: 2_100_000n, referralAccount: friendAta, blockTimeMs: bt * 1000 });
+  });
+  await test('recorded referrer with a USDC account: no ATA ix, 5% to it, accepted', async () => {
+    if (!ifOpen) return;
+    const t = await usdc.buildTicketPurchaseTx(mockConn(buyer, new Set([friendAta])), buyer, 2, friend.toBase58());
+    assert.equal(t.instructions.length, 3);
+    const v = verifyPurchaseTx(asParsed(t, bt) as never, W, friend.toBase58(), now);
+    assert.equal((v as { referralAccount: string }).referralAccount, friendAta);
+  });
+  await test('referrer = buyer, off-curve or bogus: shop sends no referral leg, server accepts', async () => {
+    if (!ifOpen) return;
+    const pda = PublicKey.findProgramAddressSync([Buffer.from('x')], cfg.PRIZE_PROGRAM_ID)[0].toBase58();
+    for (const r of [W, pda, 'not-a-key']) {
+      const t = await usdc.buildTicketPurchaseTx(mockConn(buyer, new Set()), buyer, 1, r);
+      assert.equal(t.instructions.length, 2, r);
+      assert.equal(typeof verifyPurchaseTx(asParsed(t, bt) as never, W, r === 'not-a-key' ? null : r, now), 'object', r);
+    }
+  });
+  await test('a tx with no referral leg is accepted even when a referrer is recorded (safe fallback)', async () => {
+    if (!ifOpen) return;
+    const t = await usdc.buildTicketPurchaseTx(mockConn(buyer, new Set()), buyer, 1, null);
+    assert.equal(typeof verifyPurchaseTx(asParsed(t, bt) as never, W, friend.toBase58(), now), 'object');
+  });
+  await test('assertPurchaseShape refuses a tampered tx before signing', async () => {
+    if (!ifOpen) return;
+    const t = await usdc.buildTicketPurchaseTx(mockConn(buyer, new Set([friendAta])), buyer, 1, friend.toBase58());
+    assert.throws(() => usdc.assertPurchaseShape(t, buyer, 1, null), /unexpected recipient/);
+    assert.throws(() => usdc.assertPurchaseShape(t, buyer, 2, new PublicKey(friendAta)), /vault amount/);
+  });
+  await test('the shop refuses to build in the last 3 minutes of a UTC day', () => {
+    const mid = Date.parse('2026-10-07T00:00:00Z');
+    assert.equal(usdc.purchaseWindowOpen(mid - 60_000), false);
+    assert.equal(usdc.purchaseWindowOpen(mid - 4 * 60_000), true);
+    assert.equal(usdc.purchaseWindowOpen(mid + 1), true);
   });
 
   console.log(`\n${passed} passed, ${failures.length} failed`);

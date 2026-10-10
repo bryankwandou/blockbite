@@ -1,16 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { jsonObject } from '@/lib/http/body';
 import { sbInsertEmail, sbGetCount, supabaseReady } from '@/lib/supabase-rest';
 import { dbAddEmail, waitlistDbConfigured } from '@/lib/waitlist/db';
 import { kvAddEmail, kvConfigured } from '@/lib/waitlist-kv';
 import { memAdd } from '@/lib/waitlist-store';
+import { getIP, rateLimit } from '@/lib/rate-limit';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json().catch(() => ({}));
-    const { email } = body as { email?: string };
-    if (!email || !email.includes('@') || email.length > 254) {
+    const rl = await rateLimit(`waitlist:${getIP(req)}`, 10, 60_000).catch(() => null);
+    if (rl && !rl.allowed) return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
+    const body = (await jsonObject(req)) ?? {};
+    const { email } = body as { email?: unknown };
+    if (typeof email !== 'string' || email.length > 254 || !/^[^\s@<>"',;]+@[^\s@<>"',;]+\.[^\s@<>"',;]+$/.test(email.trim())) {
       return NextResponse.json({ error: 'Invalid email' }, { status: 400 });
     }
     const normalized = email.toLowerCase().trim();

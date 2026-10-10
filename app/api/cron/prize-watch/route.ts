@@ -3,7 +3,8 @@
  * Compares on-chain prize rounds with rk_rounds (lib/ranked/watch.ts) and
  * alerts ALERT_WEBHOOK_URL when a round was posted that the server did not make.
  * Auth: Authorization: Bearer <CRON_SECRET or ADMIN_SECRET> (Vercel Cron sends CRON_SECRET).
- * 200 = all rounds match, 409 = a round needs the VETO holder now, 503 = could not check.
+ * 200 = all rounds match, 409 = a round needs the VETO holder now, 424 = problems exist but the
+ * veto window is over (or a posted DB round is missing on chain), 503 = could not check.
  */
 import { timingSafeEqual } from 'node:crypto';
 import { RPC_URL } from '@/lib/solana/config';
@@ -24,8 +25,9 @@ export async function GET(req: Request) {
   if (!rankedConfigured()) return fail(503, 'ranked is not available');
   try {
     const report = await watchRounds(RPC_URL);
-    const alerted = report.urgent ? await sendAlert(report).catch(() => false) : false;
-    return json({ ...report, alerted }, report.urgent ? 409 : 200);
+    const problems = report.issues.length + report.missing.length;
+    const alerted = problems ? await sendAlert(report).catch(() => false) : false;
+    return json({ ...report, alerted }, report.urgent ? 409 : problems ? 424 : 200);
   } catch (e) {
     console.error('prize-watch', e);
     return fail(503, 'could not check the prize program');

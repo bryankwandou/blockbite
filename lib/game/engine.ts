@@ -283,13 +283,8 @@ function reducer(state: GameState, action: Action): GameState {
         if (isMysteryBoxLevel(newLevel)) triggeredMysteryBox = true;
       }
 
-      // Persist stats on game over (after newLevel is finalised)
-      if (isGameOver && typeof window !== 'undefined') {
-        const prevMax = parseInt(localStorage.getItem('bb_max_level') ?? '1');
-        if (newLevel > prevMax) localStorage.setItem('bb_max_level', newLevel.toString());
-        const prevGames = parseInt(localStorage.getItem('bb_games_played') ?? '0');
-        localStorage.setItem('bb_games_played', (prevGames + 1).toString());
-      }
+      // Local stats are saved by GameCanvas (lib/game/persist.ts), not here:
+      // a reducer must stay pure and must not throw on blocked storage.
 
       return {
         ...state,

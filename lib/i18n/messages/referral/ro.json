@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "Încă nu există recomandări. Distribuie linkul din profil.",
+  "joined_total": "{n} jucători s-au alăturat printr-un link de recomandare",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "Nu am putut încărca numerele de recomandări.",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "Jucători care s-au alăturat cu linkul tău",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "Dintre ei, cei care au terminat cel puțin un joc",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "Nimeni nu ți-a folosit încă linkul.",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "Vezi clasamentul recomandărilor"
 }

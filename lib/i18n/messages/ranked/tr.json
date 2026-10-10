@@ -18,7 +18,7 @@
   "connecting": "BAĞLANIYOR…",
   "waiting_for_wallet": "CÜZDAN BEKLENİYOR…",
   "kicker": "Günde bir tahta",
-  "lede": "Her UTC günü herkes için aynı tahta ve aynı parçalar. {attempts} denemenin en iyisi sayılır.",
+  "lede": "Günde bir tahta. Her deneme kendi parçalarını dağıtır, yani kimse sırayı önceden öğrenemez. {attempts} denemenin en iyisi sayılır.",
   "connect_btn": "CÜZDANI BAĞLA",
   "mascot_alt": "BlockBite maskotu Rex bugünün tahtasını süzüyor",
   "rules_title": "Nasıl işler",
@@ -65,7 +65,7 @@
   "tab_daily": "Günlük",
   "tab_monthly": "Aylık",
   "tabs_label": "Ranked görünümü",
-  "rule_same_seed": "Bugün (UTC) herkes için aynı tahta",
+  "rule_same_seed": "Bugün (UTC) herkes için aynı başlangıç tahtası. Parçalar her denemede farklı.",
   "rule_no_hints": "İpucu yok",
   "rule_no_undo": "Geri alma yok",
   "attempt_of": "Deneme {n}/{max}",
@@ -81,5 +81,5 @@
   "monthly_connect": "Aylık skorunu ve sıranı görmek için bir cüzdan bağla.",
   "monthly_players": "Bu ay {n} oyuncu",
   "monthly_offline": "Aylık tablo yüklenemedi. Daha sonra tekrar dene.",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "Bilet satışı açık: ranked denemesi başına 1 USDC."
 }

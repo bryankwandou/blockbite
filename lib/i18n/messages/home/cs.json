@@ -2,7 +2,7 @@
   "hero_kicker": "Blokové puzzle na Solaně",
   "hero_title": "Jedna deska denně. Vyhrává nejlepší skóre.",
   "hero_boards": "Top 10 každého dne a top 10 každého měsíce vyhrává USDC. Tvé měsíční skóre je součet tvých 10 nejlepších denních skóre. Denní ceny berou 40% trezoru, měsíční 60%.",
-  "hero_sub": "Polož tři dílky, čisti řady a sloupce a jdi znovu. Hraj Dobrodružství zdarma, nebo se utkej s denní deskou, která je stejná pro všechny.",
+  "hero_sub": "Umísti tři kousky, mazej řádky a sloupce a hraj dál. Hraj Adventure zdarma, nebo vyzkoušej denní desku: stejný start pro všechny, v každém pokusu jiné kousky.",
   "cta_adventure": "Hrát Dobrodružství zdarma",
   "cta_ranked": "Jak funguje Daily Ranked",
   "hero_status": "Dobrodružství je teď otevřené. Prodej tiketů Ranked se brzy otevře.",
@@ -13,7 +13,7 @@
   "board_reset": "Obnovit desku",
   "num_price": "za tiket, každý jeden pokus",
   "num_tries": "pokusy na peněženku za den UTC",
-  "num_board": "stejná deska a dílky pro všechny",
+  "num_board": "stejná deska, vlastní kousky v každém pokusu",
   "num_winners": "vítězů každý den, plus 10 každý měsíc",
   "modes_kicker": "Dva režimy",
   "modes_title": "Trénuj zdarma. Soutěž jednou denně.",
@@ -23,7 +23,7 @@
   "adventure_cta": "Otevřít mapu",
   "ranked_title": "Daily Ranked",
   "ranked_tag": "Brzy otevřeme",
-  "ranked_body": "Jedna deska na den UTC, rozdaná stejně každému hráči. Tiket stojí 1 USDC a koupí jeden pokus.",
+  "ranked_body": "Jedna deska za den UTC. Každý pokus rozdá vlastní kousky. Jeden tiket stojí 1 USDC a dává jeden pokus.",
   "ranked_point_1": "Až 3 pokusy na peněženku za den",
   "ranked_point_2": "Počítá se jen tvůj nejlepší pokus",
   "ranked_point_3": "Denní a měsíční žebříčky",
@@ -64,8 +64,8 @@
   "install_label": "webová aplikace",
   "install_ios": "Na iPhonu/iPadu: klepněte na Sdílet a pak Přidat na plochu.",
   "install_other": "Otevřete nabídku prohlížeče a zvolte Instalovat aplikaci (nebo Přidat na plochu).",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Adventure i Ranked jsou otevřené. Vstupenka do Ranked stojí 1 USDC.",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "Na Macu: otevři tuto stránku v Safari a zvol Soubor → Přidat do Docku."
 }

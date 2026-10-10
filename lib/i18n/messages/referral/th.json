@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "ยังไม่มีการแนะนำ แชร์ลิงก์ของคุณได้จากโปรไฟล์",
+  "joined_total": "มี {n} ผู้เล่นเข้าร่วมผ่านลิงก์แนะนำ",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "โหลดตัวเลขการแนะนำไม่ได้",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "ผู้เล่นที่เข้าร่วมด้วยลิงก์ของคุณ",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "ในจำนวนนี้ เล่นจบอย่างน้อยหนึ่งเกม",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "ยังไม่มีใครใช้ลิงก์ของคุณ",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "ดูกระดานการแนะนำ"
 }

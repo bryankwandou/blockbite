@@ -9,7 +9,7 @@
 import { advanceRun, getRun } from '@/lib/ranked/db';
 import { body, fail, json, rankedConfigured, requireWallet } from '@/lib/ranked/http';
 import { applyMove, dealTray, RulesError, trayEmpty, type Move, type RankedState } from '@/lib/ranked/rules';
-import { dailySeed, dayOf, trayFor } from '@/lib/ranked/seed';
+import { dailySeed, runOpen, runSeed, trayFor } from '@/lib/ranked/seed';
 
 export const dynamic = 'force-dynamic';
 
@@ -30,7 +30,7 @@ function parseMoves(v: unknown): Move[] | null {
 
 export async function POST(req: Request) {
   if (!rankedConfigured()) return fail(503, 'ranked is not available');
-  const wallet = requireWallet(req);
+  const wallet = await requireWallet(req);
   if (typeof wallet !== 'string') return wallet;
   const b = await body(req);
   const moves = parseMoves(b?.moves);
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
   if (!run || run.wallet !== wallet) return fail(404, 'run not found');
   if (run.over) return fail(409, 'run is over', { state: run.state });
   const now = Date.now();
-  if (run.day !== dayOf(now)) return fail(409, 'this day has ended; the score stands', { state: run.state });
+  if (!runOpen(run.day, now)) return fail(409, 'this day has ended; the score stands', { state: run.state });
   if (run.moves !== b.fromMoves) return fail(409, 'out of sync', { state: run.state });
 
   let state: RankedState = run.state;
@@ -54,7 +54,7 @@ export async function POST(req: Request) {
     throw e;
   }
   if (!state.over && trayEmpty(state.tray)) {
-    state = dealTray(state, trayFor(dailySeed(run.day), state.board, state.moves));
+    state = dealTray(state, trayFor(runSeed(dailySeed(run.day), run.id), state.board, state.moves));
   }
 
   const flag = now - run.last_step_ms < moves.length * MIN_MS_PER_MOVE;

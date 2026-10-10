@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "Zatím žádná doporučení. Sdílej svůj odkaz z profilu.",
+  "joined_total": "{n} hráčů se připojilo přes doporučující odkaz",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "Čísla doporučení se nepodařilo načíst.",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "Hráči, kteří se připojili přes tvůj odkaz",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "Z nich dokončili alespoň jednu hru",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "Tvůj odkaz zatím nikdo nepoužil.",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "Zobrazit žebříček doporučení"
 }

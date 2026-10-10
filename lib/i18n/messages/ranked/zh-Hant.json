@@ -18,7 +18,7 @@
   "connecting": "連線中…",
   "waiting_for_wallet": "等待錢包…",
   "kicker": "每天一塊棋盤",
-  "lede": "每個 UTC 日人人相同的棋盤和方塊。{attempts} 次嘗試裡取最好的一次。",
+  "lede": "每天一塊棋盤。每次嘗試都會發放各自的方塊，所以沒人能提前背下順序。取 {attempts} 次中的最佳成績。",
   "connect_btn": "連接錢包",
   "mascot_alt": "Rex，BlockBite 的吉祥物，正在打量今天的棋盤",
   "rules_title": "玩法說明",
@@ -65,7 +65,7 @@
   "tab_daily": "每日",
   "tab_monthly": "每月",
   "tabs_label": "排位檢視",
-  "rule_same_seed": "今天人人相同的棋盤（UTC）",
+  "rule_same_seed": "今天(UTC)所有人起始棋盤相同。每次嘗試的方塊不同。",
   "rule_no_hints": "無提示",
   "rule_no_undo": "不可復原",
   "attempt_of": "第 {n}/{max} 次嘗試",
@@ -81,5 +81,5 @@
   "monthly_connect": "連接錢包以查看你的月得分和名次。",
   "monthly_players": "本月 {n} 名玩家",
   "monthly_offline": "無法載入月榜，請稍後再試。",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "票券已開賣：每次排位挑戰 1 USDC。"
 }

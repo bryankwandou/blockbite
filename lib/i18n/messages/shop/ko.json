@@ -40,6 +40,7 @@
   "err_funds": "USDC가 부족해요. 보유 {have}, 이 팩에는 {need}가 필요해요.",
   "err_no_account": "이 지갑에는 아직 USDC 계정이 없어요.",
   "err_tx": "거래 실패: {msg}",
+  "err_day_closing": "곧 하루가 마감됩니다. 00:00 UTC 몇 분 후에 다시 구매하세요.",
   "err_not_credited": "결제는 됐지만(tx {sig}…) 아직 반영되지 않았어요: {msg}. 이 페이지를 다시 열어 재시도하세요.",
   "info_credits_title": "티켓은 지갑을 따라가요",
   "info_credits_desc": "서버가 거래를 온체인에서 확인한 뒤 티켓을 내 지갑에 추가해요. 거래 링크는 영수증으로 보관하세요.",

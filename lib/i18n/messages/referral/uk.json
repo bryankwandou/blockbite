@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "Запрошень поки немає. Поділіться посиланням зі свого профілю.",
+  "joined_total": "{n} гравців приєдналися за реферальним посиланням",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "Не вдалося завантажити дані про рефералів.",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "Гравці, які приєдналися за вашим посиланням",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "З них завершили принаймні одну гру",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "Вашим посиланням ще ніхто не скористався.",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "Відкрити рейтинг рефералів"
 }

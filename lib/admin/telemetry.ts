@@ -28,7 +28,8 @@ export function referrerHost(ref: string | null, ownHost: string): string | null
 
 export async function visitorHash(ip: string, day: string): Promise<string> {
   const salt = process.env.ADMIN_SESSION_SECRET ?? process.env.RANKED_SECRET ?? 'blockbite';
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(`${ip}|${day}|${salt}`));
+  const data = new TextEncoder().encode(`${ip}|${day}|${salt}`) as Uint8Array<ArrayBuffer>;
+  const buf = await crypto.subtle.digest('SHA-256', data);
   return Array.from(new Uint8Array(buf).slice(0, 12), (b) => b.toString(16).padStart(2, '0')).join('');
 }
 

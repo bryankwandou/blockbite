@@ -1,0 +1,21 @@
+{
+  "play_now": "JOACĂ ACUM",
+  "universe": "UNIVERSUL BLOCKBITE",
+  "meet": "Fă cunoștință cu {crew}",
+  "crew": "Echipa",
+  "sub": "Patru personaje. O singură misiune. Cucerește 4.000 de niveluri și revendică recompense on-chain.",
+  "choose": "Alege-ți personajul.",
+  "choose_desc": "Intră în joc, alege-ți stilul și luptă pentru un loc în vârful clasamentului on-chain.",
+  "rex_title": "Regele",
+  "rex_tag": "Regalitate",
+  "rex_bio": "Conducătorul încoronat al tablei. Rex joacă cu disciplină de fier: fiecare mutare e calculată, fiecare bloc plasat pentru dominare maximă. Temeți-vă de coroană.",
+  "tide_title": "Valul",
+  "tide_tag": "Flux",
+  "tide_bio": "Calm ca apa adâncă. Tide citește tabla ca pe curenții oceanului: fluid, adaptabil, de neoprit. Bloc cu bloc, fluxul crește mereu.",
+  "brawler_title": "Luptătorul",
+  "brawler_tag": "Putere",
+  "brawler_bio": "Fără milă, fără retragere. Brawler atacă frontal fiecare Act, zdrobind obstacolele cu agresivitate pură. Tabla se va sparge înaintea lui.",
+  "sunny_title": "Scânteia",
+  "sunny_tag": "Energie",
+  "sunny_bio": "Bucurie pură, haos pur. Sunny transformă chiar și cele mai grele niveluri într-o petrecere: mereu zâmbind, mereu surprinzând, mereu furând victoria."
+}

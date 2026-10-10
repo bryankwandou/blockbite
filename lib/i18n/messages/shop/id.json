@@ -40,6 +40,7 @@
   "err_funds": "USDC tidak cukup. Kamu punya {have}, paket ini butuh {need}.",
   "err_no_account": "Wallet ini belum punya akun USDC.",
   "err_tx": "Transaksi gagal: {msg}",
+  "err_day_closing": "Hari hampir berakhir. Beli lagi beberapa menit setelah 00:00 UTC.",
   "err_not_credited": "Sudah dibayar (tx {sig}…) tapi belum dikreditkan: {msg}. Buka lagi halaman ini untuk mencoba ulang.",
   "info_credits_title": "Tiket mengikuti wallet kamu",
   "info_credits_desc": "Server kami mengecek transaksi on-chain, lalu menambahkan tiket ke wallet kamu. Simpan link transaksi sebagai bukti.",

@@ -24,7 +24,7 @@
 .code { font-family: 'JetBrains Mono', monospace; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--border);
   background: var(--surface); overflow-wrap: anywhere; }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; }
-.action { padding: 10px 16px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface);
+.action { min-height: 44px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface);
   color: var(--text); font: inherit; font-weight: 800; cursor: pointer; }
 .primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 .note { font-size: 13px; color: var(--text-dim); margin: 0; }
@@ -33,8 +33,8 @@
 .pgroup { content-visibility: auto; contain-intrinsic-size: auto 120px; margin-top: 10px; }
 .ptitle { margin: 0 0 6px; font-size: 13px; font-weight: 800; color: var(--text); }
 .ptitle span { font-weight: 600; color: var(--text-dim); }
-.pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(34px, 1fr)); gap: 6px; }
-.pdot { aspect-ratio: 1; min-height: 34px; border-radius: 10px; border: 2px solid var(--border); cursor: pointer; padding: 0; }
+.pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); gap: 6px; }
+.pdot { aspect-ratio: 1; min-height: 40px; border-radius: 10px; border: 2px solid var(--border); cursor: pointer; padding: 0; }
 .pdot:hover { border-color: var(--text-dim); }
 .pdot:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .pdot[aria-pressed='true'] { border-color: var(--text); box-shadow: 0 0 0 2px var(--accent); }

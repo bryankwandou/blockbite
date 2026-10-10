@@ -9,6 +9,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { jsonObject } from '@/lib/http/body';
 import {
   getQuest, getCompletion, submitCompletion, listCompletionsForQuest,
   type QuestCompletion,
@@ -21,7 +22,7 @@ export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
-  const wallet = requireWallet(req);
+  const wallet = await requireWallet(req);
   if (wallet instanceof Response) return wallet;
   const { id } = await params;
   const quest = await getQuest(id);
@@ -31,9 +32,11 @@ export async function POST(
                        return NextResponse.json({ error: 'Quest expired' }, { status: 410 });
 
   let body: { proof?: string };
-  try { body = await req.json(); } catch { return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 }); }
+  const parsed = await jsonObject<typeof body>(req);
+  if (!parsed) return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+  body = parsed;
 
-  const proof  = (body.proof ?? '').trim();
+  const proof  = (typeof body.proof === 'string' ? body.proof : '').trim();
   if (!proof || proof.length > 2000) return NextResponse.json({ error: 'proof required (max 2000)' }, { status: 400 });
 
   // Idempotency: if a pending submission already exists, return it.

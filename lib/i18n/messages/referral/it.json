@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "Ancora nessun invito. Condividi il tuo link dal profilo.",
+  "joined_total": "{n} giocatori sono entrati con un link d'invito",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "Impossibile caricare i numeri degli inviti.",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "Giocatori entrati con il tuo link",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "Di questi, chi ha finito almeno una partita",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "Nessuno ha ancora usato il tuo link.",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "Vedi la classifica degli inviti"
 }

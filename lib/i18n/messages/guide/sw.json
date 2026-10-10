@@ -1,7 +1,7 @@
 {
   "kicker": "Mwongozo",
   "title": "Jinsi ya kucheza",
-  "subtitle": "Ubao mmoja kwa siku. Vipande vilevile kwa wote. Bora kati ya majaribio 3 ndiyo inahesabiwa.",
+  "subtitle": "Ubao mmoja kwa siku. Kila jaribio hupata vipande vyake. Jaribio bora kati ya 3 ndilo linalohesabiwa.",
   "status_note": "Mauzo ya tikiti bado hayajafunguliwa. Hali ya Matukio ni bure na imefunguliwa sasa.",
   "tut_kicker": "Ubao wa mazoezi",
   "tut_title": "Jaribu hatua tatu",
@@ -94,7 +94,7 @@
   "risk_4_desc": "Mashindano ya ujuzi yanayolipiwa yana kanuni tofauti kila nchi. Angalia ya kwako. Umri wa miaka 18+ tu.",
   "faq_title": "Maswali",
   "q_skill_title": "Je, huu ni kamari?",
-  "q_skill_desc": "Alama zako hutokana na mahali unapoweka vipande, na kila mtu hupata vipande vilevile siku hiyo. Baadhi ya nchi bado zina kanuni maalum kwa mashindano ya malipo, kwa hivyo angalia ya kwako. Umri wa miaka 18+ tu.",
+  "q_skill_desc": "Alama yako inatokana na mahali unapoweka vipande, na vipande hugawiwa kwa haki kutoka kwa mbegu iliyofungwa kabla ya siku kuanza na kuchapishwa baadaye. Baadhi ya nchi bado zina sheria maalum kwa mashindano ya malipo, kwa hiyo angalia za kwako. Miaka 18+ pekee.",
   "q_disconnect_title": "Nikikatika katikati ya mzunguko?",
   "q_disconnect_desc": "Tikiti ilitumika jaribio lilipoanza. Seva huhifadhi kila hatua unapocheza, na siku ya UTC ikiisha alama ulizofikia ndizo zinabaki.",
   "q_ticket_title": "Naweza kutumia tikiti tena?",

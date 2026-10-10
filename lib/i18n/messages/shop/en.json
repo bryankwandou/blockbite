@@ -40,6 +40,7 @@
   "err_funds": "Not enough USDC. You have {have}, this pack needs {need}.",
   "err_no_account": "This wallet has no USDC account yet.",
   "err_tx": "Transaction failed: {msg}",
+  "err_day_closing": "The day is about to close. Buy again a few minutes after 00:00 UTC.",
   "err_not_credited": "Paid (tx {sig}…) but not credited yet: {msg}. Reopen this page to retry.",
   "info_credits_title": "Tickets follow your wallet",
   "info_credits_desc": "Our server checks the transaction on-chain, then adds the tickets to your wallet. Keep the transaction link as your receipt.",

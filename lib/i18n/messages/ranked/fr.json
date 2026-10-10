@@ -18,7 +18,7 @@
   "connecting": "CONNEXION…",
   "waiting_for_wallet": "EN ATTENTE DU WALLET…",
   "kicker": "Un plateau par jour",
-  "lede": "Même plateau et mêmes pièces pour tous chaque jour UTC. Ton meilleur essai sur {attempts} compte.",
+  "lede": "Un plateau par jour. Chaque essai distribue ses propres pièces, personne ne peut donc apprendre la séquence à l'avance. Le meilleur de {attempts} compte.",
   "connect_btn": "CONNECTER LE WALLET",
   "mascot_alt": "Rex, la mascotte de BlockBite, jauge le plateau du jour",
   "rules_title": "Comment ça marche",
@@ -65,7 +65,7 @@
   "tab_daily": "Quotidien",
   "tab_monthly": "Mensuel",
   "tabs_label": "Vue Ranked",
-  "rule_same_seed": "Même plateau pour tous aujourd'hui (UTC)",
+  "rule_same_seed": "Même plateau de départ pour tous aujourd'hui (UTC). Les pièces changent à chaque essai.",
   "rule_no_hints": "Sans indices",
   "rule_no_undo": "Sans annulation",
   "attempt_of": "Essai {n}/{max}",
@@ -81,5 +81,5 @@
   "monthly_connect": "Connecte un wallet pour voir ton score mensuel et ton rang.",
   "monthly_players": "{n} joueurs ce mois-ci",
   "monthly_offline": "Impossible de charger le classement mensuel. Réessaie plus tard.",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "La vente de tickets est ouverte : 1 USDC par tentative ranked."
 }

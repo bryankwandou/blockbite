@@ -2,7 +2,7 @@
   "hero_kicker": "Solana のブロックパズル",
   "hero_title": "毎日1つのボード。ハイスコアが勝ち。",
   "hero_boards": "毎日のトップ10と毎月のトップ10が USDC を受け取ります。月間スコアは、日別スコアのベスト10日の合計です。日次賞金はボールトの40%、月次賞金は60%です。",
-  "hero_sub": "ピースを3つ置いて、行と列を消して、もう一度。アドベンチャーは無料で、みんな同じデイリーボードにも挑戦できます。",
+  "hero_sub": "ピースを3つ置き、行と列を消して、もう一度。Adventureは無料で遊べます。毎日のボードなら、スタートは全員同じ、ピースはトライごとに別です。",
   "cta_adventure": "アドベンチャーを無料で遊ぶ",
   "cta_ranked": "デイリーランクのしくみ",
   "hero_status": "アドベンチャーは今すぐ遊べます。ランクのチケット販売は近日オープン。",
@@ -13,7 +13,7 @@
   "board_reset": "ボードをリセット",
   "num_price": "チケット1枚につき1回",
   "num_tries": "ウォレットごと、UTC の1日あたりの回数",
-  "num_board": "みんな同じボードとピース",
+  "num_board": "同じボード、ピースはトライごとに別",
   "num_winners": "毎日の勝者と、毎月の10人",
   "modes_kicker": "2つのモード",
   "modes_title": "無料で練習。1日1回、真剣勝負。",
@@ -23,7 +23,7 @@
   "adventure_cta": "マップを開く",
   "ranked_title": "デイリーランク",
   "ranked_tag": "近日オープン",
-  "ranked_body": "UTC の1日に1つのボードを、全プレイヤーに同じ方法で配ります。チケットは1枚 1 USDC で、1回遊べます。",
+  "ranked_body": "UTCの1日につきボードは1枚。トライごとに専用のピースが配られます。チケットは1枚1 USDCで、1トライできます。",
   "ranked_point_1": "ウォレットごとに1日最大3回",
   "ranked_point_2": "ベストの1回だけが有効",
   "ranked_point_3": "デイリーとマンスリーのランキング",
@@ -64,8 +64,8 @@
   "install_label": "Web アプリ",
   "install_ios": "iPhone/iPad：共有をタップし「ホーム画面に追加」。",
   "install_other": "ブラウザのメニューから「アプリをインストール」（または「ホーム画面に追加」）を選んでください。",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Adventureとランクの両方が開いています。ランクのチケットは1 USDCです。",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "Macの場合：このページをSafariで開き、ファイル → Dockに追加を選択。"
 }

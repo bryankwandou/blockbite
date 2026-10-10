@@ -1,7 +1,7 @@
 {
   "kicker": "Guia",
   "title": "How to Play",
-  "subtitle": "Um tabuleiro por dia. As mesmas peças para todos. Vale a melhor de 3 tentativas.",
+  "subtitle": "Um tabuleiro por dia. Cada tentativa recebe as próprias peças. Conta a melhor de 3 tentativas.",
   "status_note": "A venda de tickets ainda não abriu. O modo Aventura é grátis e já está aberto.",
   "tut_kicker": "Tabuleiro de prática",
   "tut_title": "Experimente três jogadas",
@@ -94,7 +94,7 @@
   "risk_4_desc": "Concursos de habilidade pagos seguem regras diferentes em cada país. Confira as do seu. Apenas maiores de 18.",
   "faq_title": "FAQ",
   "q_skill_title": "Isso é jogo de azar?",
-  "q_skill_desc": "Sua pontuação depende de onde você posiciona as peças, e todos recebem as mesmas peças naquele dia. Alguns países têm regras especiais para concursos pagos, então confira as do seu. Apenas maiores de 18.",
+  "q_skill_desc": "Sua pontuação vem de onde você coloca as peças, e as peças são distribuídas de forma justa a partir de uma semente registrada antes do início do dia e publicada depois. Alguns países ainda têm regras especiais para concursos pagos, então confira as do seu. Apenas 18+.",
   "q_disconnect_title": "What if I disconnect?",
   "q_disconnect_desc": "O ticket foi gasto quando a tentativa começou. O servidor salva cada jogada enquanto você joga, e quando o dia UTC termina vale a pontuação que você alcançou.",
   "q_ticket_title": "Posso reutilizar um ticket?",

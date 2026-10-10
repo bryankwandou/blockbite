@@ -2,7 +2,7 @@
   "hero_kicker": "פאזל קוביות על Solana",
   "hero_title": "לוח אחד ביום. הניקוד הגבוה מנצח.",
   "hero_boards": "10 הראשונים בכל יום ו-10 הראשונים בכל חודש זוכים ב-USDC. הניקוד החודשי שלכם הוא סכום 10 הניקודים היומיים הטובים ביותר. הפרסים היומיים לוקחים 40% מהכספת, החודשיים 60%.",
-  "hero_sub": "הניחו שלוש חתיכות, נקו שורות ועמודות, ושוב. שחקו הרפתקה בחינם, או התמודדו על הלוח היומי שהוא אותו דבר לכולם.",
+  "hero_sub": "הניחו שלושה חלקים, נקו שורות ועמודות, ושוב. שחקו Adventure בחינם, או התמודדו עם לוח היום: אותה התחלה לכולם, חלקים שונים בכל ניסיון.",
   "cta_adventure": "שחקו הרפתקה בחינם",
   "cta_ranked": "איך Ranked יומי עובד",
   "hero_status": "ההרפתקה פתוחה עכשיו. מכירת כרטיסי Ranked נפתחת בקרוב.",
@@ -13,7 +13,7 @@
   "board_reset": "אפס לוח",
   "num_price": "לכרטיס, ניסיון אחד לכל אחד",
   "num_tries": "ניסיונות לארנק ביום UTC",
-  "num_board": "אותו לוח ואותן חתיכות לכולם",
+  "num_board": "אותו לוח, חלקים משלך בכל ניסיון",
   "num_winners": "זוכים בכל יום, ועוד 10 בכל חודש",
   "modes_kicker": "שני מצבים",
   "modes_title": "מתאמנים בחינם. מתחרים פעם ביום.",
@@ -23,7 +23,7 @@
   "adventure_cta": "פתחו את המפה",
   "ranked_title": "Ranked יומי",
   "ranked_tag": "נפתח בקרוב",
-  "ranked_body": "לוח אחד לכל יום UTC, שמחולק באותה דרך לכל השחקנים. כל כרטיס עולה 1 USDC וקונה ניסיון אחד.",
+  "ranked_body": "לוח אחד ליום UTC. כל ניסיון מקבל חלקים משלו. כרטיס עולה 1 USDC ונותן ניסיון אחד.",
   "ranked_point_1": "עד 3 ניסיונות לארנק ביום",
   "ranked_point_2": "רק הניסיון הטוב ביותר נספר",
   "ranked_point_3": "טבלאות מובילים יומית וחודשית",
@@ -64,8 +64,8 @@
   "install_label": "אפליקציית ווב",
   "install_ios": "ב-iPhone/iPad: הקישו שיתוף ואז הוספה למסך הבית.",
   "install_other": "פתחו את תפריט הדפדפן ובחרו התקנת אפליקציה (או הוספה למסך הבית).",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Adventure ו-Ranked שניהם פתוחים. כרטיס Ranked עולה 1 USDC.",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "ב-Mac: פתחו את הדף ב-Safari, ואז File ← Add to Dock."
 }

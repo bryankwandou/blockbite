@@ -45,7 +45,7 @@
   "tip_combo": "Ein Teil, das eine Reihe und eine Spalte vollmacht, zählt als zwei Linien.",
   "tip_space": "Lass irgendwo eine gerade Lücke von 4. Lange Balken brauchen sie.",
   "ranked_cta_kicker": "Daily Ranked",
-  "ranked_cta_title": "Ein Brett pro Tag, für alle gleich",
+  "ranked_cta_title": "Ein Brett pro Tag, eigene Steine bei jedem Versuch",
   "ranked_cta_body": "1 Ticket = 1 Versuch = {price} USDC, bis zu {attempts} Versuche pro UTC-Tag; dein bester zählt. {daily}% des Preistresors eines Tages gehen an die täglichen Top 10 und {monthly}% an die monatlichen Top 10, gewertet nach der Summe der {days} besten Tage jedes Spielers.",
   "ranked_cta_status": "Ticketverkauf: bald verfügbar",
   "ranked_cta_link": "Daily Ranked ansehen",

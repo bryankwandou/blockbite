@@ -3,6 +3,7 @@
 // `record_milestone` CPI to vesting `update_proof`.
 
 import { NextRequest, NextResponse } from 'next/server';
+import { jsonObject } from '@/lib/http/body';
 import { verifySig } from '@/lib/sig';
 import { MAX_GAME_LEVEL } from '@/lib/game/constants';
 import { rateLimit, getIP } from '@/lib/rate-limit';
@@ -23,11 +24,9 @@ export async function POST(req: NextRequest) {
   }
 
   let body: { level?: unknown; score?: unknown; message?: unknown; signature?: unknown };
-  try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: 'invalid JSON' }, { status: 400 });
-  }
+  const parsed = await jsonObject<typeof body>(req);
+  if (!parsed) return NextResponse.json({ error: 'invalid JSON' }, { status: 400 });
+  body = parsed;
 
   const { level, score, message, signature } = body;
 
@@ -50,7 +49,10 @@ export async function POST(req: NextRequest) {
   const [, player, lvl, scr, ts] = m;
   if (parseInt(lvl, 10) !== level) return NextResponse.json({ error: 'level mismatch' }, { status: 400 });
   if (parseInt(scr, 10) !== score) return NextResponse.json({ error: 'score mismatch' }, { status: 400 });
-  if (Date.now() - parseInt(ts, 10) > 5 * 60 * 1000) return NextResponse.json({ error: 'expired' }, { status: 400 });
+  const age = Date.now() - parseInt(ts, 10);
+  // A timestamp in the future would never age out, so a signed message would stay valid forever.
+  // Same 5 min both ways: a phone clock running fast must not lose a legit score.
+  if (!(age <= 5 * 60 * 1000 && age >= -5 * 60 * 1000)) return NextResponse.json({ error: 'expired' }, { status: 400 });
 
   // Verify ed25519 signature against player pubkey
   const ok = await verifySig(player, message, signature);

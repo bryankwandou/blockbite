@@ -1,7 +1,7 @@
 {
   "kicker": "Anleitung",
   "title": "So wird gespielt",
-  "subtitle": "Ein Brett pro Tag. Gleiche Teile für alle. Der beste von 3 Versuchen zählt.",
+  "subtitle": "Ein Brett pro Tag. Jeder Versuch teilt eigene Steine aus. Der beste von 3 Versuchen zählt.",
   "status_note": "Der Ticketverkauf ist noch nicht offen. Der Abenteuer-Modus ist kostenlos und jetzt offen.",
   "tut_kicker": "Übungsbrett",
   "tut_title": "Probier drei Züge",
@@ -94,7 +94,7 @@
   "risk_4_desc": "Bezahlte Geschicklichkeitswettbewerbe unterliegen in jedem Land anderen Regeln. Informier dich. Nur ab 18.",
   "faq_title": "Fragen",
   "q_skill_title": "Ist das Glücksspiel?",
-  "q_skill_desc": "Deine Punkte hängen davon ab, wo du Teile setzt, und an diesem Tag bekommen alle dieselben Teile. Einige Länder haben trotzdem Sonderregeln für bezahlte Wettbewerbe, also informier dich. Nur ab 18.",
+  "q_skill_desc": "Dein Ergebnis hängt davon ab, wohin du die Steine setzt, und die Steine werden fair aus einem Seed ausgeteilt, der vor Tagesbeginn festgelegt und danach veröffentlicht wird. Manche Länder haben weiterhin Sonderregeln für kostenpflichtige Wettbewerbe, prüfe also deine. Nur ab 18.",
   "q_disconnect_title": "Was, wenn ich mitten im Run die Verbindung verliere?",
   "q_disconnect_desc": "Das Ticket war mit dem Start des Versuchs verbraucht. Der Server speichert jeden Zug beim Spielen, und wenn der UTC-Tag endet, gilt der erreichte Stand.",
   "q_ticket_title": "Kann ich ein Ticket wiederverwenden?",

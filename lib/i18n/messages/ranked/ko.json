@@ -18,7 +18,7 @@
   "connecting": "연결 중…",
   "waiting_for_wallet": "지갑을 기다리는 중…",
   "kicker": "하루에 보드 하나",
-  "lede": "UTC 하루마다 모두 같은 보드와 같은 조각이에요. {attempts}번 중 가장 좋은 기록이 반영돼요.",
+  "lede": "하루에 보드 하나. 시도마다 자기만의 블록이 나오므로 순서를 미리 외울 수 없습니다. {attempts}번 중 최고 기록이 반영됩니다.",
   "connect_btn": "지갑 연결",
   "mascot_alt": "오늘의 보드를 가늠하는 BlockBite 마스코트 Rex",
   "rules_title": "방식",
@@ -65,7 +65,7 @@
   "tab_daily": "일간",
   "tab_monthly": "월간",
   "tabs_label": "랭크 보기",
-  "rule_same_seed": "오늘은 모두 같은 보드(UTC)",
+  "rule_same_seed": "오늘(UTC)은 모두 같은 시작 보드. 블록은 시도마다 다릅니다.",
   "rule_no_hints": "힌트 없음",
   "rule_no_undo": "되돌리기 없음",
   "attempt_of": "도전 {n}/{max}",
@@ -81,5 +81,5 @@
   "monthly_connect": "월간 점수와 순위를 보려면 지갑을 연결하세요.",
   "monthly_players": "이번 달 플레이어 {n}명",
   "monthly_offline": "월간 보드를 불러오지 못했어요. 나중에 다시 시도하세요.",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "티켓 판매 중: 랭크 도전 1회당 1 USDC."
 }

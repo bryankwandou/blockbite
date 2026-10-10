@@ -1,0 +1,16 @@
+{
+  "title": "任務",
+  "sub": "由合作夥伴發布的任務。提交證明，審核員會進行檢查。",
+  "connect_msg": "連接錢包後才能提交任務完成情況。",
+  "connect_btn": "連接錢包",
+  "loading": "正在載入任務…",
+  "empty": "目前沒有進行中的任務，請稍後再來。",
+  "cancel": "取消",
+  "submit": "提交",
+  "proof_label": "證明（連結、交易簽章、截圖網址等）",
+  "submitting": "提交中…",
+  "submit_review": "提交審核",
+  "st_approved": "已通過",
+  "st_rejected": "已拒絕",
+  "st_pending": "待審核"
+}

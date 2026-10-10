@@ -66,6 +66,8 @@ export const PRIZE_STATE = new PublicKey('FQBH9iXq8MqEh1pBcwa7kfEoYTXXyvxKSQgJz5
 export const PRIZE_VETO_WINDOW_S = 86_400;
 /** After posting, prizes can be claimed until this much time has passed. */
 export const PRIZE_CLAIM_WINDOW_S = 90 * 86_400;
+/** Most wallets /api/ranked/day publishes on a finished day's leaderboard (the runs list is complete). */
+export const PUBLISHED_BOARD_LIMIT = 1000;
 /** Most winners (merkle leaves) the server puts in one round; keeps proofs within PRIZE_MAX_PROOF. */
 export const PRIZE_MAX_LEAVES = 1024;
 

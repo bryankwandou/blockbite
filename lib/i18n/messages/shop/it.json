@@ -40,6 +40,7 @@
   "err_funds": "USDC insufficienti. Hai {have}, questo pacchetto richiede {need}.",
   "err_no_account": "Questo wallet non ha ancora un account USDC.",
   "err_tx": "Transazione non riuscita: {msg}",
+  "err_day_closing": "La giornata sta per chiudersi. Riacquista qualche minuto dopo le 00:00 UTC.",
   "err_not_credited": "Pagato (tx {sig}…) ma non ancora accreditato: {msg}. Riapri questa pagina per riprovare.",
   "info_credits_title": "I ticket seguono il tuo wallet",
   "info_credits_desc": "Il nostro server controlla la transazione on-chain, poi aggiunge i ticket al tuo wallet. Conserva il link della transazione come ricevuta.",

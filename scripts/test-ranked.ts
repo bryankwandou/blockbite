@@ -173,17 +173,24 @@ async function main() {
     const bobMsg = auth.challenge(bob.address);
     assert.equal(auth.signIn(alice.address, bobMsg, alice.sign(bobMsg)), null);
     const tok = auth.signIn(alice.address, msg, alice.sign(msg))!;
-    const [, exp, mac] = tok.split('.');
-    assert.equal(auth.sessionWallet(`${bob.address}.${exp}.${mac}`), null);
-    assert.equal(auth.sessionWallet(`${alice.address}.${Number(exp) + 1}.${mac}`), null);
-    assert.equal(auth.sessionWallet(`${alice.address}.${Date.now() - 1}.${mac}`), null);
+    const [, exp, sid, mac] = tok.split(".");
+    assert.equal(auth.sessionWallet(`${bob.address}.${exp}.${sid}.${mac}`), null);
+    assert.equal(auth.sessionWallet(`${alice.address}.${Number(exp) + 1}.${sid}.${mac}`), null);
+    assert.equal(auth.sessionWallet(`${alice.address}.${Date.now() - 1}.${sid}.${mac}`), null);
   });
 
   console.log('purchase verification');
   const W = alice.address;
   const VAULT = cfg.PRIZE_VAULT.toBase58();
   const TEAM = cfg.TEAM_USDC_ACCOUNT.toBase58();
-  const REF = bob.address;
+  const REFERRER = bob.address;
+  const { usdcAta } = await import('../lib/ranked/purchase-verify');
+  const REF = usdcAta(REFERRER)!;
+  // Mid-day, so the age and results-cut rules never trigger by accident.
+  const NOW = Date.parse('2026-10-06T12:00:00Z');
+  const BT = Math.floor(NOW / 1000) - 30;
+  const ok = (tickets: number, referralAccount: string | null) =>
+    ({ tickets, vaultAmount: BigInt(tickets * 700_000), referralAccount, blockTimeMs: BT * 1000 });
   const xfer = (dest: string, amount: number, authority = W) => ({
     program: 'spl-token',
     parsed: { type: 'transferChecked', info: { authority, destination: dest, mint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v', source: 'src', tokenAmount: { amount: String(amount) } } },
@@ -201,13 +208,11 @@ async function main() {
       const b = d in balances ? balances[d] : { mint: USDC, owner: REF_OWNER };
       return b ? [{ accountIndex: i + 1, ...b }] : [];
     });
-    return { meta: { err, innerInstructions: [], postTokenBalances }, transaction: { message: { accountKeys, instructions: ixs } } };
+    return { blockTime: BT, meta: { err, innerInstructions: [], postTokenBalances }, transaction: { message: { accountKeys, instructions: ixs } } };
   };
   await test('valid purchases credit the right ticket count', () => {
-    assert.deepEqual(verifyPurchaseTx(tx([xfer(VAULT, 2_100_000), xfer(TEAM, 900_000)]) as never, W),
-      { tickets: 3, vaultAmount: 2_100_000n, referralAccount: null });
-    assert.deepEqual(verifyPurchaseTx(tx([xfer(VAULT, 700_000), xfer(TEAM, 250_000), xfer(REF, 50_000)]) as never, W),
-      { tickets: 1, vaultAmount: 700_000n, referralAccount: REF });
+    assert.deepEqual(verifyPurchaseTx(tx([xfer(VAULT, 2_100_000), xfer(TEAM, 900_000)]) as never, W, null, NOW), ok(3, null));
+    assert.deepEqual(verifyPurchaseTx(tx([xfer(VAULT, 700_000), xfer(TEAM, 250_000), xfer(REF, 50_000)]) as never, W, REFERRER, NOW), ok(1, REF));
   });
   await test('underpaying, skimming, extra recipients, foreign signers and failures are refused', () => {
     const bad: [unknown, string][] = [
@@ -223,28 +228,29 @@ async function main() {
       [tx([xfer(TEAM, 1_000_000)]), 'nothing to vault'],
       [null, 'missing'],
     ];
-    for (const [t, why] of bad) assert.equal(typeof verifyPurchaseTx(t as never, W), 'string', why);
+    for (const [t, why] of bad) assert.equal(typeof verifyPurchaseTx(t as never, W, REFERRER, NOW), 'string', why);
   });
 
-  await test('referral paid in another token, to the buyer, or to an unknown account is refused', () => {
+  await test('referral paid to anything but the recorded referrer\'s USDC ATA is refused', () => {
     // A plain `transfer` names no mint: 0.05 of a worthless token to "a referrer".
     const plain = (dest: string, amount: number) => ({
       program: 'spl-token', parsed: { type: 'transfer', info: { authority: W, destination: dest, source: 'src', amount: String(amount) } },
     });
     const base = [xfer(VAULT, 700_000), xfer(TEAM, 250_000)];
-    const junk = { [REF]: { mint: 'So11111111111111111111111111111111111111112', owner: REF_OWNER } };
-    assert.equal(typeof verifyPurchaseTx(tx([...base, plain(REF, 50_000)], null, W, junk) as never, W), 'string', 'wrong mint');
-    assert.equal(typeof verifyPurchaseTx(tx([...base, xfer(REF, 50_000)], null, W, { [REF]: { mint: USDC, owner: W } }) as never, W), 'string', 'self-referral');
-    assert.equal(typeof verifyPurchaseTx(tx([...base, xfer(REF, 50_000)], null, W, { [REF]: null }) as never, W), 'string', 'no balance record');
-    assert.deepEqual(verifyPurchaseTx(tx([...base, plain(REF, 50_000)]) as never, W),
-      { tickets: 1, vaultAmount: 700_000n, referralAccount: REF }, 'real USDC referral via plain transfer still works');
+    const other = usdcAta(REF_OWNER)!;
+    assert.equal(typeof verifyPurchaseTx(tx([...base, xfer(other, 50_000)]) as never, W, REFERRER, NOW), 'string', 'not the recorded referrer');
+    assert.equal(typeof verifyPurchaseTx(tx([...base, xfer(REFERRER, 50_000)]) as never, W, REFERRER, NOW), 'string', 'wallet, not its ATA');
+    assert.equal(typeof verifyPurchaseTx(tx([...base, xfer(REF, 50_000)]) as never, W, null, NOW), 'string', 'no referrer recorded');
+    assert.equal(typeof verifyPurchaseTx(tx([...base, xfer(usdcAta(W)!, 50_000)]) as never, W, W, NOW), 'string', 'self-referral');
+    void USDC;
+    assert.deepEqual(verifyPurchaseTx(tx([...base, plain(REF, 50_000)]) as never, W, REFERRER, NOW), ok(1, REF),
+      'real USDC referral via plain transfer still works');
   });
   await test('wallet-added Lighthouse assertions do not void a purchase; other programs still do', () => {
     const lighthouse = { programId: 'L2TExMFKdjpN9kozasaurPirfHy9P8sbXoAN1qA3S95', accounts: [], data: '1' };
-    assert.deepEqual(verifyPurchaseTx(tx([xfer(VAULT, 700_000), xfer(TEAM, 300_000), lighthouse]) as never, W),
-      { tickets: 1, vaultAmount: 700_000n, referralAccount: null });
+    assert.deepEqual(verifyPurchaseTx(tx([xfer(VAULT, 700_000), xfer(TEAM, 300_000), lighthouse]) as never, W, null, NOW), ok(1, null));
     const other = { programId: 'Other111111111111111111111111111111111111', accounts: [], data: '1' };
-    assert.equal(typeof verifyPurchaseTx(tx([xfer(VAULT, 700_000), xfer(TEAM, 300_000), other]) as never, W), 'string');
+    assert.equal(typeof verifyPurchaseTx(tx([xfer(VAULT, 700_000), xfer(TEAM, 300_000), other]) as never, W, null, NOW), 'string');
   });
   await test('a referral link never sends the 5% to the vault, the team, the buyer or an off-curve address', async () => {
     const { referralCandidate } = await import('../lib/solana/usdc');
@@ -272,7 +278,7 @@ async function main() {
     }
   });
   await test('middleware matcher covers uppercase page routes, not files or the API', async () => {
-    const { config } = await import('../middleware');
+    const { config } = await import('../proxy');
     const re = new RegExp('^' + config.matcher[0] + '$');
     for (const p of ['/SHOP', '/Leaderboard/x', '/shop']) assert.ok(re.test(p), p);
     for (const p of ['/logo.png', '/api/ranked/me', '/_next/static/x.js']) assert.ok(!re.test(p), p);
@@ -384,7 +390,7 @@ async function main() {
   }
   let fakeSig = 0;
   const grant = (wallet: string, n: number) =>
-    db.creditPurchase({ sig: `test${fakeSig++}`, wallet, tickets: n, vaultAmount: BigInt(n * 700_000), referralAccount: null });
+    db.creditPurchase({ sig: `test${fakeSig++}`, wallet, tickets: n, vaultAmount: BigInt(n * 700_000), referralAccount: null, blockTimeMs: Date.now() });
 
   const ta = await login(alice);
   const tb = await login(bob);
@@ -403,19 +409,19 @@ async function main() {
     assert.equal((await call(routes.start, '/start', ta, {})).status, 402);
   });
   await test('a purchase signature is credited only once', async () => {
-    assert.equal(await db.creditPurchase({ sig: 'dup', wallet: alice.address, tickets: 2, vaultAmount: 1_400_000n, referralAccount: null }), true);
-    assert.equal(await db.creditPurchase({ sig: 'dup', wallet: alice.address, tickets: 2, vaultAmount: 1_400_000n, referralAccount: null }), false);
+    assert.equal(await db.creditPurchase({ sig: 'dup', wallet: alice.address, tickets: 2, vaultAmount: 1_400_000n, referralAccount: null, blockTimeMs: Date.now() }), true);
+    assert.equal(await db.creditPurchase({ sig: 'dup', wallet: alice.address, tickets: 2, vaultAmount: 1_400_000n, referralAccount: null, blockTimeMs: Date.now() }), false);
     assert.equal((await call(routes.me, '/me', ta)).body.credits, 2);
   });
 
   let runId = '';
   let st: S;
-  await test('start spends one ticket; everyone gets the same first tray', async () => {
+  await test('start spends one ticket; the first tray comes from the run seed', async () => {
     const r = await call(routes.start, '/start', ta, {});
     assert.equal(r.status, 200);
     runId = r.body.runId;
     st = r.body.state;
-    assert.deepEqual(st.tray, seed.trayFor(SEED, boardToHex(0n), 0));
+    assert.deepEqual(st.tray, seed.trayFor(seed.runSeed(SEED, runId), boardToHex(0n), 0));
     const me = await call(routes.me, '/me', ta);
     assert.equal(me.body.credits, 1);
     assert.equal(me.body.attempts, 1);
@@ -438,7 +444,7 @@ async function main() {
     assert.equal(r2.status, 200);
     st = r2.body.state;
     assert.equal(st.score, local.score, 'server score equals local rules score');
-    if (!st.over) assert.deepEqual(st.tray, seed.trayFor(SEED, local.board, local.moves));
+    if (!st.over) assert.deepEqual(st.tray, seed.trayFor(seed.runSeed(SEED, runId), local.board, local.moves));
   });
   await test('replayed, stale or forked requests are refused (single history)', async () => {
     const m = bestMove(st)!;
@@ -480,7 +486,7 @@ async function main() {
       assert.ok(++guard < 400);
     }
     const rows = await neon(url!).query(`SELECT log, score::float8 AS score FROM ${schema}.rk_runs WHERE id = $1`, [runId]);
-    const replayed = replayRun(SEED, rows[0].log);
+    const replayed = replayRun(seed.runSeed(SEED, runId), rows[0].log);
     assert.equal(replayed.score, rows[0].score);
     assert.deepEqual(replayed, st);
     assert.equal((await call(routes.play, '/play', ta, { runId, fromMoves: st.moves, moves: [{ slot: 0, row: 0, col: 0 }] })).status, 409);
@@ -520,8 +526,9 @@ async function main() {
     const past = '2026-01-15';
     const ps = seed.dailySeed(past);
     await grant(alice.address, 1);
-    let s = initialState(seed.trayFor(ps, boardToHex(0n), 0));
     const id = `past-${randomBytes(4).toString('hex')}`;
+    const rs = seed.runSeed(ps, id);
+    let s = initialState(seed.trayFor(rs, boardToHex(0n), 0));
     assert.equal((await db.startRun(id, alice.address, past, s)).ok, true);
     for (let i = 0; i < 5 && !s.over; i++) {
       const from = s.moves;
@@ -531,14 +538,14 @@ async function main() {
         batch.push([m.slot, m.row, m.col]);
         s = applyMove(s, m).state;
       }
-      if (!s.over) s = rules.dealTray(s, seed.trayFor(ps, s.board, s.moves));
+      if (!s.over) s = rules.dealTray(s, seed.trayFor(rs, s.board, s.moves));
       assert.ok(await db.advanceRun({ id, wallet: alice.address, day: past, fromMoves: from, state: s, step: { t: 0, m: batch }, flag: false }));
     }
     const pub = (await call(routes.day, `/day?d=${past}`)).body;
     assert.equal(pub.final, true);
     assert.equal(seed.commitment(pub.seed), pub.commitment);
     const run = pub.runs.find((r: { id: string }) => r.id === id);
-    assert.equal(replayRun(pub.seed, run.log).score, run.score);
+    assert.equal(replayRun(seed.runSeed(pub.seed, run.id), run.log).score, run.score);
     assert.equal(pub.leaderboard[0].score, s.score);
   });
   await test('a day seed stays hidden until 10 minutes after the day ends', async () => {
@@ -624,19 +631,26 @@ async function main() {
     await assert.rejects(results.computeRound('month', TODAY.slice(0, 7)), /not over/);
   });
   await test('post-results: the dry run prints the round and stores nothing; --send without key or RPC stops first', async () => {
-    const { spawnSync } = await import('node:child_process');
-    // Fixed arguments only; shell: true lets `npx` resolve on Windows too.
-    const run = (args: string[]) => spawnSync(`npx tsx scripts/post-results.ts ${args.join(' ')}`, {
-      shell: true, encoding: 'utf8', timeout: 180_000,
-      env: { ...process.env, blockbite_DATABASE_URL: url, RANKED_DB_SCHEMA: schema, PRIZE_RPC_URL: 'http://127.0.0.1:9/?api-key=leakcheck', PRIZE_POSTER_KEY: '' },
+    const { spawn } = await import('node:child_process');
+    // Async (not spawnSync): with the offline PGlite shim the child queries this process over loopback,
+    // which a blocked event loop could not answer. Fixed arguments only; shell: true lets `npx` resolve on Windows too.
+    const run = (args: string[]) => new Promise<{ status: number | null; stdout: string; stderr: string }>((resolve) => {
+      const child = spawn(`npx tsx ${process.env.QA2_PG_PORT ? '--import ./scripts/pglite-neon-shim.ts ' : ''}scripts/post-results.ts ${args.join(' ')}`, {
+        shell: true,
+        env: { ...process.env, blockbite_DATABASE_URL: url, RANKED_DB_SCHEMA: schema, PRIZE_RPC_URL: 'http://127.0.0.1:9/?api-key=leakcheck', PRIZE_POSTER_KEY: '' },
+      });
+      let stdout = '', stderr = '';
+      child.stdout.on('data', (d) => (stdout += d)); child.stderr.on('data', (d) => (stderr += d));
+      const timer = setTimeout(() => child.kill(), 180_000);
+      child.on('close', (status) => { clearTimeout(timer); resolve({ status, stdout, stderr }); });
     });
     const plan = await results.computeRound('month', '2025-03');
-    const dry = run(['month', '2025-03']);
+    const dry = await run(['month', '2025-03']);
     assert.equal(dry.status, 0, dry.stderr + dry.stdout);
     assert.ok(dry.stdout.includes(`root ${results.rootOfLeaves(plan.roundId, results.leavesOf(plan))}`), dry.stdout);
     assert.ok(dry.stdout.includes('FLAGGED'), 'speed-review flags are shown');
     assert.ok(dry.stdout.includes('dry run: nothing stored'));
-    const send = run(['month', '2025-03', '--send']);
+    const send = await run(['month', '2025-03', '--send']);
     assert.notEqual(send.status, 0);
     assert.ok(!(send.stdout + send.stderr).includes('leakcheck'), 'RPC URL must not be printed');
     assert.equal(await db.getRound(plan.roundId), null);

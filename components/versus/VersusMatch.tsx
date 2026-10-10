@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useT } from '@/lib/i18n';
+import { translatePop } from '@/components/game/popLabel';
 import { botRng, chooseMove, thinkMs, type BotLevel } from '@/lib/versus/bot';
 import Board from './Board';
 import { useRun } from './useRun';
@@ -30,6 +31,7 @@ export default function VersusMatch({ seed, level, onRematch, onLevels }: {
   onLevels: () => void;
 }) {
   const t = useT('versus');
+  const tg = useT('game');
   const you = useRun(seed);
   const bot = useRun(seed);
   const rng = useMemo(() => botRng(seed, level), [seed, level]);
@@ -106,12 +108,12 @@ export default function VersusMatch({ seed, level, onRematch, onLevels }: {
         <div className={s.side}>
           <div className={s.sideHead}><strong>{t('you')}</strong><span className={s.score}>{you.view.run.score.toLocaleString()}</span></div>
           <Board view={you.view} label={t('your_board')} onMove={(m) => you.place(m)} />
-          <p className={s.note}>{you.view.lastLabel || t('how_to')}</p>
+          <p className={you.view.lastLabel ? `${s.note} ${s.clearNote}` : s.note}>{you.view.lastLabel ? translatePop(tg, you.view.lastLabel) : t('how_to')}</p>
         </div>
         <div className={`${s.side} ${s.bot}`}>
           <div className={s.sideHead}><strong>{t('bot_named', { level: levelName })}</strong><span className={s.score}>{bot.view.run.score.toLocaleString()}</span></div>
           <Board view={bot.view} label={t('bot_board')} compact />
-          <p className={s.note}>{bot.view.lastLabel || t('thinking')}</p>
+          <p className={bot.view.lastLabel ? `${s.note} ${s.clearNote}` : s.note}>{bot.view.lastLabel ? translatePop(tg, bot.view.lastLabel) : t('thinking')}</p>
         </div>
       </div>
     </>

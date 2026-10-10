@@ -45,7 +45,7 @@
   "tip_combo": "Satu blok yang melengkapi baris dan kolom sekaligus dihitung dua baris.",
   "tip_space": "Sisakan celah lurus sepanjang 4 di suatu tempat. Blok panjang butuh itu.",
   "ranked_cta_kicker": "Ranked Harian",
-  "ranked_cta_title": "Satu papan sehari, sama untuk semua orang",
+  "ranked_cta_title": "Satu papan sehari, bidak sendiri tiap percobaan",
   "ranked_cta_body": "1 tiket = 1 percobaan = {price} USDC, maksimal {attempts} percobaan per hari UTC; yang terbaik yang dihitung. {daily}% dari vault hadiah tiap hari masuk ke top 10 harian dan {monthly}% ke top 10 bulanan, diurutkan dari jumlah {days} hari terbaik tiap pemain.",
   "ranked_cta_status": "Penjualan tiket: segera dibuka",
   "ranked_cta_link": "Lihat Ranked Harian",

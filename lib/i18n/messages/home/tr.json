@@ -2,7 +2,7 @@
   "hero_kicker": "Solana'da blok bulmacası",
   "hero_title": "Günde bir tahta. En iyi skor kazanır.",
   "hero_boards": "Her günün ilk 10'u ve her ayın ilk 10'u USDC kazanır. Aylık skorun, en iyi 10 günlük skorunun toplamıdır. Günlük ödüller kasanın %40'ını, aylık ödüller %60'ını alır.",
-  "hero_sub": "Üç parça yerleştir, satır ve sütunları temizle, tekrar et. Macerayı ücretsiz oyna ya da herkes için aynı olan günlük tahtaya çık.",
+  "hero_sub": "Üç parça yerleştir, satır ve sütunları temizle, tekrar oyna. Adventure'ı ücretsiz oyna ya da günlük tahtaya çık: herkes için aynı başlangıç, her denemede farklı parçalar.",
   "cta_adventure": "Macerayı ücretsiz oyna",
   "cta_ranked": "Günlük Ranked nasıl işler",
   "hero_status": "Macera şu an açık. Ranked bilet satışı yakında açılıyor.",
@@ -13,7 +13,7 @@
   "board_reset": "Tahtayı sıfırla",
   "num_price": "bilet başına, her biri bir deneme",
   "num_tries": "UTC günü başına cüzdan başı deneme",
-  "num_board": "herkes için aynı tahta ve parçalar",
+  "num_board": "aynı tahta, her denemede kendi parçaların",
   "num_winners": "her gün kazanan, ayrıca her ay 10",
   "modes_kicker": "İki mod",
   "modes_title": "Ücretsiz pratik yap. Günde bir kez yarış.",
@@ -23,7 +23,7 @@
   "adventure_cta": "Haritayı aç",
   "ranked_title": "Günlük Ranked",
   "ranked_tag": "Yakında açılıyor",
-  "ranked_body": "UTC günü başına bir tahta, her oyuncuya aynı şekilde dağıtılır. Her bilet 1 USDC'dir ve bir deneme verir.",
+  "ranked_body": "UTC günü başına bir tahta. Her deneme kendi parçalarını dağıtır. Her bilet 1 USDC'dir ve bir deneme verir.",
   "ranked_point_1": "Günde cüzdan başına en fazla 3 deneme",
   "ranked_point_2": "Yalnızca en iyi deneme sayılır",
   "ranked_point_3": "Günlük ve aylık sıralamalar",
@@ -64,8 +64,8 @@
   "install_label": "Web Uygulaması",
   "install_ios": "iPhone/iPad'de: Paylaş'a, ardından Ana Ekrana Ekle'ye dokun.",
   "install_other": "Tarayıcı menüsünü aç ve Uygulamayı yükle'yi (veya Ana ekrana ekle'yi) seç.",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Adventure ve Ranked ikisi de açık. Ranked bileti 1 USDC.",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "Mac'te: bu sayfayı Safari'de aç, sonra Dosya → Dock'a Ekle."
 }

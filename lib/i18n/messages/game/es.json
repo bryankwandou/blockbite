@@ -45,7 +45,7 @@
   "tip_combo": "Una pieza que completa una fila y una columna cuenta como dos líneas.",
   "tip_space": "Deja un hueco recto de 4 en algún sitio. Las barras largas lo necesitan.",
   "ranked_cta_kicker": "Ranked diario",
-  "ranked_cta_title": "Un tablero al día, igual para todos",
+  "ranked_cta_title": "Un tablero al día, piezas propias en cada intento",
   "ranked_cta_body": "1 ticket = 1 intento = {price} USDC, hasta {attempts} intentos por día UTC; cuenta tu mejor resultado. El {daily}% de la bóveda de premios de cada día va al Top 10 diario y el {monthly}% al Top 10 mensual, según la suma de los {days} mejores días de cada jugador.",
   "ranked_cta_status": "Venta de tickets: próxima apertura",
   "ranked_cta_link": "Ver Ranked diario",

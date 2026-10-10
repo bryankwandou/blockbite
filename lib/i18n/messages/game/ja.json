@@ -45,7 +45,7 @@
   "tip_combo": "行と列を同時にそろえるピースは、2ライン分になります。",
   "tip_space": "長さ4のまっすぐな隙間をどこかに残しておきましょう。長い棒に必要です。",
   "ranked_cta_kicker": "デイリーランク",
-  "ranked_cta_title": "毎日1つのボード、みんな同じ",
+  "ranked_cta_title": "ボードは1日1枚、ピースはトライごとに別",
   "ranked_cta_body": "1チケット = 1回 = {price} USDC。UTC の1日あたり最大 {attempts} 回で、ベストの1回が有効です。毎日の賞金ボールトの {daily}% が日次トップ10、{monthly}% が月次トップ10に渡り、順位は各プレイヤーのベスト {days} 日の合計で決まります。",
   "ranked_cta_status": "チケット販売：近日オープン",
   "ranked_cta_link": "デイリーランクを見る",

@@ -1,3 +1,4 @@
+import { jsonObject } from '@/lib/http/body';
 import { NextRequest, NextResponse } from 'next/server';
 import { verifySig } from '@/lib/sig';
 import { rateLimit, getIP } from '@/lib/rate-limit';
@@ -32,7 +33,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'invalid addr' }, { status: 400 });
     }
 
-    const actNum = Number(act);
+    const actNum = typeof act === 'number' || (typeof act === 'string' && /^\d{1,2}$/.test(act)) ? Number(act) : NaN;
     if (!Number.isInteger(actNum) || actNum < 1 || actNum > 8) {
       return NextResponse.json({ error: 'act must be 1–8' }, { status: 400 });
     }
@@ -46,9 +47,9 @@ export async function POST(req: NextRequest) {
     try {
       const { kv } = await import('@vercel/kv');
       const key = `blockbite:redeem:${addr}:act${actNum}`;
-      const exists = await kv.exists(key);
-      if (exists) return NextResponse.json({ error: 'already redeemed' }, { status: 409 });
-      await kv.set(key, { ts: Date.now() });
+      // One atomic SET NX: exists-then-set let two parallel requests both pass.
+      const set = await kv.set(key, { ts: Date.now() }, { nx: true });
+      if (set === null) return NextResponse.json({ error: 'already redeemed' }, { status: 409 });
     } catch { /* no KV — proceed */ }
 
     return NextResponse.json({ ok: true, addr, act: actNum });

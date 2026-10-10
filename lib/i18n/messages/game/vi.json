@@ -45,7 +45,7 @@
   "tip_combo": "Một khối hoàn thành cả hàng và cột được tính là hai hàng.",
   "tip_space": "Chừa một khoảng trống thẳng dài 4 ở đâu đó. Các thanh dài cần chỗ này.",
   "ranked_cta_kicker": "Ranked Hằng Ngày",
-  "ranked_cta_title": "Mỗi ngày một bàn, giống nhau cho mọi người",
+  "ranked_cta_title": "Mỗi ngày một bàn, khối riêng mỗi lượt",
   "ranked_cta_body": "1 vé = 1 lượt = {price} USDC, tối đa {attempts} lượt mỗi ngày UTC; lượt tốt nhất được tính. {daily}% kho giải thưởng mỗi ngày dành cho top 10 hằng ngày và {monthly}% cho top 10 hằng tháng, xếp theo tổng {days} ngày tốt nhất của mỗi người chơi.",
   "ranked_cta_status": "Bán vé: sắp mở",
   "ranked_cta_link": "Xem Ranked Hằng Ngày",

@@ -18,7 +18,7 @@
   "connecting": "接続中…",
   "waiting_for_wallet": "ウォレットを待っています…",
   "kicker": "毎日1つのボード",
-  "lede": "UTC の毎日、全員が同じボードと同じピース。{attempts} 回のうちのベストが有効です。",
+  "lede": "ボードは1日1枚。トライごとに専用のピースが配られるので、順番を事前に覚えることはできません。{attempts}回のうちベストが採用されます。",
   "connect_btn": "ウォレットを接続",
   "mascot_alt": "今日のボードを品定めする、BlockBite のマスコット Rex",
   "rules_title": "遊び方",
@@ -65,7 +65,7 @@
   "tab_daily": "デイリー",
   "tab_monthly": "マンスリー",
   "tabs_label": "ランク表示",
-  "rule_same_seed": "今日は全員同じボード（UTC）",
+  "rule_same_seed": "今日(UTC)は全員が同じ開始ボード。ピースはトライごとに異なります。",
   "rule_no_hints": "ヒントなし",
   "rule_no_undo": "取り消しなし",
   "attempt_of": "{n}/{max} 回目",
@@ -81,5 +81,5 @@
   "monthly_connect": "月間スコアと順位を見るには、ウォレットを接続してください。",
   "monthly_players": "今月 {n} 人のプレイヤー",
   "monthly_offline": "月間ボードを読み込めませんでした。後でもう一度お試しください。",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "チケット販売中：ランク挑戦1回につき1 USDC。"
 }

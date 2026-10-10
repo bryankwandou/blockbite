@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "아직 추천이 없습니다. 프로필에서 링크를 공유해 보세요.",
+  "joined_total": "추천 링크로 {n}명이 참여했습니다",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "추천 수치를 불러오지 못했습니다.",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "내 링크로 참여한 플레이어",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "그중 한 판 이상 끝낸 사람",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "아직 아무도 내 링크를 쓰지 않았습니다.",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "추천 보드 보기"
 }

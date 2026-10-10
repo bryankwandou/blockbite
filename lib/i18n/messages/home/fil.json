@@ -2,7 +2,7 @@
   "hero_kicker": "Block puzzle sa Solana",
   "hero_title": "Isang board bawat araw. Panalo ang pinakamataas na score.",
   "hero_boards": "Ang top 10 bawat araw at top 10 bawat buwan ay nananalo ng USDC. Ang buwanang score mo ay ang pinagsamang 10 pinakamagandang daily score mo. Ang daily prize ay kumukuha ng 40% ng vault, ang monthly ay 60%.",
-  "hero_sub": "Maglagay ng tatlong piraso, i-clear ang mga row at column, ulitin. Maglaro ng Adventure nang libre, o sumabak sa daily board na pareho para sa lahat.",
+  "hero_sub": "Maglagay ng tatlong piyesa, linisin ang mga row at column, ulitin. Laruin ang Adventure nang libre, o subukan ang pang-araw-araw na board: parehong simula para sa lahat, iba-ibang piyesa sa bawat try.",
   "cta_adventure": "Maglaro ng Adventure nang libre",
   "cta_ranked": "Paano gumagana ang Daily Ranked",
   "hero_status": "Bukas na ang Adventure. Malapit nang magbukas ang benta ng Ranked ticket.",
@@ -13,7 +13,7 @@
   "board_reset": "I-reset ang board",
   "num_price": "kada ticket, isang subok bawat isa",
   "num_tries": "subok kada wallet kada UTC day",
-  "num_board": "parehong board at piraso para sa lahat",
+  "num_board": "parehong board, sariling piyesa bawat try",
   "num_winners": "panalo bawat araw, dagdag ang 10 bawat buwan",
   "modes_kicker": "Dalawang mode",
   "modes_title": "Magpraktis nang libre. Maglaban isang beses kada araw.",
@@ -23,7 +23,7 @@
   "adventure_cta": "Buksan ang mapa",
   "ranked_title": "Daily Ranked",
   "ranked_tag": "Malapit nang magbukas",
-  "ranked_body": "Isang board kada UTC day, pare-pareho ang pagkakaabot sa bawat manlalaro. Ang bawat ticket ay 1 USDC at isang subok.",
+  "ranked_body": "Isang board kada araw ng UTC. Bawat try ay may sariling mga piyesa. Ang bawat ticket ay 1 USDC at isang try ang katumbas.",
   "ranked_point_1": "Hanggang 3 subok kada wallet kada araw",
   "ranked_point_2": "Pinakamagaling na subok mo lang ang binibilang",
   "ranked_point_3": "Daily at monthly leaderboard",
@@ -64,8 +64,8 @@
   "install_label": "Web App",
   "install_ios": "Sa iPhone/iPad: i-tap ang Share, saka Add to Home Screen.",
   "install_other": "Buksan ang menu ng browser at piliin ang Install app (o Add to Home screen).",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Bukas na ang Adventure at Ranked. 1 USDC ang ticket ng Ranked.",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "Sa Mac: buksan ang page na ito sa Safari, tapos File → Add to Dock."
 }

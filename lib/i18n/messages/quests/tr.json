@@ -1,0 +1,16 @@
+{
+  "title": "Görevler",
+  "sub": "Ortakların yayınladığı görevler. Kanıt gönder, bir inceleyici kontrol etsin.",
+  "connect_msg": "Görev tamamlamalarını göndermek için cüzdan bağla.",
+  "connect_btn": "CÜZDAN BAĞLA",
+  "loading": "Görevler yükleniyor…",
+  "empty": "Şu anda aktif görev yok. Yakında tekrar bak.",
+  "cancel": "İPTAL",
+  "submit": "GÖNDER",
+  "proof_label": "Kanıt (bağlantı, işlem imzası, ekran görüntüsü URL'si vb.)",
+  "submitting": "GÖNDERİLİYOR…",
+  "submit_review": "İNCELEMEYE GÖNDER",
+  "st_approved": "ONAYLANDI",
+  "st_rejected": "REDDEDİLDİ",
+  "st_pending": "BEKLEMEDE"
+}

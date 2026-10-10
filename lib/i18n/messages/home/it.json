@@ -2,7 +2,7 @@
   "hero_kicker": "Puzzle di blocchi su Solana",
   "hero_title": "Un tabellone al giorno. Vince il miglior punteggio.",
   "hero_boards": "La Top 10 di ogni giorno e la Top 10 di ogni mese vincono USDC. Il tuo punteggio mensile è la somma dei tuoi 10 migliori punteggi giornalieri. I premi giornalieri prendono il 40% della cassaforte, quelli mensili il 60%.",
-  "hero_sub": "Posiziona tre pezzi, elimina righe e colonne e ricomincia. Gioca Avventura gratis, oppure affronta il tabellone giornaliero, uguale per tutti.",
+  "hero_sub": "Posiziona tre pezzi, libera righe e colonne, ricomincia. Gioca Adventure gratis o affronta la griglia giornaliera: stesso inizio per tutti, pezzi diversi a ogni tentativo.",
   "cta_adventure": "Gioca Avventura gratis",
   "cta_ranked": "Come funziona il Ranked giornaliero",
   "hero_status": "L'Avventura è già aperta. La vendita dei ticket Ranked apre a breve.",
@@ -13,7 +13,7 @@
   "board_reset": "Reimposta tabellone",
   "num_price": "a ticket, un tentativo ciascuno",
   "num_tries": "tentativi per wallet per giorno UTC",
-  "num_board": "stesso tabellone e stessi pezzi per tutti",
+  "num_board": "stessa griglia, pezzi propri a ogni tentativo",
   "num_winners": "vincitori ogni giorno, più 10 ogni mese",
   "modes_kicker": "Due modalità",
   "modes_title": "Esercitati gratis. Gareggia una volta al giorno.",
@@ -23,7 +23,7 @@
   "adventure_cta": "Apri la mappa",
   "ranked_title": "Ranked giornaliero",
   "ranked_tag": "Apertura a breve",
-  "ranked_body": "Un tabellone per giorno UTC, distribuito allo stesso modo a tutti i giocatori. Ogni ticket costa 1 USDC e dà un tentativo.",
+  "ranked_body": "Una griglia per giorno UTC. Ogni tentativo distribuisce i propri pezzi. Ogni ticket costa 1 USDC e dà un tentativo.",
   "ranked_point_1": "Fino a 3 tentativi per wallet al giorno",
   "ranked_point_2": "Conta solo il tuo tentativo migliore",
   "ranked_point_3": "Classifiche giornaliera e mensile",
@@ -64,8 +64,8 @@
   "install_label": "Web App",
   "install_ios": "Su iPhone/iPad: tocca Condividi, poi Aggiungi alla schermata Home.",
   "install_other": "Apri il menu del browser e scegli Installa app (o Aggiungi a schermata Home).",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Adventure e Ranked sono aperti. I ticket Ranked costano 1 USDC.",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "Su Mac: apri questa pagina in Safari, poi File → Aggiungi al Dock."
 }

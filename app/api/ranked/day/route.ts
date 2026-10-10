@@ -6,6 +6,7 @@
  * move log, so anyone can re-deal the trays and recompute every score
  * (scripts/verify-ranked-day.ts).
  */
+import { PUBLISHED_BOARD_LIMIT } from '@/lib/ranked/config';
 import { dayBoard, dayRuns } from '@/lib/ranked/db';
 import { fail, json, rankedConfigured } from '@/lib/ranked/http';
 import { commitment, dailySeed, dayOf, isDay } from '@/lib/ranked/seed';
@@ -29,6 +30,6 @@ export async function GET(req: Request) {
   if (d > dayOf(now + 7 * DAY_MS)) return fail(404, 'too far ahead');
   const seed = dailySeed(d);
   if (d >= dayOf(now - REVEAL_GRACE_MS)) return json({ day: d, final: false, commitment: commitment(seed) });
-  const [leaderboard, runs] = await Promise.all([dayBoard(d, 1000), dayRuns(d)]);
+  const [leaderboard, runs] = await Promise.all([dayBoard(d, PUBLISHED_BOARD_LIMIT), dayRuns(d)]);
   return json({ day: d, final: true, commitment: commitment(seed), seed, leaderboard, runs });
 }

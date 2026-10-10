@@ -1,0 +1,16 @@
+{
+  "title": "Quests",
+  "sub": "Tasks posted by partners. Submit proof and a reviewer checks it.",
+  "connect_msg": "Connect a wallet to submit quest completions.",
+  "connect_btn": "CONNECT WALLET",
+  "loading": "Loading quests…",
+  "empty": "No active quests right now. Check back soon.",
+  "cancel": "CANCEL",
+  "submit": "SUBMIT",
+  "proof_label": "Proof (link, txn signature, screenshot URL, etc.)",
+  "submitting": "SUBMITTING…",
+  "submit_review": "SUBMIT FOR REVIEW",
+  "st_approved": "APPROVED",
+  "st_rejected": "REJECTED",
+  "st_pending": "PENDING"
+}

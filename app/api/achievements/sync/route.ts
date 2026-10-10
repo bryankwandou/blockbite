@@ -22,7 +22,7 @@ const VERIFIED: Category[] = ['level', 'ranked_days', 'top10'];
 
 export async function POST(req: Request) {
   if (!achievementsConfigured()) return fail(503, 'achievements are not available');
-  const signedIn = requireWallet(req);
+  const signedIn = await requireWallet(req);
   if (typeof signedIn !== 'string') return fail(401, 'sign in with your wallet first', { signIn: '/api/ranked/auth' });
   const b = await body(req);
   if (!b || !isWallet(b.wallet)) return fail(400, 'bad wallet');

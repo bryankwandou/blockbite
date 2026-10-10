@@ -1,0 +1,16 @@
+{
+  "title": "Quest",
+  "sub": "Tugas dari mitra. Kirim bukti, lalu peninjau akan memeriksanya.",
+  "connect_msg": "Sambungkan wallet untuk mengirim penyelesaian quest.",
+  "connect_btn": "SAMBUNGKAN WALLET",
+  "loading": "Memuat quest…",
+  "empty": "Belum ada quest aktif. Cek lagi nanti.",
+  "cancel": "BATAL",
+  "submit": "KIRIM",
+  "proof_label": "Bukti (tautan, tanda tangan transaksi, URL tangkapan layar, dll.)",
+  "submitting": "MENGIRIM…",
+  "submit_review": "KIRIM UNTUK DITINJAU",
+  "st_approved": "DISETUJUI",
+  "st_rejected": "DITOLAK",
+  "st_pending": "MENUNGGU"
+}

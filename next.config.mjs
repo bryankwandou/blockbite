@@ -5,10 +5,6 @@ const nextConfig = {
   distDir: process.env.BB_DIST_DIR || '.next',
   poweredByHeader: false,
 
-  // ESLint errors must not block production builds — linting is a CI step,
-  // not a deploy gate. TypeScript errors still block builds.
-  eslint: { ignoreDuringBuilds: true },
-
   // Expose safe public env vars to the browser bundle
   env: {
     NEXT_PUBLIC_APP_NAME: 'BlockBite',
@@ -22,11 +18,9 @@ const nextConfig = {
     ],
   },
 
-  webpack: (config) => {
-    // pino-pretty / encoding are optional peer-deps — silence the build warnings
-    config.externals = [...(config.externals || []), 'pino-pretty', 'encoding'];
-    return config;
-  },
+  // Next 16 builds with Turbopack by default; the old webpack-only externals
+  // (pino-pretty/encoding) only silenced warnings.
+  turbopack: {},
 
   // Uppercase route variants (/SHOP, /Leaderboard …) are redirected in
   // middleware.ts: next.config redirects match case-insensitively outside

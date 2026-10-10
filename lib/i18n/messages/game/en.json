@@ -45,7 +45,7 @@
   "tip_combo": "One piece that finishes a row and a column counts as two lines.",
   "tip_space": "Leave a straight gap of 4 somewhere. Long bars need it.",
   "ranked_cta_kicker": "Daily Ranked",
-  "ranked_cta_title": "One board a day, same for everyone",
+  "ranked_cta_title": "One board a day, own pieces every try",
   "ranked_cta_body": "1 ticket = 1 attempt = {price} USDC, up to {attempts} attempts per UTC day; your best one counts. {daily}% of each day's prize vault goes to the daily top 10 and {monthly}% to the monthly top 10, ranked by the sum of each player's {days} best days.",
   "ranked_cta_status": "Ticket sales: opening soon",
   "ranked_cta_link": "See Daily Ranked",

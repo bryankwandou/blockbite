@@ -3,6 +3,7 @@
  * Uses Buffer.from() to satisfy TypeScript's strict BufferSource typing.
  */
 import { PublicKey } from '@solana/web3.js';
+import { isWeakEd25519Key } from '@/lib/weak-key';
 
 export async function verifySig(
   addr: string,
@@ -14,6 +15,7 @@ export async function verifySig(
     const msgBytes = Buffer.from(message, 'utf8');
     const sigBytes = Buffer.from(signatureBase64, 'base64');
     const pubkeyBytes = Buffer.from(new PublicKey(addr).toBytes());
+    if (isWeakEd25519Key(pubkeyBytes)) return false;
 
     const cryptoKey = await crypto.subtle.importKey(
       'raw',

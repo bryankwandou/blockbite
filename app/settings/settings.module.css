@@ -126,6 +126,7 @@
 }
 
 .segBtn {
+  min-height: 40px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -281,3 +282,6 @@
   .sliderWrap { width: 100%; }
   .slider { flex: 1; width: auto; max-width: none; }
 }
+
+/* Visual switch stays 52x30; the invisible hit area reaches 40px+ tall. */
+.switch::before { content: ""; position: absolute; inset: -6px -4px; }

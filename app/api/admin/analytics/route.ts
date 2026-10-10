@@ -1,14 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { neonPageStats, neonTotals, neonWalletStats } from '@/lib/neon-analytics';
-import { timingSafeEqual } from 'crypto';
+import { safeEqual } from '@/lib/safeEqual';
 
 function checkToken(provided: string): boolean {
   const secret = process.env.ADMIN_TOKEN;
   if (!secret) return false;
-  try {
-    return provided.length === secret.length &&
-      timingSafeEqual(Buffer.from(provided), Buffer.from(secret));
-  } catch { return false; }
+  return safeEqual(provided, secret);
 }
 
 export const runtime = 'nodejs';

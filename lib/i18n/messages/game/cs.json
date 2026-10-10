@@ -45,7 +45,7 @@
   "tip_combo": "Jeden dílek, který dokončí řadu i sloupec, se počítá jako dvě řady.",
   "tip_space": "Někde nech rovnou mezeru o délce 4. Dlouhé tyče ji potřebují.",
   "ranked_cta_kicker": "Daily Ranked",
-  "ranked_cta_title": "Jedna deska denně, stejná pro všechny",
+  "ranked_cta_title": "Jedna deska denně, v každém pokusu vlastní kousky",
   "ranked_cta_body": "1 tiket = 1 pokus = {price} USDC, až {attempts} pokusy za den UTC; počítá se ten nejlepší. {daily}% denního trezoru cen jde do denní top 10 a {monthly}% do měsíční top 10, podle součtu {days} nejlepších dní každého hráče.",
   "ranked_cta_status": "Prodej tiketů: brzy",
   "ranked_cta_link": "Zobrazit Daily Ranked",

@@ -1,0 +1,16 @@
+{
+  "title": "Misi",
+  "sub": "Tugasan daripada rakan kongsi. Hantar bukti dan penyemak akan memeriksanya.",
+  "connect_msg": "Sambungkan dompet untuk menghantar misi yang selesai.",
+  "connect_btn": "SAMBUNG DOMPET",
+  "loading": "Memuatkan misi…",
+  "empty": "Tiada misi aktif buat masa ini. Semak semula tidak lama lagi.",
+  "cancel": "BATAL",
+  "submit": "HANTAR",
+  "proof_label": "Bukti (pautan, tandatangan transaksi, URL tangkapan skrin, dll.)",
+  "submitting": "MENGHANTAR…",
+  "submit_review": "HANTAR UNTUK SEMAKAN",
+  "st_approved": "DILULUSKAN",
+  "st_rejected": "DITOLAK",
+  "st_pending": "MENUNGGU"
+}

@@ -2,7 +2,7 @@
   "hero_kicker": "Fumbo la vitalu kwenye Solana",
   "hero_title": "Ubao mmoja kwa siku. Alama bora hushinda.",
   "hero_boards": "10 bora wa kila siku na 10 bora wa kila mwezi hushinda USDC. Alama zako za mwezi ni jumla ya alama zako 10 bora za kila siku. Zawadi za kila siku huchukua 40% ya hazina, za kila mwezi 60%.",
-  "hero_sub": "Weka vipande vitatu, futa safu na nguzo, cheza tena. Cheza Matukio bure, au changamoto ubao wa kila siku ulio sawa kwa wote.",
+  "hero_sub": "Weka vipande vitatu, futa safu mlalo na wima, kisha cheza tena. Cheza Adventure bure, au jaribu ubao wa kila siku: mwanzo uleule kwa wote, vipande tofauti kila jaribio.",
   "cta_adventure": "Cheza Matukio bure",
   "cta_ranked": "Jinsi Daily Ranked inavyofanya kazi",
   "hero_status": "Matukio yamefunguliwa sasa. Mauzo ya tikiti za Ranked yanafunguliwa hivi karibuni.",
@@ -13,7 +13,7 @@
   "board_reset": "Weka ubao upya",
   "num_price": "kwa tikiti, jaribio moja kila moja",
   "num_tries": "majaribio kwa pochi kwa siku ya UTC",
-  "num_board": "ubao na vipande vilevile kwa wote",
+  "num_board": "ubao uleule, vipande vyako kila jaribio",
   "num_winners": "washindi kila siku, pamoja na 10 kila mwezi",
   "modes_kicker": "Njia mbili",
   "modes_title": "Fanya mazoezi bure. Shindana mara moja kwa siku.",
@@ -23,7 +23,7 @@
   "adventure_cta": "Fungua ramani",
   "ranked_title": "Daily Ranked",
   "ranked_tag": "Inafunguliwa hivi karibuni",
-  "ranked_body": "Ubao mmoja kwa siku ya UTC, unaogawiwa kwa njia ileile kwa kila mchezaji. Kila tikiti ni USDC 1 na inanunua jaribio moja.",
+  "ranked_body": "Ubao mmoja kwa kila siku ya UTC. Kila jaribio hupata vipande vyake. Kila tiketi ni 1 USDC na inatoa jaribio moja.",
   "ranked_point_1": "Hadi majaribio 3 kwa pochi kwa siku",
   "ranked_point_2": "Jaribio bora pekee ndilo linalohesabiwa",
   "ranked_point_3": "Orodha za viongozi za kila siku na kila mwezi",
@@ -64,8 +64,8 @@
   "install_label": "Programu ya Wavuti",
   "install_ios": "Kwenye iPhone/iPad: gusa Shiriki, kisha Ongeza kwenye Skrini ya Nyumbani.",
   "install_other": "Fungua menyu ya kivinjari na uchague Sakinisha programu (au Ongeza kwenye skrini ya nyumbani).",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Adventure na Ranked zote zimefunguliwa. Tiketi ya Ranked ni USDC 1.",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "Kwenye Mac: fungua ukurasa huu kwenye Safari, kisha File → Add to Dock."
 }

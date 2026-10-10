@@ -40,6 +40,7 @@
   "err_funds": "Yeterli USDC yok. Sende {have} var, bu paket {need} istiyor.",
   "err_no_account": "Bu cüzdanın henüz bir USDC hesabı yok.",
   "err_tx": "İşlem başarısız: {msg}",
+  "err_day_closing": "Gün kapanmak üzere. 00:00 UTC'den birkaç dakika sonra tekrar satın al.",
   "err_not_credited": "Ödendi (işlem {sig}…) ama henüz eklenmedi: {msg}. Tekrar denemek için bu sayfayı yeniden aç.",
   "info_credits_title": "Biletler cüzdanını izler",
   "info_credits_desc": "Sunucumuz işlemi zincir üstünde kontrol eder, sonra biletleri cüzdanına ekler. İşlem bağlantısını makbuz olarak sakla.",

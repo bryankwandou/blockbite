@@ -5,7 +5,7 @@
  */
 import { verifyWalletSignature } from '@/lib/auth/core';
 import { removeCodes, removePasskeys, unbindIdentity } from '@/lib/auth/db';
-import { accountsConfigured, body, fail, json, limited } from '@/lib/auth/http';
+import { accountsConfigured, body, consumeChallenge, fail, json, limited } from '@/lib/auth/http';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,6 +16,13 @@ export async function POST(req: Request) {
   const provider = b?.provider;
   if (provider !== 'google' && provider !== 'password' && provider !== 'passkey' && provider !== 'codes') return fail(400, 'bad provider');
   if (!verifyWalletSignature(b!.wallet, `unbind:${provider}`, b!.message, b!.signature)) return fail(401, 'bad signature');
+  // Single-use: replaying a captured signature must not unbind a method the owner bound again later.
+  try {
+    if (!(await consumeChallenge(b!.message))) return fail(401, 'bad signature');
+  } catch (e) {
+    console.error('account challenge nonce', e);
+    return fail(503, 'unavailable, try again');
+  }
   const w = b!.wallet as string;
   const removed = provider === 'passkey' ? (await removePasskeys(w)) > 0
     : provider === 'codes' ? (await removeCodes(w)) > 0

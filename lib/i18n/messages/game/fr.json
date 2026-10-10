@@ -45,7 +45,7 @@
   "tip_combo": "Une pièce qui complète une ligne et une colonne compte pour deux lignes.",
   "tip_space": "Garde un trou droit de 4 quelque part. Les longues barres en ont besoin.",
   "ranked_cta_kicker": "Ranked quotidien",
-  "ranked_cta_title": "Un plateau par jour, le même pour tous",
+  "ranked_cta_title": "Un plateau par jour, pièces propres à chaque essai",
   "ranked_cta_body": "1 ticket = 1 essai = {price} USDC, jusqu'à {attempts} essais par jour UTC ; ton meilleur compte. {daily} % de la cagnotte de prix de chaque jour va au Top 10 quotidien et {monthly} % au Top 10 mensuel, classés selon la somme des {days} meilleurs jours de chaque joueur.",
   "ranked_cta_status": "Vente de tickets : ouverture bientôt",
   "ranked_cta_link": "Voir le Ranked quotidien",

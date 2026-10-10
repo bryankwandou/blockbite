@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(req: Request) {
   if (!rankedConfigured()) return fail(503, 'ranked is not available');
-  const wallet = requireWallet(req);
+  const wallet = await requireWallet(req);
   if (typeof wallet !== 'string') return wallet;
   const day = dayOf(Date.now());
   const [credits, runs] = await Promise.all([getCredits(wallet), runsOf(wallet, day)]);

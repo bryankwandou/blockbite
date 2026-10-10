@@ -1,7 +1,7 @@
 {
   "kicker": "Návod",
   "title": "Jak hrát",
-  "subtitle": "Jedna deska denně. Stejné dílky pro všechny. Počítá se nejlepší ze 3 pokusů.",
+  "subtitle": "Jedna deska denně. Každý pokus rozdá vlastní kousky. Počítá se nejlepší ze 3 pokusů.",
   "status_note": "Prodej tiketů ještě není otevřený. Režim Dobrodružství je zdarma a už otevřený.",
   "tut_kicker": "Tréninková deska",
   "tut_title": "Vyzkoušej tři tahy",
@@ -94,7 +94,7 @@
   "risk_4_desc": "Placené soutěže dovednosti se v různých zemích řídí různými pravidly. Zjisti si ta svá. Jen 18+.",
   "faq_title": "Otázky",
   "q_skill_title": "Je to hazard?",
-  "q_skill_desc": "Tvé skóre vychází z toho, kam pokládáš dílky, a všichni dostanou ten den stejné dílky. Některé země mají přesto zvláštní pravidla pro placené soutěže, takže si zjisti ta svá. Jen 18+.",
+  "q_skill_desc": "Tvoje skóre závisí na tom, kam kousky umístíš, a kousky se rozdávají férově ze seedu zavázaného před začátkem dne a zveřejněného po něm. Některé země mají pro placené soutěže stále zvláštní pravidla, proto si ověř ta svá. Pouze 18+.",
   "q_disconnect_title": "Co když se uprostřed hry odpojím?",
   "q_disconnect_desc": "Tiket byl spotřebován při startu pokusu. Server ukládá každý tah během hry a když den UTC skončí, dosažené skóre platí.",
   "q_ticket_title": "Můžu tiket použít znovu?",

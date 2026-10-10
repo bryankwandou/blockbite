@@ -1,7 +1,7 @@
 {
   "kicker": "Gids",
   "title": "Zo speel je",
-  "subtitle": "Eén bord per dag. Dezelfde stukken voor iedereen. De beste van 3 pogingen telt.",
+  "subtitle": "Eén bord per dag. Elke poging deelt eigen stukken uit. De beste van 3 pogingen telt.",
   "status_note": "De ticketverkoop is nog niet open. Adventure-modus is gratis en nu open.",
   "tut_kicker": "Oefenbord",
   "tut_title": "Probeer drie zetten",
@@ -94,7 +94,7 @@
   "risk_4_desc": "Betaalde behendigheidswedstrijden volgen in elk land andere regels. Zoek het voor jezelf uit. Alleen 18+.",
   "faq_title": "Vragen",
   "q_skill_title": "Is dit gokken?",
-  "q_skill_desc": "Je score komt voort uit waar je stukken plaatst, en iedereen krijgt die dag dezelfde stukken. Sommige landen hebben toch aparte regels voor betaalde wedstrijden, dus check de jouwe. Alleen 18+.",
+  "q_skill_desc": "Je score hangt af van waar je stukken plaatst, en de stukken worden eerlijk uitgedeeld uit een seed die vóór de dag is vastgelegd en erna wordt gepubliceerd. Sommige landen hebben nog speciale regels voor betaalde wedstrijden, dus check de jouwe. Alleen 18+.",
   "q_disconnect_title": "Wat als ik midden in een run de verbinding verlies?",
   "q_disconnect_desc": "Het ticket was besteed toen de poging begon. De server slaat elke zet op terwijl je speelt, en als de UTC-dag eindigt, blijft de behaalde score staan.",
   "q_ticket_title": "Kan ik een ticket opnieuw gebruiken?",

@@ -1,0 +1,16 @@
+{
+  "title": "Quests",
+  "sub": "Aufgaben von Partnern. Reiche einen Nachweis ein, ein Prüfer kontrolliert ihn.",
+  "connect_msg": "Verbinde eine Wallet, um Quests einzureichen.",
+  "connect_btn": "WALLET VERBINDEN",
+  "loading": "Quests werden geladen…",
+  "empty": "Gerade keine aktiven Quests. Schau bald wieder vorbei.",
+  "cancel": "ABBRECHEN",
+  "submit": "EINREICHEN",
+  "proof_label": "Nachweis (Link, Transaktionssignatur, Screenshot-URL usw.)",
+  "submitting": "WIRD GESENDET…",
+  "submit_review": "ZUR PRÜFUNG EINREICHEN",
+  "st_approved": "GENEHMIGT",
+  "st_rejected": "ABGELEHNT",
+  "st_pending": "AUSSTEHEND"
+}

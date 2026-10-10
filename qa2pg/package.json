@@ -1,0 +1,1 @@
+{"name":"qa2pg","private":true,"dependencies":{"@electric-sql/pglite":"^0.5.8"}}

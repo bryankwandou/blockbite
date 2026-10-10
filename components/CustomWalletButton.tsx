@@ -6,6 +6,7 @@ import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 import Link from 'next/link';
 import { PlayerAvatar, useMyAvatar } from './CssAvatars';
 import { useT } from '@/lib/i18n';
+import { endSession } from '@/lib/ranked/client';
 import styles from './CustomWalletButton.module.css';
 
 function shortenAddress(address: string) {
@@ -99,7 +100,7 @@ export default function CustomWalletButton() {
   const tw = useT('shop');
 
   useEffect(() => {
-    const sync = () => setUsername(localStorage.getItem('bb_username') || '');
+    const sync = () => { try { setUsername(localStorage.getItem('bb_username') || ''); } catch { /* storage blocked */ } };
     sync();
     window.addEventListener('storage', sync);
     return () => window.removeEventListener('storage', sync);
@@ -307,7 +308,7 @@ export default function CustomWalletButton() {
               <button
                 type="button"
                 className={styles.disconnectBtn}
-                onClick={() => { disconnect(); setDropdownOpen(false); }}
+                onClick={() => { if (publicKey) endSession(publicKey.toBase58()); disconnect(); setDropdownOpen(false); }}
               >
                 <DisconnectIcon />{tn('disconnect')}
               </button>

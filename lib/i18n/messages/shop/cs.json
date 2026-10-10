@@ -40,6 +40,7 @@
   "err_funds": "Nedostatek USDC. Máš {have}, tento balíček potřebuje {need}.",
   "err_no_account": "Tato peněženka zatím nemá účet USDC.",
   "err_tx": "Transakce selhala: {msg}",
+  "err_day_closing": "Den se chýlí ke konci. Kup znovu pár minut po 00:00 UTC.",
   "err_not_credited": "Zaplaceno (tx {sig}…), ale zatím nepřipsáno: {msg}. Otevři tuto stránku znovu a zkus to.",
   "info_credits_title": "Tikety patří k tvé peněžence",
   "info_credits_desc": "Náš server ověří transakci on-chain a pak tikety přidá k tvé peněžence. Odkaz na transakci si schovej jako doklad.",

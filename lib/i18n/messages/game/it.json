@@ -45,7 +45,7 @@
   "tip_combo": "Un pezzo che completa una riga e una colonna conta come due linee.",
   "tip_space": "Lascia uno spazio dritto da 4 da qualche parte. Le barre lunghe ne hanno bisogno.",
   "ranked_cta_kicker": "Ranked giornaliero",
-  "ranked_cta_title": "Un tabellone al giorno, uguale per tutti",
+  "ranked_cta_title": "Una griglia al giorno, pezzi propri a ogni tentativo",
   "ranked_cta_body": "1 ticket = 1 tentativo = {price} USDC, fino a {attempts} tentativi per giorno UTC; conta il tuo migliore. Il {daily}% della cassaforte premi di ogni giorno va alla Top 10 giornaliera e il {monthly}% alla Top 10 mensile, in base alla somma dei {days} giorni migliori di ogni giocatore.",
   "ranked_cta_status": "Vendita ticket: apertura a breve",
   "ranked_cta_link": "Vedi Ranked giornaliero",

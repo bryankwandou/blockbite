@@ -11,6 +11,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { jsonObject } from '@/lib/http/body';
 import { createHmac, randomUUID } from 'crypto';
 import { rateLimit, getIP } from '@/lib/rate-limit';
 import { levelConfig } from '@/lib/game/levelConfig';
@@ -35,11 +36,9 @@ export async function POST(req: NextRequest) {
   }
 
   let body: { walletAddress?: string; level?: number };
-  try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
-  }
+  const parsed = await jsonObject<typeof body>(req);
+  if (!parsed) return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+  body = parsed;
 
   const { walletAddress, level } = body;
   if (!walletAddress || typeof walletAddress !== 'string') {

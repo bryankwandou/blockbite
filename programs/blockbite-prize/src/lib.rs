@@ -27,7 +27,9 @@
 //! Instruction data = 1-byte discriminator + fixed little-endian fields.
 //!   0 PostResults  round_id u64, root [32], total u64, count u32
 //!       accounts: poster (signer), state, round, vault
-//!   1 Veto         —   accounts: veto (signer), state, round
+//!   1 Veto         —   accounts: veto (signer), state, round [, next round]
+//!       (next = the live round posted right after this one, whose stored
+//!       previous mark is this id; needed only to give back a non-latest id)
 //!   2 Claim        index u32, amount u64, proof [32] × n (n bounded by the
 //!                  transaction size; trailing bytes short of 32 are ignored)
 //!       accounts: state, round, vault, vault_authority, winner_token, token
@@ -307,7 +309,8 @@ pub fn process_instruction(program_id: &Address, accounts: &[AccountView], data:
     let len = data.len();
     match (d.b(0), accounts) {
         (0, [poster, state, round, vault]) if len == 53 => post(program_id, poster, state, round, vault, d),
-        (1, [cold, state, round]) if len == 1 => veto(program_id, cold, state, round),
+        (1, [cold, state, round]) if len == 1 => veto(program_id, cold, state, round, None),
+        (1, [cold, state, round, next]) if len == 1 => veto(program_id, cold, state, round, Some(next)),
         (2, [state, round, vault, vault_auth, winner, _token]) if len >= 13 => {
             claim(program_id, state, round, vault, vault_auth, winner, d, (len - 13) / 32)
         }
@@ -360,7 +363,7 @@ fn post(program_id: &Address, poster: &AccountView, state: &AccountView, round: 
     Ok(())
 }
 
-fn veto(program_id: &Address, cold: &AccountView, state: &AccountView, round: &AccountView) -> R {
+fn veto(program_id: &Address, cold: &AccountView, state: &AccountView, round: &AccountView, next: Option<&AccountView>) -> R {
     if !cold.is_signer() || !same(cold.address(), &VETO) {
         return Err(E_UNAUTHORIZED);
     }
@@ -374,11 +377,24 @@ fn veto(program_id: &Address, cold: &AccountView, state: &AccountView, round: &A
     r.set_b(R_VETOED, 1);
     // No claim is possible inside the window, so the whole total is released.
     s.set(ST_RESERVED, s.u64(ST_RESERVED).wrapping_sub(r.u64(R_TOTAL) - r.u64(R_CLAIMED)));
-    // The latest round of its kind gives its id back. An older one does not:
-    // that would reopen ids posted after it.
-    let (id, mark) = (r.u64(R_ID), mark_of(r.u64(R_ID)));
+    // The live (not vetoed) rounds of one kind form a chain through R_PREV,
+    // and the mark is its top. Vetoing unlinks this round from the chain:
+    // - the latest round gives the mark back to its predecessor;
+    // - an older one, with its successor passed as the optional 4th account
+    //   (the live round whose R_PREV is this id), hands its predecessor to
+    //   that successor, so a later veto of the successor walks the mark past
+    //   this id too. Without the 4th account the veto still stands, the id
+    //   just stays used (as before). Rounds that were paid out are never
+    //   vetoed, so they stay in the chain and the mark never drops below them.
+    let (id, mark, prev) = (r.u64(R_ID), mark_of(r.u64(R_ID)), r.u64(R_PREV));
     if s.u64(mark) == id {
-        s.set(mark, r.u64(R_PREV));
+        s.set(mark, prev);
+    } else if let Some(next) = next {
+        let n = round_of(program_id, next);
+        if n.0.is_null() || n.b(R_VETOED) != 0 || n.u64(R_PREV) != id {
+            return Err(E_BAD_ACCOUNT);
+        }
+        n.set(R_PREV, prev);
     }
     Ok(())
 }

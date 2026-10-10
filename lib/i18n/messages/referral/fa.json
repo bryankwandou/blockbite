@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "هنوز دعوتی ثبت نشده. پیوندتان را از نمایه به اشتراک بگذارید.",
+  "joined_total": "{n} بازیکن با پیوند دعوت پیوستند",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "ارقام دعوت‌ها بارگذاری نشد.",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "بازیکنانی که با پیوند شما پیوستند",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "از میان آن‌ها، کسانی که دست‌کم یک بازی را تمام کردند",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "هنوز کسی از پیوند شما استفاده نکرده است.",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "مشاهدهٔ جدول دعوت‌ها"
 }

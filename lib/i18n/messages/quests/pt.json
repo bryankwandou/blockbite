@@ -1,0 +1,16 @@
+{
+  "title": "Missões",
+  "sub": "Tarefas publicadas por parceiros. Envie uma prova e um revisor a confere.",
+  "connect_msg": "Conecte uma carteira para enviar missões concluídas.",
+  "connect_btn": "CONECTAR CARTEIRA",
+  "loading": "Carregando missões…",
+  "empty": "Nenhuma missão ativa no momento. Volte em breve.",
+  "cancel": "CANCELAR",
+  "submit": "ENVIAR",
+  "proof_label": "Prova (link, assinatura da transação, URL de captura etc.)",
+  "submitting": "ENVIANDO…",
+  "submit_review": "ENVIAR PARA REVISÃO",
+  "st_approved": "APROVADA",
+  "st_rejected": "REJEITADA",
+  "st_pending": "PENDENTE"
+}

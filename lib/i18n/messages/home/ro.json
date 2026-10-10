@@ -2,7 +2,7 @@
   "hero_kicker": "Puzzle cu blocuri pe Solana",
   "hero_title": "O tablă pe zi. Câștigă cel mai bun scor.",
   "hero_boards": "Top 10 din fiecare zi și Top 10 din fiecare lună câștigă USDC. Scorul tău lunar este suma celor mai bune 10 scoruri zilnice. Premiile zilnice iau 40% din seif, cele lunare 60%.",
-  "hero_sub": "Pune trei piese, șterge rânduri și coloane și o iei de la capăt. Joacă Aventură gratuit sau înfruntă tabla zilnică, aceeași pentru toți.",
+  "hero_sub": "Așază trei piese, șterge rânduri și coloane, ia-o de la capăt. Joacă Adventure gratuit sau încearcă tabla zilnică: același start pentru toți, piese diferite la fiecare încercare.",
   "cta_adventure": "Joacă Aventură gratuit",
   "cta_ranked": "Cum funcționează Ranked zilnic",
   "hero_status": "Aventura este deschisă acum. Vânzarea de bilete Ranked se deschide în curând.",
@@ -13,7 +13,7 @@
   "board_reset": "Resetează tabla",
   "num_price": "pe bilet, o încercare fiecare",
   "num_tries": "încercări pe wallet pe zi UTC",
-  "num_board": "aceeași tablă și aceleași piese pentru toți",
+  "num_board": "aceeași tablă, piese proprii la fiecare încercare",
   "num_winners": "câștigători în fiecare zi, plus 10 în fiecare lună",
   "modes_kicker": "Două moduri",
   "modes_title": "Exersează gratuit. Concurează o dată pe zi.",
@@ -23,7 +23,7 @@
   "adventure_cta": "Deschide harta",
   "ranked_title": "Ranked zilnic",
   "ranked_tag": "Se deschide în curând",
-  "ranked_body": "O tablă pe zi UTC, împărțită la fel pentru toți jucătorii. Fiecare bilet costă 1 USDC și dă o încercare.",
+  "ranked_body": "O tablă pe zi UTC. Fiecare încercare primește piesele ei. Fiecare bilet costă 1 USDC și dă o încercare.",
   "ranked_point_1": "Până la 3 încercări pe wallet pe zi",
   "ranked_point_2": "Contează doar cea mai bună încercare",
   "ranked_point_3": "Clasamente zilnic și lunar",
@@ -64,8 +64,8 @@
   "install_label": "aplicație web",
   "install_ios": "Pe iPhone/iPad: atinge Partajează, apoi Adaugă pe ecranul principal.",
   "install_other": "Deschide meniul browserului și alege Instalează aplicația (sau Adaugă pe ecranul principal).",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Adventure și Ranked sunt deschise. Biletul Ranked costă 1 USDC.",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "Pe Mac: deschide pagina în Safari, apoi File → Add to Dock."
 }

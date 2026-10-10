@@ -245,8 +245,8 @@ export async function moveAccount(from: string, to: string, provider: RecoveryMe
   const res = await s.transaction([
     s.query(
       `INSERT INTO ${T.migs} (id, from_wallet, to_wallet, provider)
-       SELECT $1::uuid, $2, $3, $4
-       WHERE $2 <> $3
+       SELECT $1::uuid, $2::text, $3::text, $4::text
+       WHERE $2::text <> $3::text
          AND NOT EXISTS (SELECT 1 FROM ${T.wallets} WHERE wallet IN ($2, $3))
          AND NOT EXISTS (SELECT 1 FROM ${T.ids} WHERE wallet = $3)
          AND NOT EXISTS (SELECT 1 FROM ${T.passkeys} WHERE wallet = $3)
@@ -258,9 +258,9 @@ export async function moveAccount(from: string, to: string, provider: RecoveryMe
        RETURNING id`, [id, from, to, provider, MIGRATION_COOLDOWN_MS]),
     s.query(`UPDATE ${T.ids} SET wallet = $3 WHERE wallet = $2 AND ${gate}`, [id, from, to]),
     s.query(`UPDATE ${T.passkeys} SET wallet = $3 WHERE wallet = $2 AND ${gate}`, [id, from, to]),
-    s.query(`DELETE FROM ${T.codes} WHERE wallet = $3 AND ${gate}`, [id, from, to]),
+    s.query(`DELETE FROM ${T.codes} WHERE wallet = $3 AND $2::text IS NOT NULL AND ${gate}`, [id, from, to]),
     s.query(`UPDATE ${T.codes} SET wallet = $3 WHERE wallet = $2 AND ${gate}`, [id, from, to]),
-    s.query(`INSERT INTO ${T.wallets} (wallet, migrated_to) SELECT $2, $3 WHERE ${gate}`, [id, from, to]),
+    s.query(`INSERT INTO ${T.wallets} (wallet, migrated_to) SELECT $2::text, $3::text WHERE ${gate}`, [id, from, to]),
   ]);
   return (res[0] as unknown[]).length === 1 ? 'ok' : 'refused';
 }

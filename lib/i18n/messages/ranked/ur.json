@@ -18,7 +18,7 @@
   "connecting": "جڑ رہا ہے…",
   "waiting_for_wallet": "والیٹ کا انتظار ہے…",
   "kicker": "روزانہ ایک بورڈ",
-  "lede": "ہر UTC دن سب کے لیے وہی بورڈ اور وہی مہرے۔ آپ کی {attempts} کوششوں میں سے بہترین گنی جاتی ہے۔",
+  "lede": "روزانہ ایک بورڈ۔ ہر کوشش کو اپنے ٹکڑے ملتے ہیں، اس لیے کوئی پہلے سے ترتیب یاد نہیں کر سکتا۔ {attempts} میں سے بہترین کوشش شمار ہوتی ہے۔",
   "connect_btn": "والیٹ جوڑیں",
   "mascot_alt": "Rex، BlockBite کا ماسکوٹ، آج کے بورڈ کا جائزہ لیتے ہوئے",
   "rules_title": "یہ کیسے چلتا ہے",
@@ -65,7 +65,7 @@
   "tab_daily": "روزانہ",
   "tab_monthly": "ماہانہ",
   "tabs_label": "Ranked کا منظر",
-  "rule_same_seed": "آج (UTC) سب کے لیے وہی بورڈ",
+  "rule_same_seed": "آج (UTC) سب کے لیے ایک ہی ابتدائی بورڈ۔ ہر کوشش میں ٹکڑے مختلف ہوتے ہیں۔",
   "rule_no_hints": "اشارے نہیں",
   "rule_no_undo": "واپسی نہیں",
   "attempt_of": "کوشش {n}/{max}",
@@ -81,5 +81,5 @@
   "monthly_connect": "اپنا ماہانہ اسکور اور رینک دیکھنے کے لیے والیٹ جوڑیں۔",
   "monthly_players": "اس مہینے {n} کھلاڑی",
   "monthly_offline": "ماہانہ بورڈ لوڈ نہیں ہو سکا۔ بعد میں دوبارہ کوشش کریں۔",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "ٹکٹ کی فروخت کھلی ہے: ہر Ranked کوشش کے لیے 1 USDC۔"
 }

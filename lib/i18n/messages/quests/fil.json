@@ -1,0 +1,16 @@
+{
+  "title": "Mga Quest",
+  "sub": "Mga gawaing inilagay ng mga partner. Magsumite ng patunay at susuriin ito ng reviewer.",
+  "connect_msg": "Mag-connect ng wallet para magsumite ng natapos na quest.",
+  "connect_btn": "I-CONNECT ANG WALLET",
+  "loading": "Nilo-load ang mga quest…",
+  "empty": "Walang aktibong quest ngayon. Bumalik muli maya-maya.",
+  "cancel": "KANSELAHIN",
+  "submit": "ISUMITE",
+  "proof_label": "Patunay (link, transaction signature, URL ng screenshot, atbp.)",
+  "submitting": "ISINUSUMITE…",
+  "submit_review": "ISUMITE PARA SURIIN",
+  "st_approved": "APRUBADO",
+  "st_rejected": "TINANGGIHAN",
+  "st_pending": "NAKABINBIN"
+}

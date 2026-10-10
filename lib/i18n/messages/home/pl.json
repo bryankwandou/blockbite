@@ -2,7 +2,7 @@
   "hero_kicker": "Blokowa układanka na Solanie",
   "hero_title": "Jedna plansza dziennie. Wygrywa najlepszy wynik.",
   "hero_boards": "Top 10 każdego dnia i top 10 każdego miesiąca wygrywa USDC. Twój wynik miesięczny to suma 10 najlepszych wyników dziennych. Nagrody dzienne biorą 40% skarbca, miesięczne 60%.",
-  "hero_sub": "Postaw trzy klocki, czyść rzędy i kolumny i graj od nowa. Graj w Przygodę za darmo albo podejmij dzienną planszę, taką samą dla wszystkich.",
+  "hero_sub": "Ułóż trzy klocki, czyść wiersze i kolumny, graj dalej. Graj w Adventure za darmo albo podejmij dzienną planszę: ten sam start dla wszystkich, inne klocki w każdej próbie.",
   "cta_adventure": "Graj w Przygodę za darmo",
   "cta_ranked": "Jak działa Daily Ranked",
   "hero_status": "Przygoda jest już otwarta. Sprzedaż biletów Ranked rusza wkrótce.",
@@ -13,7 +13,7 @@
   "board_reset": "Zresetuj planszę",
   "num_price": "za bilet, jedna próba każdy",
   "num_tries": "prób na portfel na dzień UTC",
-  "num_board": "ta sama plansza i klocki dla wszystkich",
+  "num_board": "ta sama plansza, własne klocki w każdej próbie",
   "num_winners": "zwycięzców każdego dnia, plus 10 co miesiąc",
   "modes_kicker": "Dwa tryby",
   "modes_title": "Trenuj za darmo. Rywalizuj raz dziennie.",
@@ -23,7 +23,7 @@
   "adventure_cta": "Otwórz mapę",
   "ranked_title": "Daily Ranked",
   "ranked_tag": "Wkrótce",
-  "ranked_body": "Jedna plansza na dzień UTC, rozdana tak samo każdemu graczowi. Bilet kosztuje 1 USDC i daje jedną próbę.",
+  "ranked_body": "Jedna plansza na dzień UTC. Każda próba rozdaje własne klocki. Bilet kosztuje 1 USDC i daje jedną próbę.",
   "ranked_point_1": "Do 3 prób na portfel dziennie",
   "ranked_point_2": "Liczy się tylko najlepsza próba",
   "ranked_point_3": "Rankingi dzienne i miesięczne",
@@ -64,8 +64,8 @@
   "install_label": "aplikacja webowa",
   "install_ios": "Na iPhonie/iPadzie: stuknij Udostępnij, potem Do ekranu początkowego.",
   "install_other": "Otwórz menu przeglądarki i wybierz Zainstaluj aplikację (lub Dodaj do ekranu głównego).",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Adventure i Ranked są otwarte. Bilet Ranked kosztuje 1 USDC.",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "Na Macu: otwórz tę stronę w Safari, potem Plik → Dodaj do Docka."
 }

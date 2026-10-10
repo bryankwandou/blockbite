@@ -1,0 +1,21 @@
+{
+  "play_now": "PLAY NOW",
+  "universe": "BLOCKBITE UNIVERSE",
+  "meet": "Meet the {crew}",
+  "crew": "Crew",
+  "sub": "Four characters. One mission. Conquer 4,000 levels and claim rewards on-chain.",
+  "choose": "Choose your character.",
+  "choose_desc": "Enter the game, pick your playstyle, and fight for a spot at the top of the on-chain leaderboard.",
+  "rex_title": "The King",
+  "rex_tag": "Royalty",
+  "rex_bio": "Crowned ruler of the board. Rex plays with iron discipline — every move is calculated, every block placed for maximum domination. Fear the crown.",
+  "tide_title": "The Wave",
+  "tide_tag": "Flow",
+  "tide_bio": "Cool as deep water. Tide reads the board like ocean currents — fluid, adaptive, unstoppable. Block by block, the tide always rises.",
+  "brawler_title": "The Fighter",
+  "brawler_tag": "Power",
+  "brawler_bio": "No mercy, no retreat. Brawler charges every Act head-on, smashing through obstacles with raw aggression. The board will break before he does.",
+  "sunny_title": "The Spark",
+  "sunny_tag": "Energy",
+  "sunny_bio": "Pure joy, pure chaos. Sunny turns even the hardest levels into a party — always smiling, always surprising, always stealing the win."
+}

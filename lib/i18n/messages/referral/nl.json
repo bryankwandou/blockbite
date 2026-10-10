@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "Nog geen verwijzingen. Deel je link vanuit je profiel.",
+  "joined_total": "{n} spelers deden mee via een verwijslink",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "Verwijzingscijfers konden niet worden geladen.",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "Spelers die met jouw link meededen",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "Hiervan hebben er minstens één spel uitgespeeld",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "Nog niemand heeft je link gebruikt.",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "Bekijk de verwijzingsranglijst"
 }

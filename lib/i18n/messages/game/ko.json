@@ -45,7 +45,7 @@
   "tip_combo": "줄 하나와 열 하나를 한 번에 완성하면 두 줄로 쳐요.",
   "tip_space": "어딘가에 길이 4짜리 일직선 빈칸을 남겨 두세요. 긴 막대에 필요해요.",
   "ranked_cta_kicker": "데일리 랭크",
-  "ranked_cta_title": "하루에 보드 하나, 모두 같아요",
+  "ranked_cta_title": "하루에 보드 하나, 시도마다 다른 블록",
   "ranked_cta_body": "티켓 1장 = 도전 1번 = {price} USDC, UTC 하루에 최대 {attempts}번이며 가장 좋은 기록이 반영돼요. 매일 상금 금고의 {daily}%는 일간 상위 10명, {monthly}%는 월간 상위 10명에게 가며, 순위는 각 플레이어의 최고 {days}일 합계로 정해요.",
   "ranked_cta_status": "티켓 판매: 곧 오픈",
   "ranked_cta_link": "데일리 랭크 보기",

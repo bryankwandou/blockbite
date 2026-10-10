@@ -81,6 +81,8 @@
 .sideHead strong { font-size: 15px; }
 .score { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 20px; }
 .note { color: var(--text-dim, #94a3b8); font-size: 13px; min-height: 1.4em; margin: 6px 0 0; }
+/* Line-clear callout under a board. Not selectable: a drag that ends past the board used to highlight it. */
+.clearNote { text-align: center; font-weight: 700; letter-spacing: .04em; color: var(--accent, #a78bfa); user-select: none; -webkit-user-select: none; }
 @media (min-width: 760px) {
   .arena { grid-template-columns: 1fr 1fr; }
 }
@@ -89,7 +91,7 @@
   .arena .bot { order: 2; }
 }
 
-.boardWrap { width: 100%; max-width: 380px; margin: 0 auto; }
+.boardWrap { width: 100%; max-width: 380px; margin: 0 auto; user-select: none; -webkit-user-select: none; }
 .compact { max-width: 220px; }
 @media (min-width: 760px) { .compact { max-width: 380px; } }
 .grid {
@@ -120,7 +122,7 @@ span.cell { cursor: default; }
 @keyframes flash { from { background: #fff; transform: scale(.85); } to { transform: scale(1); } }
 .tray { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
 .slot {
-  min-height: 64px;
+  min-height: 70px;
   min-width: 0;
   overflow: hidden;
   border-radius: 10px;
@@ -149,8 +151,9 @@ span.slot { cursor: default; }
 .dragGhost > span { border-radius: 4px; }
 .compact .slot { min-height: 40px; padding: 4px; }
 .slotSel { border-color: var(--accent, #a78bfa); box-shadow: 0 0 0 2px var(--accent, #a78bfa) inset; }
-.mini { display: grid; gap: 2px; width: auto; height: 44px; max-width: 100%; }
-.compact .mini { height: 24px; }
+/* Same cell size for every piece, so a 1×3 isn't drawn bigger than a 3×2. Pieces are at most 4×4. */
+.mini { --mc: 12px; display: grid; gap: 2px; grid-auto-rows: var(--mc); }
+.compact .mini { --mc: 6px; gap: 1px; }
 .mini > span { border-radius: 2px; }
 
 .ghost { margin: 0 0 12px; }

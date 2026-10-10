@@ -1,0 +1,21 @@
+{
+  "play_now": "GRAJ TERAZ",
+  "universe": "UNIWERSUM BLOCKBITE",
+  "meet": "Poznaj {crew}",
+  "crew": "Ekipę",
+  "sub": "Czterech bohaterów. Jedna misja. Podbij 4000 poziomów i odbierz nagrody on-chain.",
+  "choose": "Wybierz swoją postać.",
+  "choose_desc": "Wejdź do gry, wybierz styl i walcz o miejsce na szczycie rankingu on-chain.",
+  "rex_title": "Król",
+  "rex_tag": "Majestat",
+  "rex_bio": "Koronowany władca planszy. Rex gra z żelazną dyscypliną: każdy ruch jest wyliczony, każdy blok ułożony dla maksymalnej dominacji. Bój się korony.",
+  "tide_title": "Fala",
+  "tide_tag": "Płynność",
+  "tide_bio": "Spokojny jak głęboka woda. Tide czyta planszę jak prądy oceanu: płynnie, elastycznie, nie do zatrzymania. Blok po bloku przypływ zawsze rośnie.",
+  "brawler_title": "Wojownik",
+  "brawler_tag": "Siła",
+  "brawler_bio": "Bez litości, bez odwrotu. Brawler szturmuje każdy Akt czołowo, miażdżąc przeszkody czystą agresją. Plansza pęknie szybciej niż on.",
+  "sunny_title": "Iskra",
+  "sunny_tag": "Energia",
+  "sunny_bio": "Czysta radość, czysty chaos. Sunny zmienia nawet najtrudniejsze poziomy w imprezę: zawsze uśmiechnięty, zawsze zaskakujący, zawsze kradnący zwycięstwo."
+}

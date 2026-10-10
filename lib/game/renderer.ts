@@ -27,6 +27,22 @@ function glow(n: number): number {
 // --board-bg on :root. Missing vars fall back to BLOCK_COLORS.
 const POOL_ORDER: BlockColor[] = ['fire', 'ice', 'nature', 'thunder', 'shadow', 'crystal', 'void'];
 let themeCache: { at: number; blocks: Partial<Record<BlockColor, string>>; boardBg: string } | null = null;
+/** True when a CSS colour (#rgb, #rrggbb or rgb()/rgba()) is perceptually light. */
+function isLightColor(css: string): boolean {
+  const hsl = /^hsla?\(\s*[\d.]+(?:deg)?[ ,]+[\d.]+%[ ,]+([\d.]+)%/i.exec(css);
+  if (hsl) return +hsl[1] > 62;
+  let r = 0, g = 0, b = 0;
+  const hex = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(css);
+  if (hex) {
+    const h = hex[1].length === 3 ? hex[1].replace(/./g, '$&$&') : hex[1];
+    r = parseInt(h.slice(0, 2), 16); g = parseInt(h.slice(2, 4), 16); b = parseInt(h.slice(4, 6), 16);
+  } else {
+    const m = /rgba?\(\s*([\d.]+)[ ,]+([\d.]+)[ ,]+([\d.]+)/i.exec(css);
+    if (!m) return false;
+    r = +m[1]; g = +m[2]; b = +m[3];
+  }
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b > 160;
+}
 function themeVars() {
   const now = typeof performance !== 'undefined' ? performance.now() : Date.now();
   if (themeCache && now - themeCache.at < 500) return themeCache;
@@ -183,6 +199,8 @@ export function drawGrid(
 ): void {
   const cellTotal = CELL_SIZE + CELL_GAP;
   const boardBg = themeVars().boardBg;
+  // On a light board the white-alpha cells vanish; use dark-alpha ones instead.
+  const light = !!boardBg && isLightColor(boardBg);
   if (boardBg) {
     ctx.save();
     ctx.beginPath();
@@ -200,13 +218,13 @@ export function drawGrid(
 
       ctx.beginPath();
       roundRect(ctx, x, y, CELL_SIZE, CELL_SIZE, 6);
-      ctx.fillStyle = isAlt
-        ? 'rgba(255,255,255,0.03)'
-        : 'rgba(255,255,255,0.02)';
+      ctx.fillStyle = light
+        ? (isAlt ? 'rgba(30,30,70,0.13)' : 'rgba(30,30,70,0.09)')
+        : (isAlt ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.02)');
       ctx.fill();
       
       // Subtle inner shadow for cells
-      ctx.strokeStyle = 'rgba(0, 245, 255, 0.05)';
+      ctx.strokeStyle = light ? 'rgba(30,30,70,0.22)' : 'rgba(0, 245, 255, 0.05)';
       ctx.lineWidth = 1;
       ctx.stroke();
     }

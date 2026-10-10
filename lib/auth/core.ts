@@ -14,6 +14,7 @@ import {
   type JsonWebKey, type ScryptOptions,
 } from 'node:crypto';
 import bs58 from 'bs58';
+import { isWeakEd25519Key } from '@/lib/weak-key';
 
 // ── Constants ───────────────────────────────────────────────────────
 
@@ -200,7 +201,9 @@ export function verifyWalletSignature(
     return false;
   }
   if (sig.length !== 64) return false;
-  const pub = createPublicKey({ key: Buffer.concat([SPKI_ED25519, Buffer.from(bs58.decode(wallet))]), format: 'der', type: 'spki' });
+  const key = bs58.decode(wallet);
+  if (isWeakEd25519Key(key)) return false;
+  const pub = createPublicKey({ key: Buffer.concat([SPKI_ED25519, Buffer.from(key)]), format: 'der', type: 'spki' });
   return verify(null, Buffer.from(message, 'utf8'), pub, sig);
 }
 

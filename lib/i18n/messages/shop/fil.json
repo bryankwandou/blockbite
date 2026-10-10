@@ -40,6 +40,7 @@
   "err_funds": "Kulang ang USDC. May {have} ka, kailangan ng pack na ito ang {need}.",
   "err_no_account": "Wala pang USDC account ang wallet na ito.",
   "err_tx": "Pumalya ang transaksyon: {msg}",
+  "err_day_closing": "Malapit nang magsara ang araw. Bumili ulit pagkalipas ng ilang minuto mula 00:00 UTC.",
   "err_not_credited": "Bayad na (tx {sig}…) pero hindi pa nai-credit: {msg}. Buksan ulit ang pahinang ito para subukan ulit.",
   "info_credits_title": "Sumusunod ang mga ticket sa wallet mo",
   "info_credits_desc": "Sinusuri ng server namin ang transaksyon on-chain, saka idinaragdag ang mga ticket sa wallet mo. Itago ang link ng transaksyon bilang resibo.",

@@ -3,47 +3,41 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { useT } from '@/lib/i18n';
 
 const CREW = [
   {
     src: '/mascots/mascot-brawler.png',
     name: 'Rex',
-    title: 'The King',
+    k: 'rex',
     color: '#9499e8',
     glow: '#9499e844',
-    tag: 'ROYALTY',
-    bio: 'Crowned ruler of the board. Rex plays with iron discipline — every move is calculated, every block placed for maximum domination. Fear the crown.',
   },
   {
     src: '/mascots/mascot-sunny.png',
     name: 'Tide',
-    title: 'The Wave',
+    k: 'tide',
     color: '#6ec8e0',
     glow: '#6ec8e044',
-    tag: 'FLOW',
-    bio: 'Cool as deep water. Tide reads the board like ocean currents — fluid, adaptive, unstoppable. Block by block, the tide always rises.',
   },
   {
     src: '/mascots/mascot-rex.png',
     name: 'Brawler',
-    title: 'The Fighter',
+    k: 'brawler',
     color: '#d94553',
     glow: '#d9455344',
-    tag: 'POWER',
-    bio: 'No mercy, no retreat. Brawler charges every Act head-on, smashing through obstacles with raw aggression. The board will break before he does.',
   },
   {
     src: '/mascots/mascot-tide.png',
     name: 'Sunny',
-    title: 'The Spark',
+    k: 'sunny',
     color: '#e1a438',
     glow: '#e1a43844',
-    tag: 'ENERGY',
-    bio: 'Pure joy, pure chaos. Sunny turns even the hardest levels into a party — always smiling, always surprising, always stealing the win.',
   },
 ];
 
 export default function MascotsPage() {
+  const t = useT('mascots');
   const [active, setActive] = useState<number | null>(null);
 
   return (
@@ -70,7 +64,7 @@ export default function MascotsPage() {
         background: 'rgba(7,6,15,0.85)', backdropFilter: 'blur(20px)',
         position: 'sticky', top: 0, zIndex: 100,
       }}>
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: '#fff' }}>
+        <Link href="/" style={{ minHeight: 44, display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: '#fff' }}>
           <img src="/logo.png" alt="BlockBite" width={32} height={32} style={{ objectFit: 'contain' }} />
           <span style={{ fontSize: 17, fontWeight: 900 }}>BlockBite</span>
         </Link>
@@ -80,7 +74,8 @@ export default function MascotsPage() {
           background: 'linear-gradient(135deg, #a78bfa, #7dd3fc)',
           color: '#0a0a14', fontWeight: 900, fontSize: 13, textDecoration: 'none',
           letterSpacing: '.5px',
-        }}>PLAY NOW</Link>
+          display: 'inline-flex', alignItems: 'center', minHeight: 44,
+        }}>{t('play_now')}</Link>
       </nav>
 
       {/* Hero */}
@@ -97,7 +92,7 @@ export default function MascotsPage() {
           background: 'rgba(167,139,250,.08)',
           fontWeight: 800,
         }}>
-          BLOCKBITE UNIVERSE
+          {t('universe')}
         </div>
 
         <h1 style={{
@@ -106,11 +101,12 @@ export default function MascotsPage() {
           margin: '0 0 16px',
           lineHeight: .95,
         }}>
-          Meet the{' '}
-          <span style={{
-            background: 'linear-gradient(135deg, #a78bfa 0%, #7dd3fc 100%)',
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-          }}>Crew</span>
+          {t('meet', { crew: '@@CREW@@' }).split('@@CREW@@').flatMap((part, i, arr) => i < arr.length - 1 ? [part, (
+            <span key={i} style={{
+              background: 'linear-gradient(135deg, #a78bfa 0%, #7dd3fc 100%)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+            }}>{t('crew')}</span>
+          )] : [part])}
         </h1>
 
         <p style={{
@@ -118,7 +114,7 @@ export default function MascotsPage() {
           color: '#94a3b8', maxWidth: 520, margin: '0 auto 56px',
           lineHeight: 1.65,
         }}>
-          Four characters. One mission. Conquer 4,000 levels and claim rewards on-chain.
+          {t('sub')}
         </p>
       </section>
 
@@ -162,7 +158,7 @@ export default function MascotsPage() {
               background: `${m.color}18`,
               marginBottom: 20,
             }}>
-              {m.tag}
+              {t(m.k + '_tag').toUpperCase()}
             </div>
 
             {/* Mascot PNG */}
@@ -198,13 +194,13 @@ export default function MascotsPage() {
                 {m.name}
               </div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: m.color, marginBottom: 14 }}>
-                {m.title.toUpperCase()}
+                {t(m.k + '_title').toUpperCase()}
               </div>
               <p style={{
                 fontSize: 13, color: '#94a3b8', lineHeight: 1.65,
                 margin: 0, maxWidth: 240,
               }}>
-                {m.bio}
+                {t(m.k + '_bio')}
               </p>
             </div>
           </div>
@@ -226,10 +222,10 @@ export default function MascotsPage() {
           background: 'rgba(167,139,250,.05)',
         }}>
           <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 10 }}>
-            Choose your character.
+            {t('choose')}
           </div>
           <p style={{ fontSize: 14, color: '#94a3b8', marginBottom: 24, lineHeight: 1.6 }}>
-            Enter the game, pick your playstyle, and fight for a spot at the top of the on-chain leaderboard.
+            {t('choose_desc')}
           </p>
           <Link href="/game" style={{
             display: 'inline-block',
@@ -239,7 +235,7 @@ export default function MascotsPage() {
             textDecoration: 'none', letterSpacing: '.5px',
             boxShadow: '0 0 32px rgba(167,139,250,.4)',
           }}>
-            PLAY NOW
+            {t('play_now')}
           </Link>
         </div>
       </section>

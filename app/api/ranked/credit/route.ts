@@ -5,7 +5,7 @@
  */
 import { RPC_URL } from '@/lib/solana/config';
 import { RANKED_SALES_OPEN } from '@/lib/ranked/config';
-import { creditPurchase, getCredits } from '@/lib/ranked/db';
+import { creditPurchase, getCredits, referrerOf } from '@/lib/ranked/db';
 import { body, fail, json, rankedConfigured, requireWallet } from '@/lib/ranked/http';
 import { fetchParsedTx, verifyPurchaseTx } from '@/lib/ranked/purchase-verify';
 import { getIP } from '@/lib/rate-limit';
@@ -18,7 +18,7 @@ const SIG_RE = /^[1-9A-HJ-NP-Za-km-z]{64,90}$/;
 export async function POST(req: Request) {
   if (!rankedConfigured()) return fail(503, 'ranked is not available');
   if (!RANKED_SALES_OPEN) return fail(503, 'ticket sales are not open yet');
-  const wallet = requireWallet(req);
+  const wallet = await requireWallet(req);
   if (typeof wallet !== 'string') return wallet;
   const b = await body(req);
   const sig = b?.signature;
@@ -38,9 +38,22 @@ export async function POST(req: Request) {
     return fail(502, 'could not reach Solana, try again');
   }
   if (!tx) return fail(404, 'transaction not confirmed yet, try again in a few seconds');
-  const v = verifyPurchaseTx(tx, wallet);
+  let referrer: string | null;
+  try {
+    referrer = await referrerOf(wallet);
+  } catch (e) {
+    console.error('ranked credit referrer', e);
+    return fail(503, 'ranked is not available, try again');
+  }
+  const v = verifyPurchaseTx(tx, wallet, referrer, Date.now(), sig);
   if (typeof v === 'string') return fail(422, v);
 
-  const added = await creditPurchase({ sig, wallet, ...v });
+  let added: boolean;
+  try {
+    added = await creditPurchase({ sig, wallet, ...v });
+  } catch (e) {
+    console.error('ranked credit', e);
+    return fail(503, 'ranked is not available, try again');
+  }
   return json({ added: added ? v.tickets : 0, alreadyCredited: !added, credits: await getCredits(wallet) });
 }

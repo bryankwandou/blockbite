@@ -2,7 +2,7 @@
   "hero_kicker": "Teka-teki blok di Solana",
   "hero_title": "Satu papan sehari. Skor terbaik menang.",
   "hero_boards": "10 teratas setiap hari dan 10 teratas setiap bulan memenangi USDC. Skor bulanan anda ialah 10 skor harian terbaik anda dicampur. Hadiah harian ambil 40% peti, hadiah bulanan 60%.",
-  "hero_sub": "Letak tiga blok, bersihkan baris dan lajur, ulang lagi. Main Pengembaraan percuma, atau sertai papan harian yang sama untuk semua orang.",
+  "hero_sub": "Letakkan tiga kepingan, kosongkan baris dan lajur, main lagi. Main Adventure percuma, atau cuba papan harian: permulaan sama untuk semua, kepingan berbeza setiap percubaan.",
   "cta_adventure": "Main Pengembaraan percuma",
   "cta_ranked": "Cara Berperingkat Harian berfungsi",
   "hero_status": "Pengembaraan dibuka sekarang. Jualan tiket Berperingkat dibuka tidak lama lagi.",
@@ -13,7 +13,7 @@
   "board_reset": "Set semula papan",
   "num_price": "setiap tiket, satu percubaan",
   "num_tries": "percubaan setiap dompet setiap hari UTC",
-  "num_board": "papan dan blok yang sama untuk semua",
+  "num_board": "papan sama, kepingan sendiri setiap percubaan",
   "num_winners": "pemenang setiap hari, tambah 10 setiap bulan",
   "modes_kicker": "Dua mod",
   "modes_title": "Berlatih percuma. Bersaing sekali sehari.",
@@ -23,7 +23,7 @@
   "adventure_cta": "Buka peta",
   "ranked_title": "Berperingkat Harian",
   "ranked_tag": "Dibuka tidak lama lagi",
-  "ranked_body": "Satu papan setiap hari UTC, diagihkan dengan cara sama untuk setiap pemain. Setiap tiket berharga 1 USDC dan membeli satu percubaan.",
+  "ranked_body": "Satu papan setiap hari UTC. Setiap percubaan mendapat kepingan sendiri. Setiap tiket berharga 1 USDC dan memberi satu percubaan.",
   "ranked_point_1": "Sehingga 3 percubaan setiap dompet setiap hari",
   "ranked_point_2": "Hanya percubaan terbaik anda dikira",
   "ranked_point_3": "Papan pendahulu harian dan bulanan",
@@ -64,8 +64,8 @@
   "install_label": "Web App",
   "install_ios": "Di iPhone/iPad: ketik Kongsi, kemudian Tambah ke Skrin Utama.",
   "install_other": "Buka menu pelayar dan pilih Pasang aplikasi (atau Tambah ke skrin utama).",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Adventure dan Ranked kedua-duanya dibuka. Tiket Ranked ialah 1 USDC.",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "Di Mac: buka halaman ini dalam Safari, kemudian File → Add to Dock."
 }

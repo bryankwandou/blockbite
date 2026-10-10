@@ -18,7 +18,7 @@
   "connecting": "CONECTANDO…",
   "waiting_for_wallet": "AGUARDANDO A WALLET…",
   "kicker": "Um tabuleiro por dia",
-  "lede": "Mesmo tabuleiro e mesmas peças para todos a cada dia UTC. Vale a melhor das suas {attempts} tentativas.",
+  "lede": "Um tabuleiro por dia. Cada tentativa recebe as próprias peças, então ninguém consegue decorar a sequência. Conta a melhor de {attempts}.",
   "connect_btn": "CONECTAR WALLET",
   "mascot_alt": "Rex, a mascote do BlockBite, avaliando o tabuleiro de hoje",
   "rules_title": "Como funciona",
@@ -65,7 +65,7 @@
   "tab_daily": "Diário",
   "tab_monthly": "Mensal",
   "tabs_label": "Visão Ranked",
-  "rule_same_seed": "Mesmo tabuleiro para todos hoje (UTC)",
+  "rule_same_seed": "Mesmo tabuleiro inicial para todos hoje (UTC). As peças mudam a cada tentativa.",
   "rule_no_hints": "Sem dicas",
   "rule_no_undo": "Sem desfazer",
   "attempt_of": "Tentativa {n}/{max}",
@@ -81,5 +81,5 @@
   "monthly_connect": "Conecte uma wallet para ver sua pontuação mensal e sua posição.",
   "monthly_players": "{n} jogadores neste mês",
   "monthly_offline": "Não foi possível carregar a classificação mensal. Tente mais tarde.",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "A venda de ingressos está aberta: 1 USDC por tentativa ranked."
 }

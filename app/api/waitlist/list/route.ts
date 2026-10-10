@@ -2,17 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { sbGetList, sbGetCount, sbDeleteEmail, supabaseReady } from '@/lib/supabase-rest';
 import { dbGetList, dbDeleteEmail, waitlistDbConfigured } from '@/lib/waitlist/db';
 import { memGetList } from '@/lib/waitlist-store';
-import { timingSafeEqual } from 'crypto';
+import { safeEqual } from '@/lib/safeEqual';
 
 function checkToken(provided: string): boolean {
   const secret = process.env.ADMIN_TOKEN;
   if (!secret) return false;
-  try {
-    return provided.length === secret.length &&
-      timingSafeEqual(Buffer.from(provided), Buffer.from(secret));
-  } catch {
-    return false;
-  }
+  return safeEqual(provided, secret);
 }
 
 export async function GET(req: NextRequest) {
@@ -60,10 +55,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function DELETE(req: NextRequest) {
-  const token =
-    req.headers.get('x-admin-token') ||
-    req.nextUrl.searchParams.get('token') ||
-    '';
+  const token = req.headers.get('x-admin-token') ?? '';
   if (!checkToken(token)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

@@ -16,7 +16,7 @@ export function BlockAvatar({ parts, size = 48 }: { parts: AvatarParts; size?: n
 }
 
 const btn: React.CSSProperties = {
-  display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: 10,
+  display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: 10,
   border: '1px solid var(--ds-border, rgba(255,255,255,.15))', background: 'var(--ds-surface-2, rgba(255,255,255,.04))',
   color: 'inherit', cursor: 'pointer',
 };

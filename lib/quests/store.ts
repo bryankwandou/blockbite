@@ -181,6 +181,7 @@ export async function listQuests(): Promise<Quest[]> {
 }
 
 export async function getQuest(id: string): Promise<Quest | null> {
+  if (id.includes('\x00')) return null; // Postgres refuses NUL in text (would be a 500)
   if (dbConfigured()) {
     const rows = await q<QuestRow>(`SELECT * FROM ${QUESTS} WHERE id = $1`, [id]);
     return rows[0] ? toQuest(rows[0]) : null;

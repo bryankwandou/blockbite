@@ -10,7 +10,7 @@ export async function GET(req: Request) {
   const w = requireRole(req, 'admin');
   if (w instanceof Response) return w;
   const tab = new URL(req.url).searchParams.get('tab') ?? '';
-  if (!(tab in TABS)) return fail(400, 'unknown tab');
+  if (!Object.hasOwn(TABS, tab)) return fail(400, 'unknown tab');
   try {
     return json(await TABS[tab as keyof typeof TABS]());
   } catch (e) {

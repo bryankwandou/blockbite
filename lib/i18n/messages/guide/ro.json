@@ -1,7 +1,7 @@
 {
   "kicker": "Ghid",
   "title": "How to Play",
-  "subtitle": "O tablă pe zi. Aceleași piese pentru toți. Contează cea mai bună din 3 încercări.",
+  "subtitle": "O tablă pe zi. Fiecare încercare primește piesele ei. Contează cea mai bună din 3 încercări.",
   "status_note": "Vânzarea de bilete nu este încă deschisă. Modul Aventură este gratuit și deschis acum.",
   "tut_kicker": "Tablă de exercițiu",
   "tut_title": "Încearcă trei mutări",
@@ -94,7 +94,7 @@
   "risk_4_desc": "Concursurile de îndemânare cu plată urmează reguli diferite în fiecare țară. Verifică-le pe ale tale. Doar 18+.",
   "faq_title": "FAQ",
   "q_skill_title": "E jocuri de noroc?",
-  "q_skill_desc": "Scorul tău depinde de locul unde plasezi piesele, iar toți primesc aceleași piese în acea zi. Unele țări au totuși reguli speciale pentru concursurile cu plată, așa că verifică-le pe ale tale. Doar 18+.",
+  "q_skill_desc": "Scorul tău depinde de locul unde pui piesele, iar piesele sunt împărțite corect dintr-un seed fixat înainte de începutul zilei și publicat după aceea. Unele țări au încă reguli speciale pentru concursurile cu plată, așa că verifică-le pe ale tale. Doar 18+.",
   "q_disconnect_title": "What if I disconnect?",
   "q_disconnect_desc": "Biletul a fost consumat când a început încercarea. Serverul salvează fiecare mutare cât joci, iar la sfârșitul zilei UTC rămâne scorul atins.",
   "q_ticket_title": "Pot refolosi un bilet?",

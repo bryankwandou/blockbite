@@ -13,7 +13,7 @@ const ROUTES = new Set([
   'game', 'play', 'claim', 'ranked', 'how-to-play', 'settings', 'admin', 'partner',
 ]);
 
-export function middleware(req: NextRequest, event: NextFetchEvent) {
+export function proxy(req: NextRequest, event: NextFetchEvent) {
   const { pathname } = req.nextUrl;
   const first = pathname.split('/')[1] ?? '';
   if (first !== first.toLowerCase() && ROUTES.has(first.toLowerCase())) {

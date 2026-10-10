@@ -34,6 +34,8 @@
   align-items: center;
   gap: 2px;
   padding: 10px 16px;
+  min-height: 44px;
+  justify-content: center;
   border: none;
   background: transparent;
   cursor: pointer;

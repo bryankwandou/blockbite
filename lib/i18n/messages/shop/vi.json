@@ -40,6 +40,7 @@
   "err_funds": "Không đủ USDC. Bạn có {have}, gói này cần {need}.",
   "err_no_account": "Ví này chưa có tài khoản USDC.",
   "err_tx": "Giao dịch thất bại: {msg}",
+  "err_day_closing": "Ngày sắp kết thúc. Hãy mua lại sau 00:00 UTC vài phút.",
   "err_not_credited": "Đã thanh toán (tx {sig}…) nhưng chưa được cộng vé: {msg}. Hãy mở lại trang này để thử lại.",
   "info_credits_title": "Vé đi theo ví của bạn",
   "info_credits_desc": "Máy chủ của chúng tôi kiểm tra giao dịch on-chain, rồi cộng vé vào ví bạn. Hãy giữ liên kết giao dịch làm biên lai.",

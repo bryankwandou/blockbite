@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useT } from '@/lib/i18n';
+import { translatePop } from '@/components/game/popLabel';
 import type { LogMove } from '@/lib/versus/deal';
 import Board from './Board';
 import { useRun } from './useRun';
@@ -15,6 +16,7 @@ export default function SoloRun({ seed, ghost, ghostName, onDone }: {
   onDone: (log: LogMove[], score: number) => void;
 }) {
   const t = useT('challenge');
+  const tg = useT('game');
   const r = useRun(seed);
   const [done, setDone] = useState(false);
   const { run, log } = r.view;
@@ -52,7 +54,7 @@ export default function SoloRun({ seed, ghost, ghostName, onDone }: {
       )}
       <div className={s.sideHead}><strong>{t('score')}</strong><span className={s.score}>{run.score.toLocaleString()}</span></div>
       <Board view={r.view} label={t('board_label')} onMove={done ? undefined : (m) => r.place(m)} />
-      <p className={s.note}>{r.view.lastLabel || t('how_to')}</p>
+      <p className={r.view.lastLabel ? `${s.note} ${s.clearNote}` : s.note}>{r.view.lastLabel ? translatePop(tg, r.view.lastLabel) : t('how_to')}</p>
       {!done && (
         <button type="button" className={s.btnGhost} onClick={finish} disabled={log.length === 0}>{t('finish')}</button>
       )}

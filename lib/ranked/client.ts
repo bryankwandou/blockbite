@@ -41,6 +41,27 @@ async function request<T>(url: string, token: string | null, body?: unknown): Pr
   return json as T;
 }
 
+/**
+ * Wallet disconnected: forget the cached session and tell the server to revoke it.
+ * Best effort and never throws; if the request is lost the token simply expires (12 h).
+ * `all` also revokes every other session of this wallet (log out everywhere).
+ */
+export function endSession(wallet: string, all = false): void {
+  let token: string | null = null;
+  try {
+    token = sessionStorage.getItem(tokenKey(wallet));
+    sessionStorage.removeItem(tokenKey(wallet));
+  } catch { /* storage unavailable */ }
+  if (!token) return;
+  try {
+    void fetch(`/api/ranked/${all ? 'logout-all' : 'logout'}`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+      keepalive: true,
+    }).catch(() => undefined);
+  } catch { /* best effort */ }
+}
+
 export interface Me {
   wallet: string;
   day: string;

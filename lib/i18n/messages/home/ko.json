@@ -2,7 +2,7 @@
   "hero_kicker": "Solana의 블록 퍼즐",
   "hero_title": "하루에 보드 하나. 최고 점수가 승리.",
   "hero_boards": "매일 상위 10명과 매월 상위 10명이 USDC를 받아요. 월간 점수는 일간 점수 중 가장 좋은 10일을 더한 값이에요. 일간 상금은 금고의 40%, 월간 상금은 60%예요.",
-  "hero_sub": "조각 세 개를 놓고, 줄과 열을 지우고, 다시 도전하세요. 어드벤처는 무료로 하거나, 모두에게 같은 데일리 보드에 도전해 보세요.",
+  "hero_sub": "블록 세 개를 놓고 가로줄과 세로줄을 지우며 계속하세요. Adventure는 무료로 즐기거나, 데일리 보드에 도전하세요. 시작은 모두 같고 블록은 시도마다 다릅니다.",
   "cta_adventure": "어드벤처 무료 플레이",
   "cta_ranked": "데일리 랭크 방식",
   "hero_status": "어드벤처는 지금 열려 있어요. 랭크 티켓 판매는 곧 열려요.",
@@ -13,7 +13,7 @@
   "board_reset": "보드 초기화",
   "num_price": "티켓당 한 번 도전",
   "num_tries": "지갑당 UTC 하루 도전 횟수",
-  "num_board": "모두 같은 보드와 조각",
+  "num_board": "같은 보드, 시도마다 다른 블록",
   "num_winners": "매일 우승자, 그리고 매월 10명",
   "modes_kicker": "두 가지 모드",
   "modes_title": "무료로 연습하고, 하루에 한 번 겨루세요.",
@@ -23,7 +23,7 @@
   "adventure_cta": "지도 열기",
   "ranked_title": "데일리 랭크",
   "ranked_tag": "곧 오픈",
-  "ranked_body": "UTC 하루에 보드 하나를 모든 플레이어에게 똑같이 나눠 줘요. 티켓은 장당 1 USDC이고 도전 한 번이에요.",
+  "ranked_body": "UTC 하루에 보드 하나. 시도마다 자기만의 블록이 나옵니다. 티켓은 장당 1 USDC이며 한 번 시도할 수 있습니다.",
   "ranked_point_1": "지갑당 하루 최대 3번 도전",
   "ranked_point_2": "가장 좋은 기록만 반영",
   "ranked_point_3": "일간 및 월간 리더보드",
@@ -64,8 +64,8 @@
   "install_label": "웹 앱",
   "install_ios": "iPhone/iPad: 공유를 누른 뒤 홈 화면에 추가를 선택하세요.",
   "install_other": "브라우저 메뉴에서 앱 설치(또는 홈 화면에 추가)를 선택하세요.",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Adventure와 랭크가 모두 열렸습니다. 랭크 티켓은 1 USDC입니다.",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "Mac에서: Safari로 이 페이지를 열고 파일 → Dock에 추가를 선택하세요."
 }

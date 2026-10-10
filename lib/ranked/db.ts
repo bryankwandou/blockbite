@@ -59,6 +59,9 @@ async function migrate(): Promise<void> {
       created_at timestamptz NOT NULL DEFAULT now())`),
     // Prize pools are cut from each UTC day's vault inflow.
     s.query(`CREATE INDEX IF NOT EXISTS rk_purchases_created ON ${T.purchases} (created_at)`),
+    // On-chain time of the purchase; its UTC day is the pool day (older rows: created_at).
+    s.query(`ALTER TABLE ${T.purchases} ADD COLUMN IF NOT EXISTS block_time timestamptz`),
+    s.query(`CREATE INDEX IF NOT EXISTS rk_purchases_pool_time ON ${T.purchases} ((coalesce(block_time, created_at)))`),
     s.query(`CREATE TABLE IF NOT EXISTS ${T.runs} (
       id text PRIMARY KEY,
       wallet text NOT NULL,
@@ -101,16 +104,16 @@ async function migrate(): Promise<void> {
  * Returns false if the signature was already credited.
  */
 export async function creditPurchase(p: {
-  sig: string; wallet: string; tickets: number; vaultAmount: bigint; referralAccount: string | null;
+  sig: string; wallet: string; tickets: number; vaultAmount: bigint; referralAccount: string | null; blockTimeMs: number;
 }): Promise<boolean> {
   const rows = await q(
     `WITH p AS (
-       INSERT INTO ${T.purchases} (sig, wallet, tickets, vault_amount, referral_account)
-       VALUES ($1, $2, $3, $4, $5) ON CONFLICT (sig) DO NOTHING RETURNING wallet, tickets)
+       INSERT INTO ${T.purchases} (sig, wallet, tickets, vault_amount, referral_account, block_time)
+       VALUES ($1, $2, $3, $4, $5, to_timestamp($6::float8 / 1000)) ON CONFLICT (sig) DO NOTHING RETURNING wallet, tickets)
      INSERT INTO ${T.credits} (wallet, n) SELECT wallet, tickets FROM p
      ON CONFLICT (wallet) DO UPDATE SET n = ${T.credits}.n + EXCLUDED.n, updated_at = now()
      RETURNING n`,
-    [p.sig, p.wallet, p.tickets, p.vaultAmount.toString(), p.referralAccount],
+    [p.sig, p.wallet, p.tickets, p.vaultAmount.toString(), p.referralAccount, p.blockTimeMs],
   );
   return rows.length === 1;
 }
@@ -118,6 +121,17 @@ export async function creditPurchase(p: {
 export async function getCredits(wallet: string): Promise<number> {
   const rows = await q<{ n: number }>(`SELECT n FROM ${T.credits} WHERE wallet = $1`, [wallet]);
   return rows[0]?.n ?? 0;
+}
+
+/**
+ * The referrer recorded for `wallet` in lib/referrals (ref_signups), read
+ * only; null if none or the table does not exist yet.
+ */
+export async function referrerOf(wallet: string): Promise<string | null> {
+  const ref = `${SCHEMA}.ref_signups`;
+  if (!(await q<{ ok: boolean }>(`SELECT to_regclass('${ref}') IS NOT NULL AS ok`))[0]?.ok) return null;
+  const rows = await q<{ referrer: string }>(`SELECT referrer FROM ${ref} WHERE referred = $1`, [wallet]);
+  return rows[0]?.referrer ?? null;
 }
 
 // ── Runs ────────────────────────────────────────────────────────────
@@ -169,6 +183,7 @@ export async function attemptsOn(wallet: string, day: string): Promise<number> {
 }
 
 export async function getRun(id: string): Promise<RunRow | null> {
+  if (id.includes('\x00')) return null; // Postgres refuses NUL in text (would be a 500)
   const rows = await q<RunRow>(`SELECT ${RUN_COLS} FROM ${T.runs} WHERE id = $1`, [id]);
   return rows[0] ?? null;
 }
@@ -231,15 +246,16 @@ export async function monthBoard(month: string, limit = 100): Promise<BoardRow[]
 }
 
 /**
- * USDC (base units) credited to the prize vault per UTC day in
- * [fromDay, toDay), by the time the purchase was credited. Days with no
- * purchases are absent.
+ * USDC (base units) paid into the prize vault per UTC day in [fromDay, toDay),
+ * by the purchase's on-chain block time (credit time for rows stored before
+ * block_time existed). Days with no purchases are absent.
  */
 export async function vaultInflow(fromDay: string, toDay: string): Promise<Map<string, bigint>> {
+  const t = 'coalesce(block_time, created_at)';
   const rows = await q<{ day: string; amount: string }>(
-    `SELECT to_char((created_at AT TIME ZONE 'UTC')::date, 'YYYY-MM-DD') AS day, sum(vault_amount)::text AS amount
+    `SELECT to_char((${t} AT TIME ZONE 'UTC')::date, 'YYYY-MM-DD') AS day, sum(vault_amount)::text AS amount
      FROM ${T.purchases}
-     WHERE created_at >= ($1::date)::timestamp AT TIME ZONE 'UTC' AND created_at < ($2::date)::timestamp AT TIME ZONE 'UTC'
+     WHERE ${t} >= ($1::date)::timestamp AT TIME ZONE 'UTC' AND ${t} < ($2::date)::timestamp AT TIME ZONE 'UTC'
      GROUP BY 1`, [fromDay, toDay]);
   return new Map(rows.map((r) => [r.day, BigInt(r.amount)]));
 }

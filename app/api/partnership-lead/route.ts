@@ -9,6 +9,8 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { getIP, rateLimit } from '@/lib/rate-limit';
+import { jsonObject } from '@/lib/http/body';
 import { dbAddLead, waitlistDbConfigured } from '@/lib/waitlist/db';
 
 interface Lead {
@@ -26,13 +28,17 @@ function isValidEmail(e: string): boolean {
 }
 
 export async function POST(req: NextRequest) {
+  const rl = await rateLimit(`lead:${getIP(req)}`, 5, 60_000).catch(() => null);
+  if (rl && !rl.allowed) return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
   let body: { email?: string; project?: string; notes?: string };
-  try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
-  }
+  const parsed = await jsonObject<typeof body>(req);
+  if (!parsed) return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+  body = parsed;
 
+  if (!body || typeof body !== 'object' || [body.email, body.project].some((v) => typeof v !== 'string') ||
+      (body.notes !== undefined && typeof body.notes !== 'string')) {
+    return NextResponse.json({ error: 'Invalid fields' }, { status: 400 });
+  }
   const email   = (body.email ?? '').trim().toLowerCase();
   const project = (body.project ?? '').trim();
   const notes   = (body.notes ?? '').trim().slice(0, 2000);

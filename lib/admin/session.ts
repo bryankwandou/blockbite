@@ -9,9 +9,11 @@
  * Partner = any signed-in wallet; what it may do depends on ptn_partners.status.
  */
 
-import { createHmac, createPublicKey, timingSafeEqual, verify } from 'node:crypto';
+import { createHmac, createPublicKey, verify } from 'node:crypto';
 import bs58 from 'bs58';
 import { isWallet } from '@/lib/ranked/auth';
+import { consumeNonce, nonceOf, safeEqual } from '@/lib/safeEqual';
+import { isWeakEd25519Key } from '@/lib/weak-key';
 
 export type Role = 'admin' | 'partner';
 
@@ -36,11 +38,7 @@ function mac(label: string, data: string): string {
   return createHmac('sha256', k).update(data).digest('base64url');
 }
 
-function same(a: string, b: string): boolean {
-  const x = Buffer.from(a);
-  const y = Buffer.from(b);
-  return x.length === y.length && timingSafeEqual(x, y);
-}
+const same = safeEqual;
 
 export function adminWallets(): string[] {
   return (process.env.ADMIN_WALLETS ?? '').split(',').map((s) => s.trim()).filter(isWallet);
@@ -73,17 +71,35 @@ export function signIn(role: Role, wallet: string, message: string, signatureB58
     return null;
   }
   if (sig.length !== 64) return null;
-  const pub = createPublicKey({ key: Buffer.concat([SPKI_ED25519, Buffer.from(bs58.decode(wallet))]), format: 'der', type: 'spki' });
+  const key = bs58.decode(wallet);
+  if (isWeakEd25519Key(key)) return null;
+  const pub = createPublicKey({ key: Buffer.concat([SPKI_ED25519, Buffer.from(key)]), format: 'der', type: 'spki' });
   if (!verify(null, Buffer.from(message, 'utf8'), pub, sig)) return null;
   const exp = now + SESSION_TTL_S[role] * 1000;
   return `${wallet}.${exp}.${mac(`session:${role}`, `${wallet}.${exp}`)}`;
+}
+
+/** signIn + single-use nonce (Postgres). Throws if the DB is unavailable: admin/partner fail closed. */
+export async function signInOnce(role: Role, wallet: string, message: string, signatureB58: string, now = Date.now()): Promise<string | null> {
+  const token = signIn(role, wallet, message, signatureB58, now);
+  if (!token) return null;
+  const nonce = nonceOf(message);
+  const issued = Number(/^Issued: (\d+)$/m.exec(message)?.[1]);
+  if (!nonce) return null;
+  return (await consumeNonce(role, nonce, issued + CHALLENGE_TTL_MS + 60_000)) ? token : null;
 }
 
 function cookieValue(req: Request, name: string): string | null {
   const raw = req.headers.get('cookie') ?? '';
   for (const part of raw.split(';')) {
     const [k, ...v] = part.trim().split('=');
-    if (k === name) return decodeURIComponent(v.join('='));
+    if (k === name) {
+      try {
+        return decodeURIComponent(v.join('='));
+      } catch {
+        return null; // malformed %-escape: treat as signed out
+      }
+    }
   }
   return null;
 }
@@ -93,8 +109,10 @@ export function sessionWallet(req: Request, role: Role, now = Date.now()): strin
   if (!authConfigured()) return null;
   const token = cookieValue(req, COOKIE[role]);
   if (!token) return null;
-  const [wallet, exp, sig] = token.split('.');
-  if (!wallet || !exp || !sig || !isWallet(wallet) || !(Number(exp) > now)) return null;
+  const parts = token.split('.');
+  if (parts.length !== 3) return null;
+  const [wallet, exp, sig] = parts;
+  if (!wallet || !exp || !sig || !isWallet(wallet) || !/^\d{1,16}$/.test(exp) || !(Number(exp) > now)) return null;
   if (!same(sig, mac(`session:${role}`, `${wallet}.${exp}`))) return null;
   if (role === 'admin' && !adminWallets().includes(wallet)) return null;
   return wallet;

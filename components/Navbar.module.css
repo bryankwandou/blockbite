@@ -435,13 +435,17 @@
   .inner { padding: 0 12px; height: 60px; gap: 8px; }
   .logo { gap: 8px; }
   .logoMark, .logoMark img { width: 36px; height: 36px; }
+  /* 44px touch targets: the visible marks stay compact, the hit area grows. */
+  .logo { min-height: 44px; min-width: 44px; }
+  .iconToggle { min-width: 44px; height: 44px; }
+  .menuToggle { min-width: 44px; min-height: 44px; }
   .logoText { font-size: 16px; }
   .mobileMenu { max-height: calc(100dvh - 60px); }
 
   /* Wallet becomes a square key with a wallet glyph; the label stays for screen readers. */
   .walletSlot :global(.btn) {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     padding: 0 !important;
     gap: 0 !important;
     font-size: 0 !important;
@@ -457,12 +461,19 @@
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2.5'/%3E%3Cpath d='M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4'/%3E%3C/svg%3E") center / contain no-repeat;
   }
   .walletSlot :global(.btn):has(:global(.spinner))::before { display: none; }
-  .walletPlaceholder { width: 40px; height: 40px; }
+  .walletPlaceholder { width: 44px; height: 44px; }
 
   /* Connected pill: avatar only */
   .walletSlot [class*='CustomWalletButton_triggerInfo'],
   .walletSlot [class*='CustomWalletButton_chevron'] { display: none; }
   .walletSlot [class*='CustomWalletButton_triggerPill'] { padding: 4px; gap: 0; }
+}
+
+/* Narrow phones (iPhone SE 320, low-end Android 360): the logo mark alone is the brand;
+   the wordmark would collide with the music/sound keys. The link keeps its aria-label. */
+@media (max-width: 420px) {
+  .logoText { display: none; }
+  .right { gap: 6px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

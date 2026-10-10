@@ -1,23 +1,23 @@
 /**
  * POST /api/ranked/start — spends one credit and opens today's next attempt.
- * Everyone starts today's challenge from the same empty board and first tray.
+ * Every run starts from the empty board; its trays come from runSeed(day, run id).
  */
 import { randomUUID } from 'node:crypto';
 import { MAX_ATTEMPTS_PER_DAY } from '@/lib/ranked/config';
 import { startRun } from '@/lib/ranked/db';
 import { fail, json, rankedConfigured, requireWallet } from '@/lib/ranked/http';
 import { boardToHex, initialState } from '@/lib/ranked/rules';
-import { dailySeed, dayOf, trayFor } from '@/lib/ranked/seed';
+import { dailySeed, dayOf, runSeed, trayFor } from '@/lib/ranked/seed';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
   if (!rankedConfigured()) return fail(503, 'ranked is not available');
-  const wallet = requireWallet(req);
+  const wallet = await requireWallet(req);
   if (typeof wallet !== 'string') return wallet;
   const day = dayOf(Date.now());
-  const state = initialState(trayFor(dailySeed(day), boardToHex(0n), 0));
   const id = randomUUID();
+  const state = initialState(trayFor(runSeed(dailySeed(day), id), boardToHex(0n), 0));
   const r = await startRun(id, wallet, day, state);
   if (!r.ok) {
     if (r.reason === 'no_credits') return fail(402, 'no tickets left');

@@ -789,14 +789,461 @@ fn a_failed_transfer_leaves_the_prize_claimable() {
     assert_eq!(balance(&e, &d), r.winners[0].1);
 }
 
+fn veto_next_ix(r: &Round, next: &Round) -> Instruction {
+    let mut ix = veto_ix(r, &VETO, true);
+    ix.accounts.push(AccountMeta::new(next.address, false));
+    ix
+}
+
 #[test]
-fn deploy_rent_is_under_0_03_sol() {
-    // Mainnet rent today: 5080 lamports per byte incl. the 128-byte account
-    // overhead (getMinimumBalanceForRentExemption). A deploy pays rent for the
-    // program account (36 bytes) and the program data account (45 + .so).
+fn veto_a_then_b_gives_both_ids_back() {
+    let mut e = setup(1_000_000);
+    let base = Round::new(20261001, winners(1, 10));
+    let a = Round::new(20261002, winners(2, 10));
+    let b = Round::new(20261003, winners(2, 10));
+    post(&mut e, &base).unwrap();
+    post(&mut e, &a).unwrap();
+    post(&mut e, &b).unwrap();
+    // A is not the latest: its successor B must be named to give A back.
+    send(&mut e, &[veto_next_ix(&a, &b)]).unwrap();
+    send(&mut e, &[veto_ix(&b, &VETO, true)]).unwrap();
+    send(&mut e, &[close_ix(&a, &POSTER), close_ix(&b, &POSTER)]).unwrap();
+    assert_eq!(reserved(&e), base.total());
+    // Both re-posted corrected, in order.
+    let a2 = Round::new(a.id, winners(3, 20));
+    let b2 = Round::new(b.id, winners(3, 20));
+    post(&mut e, &a2).unwrap();
+    post(&mut e, &b2).unwrap();
+    // Never below the live base round.
+    assert!(post(&mut e, &Round::new(20261001, winners(1, 10))).is_err());
+    code(post(&mut e, &Round::new(20260930, winners(1, 10))), E_EXISTS);
+}
+
+#[test]
+fn veto_of_a_middle_round_splices_a_longer_chain() {
+    let mut e = setup(1_000_000);
+    let (a, b, c) = (Round::new(1, winners(1, 10)), Round::new(2, winners(1, 10)), Round::new(3, winners(1, 10)));
+    post(&mut e, &a).unwrap();
+    post(&mut e, &b).unwrap();
+    post(&mut e, &c).unwrap();
+    // B first (successor C), then A (successor is now C), then C.
+    send(&mut e, &[veto_next_ix(&b, &c)]).unwrap();
+    // A vetoed round is not a valid successor.
+    code(send(&mut e, &[veto_next_ix(&a, &b)]), E_BAD_ACCOUNT);
+    send(&mut e, &[veto_next_ix(&a, &c)]).unwrap();
+    send(&mut e, &[veto_ix(&c, &VETO, true)]).unwrap();
+    for r in [&a, &b, &c] {
+        send(&mut e, &[close_ix(r, &POSTER)]).unwrap();
+        post(&mut e, &Round::new(r.id, winners(1, 5))).unwrap();
+    }
+}
+
+#[test]
+fn veto_with_a_bad_next_account_is_refused() {
+    let mut e = setup(1_000_000);
+    let (a, b, c) = (Round::new(1, winners(1, 10)), Round::new(2, winners(1, 10)), Round::new(3, winners(1, 10)));
+    post(&mut e, &a).unwrap();
+    post(&mut e, &b).unwrap();
+    post(&mut e, &c).unwrap();
+    // C's predecessor is B, not A.
+    code(send(&mut e, &[veto_next_ix(&a, &c)]), E_BAD_ACCOUNT);
+    // A month round is not in the day chain.
+    let m = Round::new(20261000, winners(1, 10));
+    post(&mut e, &m).unwrap();
+    code(send(&mut e, &[veto_next_ix(&a, &m)]), E_BAD_ACCOUNT);
+    // Nothing changed: B can still not be re-posted, A still vetoable.
+    send(&mut e, &[veto_next_ix(&a, &b)]).unwrap();
+    send(&mut e, &[close_ix(&a, &POSTER)]).unwrap();
+    code(post(&mut e, &Round::new(1, winners(1, 10))), E_EXISTS);
+}
+
+#[test]
+fn paid_and_closed_round_can_never_be_reposted() {
+    let mut e = setup(1_000_000);
+    let p = Round::new(20261001, winners(1, 100));
+    post(&mut e, &p).unwrap();
+    set_time(&mut e, T0 + DAY);
+    let d = dest_for(&mut e, &p.winners[0].0);
+    claim(&mut e, &p, 0, &d).unwrap();
+    send(&mut e, &[close_ix(&p, &POSTER)]).unwrap();
+    code(post(&mut e, &p), E_EXISTS);
+    // Later rounds vetoed in every order never walk the mark below P.
+    let x = Round::new(20261002, winners(1, 10));
+    let y = Round::new(20261003, winners(1, 10));
+    post(&mut e, &x).unwrap();
+    post(&mut e, &y).unwrap();
+    send(&mut e, &[veto_next_ix(&x, &y)]).unwrap();
+    send(&mut e, &[veto_ix(&y, &VETO, true)]).unwrap();
+    code(post(&mut e, &Round::new(p.id, winners(1, 10))), E_EXISTS);
+    // A paid round cannot be vetoed (window over), nor named as a fake successor.
+    code(send(&mut e, &[veto_ix(&Round::new(p.id, winners(1, 100)), &VETO, true)]), E_BAD_ACCOUNT);
+    send(&mut e, &[close_ix(&x, &POSTER), close_ix(&y, &POSTER)]).unwrap();
+    post(&mut e, &Round::new(x.id, winners(1, 10))).unwrap();
+}
+
+#[test]
+fn upgrade_cost_from_the_deployed_5496_byte_program() {
+    // Mainnet rent: 5080 lamports per byte incl. the 128-byte account overhead
+    // (solana rent, 2026-10-06). An upgrade writes the new .so into a buffer
+    // (37-byte header), extends programdata (45 + .so) if the new .so is
+    // bigger, and refunds the buffer rent to the spill account.
+    const DEPLOYED: u64 = 5496;
     let so = std::fs::metadata(concat!(env!("CARGO_MANIFEST_DIR"), "/../../target/deploy/blockbite_prize.so")).unwrap().len();
-    let lamports = (128 + 36) * 5080 + (128 + 45 + so) * 5080;
-    println!(".so {so} bytes, deploy rent {lamports} lamports = {:.6} SOL", lamports as f64 / 1e9);
-    // Leave 100k lamports for the deploy's transaction fees.
-    assert!(lamports + 100_000 < 30_000_000, "{lamports}");
+    let buffer = (128 + 37 + so) * 5080;
+    let extend = so.saturating_sub(DEPLOYED) * 5080;
+    println!(".so {so} bytes (+{}), buffer rent {buffer} (refunded), extend {extend} lamports", so as i64 - DEPLOYED as i64);
+    // Kept permanently: only the extension. Stay under 0.005 SOL.
+    assert!(extend + 100_000 < 5_000_000, "{extend}");
+}
+
+// ─── property fuzz (qa2/program-fuzz) ────────────────────────────────────────
+//
+// Random sequences of post (day / month), veto (with and without the 4th
+// account, in any order, also out of window and on closed / vetoed rounds),
+// claim, close, deposits and time jumps, run against the real binary and
+// checked step by step against a small model:
+// - every instruction's outcome (Ok / exact error code) matches the model;
+// - vault conservation: initial + deposits == vault + everything paid out,
+//   and `reserved` == open promises (never more than the vault);
+// - a leaf pays at most once; vetoed rounds never pay;
+// - each mark == max "blocking" id of its kind, where blocking = live
+//   (not vetoed, closed or not) or vetoed as a non-latest round without the
+//   4th account ("sticky": the id stays used, as documented). So a mark never
+//   points to a properly vetoed round, and every properly vetoed id above the
+//   live ones is re-postable;
+// - every open live round's stored R_PREV == the max blocking id below it.
+// FUZZ_SEQS / FUZZ_STEPS / FUZZ_SEED override the defaults.
+
+struct Rng(u64);
+impl Rng {
+    fn next(&mut self) -> u64 {
+        self.0 ^= self.0 << 13;
+        self.0 ^= self.0 >> 7;
+        self.0 ^= self.0 << 17;
+        self.0
+    }
+    fn below(&mut self, n: u64) -> u64 {
+        self.next() % n
+    }
+    fn chance(&mut self, pct: u64) -> bool {
+        self.below(100) < pct
+    }
+}
+
+fn env_u64(k: &str, d: u64) -> u64 {
+    std::env::var(k).ok().and_then(|v| v.parse().ok()).unwrap_or(d)
+}
+
+struct MRound {
+    r: Round,
+    posted: i64,
+    vetoed: bool,
+    sticky: bool,
+    closed: bool,
+    claimed: Vec<bool>,
+    claimed_amt: u64,
+}
+
+struct Model {
+    rounds: Vec<MRound>, // every incarnation, in posting order
+    vault_in: u64,
+    paid: u64,
+    dests: Vec<Address>,
+    now: i64,
+}
+
+fn is_month(id: u64) -> bool {
+    id % 100 == 0
+}
+
+impl Model {
+    /// Index of the current incarnation of `id` (its address holds this one).
+    fn current(&self, id: u64) -> Option<usize> {
+        self.rounds.iter().rposition(|m| m.r.id == id)
+    }
+    fn blocking(&self, month: bool) -> Vec<u64> {
+        self.rounds.iter().filter(|m| is_month(m.r.id) == month && (!m.vetoed || m.sticky)).map(|m| m.r.id).collect()
+    }
+    fn mark(&self, month: bool) -> u64 {
+        self.blocking(month).into_iter().max().unwrap_or(0)
+    }
+    fn prev_of(&self, id: u64) -> u64 {
+        self.blocking(is_month(id)).into_iter().filter(|&b| b < id).max().unwrap_or(0)
+    }
+    fn reserved(&self) -> u64 {
+        self.rounds.iter().filter(|m| !m.closed && !m.vetoed).map(|m| m.r.total() - m.claimed_amt).sum()
+    }
+}
+
+fn state_u64(e: &Env, o: usize) -> u64 {
+    let d = e.svm.get_account(&STATE).unwrap().data;
+    u64::from_le_bytes(d[o..o + 8].try_into().unwrap())
+}
+
+fn set_vault(e: &mut Env, amount: u64) {
+    e.svm.set_account(VAULT, token_account(&VAULT_AUTH, amount)).unwrap();
+}
+
+/// `Err(0)` = any failure.
+fn expect(r: Result<(), String>, want: Result<(), u32>, ctx: &str) {
+    match (r, want) {
+        (Ok(()), Ok(())) => {}
+        (Err(err), Err(c)) if c == 0 || err.contains(&format!("Custom({c})")) => {}
+        (got, want) => panic!("{ctx}: want {want:?}, got {got:?}"),
+    }
+}
+
+fn check(e: &Env, m: &Model, ctx: &str) {
+    for month in [false, true] {
+        let got = state_u64(e, if month { 16 } else { 0 });
+        assert_eq!(got, m.mark(month), "{ctx}: mark (month={month})");
+        // A mark never points to a properly vetoed round.
+        if got != 0 {
+            let cur = &m.rounds[m.current(got).expect("mark id was posted")];
+            assert!(!cur.vetoed || cur.sticky, "{ctx}: mark {got} points to a vetoed round");
+        }
+    }
+    assert_eq!(reserved(e), m.reserved(), "{ctx}: reserved");
+    let vault = balance(e, &VAULT);
+    assert_eq!(vault + m.paid, m.vault_in, "{ctx}: conservation");
+    assert!(reserved(e) <= vault, "{ctx}: over-promised");
+    let paid: u64 = m.dests.iter().map(|d| balance(e, d)).sum();
+    assert_eq!(paid, m.paid, "{ctx}: paid to winners");
+    for mr in m.rounds.iter().filter(|x| !x.closed) {
+        let d = e.svm.get_account(&mr.r.address).unwrap().data;
+        assert_eq!(d[1] != 0, mr.vetoed, "{ctx}: vetoed flag {}", mr.r.id);
+        assert_eq!(u64::from_le_bytes(d[56..64].try_into().unwrap()), mr.claimed_amt, "{ctx}: claimed {}", mr.r.id);
+        if !mr.vetoed {
+            let prev = u64::from_le_bytes(d[72..80].try_into().unwrap());
+            assert_eq!(prev, m.prev_of(mr.r.id), "{ctx}: R_PREV of {}", mr.r.id);
+        }
+    }
+}
+
+const DAY_IDS: [u64; 8] = [20261001, 20261002, 20261003, 20261004, 20261005, 20261006, 20261007, 20261008];
+const MONTH_IDS: [u64; 4] = [20260900, 20261000, 20261100, 20261200];
+
+fn pick_id(g: &mut Rng) -> u64 {
+    if g.chance(75) { DAY_IDS[g.below(8) as usize] } else { MONTH_IDS[g.below(4) as usize] }
+}
+
+fn fuzz_step(e: &mut Env, m: &mut Model, g: &mut Rng, ctx: &str) {
+    match g.below(100) {
+        // post
+        0..=29 => {
+            let id = pick_id(g);
+            let n = 1 + g.below(5) as usize;
+            let ws = (0..n).map(|_| (Address::new_unique(), g.below(40_000))).collect();
+            let r = Round::new(id, ws);
+            let want = match m.current(id) {
+                Some(i) if !m.rounds[i].closed => Err(0), // address in use: the create fails
+                _ if id <= m.mark(is_month(id)) => Err(E_EXISTS),
+                _ if m.reserved() + r.total() > m.vault_in - m.paid => Err(E_INSUFFICIENT),
+                _ => Ok(()),
+            };
+            expect(post(e, &r), want, &format!("{ctx} post {id}"));
+            if want.is_ok() {
+                let n = r.winners.len();
+                m.rounds.push(MRound { r, posted: m.now, vetoed: false, sticky: false, closed: false, claimed: vec![false; n], claimed_amt: 0 });
+            }
+        }
+        // veto
+        30..=54 => {
+            let id = pick_id(g);
+            let Some(i) = m.current(id) else { return };
+            let next_id = match g.below(3) {
+                0 => None,
+                // the proper successor, when there is one
+                1 => m.blocking(is_month(id)).into_iter().filter(|&b| b > id).min(),
+                _ => Some(pick_id(g)),
+            }
+            .filter(|&n| n != id);
+            let x = &m.rounds[i];
+            let want = if x.closed {
+                Err(E_BAD_ACCOUNT)
+            } else if x.vetoed {
+                Err(E_VETOED)
+            } else if m.now >= x.posted + DAY {
+                Err(E_WINDOW)
+            } else if m.mark(is_month(id)) == id {
+                Ok(false)
+            } else if let Some(n) = next_id {
+                let ok = m.current(n).map_or(false, |j| {
+                    let nr = &m.rounds[j];
+                    !nr.closed && !nr.vetoed && m.prev_of(n) == id
+                });
+                if ok { Ok(false) } else { Err(E_BAD_ACCOUNT) }
+            } else {
+                Ok(true) // stays used
+            };
+            let mut ix = veto_ix(&x.r, &VETO, true);
+            if let Some(n) = next_id {
+                ix.accounts.push(AccountMeta::new(seeded(&POSTER, &n.to_string(), &PID), false));
+            }
+            expect(send(e, &[ix]), want.map(|_| ()), &format!("{ctx} veto {id} next {next_id:?}"));
+            if let Ok(sticky) = want {
+                m.rounds[i].vetoed = true;
+                m.rounds[i].sticky = sticky;
+            }
+        }
+        // claim
+        55..=79 => {
+            let id = pick_id(g);
+            let Some(i) = m.current(id) else { return };
+            let x = &m.rounds[i];
+            let k = g.below(x.r.winners.len() as u64 + 1) as usize; // one past the end sometimes
+            let (wallet, amount) = x.r.winners.get(k).copied().unwrap_or((Address::new_unique(), 1));
+            let bad_amount = g.chance(10);
+            let amount = if bad_amount { amount + 1 } else { amount };
+            let want = if x.closed {
+                Err(E_BAD_ACCOUNT)
+            } else if x.vetoed {
+                Err(E_VETOED)
+            } else if m.now < x.posted + DAY || m.now >= x.posted + 90 * DAY {
+                Err(E_WINDOW)
+            } else if k >= x.r.winners.len() {
+                Err(E_ARGS)
+            } else if x.claimed[k] {
+                Err(E_CLAIMED)
+            } else if bad_amount {
+                Err(E_PROOF)
+            } else {
+                Ok(())
+            };
+            let p = if k < x.r.winners.len() { proof(&x.r.levels, k) } else { vec![] };
+            let d = dest_for(e, &wallet);
+            let ix = claim_raw(&x.r, k as u32, amount, &p, &d, &VAULT);
+            expect(send(e, &[ix]), want, &format!("{ctx} claim {id}[{k}]"));
+            m.dests.push(d);
+            if want.is_ok() {
+                let x = &mut m.rounds[i];
+                x.claimed[k] = true;
+                x.claimed_amt += amount;
+                m.paid += amount;
+            }
+        }
+        // close
+        80..=89 => {
+            let id = pick_id(g);
+            let Some(i) = m.current(id) else { return };
+            let x = &m.rounds[i];
+            let want = if x.closed {
+                Err(E_BAD_ACCOUNT)
+            } else if x.vetoed || x.claimed_amt == x.r.total() || m.now >= x.posted + 90 * DAY {
+                Ok(())
+            } else {
+                Err(E_OPEN)
+            };
+            expect(send(e, &[close_ix(&x.r, &POSTER)]), want, &format!("{ctx} close {id}"));
+            if want.is_ok() {
+                m.rounds[i].closed = true;
+            }
+        }
+        // ticket sales
+        90..=94 => {
+            let add = g.below(50_000);
+            m.vault_in += add;
+            set_vault(e, m.vault_in - m.paid);
+        }
+        // time
+        _ => {
+            let dt = match g.below(10) {
+                0..=5 => g.below(6 * 3600) as i64,
+                6..=8 => DAY - 600 + g.below(1200) as i64,
+                _ => 90 * DAY + g.below(DAY as u64) as i64,
+            };
+            m.now += dt;
+            set_time(e, m.now);
+        }
+    }
+}
+
+#[test]
+fn fuzz_random_sequences_match_the_model() {
+    let seqs = env_u64("FUZZ_SEQS", 2000);
+    let steps = env_u64("FUZZ_STEPS", 40);
+    let seed0 = env_u64("FUZZ_SEED", 0x5eed_b10c_b17e);
+    let (mut ops, mut stats) = (0u64, [0u64; 3]);
+    for s in 0..seqs {
+        let seed = seed0.wrapping_add(s.wrapping_mul(0x9e37_79b9_7f4a_7c15)) | 1;
+        let mut g = Rng(seed);
+        let start = g.below(200_000);
+        let mut e = setup(start);
+        let mut m = Model { rounds: vec![], vault_in: start, paid: 0, dests: vec![], now: T0 };
+        for t in 0..steps {
+            let ctx = format!("seed {seed:#x} step {t}");
+            fuzz_step(&mut e, &mut m, &mut g, &ctx);
+            check(&e, &m, &ctx);
+            ops += 1;
+        }
+        stats[0] += m.rounds.len() as u64;
+        stats[1] += m.rounds.iter().filter(|r| r.vetoed && !r.sticky).count() as u64;
+        stats[2] += m.rounds.iter().filter(|r| r.sticky).count() as u64;
+    }
+    println!("fuzz: {seqs} sequences, {ops} steps, {} posts, {} vetoes unlinked, {} sticky vetoes, seed0 {seed0:#x}", stats[0], stats[1], stats[2]);
+}
+
+/// Targeted: a full veto chain, every veto done either newest-first or with
+/// the 4th account, in random order, gives every id back and the mark ends
+/// on the last live round below the chain (paid and closed or not).
+#[test]
+fn fuzz_full_veto_chains_give_every_id_back() {
+    let seqs = env_u64("FUZZ_SEQS", 2000);
+    let mut g = Rng(env_u64("FUZZ_SEED", 0xc4a1_2026) | 1);
+    for s in 0..seqs {
+        let month = g.chance(30);
+        let ids: Vec<u64> = if month { MONTH_IDS.to_vec() } else { DAY_IDS.to_vec() };
+        let mut e = setup(10_000_000);
+        // A live base (sometimes paid and closed) that must never be given back.
+        let nbase = g.below(3) as usize;
+        let base: Vec<Round> = ids[..nbase].iter().map(|&id| Round::new(id, winners(1, 10))).collect();
+        for b in &base {
+            post(&mut e, b).unwrap();
+        }
+        set_time(&mut e, T0 + DAY);
+        let mut want_reserved: u64 = base.iter().map(|b| b.total()).sum();
+        if nbase > 0 && g.chance(50) {
+            let b = &base[nbase - 1];
+            let d = dest_for(&mut e, &b.winners[0].0);
+            claim(&mut e, b, 0, &d).unwrap();
+            send(&mut e, &[close_ix(b, &POSTER)]).unwrap();
+            want_reserved -= b.total();
+        }
+        let floor = base.last().map_or(0, |b| b.id);
+        let chain: Vec<Round> = ids[nbase..].iter().filter(|_| g.chance(80)).map(|&id| Round::new(id, winners(2, 10))).collect();
+        for r in &chain {
+            post(&mut e, r).unwrap();
+        }
+        let mut live: Vec<u64> = chain.iter().map(|r| r.id).collect();
+        let mut order: Vec<usize> = (0..chain.len()).collect();
+        for i in (1..order.len()).rev() {
+            order.swap(i, g.below(i as u64 + 1) as usize);
+        }
+        for &i in &order {
+            let r = &chain[i];
+            let succ = live.iter().copied().filter(|&x| x > r.id).min();
+            let mut ix = veto_ix(r, &VETO, true);
+            match succ {
+                Some(n) => ix.accounts.push(AccountMeta::new(seeded(&POSTER, &n.to_string(), &PID), false)),
+                // latest: with or without a (then ignored) 4th account
+                None if nbase > 0 && g.chance(50) => ix.accounts.push(AccountMeta::new(base[0].address, false)),
+                None => {}
+            }
+            send(&mut e, &[ix]).unwrap_or_else(|err| panic!("seq {s} veto {}: {err}", r.id));
+            live.retain(|&x| x != r.id);
+        }
+        let mark = state_u64(&e, if month { 16 } else { 0 });
+        assert_eq!(mark, floor, "seq {s}: mark after the full chain");
+        for r in &chain {
+            send(&mut e, &[close_ix(r, &POSTER)]).unwrap();
+        }
+        assert_eq!(reserved(&e), want_reserved, "seq {s}");
+        // Every id is re-postable, in order; the floor id is not.
+        for r in &chain {
+            post(&mut e, &Round::new(r.id, winners(1, 5))).unwrap_or_else(|err| panic!("seq {s} repost {}: {err}", r.id));
+        }
+        if floor != 0 {
+            assert!(post(&mut e, &Round::new(floor, winners(1, 5))).is_err());
+        }
+    }
 }

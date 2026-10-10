@@ -1,0 +1,16 @@
+{
+  "title": "퀘스트",
+  "sub": "파트너가 올린 과제입니다. 증빙을 제출하면 검토자가 확인합니다.",
+  "connect_msg": "퀘스트 완료를 제출하려면 지갑을 연결하세요.",
+  "connect_btn": "지갑 연결",
+  "loading": "퀘스트 불러오는 중…",
+  "empty": "지금은 진행 중인 퀘스트가 없습니다. 곧 다시 확인해 주세요.",
+  "cancel": "취소",
+  "submit": "제출",
+  "proof_label": "증빙(링크, 트랜잭션 서명, 스크린샷 URL 등)",
+  "submitting": "제출 중…",
+  "submit_review": "검토 요청",
+  "st_approved": "승인됨",
+  "st_rejected": "거절됨",
+  "st_pending": "대기 중"
+}

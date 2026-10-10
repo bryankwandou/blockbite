@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "Wala pang referral. I-share ang link mo mula sa profile.",
+  "joined_total": "{n} manlalaro ang sumali gamit ang referral link",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "Hindi ma-load ang mga numero ng referral.",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "Mga manlalarong sumali gamit ang link mo",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "Sa kanila, ang nakatapos ng kahit isang laro",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "Wala pang gumamit ng link mo.",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "Tingnan ang referral board"
 }

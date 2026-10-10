@@ -45,7 +45,7 @@
   "tip_combo": "Jeden klocek, który dopełnia rząd i kolumnę, liczy się jako dwie linie.",
   "tip_space": "Zostaw gdzieś prostą lukę na 4. Długie belki jej potrzebują.",
   "ranked_cta_kicker": "Daily Ranked",
-  "ranked_cta_title": "Jedna plansza dziennie, taka sama dla wszystkich",
+  "ranked_cta_title": "Jedna plansza dziennie, własne klocki w każdej próbie",
   "ranked_cta_body": "1 bilet = 1 próba = {price} USDC, do {attempts} prób na dzień UTC; liczy się najlepsza. {daily}% skarbca nagród z każdego dnia trafia do dziennej top 10, a {monthly}% do miesięcznej top 10, według sumy {days} najlepszych dni każdego gracza.",
   "ranked_cta_status": "Sprzedaż biletów: wkrótce",
   "ranked_cta_link": "Zobacz Daily Ranked",

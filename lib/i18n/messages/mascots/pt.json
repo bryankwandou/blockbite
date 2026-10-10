@@ -1,0 +1,21 @@
+{
+  "play_now": "JOGAR AGORA",
+  "universe": "UNIVERSO BLOCKBITE",
+  "meet": "Conheça a {crew}",
+  "crew": "Turma",
+  "sub": "Quatro personagens. Uma missão. Conquiste 4.000 níveis e resgate recompensas on-chain.",
+  "choose": "Escolha seu personagem.",
+  "choose_desc": "Entre no jogo, escolha seu estilo e lute por uma vaga no topo do ranking on-chain.",
+  "rex_title": "O Rei",
+  "rex_tag": "Realeza",
+  "rex_bio": "Governante coroado do tabuleiro. Rex joga com disciplina de ferro: cada jogada é calculada, cada bloco colocado para dominar ao máximo. Tema a coroa.",
+  "tide_title": "A Onda",
+  "tide_tag": "Fluidez",
+  "tide_bio": "Calmo como água profunda. Tide lê o tabuleiro como correntes do oceano: fluido, adaptável, imparável. Bloco a bloco, a maré sempre sobe.",
+  "brawler_title": "O Lutador",
+  "brawler_tag": "Poder",
+  "brawler_bio": "Sem piedade, sem recuo. Brawler enfrenta cada Ato de frente, destruindo obstáculos com pura agressividade. O tabuleiro quebra antes dele.",
+  "sunny_title": "A Faísca",
+  "sunny_tag": "Energia",
+  "sunny_bio": "Pura alegria, puro caos. Sunny transforma até os níveis mais difíceis em festa: sempre sorrindo, sempre surpreendendo, sempre roubando a vitória."
+}

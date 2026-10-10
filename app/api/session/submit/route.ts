@@ -16,6 +16,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { jsonObject } from '@/lib/http/body';
 import { createHmac, timingSafeEqual } from 'crypto';
 import { recordScore } from '@/lib/leaderboard/store';
 import { getUser, setUser } from '@/lib/store';
@@ -58,15 +59,17 @@ export async function POST(req: NextRequest) {
   }
 
   let body: { token?: string; score?: number; level?: number; walletAddress?: string };
-  try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
-  }
+  const parsed = await jsonObject<typeof body>(req);
+  if (!parsed) return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+  body = parsed;
 
   const { token, score, level, walletAddress } = body;
   if (!token || score == null || level == null || !walletAddress) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+  }
+
+  if (typeof score !== 'number' || !Number.isFinite(score)) {
+    return NextResponse.json({ error: 'Score must be a finite number' }, { status: 400 });
   }
 
   // 1. Verify 6-part token signature
@@ -84,7 +87,8 @@ export async function POST(req: NextRequest) {
   }
 
   // 4. Nonce blacklist + retrieve server-side maxPlacements (BBT-001 + BBT-002)
-  const lvl = Number.isInteger(level) && level >= 1 && level <= MAX_GAME_LEVEL ? level : 1;
+  if (!Number.isInteger(level)) return NextResponse.json({ error: 'level must be an integer' }, { status: 400 });
+  const lvl = level >= 1 && level <= MAX_GAME_LEVEL ? level : 1;
   const cfg = levelConfig(lvl);
   let maxPlacements = cfg.moves * 3; // server-computed default
 

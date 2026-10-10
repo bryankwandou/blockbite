@@ -32,12 +32,12 @@
     "@vercel/kv": "^3.0.0",
     "bs58": "^5.0.0",
     "lucide-react": "^0.378.0",
-    "next": "^15.5.27",
+    "next": "^16.3.8",
     "react": "~19.2.0",
     "react-dom": "~19.2.0",
     "styled-jsx": "^5.1.1",
     "three": "^0.184.0",
-    "uuid": "^9.0.1"
+    "uuid": "^11.1.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
@@ -45,5 +45,10 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "typescript": "^5"
+  },
+  "overrides": {
+    "uuid": "^11.1.1",
+    "bigint-buffer": "npm:@trufflesuite/bigint-buffer@1.1.10",
+    "stream-json": "^3.7.0"
   }
 }

@@ -1,7 +1,7 @@
 {
   "kicker": "Guide",
   "title": "How to Play",
-  "subtitle": "Un plateau par jour. Les mêmes pièces pour tous. Le meilleur de 3 essais compte.",
+  "subtitle": "Un plateau par jour. Chaque essai distribue ses propres pièces. Le meilleur de 3 essais compte.",
   "status_note": "La vente de tickets n'est pas encore ouverte. Le mode Aventure est gratuit et déjà ouvert.",
   "tut_kicker": "Plateau d'entraînement",
   "tut_title": "Essaie trois coups",
@@ -94,7 +94,7 @@
   "risk_4_desc": "Les concours d'adresse payants suivent des règles différentes selon les pays. Vérifie les tiennes. 18 ans et plus uniquement.",
   "faq_title": "FAQ",
   "q_skill_title": "Est-ce un jeu d'argent ?",
-  "q_skill_desc": "Ton score dépend de l'endroit où tu poses les pièces, et tout le monde reçoit les mêmes pièces ce jour-là. Certains pays ont tout de même des règles spéciales pour les concours payants, vérifie les tiennes. 18 ans et plus uniquement.",
+  "q_skill_desc": "Votre score dépend de l'endroit où vous placez les pièces, et les pièces sont distribuées équitablement à partir d'une graine engagée avant le début du jour et publiée après. Certains pays ont encore des règles spéciales pour les concours payants, vérifiez les vôtres. 18 ans et plus uniquement.",
   "q_disconnect_title": "What if I disconnect?",
   "q_disconnect_desc": "Le ticket a été dépensé au début de l'essai. Le serveur enregistre chaque coup pendant que tu joues, et à la fin du jour UTC le score atteint est conservé.",
   "q_ticket_title": "Puis-je réutiliser un ticket ?",

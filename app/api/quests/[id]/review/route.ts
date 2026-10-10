@@ -13,6 +13,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { jsonObject } from '@/lib/http/body';
 import {
   getQuest, reviewCompletion, listCompletionsForQuest,
 } from '@/lib/quests/store';
@@ -45,9 +46,11 @@ export async function POST(
   if (admin instanceof Response) return admin;
   const { id } = await params;
   let body: { wallet?: string; approve?: boolean };
-  try { body = await req.json(); } catch { return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 }); }
+  const parsed = await jsonObject<typeof body>(req);
+  if (!parsed) return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+  body = parsed;
 
-  const wallet  = (body.wallet ?? '').trim();
+  const wallet  = (typeof body.wallet === 'string' ? body.wallet : '').trim();
   const approve = Boolean(body.approve);
   if (!wallet) return NextResponse.json({ error: 'wallet required' }, { status: 400 });
 

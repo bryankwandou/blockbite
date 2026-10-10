@@ -40,6 +40,7 @@
   "err_funds": "Nicht genug USDC. Du hast {have}, dieses Paket braucht {need}.",
   "err_no_account": "Diese Wallet hat noch kein USDC-Konto.",
   "err_tx": "Transaktion fehlgeschlagen: {msg}",
+  "err_day_closing": "Der Tag endet gleich. Kaufe ein paar Minuten nach 00:00 UTC erneut.",
   "err_not_credited": "Bezahlt (Tx {sig}…), aber noch nicht gutgeschrieben: {msg}. Öffne diese Seite neu, um es nochmal zu versuchen.",
   "info_credits_title": "Tickets folgen deiner Wallet",
   "info_credits_desc": "Unser Server prüft die Transaktion On-Chain und schreibt die Tickets dann deiner Wallet gut. Heb den Transaktionslink als Beleg auf.",

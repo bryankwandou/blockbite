@@ -2,7 +2,7 @@
   "hero_kicker": "Quebra-cabeça de blocos na Solana",
   "hero_title": "Um tabuleiro por dia. Vence a melhor pontuação.",
   "hero_boards": "O Top 10 de cada dia e o Top 10 de cada mês ganham USDC. Sua pontuação mensal é a soma das suas 10 melhores pontuações diárias. Os prêmios diários levam 40% do cofre e os mensais 60%.",
-  "hero_sub": "Posicione três peças, limpe linhas e colunas e comece de novo. Jogue Aventura de graça ou encare o tabuleiro diário, igual para todos.",
+  "hero_sub": "Coloque três peças, limpe linhas e colunas, repita. Jogue Adventure de graça ou encare o tabuleiro diário: mesmo início para todos, peças diferentes a cada tentativa.",
   "cta_adventure": "Jogar Aventura grátis",
   "cta_ranked": "Como funciona o Ranked diário",
   "hero_status": "A Aventura já está aberta. A venda de tickets Ranked abre em breve.",
@@ -13,7 +13,7 @@
   "board_reset": "Reiniciar tabuleiro",
   "num_price": "por ticket, uma tentativa cada",
   "num_tries": "tentativas por wallet por dia UTC",
-  "num_board": "mesmo tabuleiro e peças para todos",
+  "num_board": "mesmo tabuleiro, peças próprias a cada tentativa",
   "num_winners": "vencedores por dia, mais 10 por mês",
   "modes_kicker": "Dois modos",
   "modes_title": "Pratique de graça. Compita uma vez por dia.",
@@ -23,7 +23,7 @@
   "adventure_cta": "Abrir o mapa",
   "ranked_title": "Ranked diário",
   "ranked_tag": "Abre em breve",
-  "ranked_body": "Um tabuleiro por dia UTC, distribuído igual para todos os jogadores. Cada ticket custa 1 USDC e dá uma tentativa.",
+  "ranked_body": "Um tabuleiro por dia UTC. Cada tentativa recebe as próprias peças. Cada ticket custa 1 USDC e dá uma tentativa.",
   "ranked_point_1": "Até 3 tentativas por wallet por dia",
   "ranked_point_2": "Só a sua melhor tentativa conta",
   "ranked_point_3": "Classificações diária e mensal",
@@ -64,8 +64,8 @@
   "install_label": "Web App",
   "install_ios": "No iPhone/iPad: toque em Compartilhar e depois em Adicionar à Tela de Início.",
   "install_other": "Abra o menu do navegador e escolha Instalar app (ou Adicionar à tela inicial).",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Adventure e Ranked estão abertos. O ingresso Ranked custa 1 USDC.",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "No Mac: abra esta página no Safari e vá em Arquivo → Adicionar ao Dock."
 }

@@ -23,7 +23,11 @@ import versus from './messages/versus/en.json';
 import challenge from './messages/challenge/en.json';
 import themes from './messages/themes/en.json';
 import referral from './messages/referral/en.json';
+import mascots from './messages/mascots/en.json';
+import onboarding from './messages/onboarding/en.json';
+import quests from './messages/quests/en.json';
+import notfound from './messages/notfound/en.json';
 
-export const EN = { common, nav, home, game, map, ranked, shop, leaderboard, guide, profile, achievements, waitlist, partnership, settings, account, admin, partner, versus, challenge, themes, referral } as Record<string, Record<string, string>>;
+export const EN = { common, nav, home, game, map, ranked, shop, leaderboard, guide, profile, achievements, waitlist, partnership, settings, account, admin, partner, versus, challenge, themes, referral, mascots, onboarding, quests, notfound } as Record<string, Record<string, string>>;
 
-export type Namespace = 'common' | 'nav' | 'home' | 'game' | 'map' | 'ranked' | 'shop' | 'leaderboard' | 'guide' | 'profile' | 'achievements' | 'waitlist' | 'partnership' | 'settings' | 'account' | 'admin' | 'partner' | 'versus' | 'challenge' | 'themes' | 'referral';
+export type Namespace = 'common' | 'nav' | 'home' | 'game' | 'map' | 'ranked' | 'shop' | 'leaderboard' | 'guide' | 'profile' | 'achievements' | 'waitlist' | 'partnership' | 'settings' | 'account' | 'admin' | 'partner' | 'versus' | 'challenge' | 'themes' | 'referral' | 'mascots' | 'onboarding' | 'quests' | 'notfound';

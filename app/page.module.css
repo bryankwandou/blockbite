@@ -85,6 +85,13 @@
   text-wrap: balance;
   overflow-wrap: break-word;
 }
+/* CJK: break at phrase boundaries, not mid-word. keep-all is the fallback;
+   auto-phrase (Chromium 119+) overrides it where supported. */
+.h1:lang(ja), .h1:lang(zh), .h1:lang(ko) {
+  word-break: keep-all;
+  word-break: auto-phrase;
+  line-break: strict;
+}
 
 .lede {
   font-size: clamp(16px, 1.6vw, 19px);

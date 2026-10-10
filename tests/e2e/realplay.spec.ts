@@ -60,7 +60,7 @@ async function tapCanvas(page: Page, canvas: Locator, x: number, y: number, touc
 }
 
 test('real play: free Adventure bot clears levels through the canvas', async ({ page, pageErrors }, info) => {
-  test.setTimeout(300_000);
+  test.setTimeout(info.project.name === 'macos-webkit' ? 600_000 : 300_000);
   const touch = !!info.project.use.hasTouch;
   await page.addInitScript(() => { try { localStorage.setItem('bb:e2e', '1'); } catch { /* blocked */ } });
   await page.goto('/play/1', { waitUntil: 'load' });
@@ -97,8 +97,8 @@ test('real play: free Adventure bot clears levels through the canvas', async ({ 
   expect(pageErrors).toEqual([]);
 });
 
-test('real play: a full 1 vs Bot match ends with a result', async ({ page, pageErrors }) => {
-  test.setTimeout(300_000);
+test('real play: a full 1 vs Bot match ends with a result', async ({ page, pageErrors }, info) => {
+  test.setTimeout(info.project.name === 'macos-webkit' ? 600_000 : 300_000);
   await page.goto('/versus', { waitUntil: 'load' });
   await page.getByRole('radio').nth(1).click(); // Pro
   await page.locator('main button').filter({ hasText: /./ }).last().scrollIntoViewIfNeeded();
@@ -144,7 +144,7 @@ test('real play: a full 1 vs Bot match ends with a result', async ({ page, pageE
 });
 
 test('real play: game over offers Play again, which starts a fresh board', async ({ page, pageErrors }, info) => {
-  test.setTimeout(300_000);
+  test.setTimeout(info.project.name === 'macos-webkit' ? 600_000 : 300_000);
   const touch = !!info.project.use.hasTouch;
   await page.addInitScript(() => { try { localStorage.setItem('bb:e2e', '1'); } catch { /* blocked */ } });
   await page.goto('/play/1', { waitUntil: 'load' });

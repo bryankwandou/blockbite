@@ -40,6 +40,7 @@
   "err_funds": "USDC insuficient. Ai {have}, acest pachet necesită {need}.",
   "err_no_account": "Acest wallet nu are încă un cont USDC.",
   "err_tx": "Tranzacția a eșuat: {msg}",
+  "err_day_closing": "Ziua este pe cale să se încheie. Cumpără din nou la câteva minute după 00:00 UTC.",
   "err_not_credited": "Plătit (tx {sig}…) dar încă necreditat: {msg}. Redeschide această pagină ca să reîncerci.",
   "info_credits_title": "Biletele urmează wallet-ul tău",
   "info_credits_desc": "Serverul nostru verifică tranzacția on-chain, apoi adaugă biletele în wallet-ul tău. Păstrează linkul tranzacției ca dovadă.",

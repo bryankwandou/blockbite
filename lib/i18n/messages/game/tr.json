@@ -45,7 +45,7 @@
   "tip_combo": "Hem bir satırı hem bir sütunu tamamlayan tek parça iki çizgi sayılır.",
   "tip_space": "Bir yerde 4'lük düz bir boşluk bırak. Uzun çubuklar buna ihtiyaç duyar.",
   "ranked_cta_kicker": "Günlük Ranked",
-  "ranked_cta_title": "Günde bir tahta, herkes için aynı",
+  "ranked_cta_title": "Günde bir tahta, her denemede kendi parçaların",
   "ranked_cta_body": "1 bilet = 1 deneme = {price} USDC, UTC gününde en fazla {attempts} deneme; en iyisi sayılır. Her günün ödül kasasının %{daily} kadarı günlük ilk 10'a, %{monthly} kadarı aylık ilk 10'a gider; sıralama her oyuncunun en iyi {days} gününün toplamına göredir.",
   "ranked_cta_status": "Bilet satışı: yakında açılıyor",
   "ranked_cta_link": "Günlük Ranked'e bak",

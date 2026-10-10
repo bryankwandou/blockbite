@@ -45,7 +45,7 @@
   "tip_combo": "Eén stuk dat een rij en een kolom vol maakt, telt als twee lijnen.",
   "tip_space": "Laat ergens een rechte opening van 4. Lange balken hebben die nodig.",
   "ranked_cta_kicker": "Daily Ranked",
-  "ranked_cta_title": "Eén bord per dag, voor iedereen gelijk",
+  "ranked_cta_title": "Eén bord per dag, elke poging eigen stukken",
   "ranked_cta_body": "1 ticket = 1 poging = {price} USDC, tot {attempts} pogingen per UTC-dag; je beste telt. {daily}% van de prijzenkluis van elke dag gaat naar de dagelijkse top 10 en {monthly}% naar de maandelijkse top 10, gerangschikt op de som van de {days} beste dagen van elke speler.",
   "ranked_cta_status": "Ticketverkoop: binnenkort open",
   "ranked_cta_link": "Bekijk Daily Ranked",

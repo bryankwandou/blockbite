@@ -2,7 +2,7 @@
   "hero_kicker": "Blokpuzzel op Solana",
   "hero_title": "Eén bord per dag. Hoogste score wint.",
   "hero_boards": "De top 10 van elke dag en de top 10 van elke maand winnen USDC. Je maandscore is de som van je 10 beste dagscores. Dagprijzen krijgen 40% van de kluis, maandprijzen 60%.",
-  "hero_sub": "Plaats drie stukken, wis rijen en kolommen en ga weer. Speel Adventure gratis, of neem het op tegen het dagbord dat voor iedereen gelijk is.",
+  "hero_sub": "Plaats drie stukken, ruim rijen en kolommen op, ga door. Speel Adventure gratis, of ga voor het dagbord: dezelfde start voor iedereen, elke poging andere stukken.",
   "cta_adventure": "Speel Adventure gratis",
   "cta_ranked": "Zo werkt Daily Ranked",
   "hero_status": "Adventure is nu open. De ticketverkoop voor Ranked opent binnenkort.",
@@ -13,7 +13,7 @@
   "board_reset": "Bord resetten",
   "num_price": "per ticket, één poging elk",
   "num_tries": "pogingen per wallet per UTC-dag",
-  "num_board": "hetzelfde bord en dezelfde stukken voor iedereen",
+  "num_board": "zelfde bord, eigen stukken per poging",
   "num_winners": "winnaars per dag, plus 10 per maand",
   "modes_kicker": "Twee modi",
   "modes_title": "Oefen gratis. Strijd één keer per dag.",
@@ -23,7 +23,7 @@
   "adventure_cta": "Open de kaart",
   "ranked_title": "Daily Ranked",
   "ranked_tag": "Binnenkort open",
-  "ranked_body": "Eén bord per UTC-dag, voor elke speler op dezelfde manier uitgedeeld. Een ticket kost 1 USDC en koopt één poging.",
+  "ranked_body": "Eén bord per UTC-dag. Elke poging deelt eigen stukken uit. Elk ticket kost 1 USDC en geeft één poging.",
   "ranked_point_1": "Tot 3 pogingen per wallet per dag",
   "ranked_point_2": "Alleen je beste poging telt",
   "ranked_point_3": "Dagelijkse en maandelijkse ranglijsten",
@@ -64,8 +64,8 @@
   "install_label": "web-app",
   "install_ios": "Op iPhone/iPad: tik op Deel en dan Zet op beginscherm.",
   "install_other": "Open het browsermenu en kies App installeren (of Toevoegen aan startscherm).",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Adventure en Ranked zijn allebei open. Ranked-tickets kosten 1 USDC.",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "Op Mac: open deze pagina in Safari en kies Archief → Voeg toe aan Dock."
 }

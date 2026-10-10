@@ -16,17 +16,31 @@
  * }
  *
  * Security:
+ *   - Requires a ranked session (Authorization: Bearer <token>); the wallet is
+ *     taken from the session and the body wallet must match it (403 otherwise)
  *   - Rate limited: 10 submissions / min / IP
  *   - Score plausibility: max 5_000_000 per submission
  *   - When txSignature provided: verified against Solana RPC
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { jsonObject } from '@/lib/http/body';
+import { MAX_GAME_LEVEL } from '@/lib/game/constants';
 import { recordScore } from '@/lib/leaderboard/store';
 import { rateLimit, getIP } from '@/lib/rate-limit';
 import { RPC_URL } from '@/lib/solana/config';
+import { PublicKey } from '@solana/web3.js';
+import { walletFromRequestAsync } from '@/lib/ranked/auth';
 
-const SOLANA_ADDR_RE = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/;
+/** A real 32-byte ed25519 public key (on curve), not just base58-shaped text. */
+function isRealWallet(addr: string): boolean {
+  try {
+    const pk = new PublicKey(addr);
+    return pk.toBytes().length === 32 && PublicKey.isOnCurve(pk.toBytes());
+  } catch {
+    return false;
+  }
+}
 const MAX_SCORE = 5_000_000;
 
 /** Verify a Solana memo transaction on-chain and check wallet + score match. */
@@ -74,18 +88,28 @@ export async function POST(req: NextRequest) {
   }
 
   let body: { walletAddress?: string; score?: number; level?: number; txSignature?: string };
-  try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
-  }
+  const parsed = await jsonObject<typeof body>(req);
+  if (!parsed) return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+  body = parsed;
 
   const { walletAddress, score, level, txSignature } = body;
 
-  if (!walletAddress || !SOLANA_ADDR_RE.test(walletAddress)) {
+  let sessionW: string | null;
+  try {
+    sessionW = await walletFromRequestAsync(req);
+  } catch {
+    return NextResponse.json({ error: 'Session check unavailable, try again' }, { status: 503 });
+  }
+  if (!sessionW) {
+    return NextResponse.json({ error: 'Sign in required' }, { status: 401 });
+  }
+  if (!walletAddress || typeof walletAddress !== 'string' || !isRealWallet(walletAddress)) {
     return NextResponse.json({ error: 'Invalid wallet address' }, { status: 400 });
   }
-  if (score == null || score < 0 || score > MAX_SCORE) {
+  if (walletAddress !== sessionW) {
+    return NextResponse.json({ error: 'Session does not match wallet' }, { status: 403 });
+  }
+  if (typeof score !== 'number' || !Number.isFinite(score) || score < 0 || score > MAX_SCORE) {
     return NextResponse.json({ error: 'Score out of range' }, { status: 422 });
   }
 
@@ -98,7 +122,7 @@ export async function POST(req: NextRequest) {
   await recordScore({
     walletAddress,
     score,
-    level: level ?? 1,
+    level: Number.isInteger(level) && (level as number) >= 1 && (level as number) <= MAX_GAME_LEVEL ? (level as number) : 1,
     submittedAt: Date.now(),
     txSignature: blockchainVerified ? txSignature : undefined,
   });

@@ -1,7 +1,7 @@
 {
   "kicker": "Rehber",
   "title": "How to Play",
-  "subtitle": "Günde bir tahta. Herkese aynı parçalar. 3 denemenin en iyisi sayılır.",
+  "subtitle": "Günde bir tahta. Her deneme kendi parçalarını dağıtır. 3 denemenin en iyisi sayılır.",
   "status_note": "Bilet satışı henüz açık değil. Macera modu ücretsiz ve şu an açık.",
   "tut_kicker": "Alıştırma tahtası",
   "tut_title": "Üç hamle dene",
@@ -94,7 +94,7 @@
   "risk_4_desc": "Check your local laws. Skill-based paid competitions have different rules by country. 18+ only.",
   "faq_title": "FAQ",
   "q_skill_title": "Bu kumar mı?",
-  "q_skill_desc": "No. Outcome depends on your skill, not chance. But paid skill competitions have legal rules — check your country's laws before buying tickets. 18+.",
+  "q_skill_desc": "Skorun parçaları nereye koyduğuna bağlıdır ve parçalar, gün başlamadan önce taahhüt edilip sonrasında yayımlanan bir seed'den adil şekilde dağıtılır. Bazı ülkelerde ücretli yarışmalar için hâlâ özel kurallar var, kendi ülkenin kurallarına bak. Yalnızca 18+.",
   "q_disconnect_title": "What if I disconnect?",
   "q_disconnect_desc": "Bilet, deneme başladığında harcandı. Sunucu oynarken her hamleyi kaydeder ve UTC günü bitince ulaştığın skor geçerli kalır.",
   "q_ticket_title": "Bir bileti yeniden kullanabilir miyim?",

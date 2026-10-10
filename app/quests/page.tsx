@@ -5,6 +5,7 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 import Navbar from '@/components/Navbar';
 import type { Quest, QuestCompletion } from '@/lib/quests/store';
+import { useT } from '@/lib/i18n';
 import { RankedClient } from '@/lib/ranked/client';
 
 /**
@@ -19,6 +20,7 @@ import { RankedClient } from '@/lib/ranked/client';
 export default function QuestsPage() {
   const { publicKey, connected, signMessage } = useWallet();
   const { setVisible } = useWalletModal();
+  const t = useT('quests');
 
   const [quests,       setQuests]       = useState<Quest[]>([]);
   const [mySubs,       setMySubs]       = useState<Record<string, QuestCompletion>>({});
@@ -26,6 +28,7 @@ export default function QuestsPage() {
   const [openQuest,    setOpenQuest]    = useState<string | null>(null);
   const [busy,         setBusy]         = useState<string | null>(null);
   const [loading,      setLoading]      = useState(true);
+  const [errors,       setErrors]       = useState<Record<string, string>>({});
 
   const refresh = useCallback(async () => {
     setLoading(true);
@@ -66,6 +69,7 @@ export default function QuestsPage() {
     const proof = (proofInput[q.id] ?? '').trim();
     if (!proof) return;
     setBusy(q.id);
+    setErrors((e) => ({ ...e, [q.id]: '' }));
     try {
       // One wallet signature per tab session proves the submission is yours.
       const client = await RankedClient.connect(publicKey.toBase58(), signMessage);
@@ -74,12 +78,19 @@ export default function QuestsPage() {
         headers: { 'Content-Type': 'application/json', Authorization: client.authorization },
         body: JSON.stringify({ proof }),
       });
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok && !data.completion) {
+        // Keep the proof text so the player can retry; say what went wrong.
+        setErrors((e) => ({ ...e, [q.id]: String(data.error ?? `Could not submit (${res.status})`) }));
+        return;
+      }
       if (data.completion) {
         setMySubs((m) => ({ ...m, [q.id]: data.completion }));
       }
       setProofInput((p) => ({ ...p, [q.id]: '' }));
       setOpenQuest(null);
+    } catch {
+      setErrors((e) => ({ ...e, [q.id]: 'Signing or network failed. Try again.' }));
     } finally {
       setBusy(null);
     }
@@ -93,9 +104,9 @@ export default function QuestsPage() {
       <Navbar />
       <main style={{ maxWidth: 800, margin: '0 auto', padding: '120px 24px 80px' }}>
 
-        <h1 style={{ fontSize: 28, fontWeight: 900, margin: 0, marginBottom: 6 }}>Quests</h1>
+        <h1 style={{ fontSize: 28, fontWeight: 900, margin: 0, marginBottom: 6 }}>{t('title')}</h1>
         <p style={{ color: 'var(--ds-text-dim)', fontSize: 13, marginBottom: 26 }}>
-          Tasks posted by partners. Submit proof and a reviewer checks it.
+          {t('sub')}
         </p>
 
         {!connected && (
@@ -105,21 +116,21 @@ export default function QuestsPage() {
             textAlign: 'center',
           }}>
             <p style={{ color: 'var(--ds-text-dim)', marginBottom: 12, fontSize: 13 }}>
-              Connect a wallet to submit quest completions.
+              {t('connect_msg')}
             </p>
             <button
               type="button" onClick={() => setVisible(true)}
               style={{
-                padding: '10px 18px', borderRadius: 10, border: 'none',
+                minHeight: 44, padding: '10px 18px', borderRadius: 10, border: 'none',
                 background: 'var(--ds-grad)', color: '#0a0a14',
                 fontWeight: 800, fontSize: 13, cursor: 'pointer',
               }}>
-              CONNECT WALLET
+              {t('connect_btn')}
             </button>
           </div>
         )}
 
-        {loading && <div style={{ color: 'var(--ds-text-dim)', fontSize: 13, textAlign: 'center', padding: 30 }}>Loading quests…</div>}
+        {loading && <div style={{ color: 'var(--ds-text-dim)', fontSize: 13, textAlign: 'center', padding: 30 }}>{t('loading')}</div>}
 
         {!loading && quests.length === 0 && (
           <div style={{
@@ -127,7 +138,7 @@ export default function QuestsPage() {
             background: 'var(--ds-surface)', border: '1px solid var(--ds-border)',
           }}>
             <p style={{ color: 'var(--ds-text-dim)', fontSize: 13 }}>
-              No active quests right now. Check back soon.
+              {t('empty')}
             </p>
           </div>
         )}
@@ -163,7 +174,7 @@ export default function QuestsPage() {
                             : '#fbbf24',
                       whiteSpace: 'nowrap',
                     }}>
-                      {sub.status.toUpperCase()}
+                      {t('st_' + (sub.status === 'approved' || sub.status === 'rejected' ? sub.status : 'pending'))}
                     </span>
                   ) : connected ? (
                     <button type="button"
@@ -175,7 +186,7 @@ export default function QuestsPage() {
                         color: open ? '#0a0a14' : 'var(--ds-accent)',
                         fontSize: 12, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap',
                       }}>
-                      {open ? 'CANCEL' : 'SUBMIT'}
+                      {open ? t('cancel') : t('submit')}
                     </button>
                   ) : null}
                 </div>
@@ -183,10 +194,11 @@ export default function QuestsPage() {
                 {open && (
                   <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 8 }}>
                     <label style={{ fontSize: 10, letterSpacing: 1.5, color: 'var(--ds-text-dim)', fontWeight: 700 }}>
-                      Proof (link, txn signature, screenshot URL, etc.)
+                      {t('proof_label')}
                     </label>
                     <textarea
                       rows={2}
+                      maxLength={2000}
                       value={proofInput[q.id] ?? ''}
                       onChange={(e) => setProofInput((p) => ({ ...p, [q.id]: e.target.value }))}
                       placeholder="https://x.com/yourhandle/status/..."
@@ -209,8 +221,9 @@ export default function QuestsPage() {
                         fontWeight: 800, fontSize: 13,
                         cursor: busy === q.id ? 'wait' : 'pointer',
                       }}>
-                      {busy === q.id ? 'SUBMITTING…' : 'SUBMIT FOR REVIEW'}
+                      {busy === q.id ? t('submitting') : t('submit_review')}
                     </button>
+                    {errors[q.id] && <div role="alert" style={{ color: '#f472b6', fontSize: 12 }}>{errors[q.id]}</div>}
                   </div>
                 )}
               </div>

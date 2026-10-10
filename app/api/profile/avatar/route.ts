@@ -11,10 +11,11 @@
  * null clears it. Block codes (m1-b..-p..-e..-m..-a..-g..) are checked part
  * by part against components/avatar/parts.ts.
  */
-import { isWallet } from '@/lib/ranked/auth';
+import { isWallet, walletFromRequestAsync } from '@/lib/ranked/auth';
+import { badBearer, readJson } from '@/lib/http/body';
 import { AVATAR_ID_RE } from '@/lib/ranked/config';
 import { getAvatar, setAvatar } from '@/lib/ranked/db';
-import { body, fail, json, rankedConfigured, requireWallet } from '@/lib/ranked/http';
+import { fail, json, rankedConfigured, requireWallet } from '@/lib/ranked/http';
 import { getIP, rateLimit } from '@/lib/rate-limit';
 import { isAvatarId } from '@/lib/avatars';
 
@@ -22,17 +23,27 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(req: Request) {
   if (!rankedConfigured()) return fail(503, 'profiles are not available');
-  const wallet = new URL(req.url).searchParams.get('wallet');
+  const bad = await badBearer(req, walletFromRequestAsync);
+  if (bad) return bad;
+  // ?wallet= is public; with a valid session and no ?wallet= it means the caller's own.
+  let own: string | null = null;
+  try {
+    own = await walletFromRequestAsync(req);
+  } catch {
+    return fail(503, 'session check unavailable, try again');
+  }
+  const wallet = new URL(req.url).searchParams.get('wallet') ?? own;
   if (!isWallet(wallet)) return fail(400, 'bad wallet');
   return json({ wallet, avatarId: await getAvatar(wallet) });
 }
 
 export async function POST(req: Request) {
   if (!rankedConfigured()) return fail(503, 'profiles are not available');
-  const signedIn = requireWallet(req);
+  const signedIn = await requireWallet(req);
   if (typeof signedIn !== 'string') return fail(401, 'sign in with your wallet first', { signIn: '/api/ranked/auth' });
-  const b = await body(req);
-  if (!b || !isWallet(b.wallet)) return fail(400, 'bad wallet');
+  const b = await readJson(req, 1024);
+  if (b instanceof Response) return b;
+  if (!isWallet(b.wallet)) return fail(400, 'bad wallet');
   if (b.wallet !== signedIn) return fail(403, 'signed in as a different wallet');
   const avatarId = b.avatarId;
   if (avatarId !== null && (typeof avatarId !== 'string' || !AVATAR_ID_RE.test(avatarId) || !isAvatarId(avatarId))) {

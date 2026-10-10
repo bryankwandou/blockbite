@@ -1,7 +1,7 @@
 {
   "kicker": "Panduan",
   "title": "Cara bermain",
-  "subtitle": "Satu papan sehari. Blok yang sama untuk semua orang. Yang terbaik daripada 3 percubaan dikira.",
+  "subtitle": "Satu papan sehari. Setiap percubaan mendapat kepingan sendiri. Yang terbaik daripada 3 percubaan dikira.",
   "status_note": "Jualan tiket belum dibuka. Mod Pengembaraan percuma dan dibuka sekarang.",
   "tut_kicker": "Papan latihan",
   "tut_title": "Cuba tiga langkah",
@@ -94,7 +94,7 @@
   "risk_4_desc": "Pertandingan kemahiran berbayar mempunyai peraturan berbeza di setiap negara. Semak negara anda. 18+ sahaja.",
   "faq_title": "Soalan",
   "q_skill_title": "Ini perjudian?",
-  "q_skill_desc": "Skor anda datang daripada cara anda meletakkan blok, dan semua orang mendapat blok yang sama pada hari itu. Sesetengah negara masih ada peraturan khas untuk pertandingan berbayar, jadi semak negara anda. 18+ sahaja.",
+  "q_skill_desc": "Skor anda datang daripada cara anda meletakkan kepingan, dan kepingan diagihkan secara adil daripada seed yang dikunci sebelum hari bermula dan diterbitkan selepas itu. Sesetengah negara masih ada peraturan khas untuk peraduan berbayar, jadi semak peraturan di negara anda. 18+ sahaja.",
   "q_disconnect_title": "Bagaimana jika sambungan terputus semasa larian?",
   "q_disconnect_desc": "Tiket telah digunakan apabila percubaan bermula. Pelayan menyimpan setiap langkah semasa anda bermain, dan apabila hari UTC tamat, skor yang anda capai kekal.",
   "q_ticket_title": "Boleh guna semula tiket?",

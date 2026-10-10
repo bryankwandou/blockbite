@@ -18,7 +18,7 @@
   "connecting": "ĐANG KẾT NỐI…",
   "waiting_for_wallet": "ĐANG CHỜ VÍ…",
   "kicker": "Mỗi ngày một bàn",
-  "lede": "Cùng bàn và bộ khối cho mọi người mỗi ngày UTC. Lượt tốt nhất trong {attempts} lượt được tính.",
+  "lede": "Mỗi ngày một bàn. Mỗi lượt chơi có bộ khối riêng, nên không ai học thuộc trước được. Lượt tốt nhất trong {attempts} lượt được tính.",
   "connect_btn": "KẾT NỐI VÍ",
   "mascot_alt": "Rex, linh vật của BlockBite, đang xem xét bàn hôm nay",
   "rules_title": "Cách hoạt động",
@@ -65,7 +65,7 @@
   "tab_daily": "Ngày",
   "tab_monthly": "Tháng",
   "tabs_label": "Chế độ xem ranked",
-  "rule_same_seed": "Hôm nay mọi người cùng một bàn (UTC)",
+  "rule_same_seed": "Hôm nay (UTC) mọi người có cùng bàn xuất phát. Khối khác nhau ở mỗi lượt.",
   "rule_no_hints": "Không gợi ý",
   "rule_no_undo": "Không hoàn tác",
   "attempt_of": "Lượt {n}/{max}",
@@ -81,5 +81,5 @@
   "monthly_connect": "Kết nối ví để xem điểm tháng và thứ hạng của bạn.",
   "monthly_players": "{n} người chơi tháng này",
   "monthly_offline": "Không tải được bảng tháng. Hãy thử lại sau.",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "Đã mở bán vé: 1 USDC cho mỗi lượt ranked."
 }

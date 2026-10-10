@@ -8,7 +8,7 @@
  * under 0.03 SOL). The poster creates them with the system program's
  * CreateAccountWithSeed(base = POSTER, owner = the prize program):
  *   state  seed "state"                 (once, 24 bytes)
- *   round  seed = round id in decimal   ("20261001"), 72 + ceil(count / 8) bytes
+ *   round  seed = round id in decimal   ("20261001"), 80 + ceil(count / 8) bytes
  * in the same transaction as PostResults. Only POSTER can sign for those
  * addresses, so nobody else can create them.
  */
@@ -133,4 +133,54 @@ export function claimIx(roundId: bigint, index: number, wallet: PublicKey, amoun
 export function claimIxs(payer: PublicKey, roundId: bigint, index: number, amount: bigint, proof: Uint8Array[]): TransactionInstruction[] {
   const ata = getAssociatedTokenAddressSync(USDC_MINT, payer);
   return [createAssociatedTokenAccountIdempotentInstruction(payer, ata, payer, USDC_MINT), claimIx(roundId, index, payer, amount, proof)];
+}
+
+// Round field offsets (programs/blockbite-prize/src/lib.rs).
+export const ROUND_TAG = 2;
+export const R_VETOED = 1;
+export const R_ID = 8;
+export const R_PREV = 72;
+export const ST_LAST_DAY = 0;
+export const ST_LAST_MONTH = 16;
+
+/** Offset of the high-water mark for a round id in the state account (month ids are YYYYMM00). */
+export function markOffset(roundId: bigint): number {
+  return roundId % 100n === 0n ? ST_LAST_MONTH : ST_LAST_DAY;
+}
+
+export interface RoundAccountLike {
+  pubkey: PublicKey;
+  /** Raw account data; the caller must pass only accounts owned by the prize program. */
+  data: Uint8Array;
+}
+
+/**
+ * The optional 4th account of Veto: the live (not vetoed) round whose stored
+ * previous mark equals the vetoed id. Returns null when the vetoed round is the
+ * latest of its kind (state mark == id, the program restores the mark itself)
+ * or when no such round exists (the veto then stands with 3 accounts, the id
+ * stays used). Pure: no network.
+ */
+export function findVetoNext(vetoedId: bigint, stateData: Uint8Array, rounds: RoundAccountLike[]): PublicKey | null {
+  const st = Buffer.from(stateData.buffer, stateData.byteOffset, stateData.byteLength);
+  if (st.length >= markOffset(vetoedId) + 8 && st.readBigUInt64LE(markOffset(vetoedId)) === vetoedId) return null;
+  for (const r of rounds) {
+    if (r.data.length < ROUND_HDR || r.data[0] !== ROUND_TAG || r.data[R_VETOED] !== 0) continue;
+    const b = Buffer.from(r.data.buffer, r.data.byteOffset, r.data.byteLength);
+    const id = b.readBigUInt64LE(R_ID);
+    if (id === vetoedId) continue;
+    if (b.readBigUInt64LE(R_PREV) === vetoedId) return r.pubkey;
+  }
+  return null;
+}
+
+/** Veto (tag 1): the cold VETO key signs; `next` from findVetoNext is appended writable when present. */
+export function vetoIx(cold: PublicKey, roundId: bigint, next: PublicKey | null = null): TransactionInstruction {
+  const keys = [
+    { pubkey: cold, isSigner: true, isWritable: false },
+    { pubkey: PRIZE_STATE, isSigner: false, isWritable: true },
+    { pubkey: roundAddress(roundId), isSigner: false, isWritable: true },
+  ];
+  if (next) keys.push({ pubkey: next, isSigner: false, isWritable: true });
+  return new TransactionInstruction({ programId: PRIZE_PROGRAM_ID, data: Buffer.from([1]), keys });
 }

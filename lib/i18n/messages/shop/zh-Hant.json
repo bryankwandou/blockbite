@@ -40,6 +40,7 @@
   "err_funds": "USDC 不足。你有 {have}，這個方案需要 {need}。",
   "err_no_account": "這個錢包還沒有 USDC 帳戶。",
   "err_tx": "交易失敗：{msg}",
+  "err_day_closing": "今天即將結束。請在 00:00 UTC 之後幾分鐘再購買。",
   "err_not_credited": "已付款（交易 {sig}…），但尚未入帳：{msg}。請重新開啟此頁面再試一次。",
   "info_credits_title": "票券跟隨你的錢包",
   "info_credits_desc": "我們的伺服器會在鏈上檢查交易，然後把票券加到你的錢包。請保留交易連結作為收據。",

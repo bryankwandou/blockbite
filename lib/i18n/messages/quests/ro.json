@@ -1,0 +1,16 @@
+{
+  "title": "Misiuni",
+  "sub": "Sarcini postate de parteneri. Trimite o dovadă și un evaluator o verifică.",
+  "connect_msg": "Conectează un portofel pentru a trimite misiunile finalizate.",
+  "connect_btn": "CONECTEAZĂ PORTOFELUL",
+  "loading": "Se încarcă misiunile…",
+  "empty": "Nicio misiune activă acum. Revino curând.",
+  "cancel": "ANULEAZĂ",
+  "submit": "TRIMITE",
+  "proof_label": "Dovadă (link, semnătura tranzacției, URL captură de ecran etc.)",
+  "submitting": "SE TRIMITE…",
+  "submit_review": "TRIMITE LA VERIFICARE",
+  "st_approved": "APROBATĂ",
+  "st_rejected": "RESPINSĂ",
+  "st_pending": "ÎN AȘTEPTARE"
+}

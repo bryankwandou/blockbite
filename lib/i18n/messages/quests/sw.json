@@ -1,0 +1,16 @@
+{
+  "title": "Majukumu",
+  "sub": "Kazi zilizotumwa na washirika. Wasilisha uthibitisho na mkaguzi atauangalia.",
+  "connect_msg": "Unganisha pochi ili kuwasilisha majukumu yaliyokamilika.",
+  "connect_btn": "UNGANISHA POCHI",
+  "loading": "Inapakia majukumu…",
+  "empty": "Hakuna majukumu yanayoendelea sasa. Rudi tena hivi karibuni.",
+  "cancel": "GHAIRI",
+  "submit": "WASILISHA",
+  "proof_label": "Uthibitisho (kiungo, saini ya muamala, URL ya picha ya skrini, n.k.)",
+  "submitting": "INAWASILISHA…",
+  "submit_review": "WASILISHA KWA UKAGUZI",
+  "st_approved": "IMEIDHINISHWA",
+  "st_rejected": "IMEKATALIWA",
+  "st_pending": "INASUBIRI"
+}

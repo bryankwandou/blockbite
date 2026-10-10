@@ -147,7 +147,7 @@ export default function Navbar() {
 
         <Link href="/" className={styles.logo} aria-label={t('home')}>
           <span className={styles.logoMark}>
-            <Image src="/logo.png" alt="" width={40} height={40} priority />
+            <Image src="/logo.png" alt="" aria-hidden="true" width={40} height={40} priority />
           </span>
           {/* Wordmark drawn by CSS (::before/::after): it is the brand, never translated. */}
           <span className={styles.logoText} aria-hidden="true" />
@@ -231,7 +231,7 @@ export default function Navbar() {
             href="/profile"
             aria-label={t('profile')}
             title={t('profile')}
-            style={{ display: 'inline-flex', flexShrink: 0, borderRadius: 10, lineHeight: 0 }}
+            style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, borderRadius: 10, lineHeight: 0, minWidth: 40, minHeight: 40 }}
           >
             <PlayerAvatar id={myAvatar} size={30} />
           </Link>

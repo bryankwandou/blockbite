@@ -1,0 +1,16 @@
+{
+  "title": "Quêtes",
+  "sub": "Tâches publiées par des partenaires. Envoyez une preuve, un relecteur la vérifie.",
+  "connect_msg": "Connectez un portefeuille pour soumettre vos quêtes.",
+  "connect_btn": "CONNECTER LE PORTEFEUILLE",
+  "loading": "Chargement des quêtes…",
+  "empty": "Aucune quête active pour le moment. Revenez bientôt.",
+  "cancel": "ANNULER",
+  "submit": "SOUMETTRE",
+  "proof_label": "Preuve (lien, signature de transaction, URL de capture, etc.)",
+  "submitting": "ENVOI…",
+  "submit_review": "ENVOYER POUR VÉRIFICATION",
+  "st_approved": "APPROUVÉE",
+  "st_rejected": "REFUSÉE",
+  "st_pending": "EN ATTENTE"
+}

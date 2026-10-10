@@ -14,9 +14,11 @@ export async function getPlayerProgress(wallet: string): Promise<PlayerProgress>
           // Take the higher of server and this browser: the server only
           // believes a few levels per game, so it can trail a local record,
           // and progress must never go backwards.
-          const local = parseInt(localStorage.getItem('bb_max_level') ?? '0', 10) || 0;
+          let local = 0;
+          try { local = parseInt(localStorage.getItem('bb_max_level') ?? '0', 10) || 0; } catch { /* blocked */ }
           const best = Math.max(user.currentLevel, local);
-          localStorage.setItem('bb_max_level', String(best));
+          // A full or blocked store must not throw away the server's level.
+          try { localStorage.setItem('bb_max_level', String(best)); } catch { /* ignore */ }
           return { currentLevel: best, wallet };
         }
       }

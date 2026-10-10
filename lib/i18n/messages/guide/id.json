@@ -1,7 +1,7 @@
 {
   "kicker": "Panduan",
   "title": "Cara main",
-  "subtitle": "Satu papan sehari. Blok yang sama untuk semua orang. Yang terbaik dari 3 percobaan yang dihitung.",
+  "subtitle": "Satu papan sehari. Setiap percobaan mendapat bidak sendiri. Terbaik dari 3 percobaan yang dihitung.",
   "status_note": "Penjualan tiket belum dibuka. Mode Adventure gratis dan sudah bisa dimainkan.",
   "tut_kicker": "Papan latihan",
   "tut_title": "Coba tiga langkah",
@@ -94,7 +94,7 @@
   "risk_4_desc": "Kontes skill berbayar punya aturan berbeda di tiap negara. Cek aturan di negaramu. Khusus 18+.",
   "faq_title": "Pertanyaan",
   "q_skill_title": "Ini judi?",
-  "q_skill_desc": "Skormu datang dari cara kamu menaruh blok, dan semua orang dapat blok yang sama di hari itu. Beberapa negara tetap punya aturan khusus untuk kontes berbayar, jadi cek aturan di negaramu. Khusus 18+.",
+  "q_skill_desc": "Skormu ditentukan oleh cara menaruh bidak, dan bidak dibagikan secara adil dari seed yang dikunci sebelum hari dimulai dan dipublikasikan sesudahnya. Beberapa negara masih punya aturan khusus untuk kontes berbayar, jadi periksa aturan di negaramu. Hanya 18+.",
   "q_disconnect_title": "Gimana kalau koneksi putus di tengah run?",
   "q_disconnect_desc": "Tiket sudah terpakai saat percobaan dimulai. Server menyimpan setiap langkahmu saat main, dan saat hari UTC berakhir, skor yang sudah kamu capai tetap berlaku.",
   "q_ticket_title": "Tiket bisa dipakai ulang?",

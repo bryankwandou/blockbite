@@ -1,7 +1,7 @@
 {
   "kicker": "Gabay",
   "title": "Paano maglaro",
-  "subtitle": "Isang board bawat araw. Pareho ang mga piraso para sa lahat. Ang pinakamagaling sa 3 subok ang binibilang.",
+  "subtitle": "Isang board kada araw. Bawat try ay may sariling mga piyesa. Ang pinakamahusay sa 3 try ang bibilangin.",
   "status_note": "Hindi pa bukas ang benta ng ticket. Libre at bukas na ang Adventure mode.",
   "tut_kicker": "Practice board",
   "tut_title": "Subukan ang tatlong galaw",
@@ -94,7 +94,7 @@
   "risk_4_desc": "Magkakaiba ang patakaran sa bayad na skill contest sa bawat bansa. Alamin ang sa inyo. 18+ lang.",
   "faq_title": "Mga tanong",
   "q_skill_title": "Sugal ba ito?",
-  "q_skill_desc": "Galing ang score mo sa kung paano mo inilalagay ang mga piraso, at pareho ang makukuhang piraso ng lahat sa araw na iyon. May mga bansang may espesyal na patakaran pa rin sa bayad na paligsahan, kaya alamin ang sa inyo. 18+ lang.",
+  "q_skill_desc": "Ang score mo ay galing sa kung saan mo inilalagay ang mga piyesa, at patas na ipinamamahagi ang mga piyesa mula sa seed na itinakda bago magsimula ang araw at inilalathala pagkatapos. May ilang bansa pa ring may espesyal na patakaran para sa mga paligsahang may bayad, kaya tingnan ang sa inyo. 18+ lang.",
   "q_disconnect_title": "Paano kung ma-disconnect ako sa gitna ng run?",
   "q_disconnect_desc": "Nagamit na ang ticket nang magsimula ang subok. Sine-save ng server ang bawat galaw habang naglalaro ka, at kapag natapos ang UTC day, nananatili ang score na naabot mo.",
   "q_ticket_title": "Puwede bang gamitin ulit ang ticket?",

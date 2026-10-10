@@ -11,8 +11,8 @@ import {
 
 /** "NOT HANDLED / residual risk" from lib/ranked/AUDIT.md, condensed. Read-only; update when the audit changes. */
 const OPEN_RISKS = [
-  'Re-posting a closed round id: after close the round account is deleted, so post accepts the same round_id again (POSTER key only; off-chain guard + 24 h veto). Program fix pending.',
-  'POSTER key compromise: a stolen hot key can post any root up to the free vault balance. /api/cron/prize-watch compares every on-chain round with rk_rounds (GitHub Action hourly, Vercel cron daily); a mismatch fails the Action (GitHub emails the owner) and posts to ALERT_WEBHOOK_URL if set.',
+  'Vetoed-round id reuse: a closed or posted round id cannot be re-posted (high-water marks, lib.rs). But after vetoing A and then B, the mark falls back to the vetoed A, so the vetoed id A can never be re-posted corrected. No fund risk; fixing it needs a program upgrade.',
+  'POSTER key compromise: a stolen hot key can post any root up to the free vault balance. /api/cron/prize-watch compares every on-chain round with rk_rounds (GitHub Action hourly, Vercel cron daily); any mismatch, also after the veto window, or a posted DB round missing on chain makes the endpoint answer non-200 (409 urgent, 424 otherwise), which fails the Action (GitHub emails the owner) and posts to ALERT_WEBHOOK_URL if set. Rounds closed early (fully claimed or vetoed) are not recorded in the DB and would show as missing.',
   'No refund path for tickets bought but never played; the 70% stays in the pool. Must be stated in player copy.',
   'Rounds with zero winners: that day\'s 40% is never paid and not carried into the month; the USDC stays stuck in the vault with no payout rule.',
   'Unallocated dust and short-board slots accumulate in the vault (same issue as zero-winner rounds).',

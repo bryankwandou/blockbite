@@ -45,7 +45,7 @@
   "tip_combo": "Ang isang pirasong nakakumpleto ng row at column ay binibilang na dalawang linya.",
   "tip_space": "Mag-iwan ng tuwid na puwang na 4 sa kung saan. Kailangan ito ng mahahabang bar.",
   "ranked_cta_kicker": "Daily Ranked",
-  "ranked_cta_title": "Isang board bawat araw, pareho para sa lahat",
+  "ranked_cta_title": "Isang board kada araw, sariling piyesa bawat try",
   "ranked_cta_body": "1 ticket = 1 subok = {price} USDC, hanggang {attempts} subok kada UTC day; ang pinakamataas ang binibilang. {daily}% ng prize vault bawat araw ay napupunta sa daily top 10 at {monthly}% sa monthly top 10, ayon sa kabuuan ng {days} pinakamagandang araw ng bawat manlalaro.",
   "ranked_cta_status": "Benta ng ticket: malapit nang magbukas",
   "ranked_cta_link": "Tingnan ang Daily Ranked",

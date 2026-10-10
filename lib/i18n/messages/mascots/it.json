@@ -1,0 +1,21 @@
+{
+  "play_now": "GIOCA ORA",
+  "universe": "UNIVERSO BLOCKBITE",
+  "meet": "Incontra la {crew}",
+  "crew": "Ciurma",
+  "sub": "Quattro personaggi. Una missione. Conquista 4.000 livelli e riscuoti ricompense on-chain.",
+  "choose": "Scegli il tuo personaggio.",
+  "choose_desc": "Entra nel gioco, scegli il tuo stile e lotta per un posto in cima alla classifica on-chain.",
+  "rex_title": "Il Re",
+  "rex_tag": "Regalità",
+  "rex_bio": "Sovrano incoronato della scacchiera. Rex gioca con disciplina di ferro: ogni mossa è calcolata, ogni blocco piazzato per dominare. Temi la corona.",
+  "tide_title": "L'Onda",
+  "tide_tag": "Flusso",
+  "tide_bio": "Calmo come acqua profonda. Tide legge la scacchiera come le correnti dell'oceano: fluido, adattabile, inarrestabile. Blocco dopo blocco, la marea sale sempre.",
+  "brawler_title": "Il Combattente",
+  "brawler_tag": "Potenza",
+  "brawler_bio": "Nessuna pietà, nessuna ritirata. Brawler affronta ogni Atto a testa alta, spaccando gli ostacoli con pura aggressività. La scacchiera si spezza prima di lui.",
+  "sunny_title": "La Scintilla",
+  "sunny_tag": "Energia",
+  "sunny_bio": "Pura gioia, puro caos. Sunny trasforma anche i livelli più duri in una festa: sempre sorridente, sempre sorprendente, sempre a rubare la vittoria."
+}

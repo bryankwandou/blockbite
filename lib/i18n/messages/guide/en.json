@@ -1,7 +1,7 @@
 {
   "kicker": "Guide",
   "title": "How to play",
-  "subtitle": "One board a day. Same pieces for everyone. Best of 3 tries counts.",
+  "subtitle": "One board a day. Every try deals its own pieces. Best of 3 tries counts.",
   "status_note": "Ticket sales aren't open yet. Adventure mode is free and open now.",
   "tut_kicker": "Practice board",
   "tut_title": "Try three moves",
@@ -94,7 +94,7 @@
   "risk_4_desc": "Paid skill contests follow different rules in different countries. Check yours. 18+ only.",
   "faq_title": "Questions",
   "q_skill_title": "Is this gambling?",
-  "q_skill_desc": "Your score comes from where you place pieces, and everyone gets the same pieces that day. Some countries still have special rules for paid contests, so check yours. 18+ only.",
+  "q_skill_desc": "Your score comes from where you place pieces, and pieces are dealt fairly from a seed committed before the day starts and published after. Some countries still have special rules for paid contests, so check yours. 18+ only.",
   "q_disconnect_title": "What if I disconnect mid-run?",
   "q_disconnect_desc": "The ticket was spent when the attempt started. The server saves every move as you play, and when the UTC day ends the score you reached stands.",
   "q_ticket_title": "Can I reuse a ticket?",

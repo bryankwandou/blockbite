@@ -18,7 +18,7 @@
   "connecting": "KUMOKONEKTA…",
   "waiting_for_wallet": "NAGHIHINTAY NG WALLET…",
   "kicker": "Isang board bawat araw",
-  "lede": "Pareho ang board at mga piraso para sa lahat bawat UTC day. Ang pinakamagaling sa {attempts} subok mo ang binibilang.",
+  "lede": "Isang board kada araw. Bawat try ay may sariling mga piyesa, kaya walang makakapag-memorize ng pagkakasunod-sunod. Ang pinakamahusay sa {attempts} na try ang bibilangin.",
   "connect_btn": "I-CONNECT ANG WALLET",
   "mascot_alt": "Si Rex, ang mascot ng BlockBite, sinusuri ang board ngayong araw",
   "rules_title": "Paano ito gumagana",
@@ -65,7 +65,7 @@
   "tab_daily": "Daily",
   "tab_monthly": "Monthly",
   "tabs_label": "Tanaw ng ranked",
-  "rule_same_seed": "Pareho ang board ng lahat ngayon (UTC)",
+  "rule_same_seed": "Parehong panimulang board para sa lahat ngayon (UTC). Iba-iba ang mga piyesa sa bawat try.",
   "rule_no_hints": "Walang hint",
   "rule_no_undo": "Walang undo",
   "attempt_of": "Subok {n}/{max}",
@@ -81,5 +81,5 @@
   "monthly_connect": "Mag-connect ng wallet para makita ang buwanang score at ranggo mo.",
   "monthly_players": "{n} manlalaro ngayong buwan",
   "monthly_offline": "Hindi ma-load ang monthly board. Subukan ulit mamaya.",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "Bukas na ang bentahan ng ticket: 1 USDC bawat ranked na subok."
 }

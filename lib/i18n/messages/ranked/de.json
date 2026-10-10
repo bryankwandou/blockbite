@@ -18,7 +18,7 @@
   "connecting": "VERBINDET…",
   "waiting_for_wallet": "WARTE AUF WALLET…",
   "kicker": "Ein Brett pro Tag",
-  "lede": "Gleiches Brett und gleiche Teile für alle an jedem UTC-Tag. Dein bester von {attempts} Versuchen zählt.",
+  "lede": "Ein Brett pro Tag. Jeder Versuch teilt eigene Steine aus, sodass niemand die Abfolge vorher lernen kann. Der beste von {attempts} zählt.",
   "connect_btn": "WALLET VERBINDEN",
   "mascot_alt": "Rex, das BlockBite-Maskottchen, mustert das heutige Brett",
   "rules_title": "So funktioniert es",
@@ -65,7 +65,7 @@
   "tab_daily": "Täglich",
   "tab_monthly": "Monatlich",
   "tabs_label": "Ranked-Ansicht",
-  "rule_same_seed": "Heute gleiches Brett für alle (UTC)",
+  "rule_same_seed": "Heute (UTC) für alle dasselbe Startbrett. Die Steine sind bei jedem Versuch anders.",
   "rule_no_hints": "Keine Hinweise",
   "rule_no_undo": "Kein Rückgängig",
   "attempt_of": "Versuch {n}/{max}",
@@ -81,5 +81,5 @@
   "monthly_connect": "Verbinde eine Wallet, um deinen Monatswert und Rang zu sehen.",
   "monthly_players": "{n} Spieler in diesem Monat",
   "monthly_offline": "Das Monatsbrett konnte nicht geladen werden. Versuch es später nochmal.",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "Ticketverkauf ist offen: 1 USDC pro Ranked-Versuch."
 }

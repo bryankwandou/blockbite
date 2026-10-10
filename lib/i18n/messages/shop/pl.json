@@ -40,6 +40,7 @@
   "err_funds": "Za mało USDC. Masz {have}, ten pakiet wymaga {need}.",
   "err_no_account": "Ten portfel nie ma jeszcze konta USDC.",
   "err_tx": "Transakcja nieudana: {msg}",
+  "err_day_closing": "Dzień zaraz się kończy. Kup ponownie kilka minut po 00:00 UTC.",
   "err_not_credited": "Zapłacono (tx {sig}…), ale jeszcze nie zaksięgowano: {msg}. Otwórz tę stronę ponownie, aby spróbować jeszcze raz.",
   "info_credits_title": "Bilety podążają za twoim portfelem",
   "info_credits_desc": "Nasz serwer sprawdza transakcję on-chain, a potem dodaje bilety do twojego portfela. Zachowaj link do transakcji jako potwierdzenie.",

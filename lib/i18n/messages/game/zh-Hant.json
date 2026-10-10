@@ -45,7 +45,7 @@
   "tip_combo": "一個方塊同時補滿一行和一列，算兩行。",
   "tip_space": "在某處留一條長 4 格的直縫，長條方塊需要它。",
   "ranked_cta_kicker": "每日排位",
-  "ranked_cta_title": "每天一塊棋盤，人人相同",
+  "ranked_cta_title": "每天一塊棋盤，每次嘗試方塊不同",
   "ranked_cta_body": "1 張票 = 1 次嘗試 = {price} USDC，每個 UTC 日最多 {attempts} 次嘗試，取最好的一次。每日獎金庫的 {daily}% 發給每日前 10 名，{monthly}% 發給每月前 10 名，依每位玩家最好的 {days} 天總和排名。",
   "ranked_cta_status": "票券銷售：即將開放",
   "ranked_cta_link": "查看每日排位",

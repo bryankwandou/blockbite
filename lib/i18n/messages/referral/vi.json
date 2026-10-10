@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "Chưa có lượt giới thiệu nào. Hãy chia sẻ liên kết từ hồ sơ của bạn.",
+  "joined_total": "{n} người chơi đã tham gia qua liên kết giới thiệu",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "Không tải được số liệu giới thiệu.",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "Người chơi tham gia bằng liên kết của bạn",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "Trong số đó, người đã hoàn thành ít nhất một ván",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "Chưa ai dùng liên kết của bạn.",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "Xem bảng giới thiệu"
 }

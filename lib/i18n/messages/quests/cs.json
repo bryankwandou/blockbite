@@ -1,0 +1,16 @@
+{
+  "title": "Úkoly",
+  "sub": "Úkoly zveřejněné partnery. Odešlete důkaz a recenzent jej zkontroluje.",
+  "connect_msg": "Připojte peněženku a odešlete splněné úkoly.",
+  "connect_btn": "PŘIPOJIT PENĚŽENKU",
+  "loading": "Načítání úkolů…",
+  "empty": "Momentálně nejsou žádné aktivní úkoly. Zkuste to brzy.",
+  "cancel": "ZRUŠIT",
+  "submit": "ODESLAT",
+  "proof_label": "Důkaz (odkaz, podpis transakce, URL snímku obrazovky atd.)",
+  "submitting": "ODESÍLÁNÍ…",
+  "submit_review": "ODESLAT KE KONTROLE",
+  "st_approved": "SCHVÁLENO",
+  "st_rejected": "ZAMÍTNUTO",
+  "st_pending": "ČEKÁ"
+}

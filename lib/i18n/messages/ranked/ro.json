@@ -18,7 +18,7 @@
   "connecting": "SE CONECTEAZĂ…",
   "waiting_for_wallet": "SE AȘTEAPTĂ WALLET-UL…",
   "kicker": "O tablă pe zi",
-  "lede": "Aceeași tablă și aceleași piese pentru toți în fiecare zi UTC. Contează cea mai bună din {attempts} încercări.",
+  "lede": "O tablă pe zi. Fiecare încercare primește piesele ei, așa că nimeni nu poate învăța secvența dinainte. Contează cea mai bună din {attempts}.",
   "connect_btn": "CONECTEAZĂ WALLET-UL",
   "mascot_alt": "Rex, mascota BlockBite, evaluând tabla de azi",
   "rules_title": "Cum funcționează",
@@ -65,7 +65,7 @@
   "tab_daily": "Zilnic",
   "tab_monthly": "Lunar",
   "tabs_label": "Vedere Ranked",
-  "rule_same_seed": "Aceeași tablă pentru toți azi (UTC)",
+  "rule_same_seed": "Azi (UTC) aceeași tablă de start pentru toți. Piesele diferă la fiecare încercare.",
   "rule_no_hints": "Fără indicii",
   "rule_no_undo": "Fără anulare",
   "attempt_of": "Încercarea {n}/{max}",
@@ -81,5 +81,5 @@
   "monthly_connect": "Conectează un wallet ca să-ți vezi scorul lunar și locul.",
   "monthly_players": "{n} jucători luna aceasta",
   "monthly_offline": "Nu s-a putut încărca clasamentul lunar. Încearcă mai târziu.",
-  "sales_open_now": "Ticket sales are open: 1 USDC per ranked attempt."
+  "sales_open_now": "Vânzarea de bilete este deschisă: 1 USDC pe încercare ranked."
 }

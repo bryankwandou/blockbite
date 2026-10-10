@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "Henüz davet yok. Bağlantını profilinden paylaş.",
+  "joined_total": "{n} oyuncu davet bağlantısıyla katıldı",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "Davet sayıları yüklenemedi.",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "Bağlantınla katılan oyuncular",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "Bunlardan en az bir oyunu bitirenler",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "Bağlantını henüz kimse kullanmadı.",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "Davet sıralamasını gör"
 }

@@ -1,18 +1,18 @@
 {
   "board_title": "Referrals",
-  "board_empty": "No referrals yet. Share your link from your profile.",
-  "joined_total": "{n} players have joined through a referral link",
+  "board_empty": "Belum ada rujukan. Kongsi pautan anda dari profil.",
+  "joined_total": "{n} pemain telah menyertai melalui pautan rujukan",
   "top_referrers": "Top referrers",
   "referred_count": "{n} referred",
   "loading": "Loading…",
-  "error": "Could not load referral numbers.",
+  "error": "Tidak dapat memuatkan angka rujukan.",
   "signed_up": "Signed up",
-  "signed_up_note": "Players who joined with your link",
+  "signed_up_note": "Pemain yang menyertai dengan pautan anda",
   "played": "Played",
-  "played_note": "Of those, finished at least one game",
+  "played_note": "Daripada mereka, yang telah menamatkan sekurang-kurangnya satu permainan",
   "recent": "Recent sign-ups",
-  "none_yet": "Nobody has used your link yet.",
+  "none_yet": "Belum ada yang menggunakan pautan anda.",
   "status_played": "Played",
   "status_joined": "Joined",
-  "see_board": "See the referral board"
+  "see_board": "Lihat papan rujukan"
 }

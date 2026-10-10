@@ -2,7 +2,7 @@
   "hero_kicker": "Xếp khối trên Solana",
   "hero_title": "Mỗi ngày một bàn. Điểm cao nhất thắng.",
   "hero_boards": "Top 10 mỗi ngày và top 10 mỗi tháng giành USDC. Điểm tháng của bạn là tổng 10 điểm ngày tốt nhất. Giải ngày lấy 40% kho, giải tháng 60%.",
-  "hero_sub": "Đặt ba khối, xóa hàng và cột, rồi chơi tiếp. Chơi Phiêu lưu miễn phí, hoặc thử sức với bàn hằng ngày giống nhau cho mọi người.",
+  "hero_sub": "Đặt ba khối, xóa hàng và cột, rồi chơi tiếp. Chơi Adventure miễn phí, hoặc thử bàn hằng ngày: xuất phát giống nhau cho mọi người, khối khác nhau ở mỗi lượt.",
   "cta_adventure": "Chơi Phiêu lưu miễn phí",
   "cta_ranked": "Ranked Hằng Ngày hoạt động thế nào",
   "hero_status": "Phiêu lưu đang mở. Bán vé Ranked sắp mở.",
@@ -13,7 +13,7 @@
   "board_reset": "Đặt lại bàn",
   "num_price": "mỗi vé, một lượt mỗi vé",
   "num_tries": "lượt mỗi ví mỗi ngày UTC",
-  "num_board": "cùng bàn và bộ khối cho mọi người",
+  "num_board": "cùng bàn, khối riêng mỗi lượt",
   "num_winners": "người thắng mỗi ngày, thêm 10 mỗi tháng",
   "modes_kicker": "Hai chế độ",
   "modes_title": "Luyện tập miễn phí. Thi đấu mỗi ngày một lần.",
@@ -23,7 +23,7 @@
   "adventure_cta": "Mở bản đồ",
   "ranked_title": "Ranked Hằng Ngày",
   "ranked_tag": "Sắp mở",
-  "ranked_body": "Mỗi ngày UTC một bàn, chia giống hệt cho mọi người chơi. Mỗi vé giá 1 USDC và có một lượt.",
+  "ranked_body": "Một bàn cho mỗi ngày UTC. Mỗi lượt có bộ khối riêng. Mỗi vé giá 1 USDC và cho một lượt chơi.",
   "ranked_point_1": "Tối đa 3 lượt mỗi ví mỗi ngày",
   "ranked_point_2": "Chỉ lượt tốt nhất của bạn được tính",
   "ranked_point_3": "Bảng xếp hạng ngày và tháng",
@@ -64,8 +64,8 @@
   "install_label": "Web App",
   "install_ios": "Trên iPhone/iPad: chạm Chia sẻ, rồi Thêm vào MH chính.",
   "install_other": "Mở menu trình duyệt và chọn Cài đặt ứng dụng (hoặc Thêm vào màn hình chính).",
-  "hero_status_open": "Adventure and Ranked are both open. Ranked tickets are 1 USDC.",
+  "hero_status_open": "Adventure và Ranked đều đã mở. Vé Ranked giá 1 USDC.",
   "ranked_tag_open": "Open now",
   "download_kicker": "Download for",
-  "install_mac": "On Mac: open this page in Safari, then File → Add to Dock."
+  "install_mac": "Trên Mac: mở trang này trong Safari, rồi chọn File → Add to Dock."
 }

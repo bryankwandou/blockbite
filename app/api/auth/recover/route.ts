@@ -8,7 +8,7 @@
 import { NextResponse } from 'next/server';
 import { cooldownLeft, verifyWalletSignature } from '@/lib/auth/core';
 import { lastMigrationInto, moveAccount } from '@/lib/auth/db';
-import { accountsConfigured, body, clearCookie, COOKIE, fail, limited, recoverySession, sealWallet, setCookie } from '@/lib/auth/http';
+import { accountsConfigured, body, clearCookie, consumeChallenge, COOKIE, fail, limited, recoverySession, sealWallet, setCookie } from '@/lib/auth/http';
 import { copyProfile } from '@/lib/auth/profile';
 
 export const dynamic = 'force-dynamic';
@@ -20,6 +20,12 @@ export async function POST(req: Request) {
   if (await limited(req, 'recover', 10)) return fail(429, 'too many attempts, try again later', { code: 'rate_limited' });
   const b = await body(req);
   if (!b || !verifyWalletSignature(b.wallet, `migrate:${rs.w}`, b.message, b.signature)) return fail(401, 'bad signature', { code: 'bad_signature' });
+  try {
+    if (!(await consumeChallenge(b.message))) return fail(401, 'bad signature', { code: 'bad_signature' });
+  } catch (e) {
+    console.error('account challenge nonce', e);
+    return fail(503, 'unavailable, try again', { code: 'unavailable' });
+  }
   const to = b.wallet as string;
   if (to === rs.w) return fail(400, 'that is the same wallet', { code: 'same_wallet' });
   const left = cooldownLeft(await lastMigrationInto(rs.w));

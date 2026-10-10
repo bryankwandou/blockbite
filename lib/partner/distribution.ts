@@ -224,7 +224,7 @@ export class Distribution {
   }
 
   listCampaigns(partner: string | null) { return this.store.listCampaigns(partner); }
-  getCampaign(id: string) { return this.store.getCampaign(id); }
+  getCampaign(id: string) { return id.includes('\x00') ? Promise.resolve(null) : this.store.getCampaign(id); }
   totals(id: string): Promise<Totals> { return this.store.totals(id); }
 
   /** A player's allocations (after running per-wallet rules and lazy settlement). */

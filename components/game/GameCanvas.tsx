@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 import { useGameEngine, canPlace } from '@/lib/game/engine';
+import { recordGameOver } from '@/lib/game/persist';
 import { BOARD_ROWS, BOARD_COLS, CELL_SIZE, CELL_GAP, BLOCK_COLORS, MAX_GAME_LEVEL, getLevelThreshold, getLevelTier } from '@/lib/game/constants';
 import {
   drawBoard, drawGhostPiece, drawScorePop, drawParticles,
@@ -203,6 +204,14 @@ export default function GameCanvas({ initialLevel = 1, onBack, biome, mode = 'fr
 
   const [celebrate, setCelebrate] = useState<{ pb: boolean; rank: number | null } | null>(null);
   const gameOverHandledRef = useRef(false);
+  const statsSavedRef = useRef(false);
+  useEffect(() => {
+    if (!state.isGameOver) { statsSavedRef.current = false; return; }
+    if (statsSavedRef.current) return;
+    statsSavedRef.current = true;
+    // Guests too; one write per game, guarded against blocked/full storage.
+    recordGameOver(state.score > 0 ? Math.max(state.level, initialLevel + 1) : state.level);
+  }, [state.isGameOver, state.level, state.score, initialLevel]);
   useEffect(() => {
     if (state.isGameOver && !gameOverHandledRef.current && connected && publicKey) {
       gameOverHandledRef.current = true;
@@ -214,16 +223,6 @@ export default function GameCanvas({ initialLevel = 1, onBack, biome, mode = 'fr
         walletAddress: publicKey.toBase58(),
         component: 'GameCanvas',
       });
-      // Advance map progress: move to next map level after playing
-      if (state.score > 0) {
-        const prevMapLevel = parseInt(localStorage.getItem('bb_max_level') ?? '1');
-        if (initialLevel >= prevMapLevel) {
-          localStorage.setItem('bb_max_level', String(initialLevel + 1));
-        }
-        const prevGames = parseInt(localStorage.getItem('bb_games_played') ?? '0');
-        localStorage.setItem('bb_games_played', String(prevGames + 1));
-      }
-
       // Save the run: level reached and score (the session started when the wallet connected).
       const runScore = state.score;
       const saved = submitProgress(state.level, runScore);
@@ -371,6 +370,13 @@ export default function GameCanvas({ initialLevel = 1, onBack, biome, mode = 'fr
     setIsDragging(false);
     setDragPiece(null);
   }, [isDragging, dragPiece, state, placePiece]);
+
+  // A cancelled touch (OS gesture, call, etc.) must not leave a half-finished drag behind.
+  const handlePointerCancel = useCallback(() => {
+    setIsDragging(false);
+    setDragPiece(null);
+    setGhostPos(null);
+  }, []);
 
   // Effects for clear animation
   useEffect(() => {
@@ -624,9 +630,10 @@ export default function GameCanvas({ initialLevel = 1, onBack, biome, mode = 'fr
         height={CANVAS_H}
         className={styles.canvas}
         onClick={handleCanvasClick}
-        onMouseMove={handleMouseMove}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
+        onPointerMove={handleMouseMove}
+        onPointerDown={handleMouseDown}
+        onPointerUp={handleMouseUp}
+        onPointerCancel={handlePointerCancel}
         style={{ cursor: selectedTray !== null ? 'crosshair' : 'default' }}
       />
 
