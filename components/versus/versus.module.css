@@ -59,7 +59,7 @@
   display: inline-flex;
   align-items: center;
 }
-.btn { background: var(--accent, #a78bfa); color: #0a0a14; }
+.btn { background: var(--accent, #a78bfa); color: var(--ds-bg, #0a0a14); }
 .btnGhost { background: transparent; color: var(--text, #fff); border-color: var(--border, #1f1f3a); }
 .btn:disabled { opacity: .5; cursor: default; }
 .input {
@@ -172,3 +172,5 @@ span.slot { cursor: default; }
 @media (prefers-reduced-motion: reduce) { .flash { animation: none; } .ghostFill { transition: none; } }
 /* Inline note links: 40px tap height (lane 14). */
 .note a { display: inline-flex; align-items: center; min-height: 40px; }
+/* Light theme: the teal badge text needs ≥4.5:1 on the light page. */
+:global(html[data-theme='light']) .badge { color: #0f766e; border-color: #0f766e; }

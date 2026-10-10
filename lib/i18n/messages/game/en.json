@@ -85,7 +85,7 @@
   "rule_hints_on": "Hints on",
   "hint_btn": "Hint",
   "free_connect_btn": "Connect wallet to save scores",
-  "goal_lines": "Goal: clear {n} lines",
+  "goal_lines": "Goal: clear {n} {n|line|lines}",
   "goal_score": "Goal: reach {n} points",
   "goal_other": "Goal: shown on the level card",
   "tut_title_1": "First Steps",

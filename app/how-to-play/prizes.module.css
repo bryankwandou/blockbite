@@ -265,7 +265,7 @@
   background: color-mix(in srgb, var(--ds-block-1, #a78bfa) 14%, transparent);
   box-shadow: 0 3px 0 color-mix(in srgb, var(--ds-block-1, #a78bfa) 45%, transparent);
 }
-.dayOut { border-style: dashed; opacity: 0.6; }
+.dayOut { border-style: dashed; opacity: 0.85; }
 .dayName { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ds-text-dim, #94a3b8); }
 .dayScore {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
@@ -318,3 +318,7 @@
 :global(html[data-reduce-motion='true']) .col,
 :global(html[data-reduce-motion='true']) .segBtn,
 :global(html[data-reduce-motion='true']) .stack i { transition: none; }
+
+/* Light theme: block colours used as text/labels need ≥4.5:1 on the light surface. */
+:global(html[data-theme='light']) .cDaily { color: #155e75; }
+:global(html[data-theme='light']) .splitMonthly { color: #fff; }

@@ -25,7 +25,7 @@
   "cat_score": "Best score",
   "cat_avatars": "Avatars worn",
   "goal_level": "Reach level {n}",
-  "goal_lines": "Clear {n} lines",
+  "goal_lines": "Clear {n} {n|line|lines}",
   "goal_combos": "Land {n} combos",
   "goal_perfect": "Make {n} perfect clears",
   "goal_ranked_days": "Play Ranked on {n} days",

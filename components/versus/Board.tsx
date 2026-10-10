@@ -163,7 +163,7 @@ export default function Board({ view, label, onMove, compact }: {
   return (
     <div className={`${s.boardWrap} ${compact ? s.compact : ''}`}>
       {ghost}
-      <div ref={gridRef} className={s.grid} role="grid" aria-label={label} onMouseLeave={() => { if (!drag) setHover(null); }}>
+      <div ref={gridRef} className={s.grid} role="group" aria-label={label} onMouseLeave={() => { if (!drag) setHover(null); }}>
         {colors.map((c, i) => {
           const pv = preview.has(i);
           const style = c ? { background: grad(c) } : undefined;

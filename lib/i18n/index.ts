@@ -86,7 +86,15 @@ export function useT(ns: Namespace) {
   return useCallback(
     (key: string, vars?: Record<string, string | number>) => {
       const s = (lang !== 'en' ? cache.get(`${ns}:${lang}`)?.[key] : undefined) ?? EN[ns]?.[key] ?? key;
-      return vars ? s.replace(/\{(\w+)\}/g, (_, v) => String(vars[v] ?? `{${v}}`)) : s;
+      if (!vars) return s;
+      // {n|one|other}: English-style plural chosen by Intl.PluralRules for the active language.
+      const plural = (v: string, forms: string) => {
+        const [one, other] = forms.split('|');
+        return new Intl.PluralRules(lang).select(Number(vars[v])) === 'one' ? one : (other ?? one);
+      };
+      return s
+        .replace(/\{(\w+)\|([^{}]*)\}/g, (_, v, forms) => plural(v, forms))
+        .replace(/\{(\w+)\}/g, (_, v) => String(vars[v] ?? `{${v}}`));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [ns, lang, cache.get(`${ns}:${lang}`)],

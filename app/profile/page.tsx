@@ -193,8 +193,8 @@ export default function ProfilePage() {
                     key={g}
                     type="button"
                     aria-pressed={group === g}
-                    className={k.btn}
-                    style={{ padding: '6px 12px', fontSize: 13, opacity: group === g ? 1 : 0.6 }}
+                    className={group === g ? k.btn : k.btnGhost}
+                    style={{ padding: '6px 12px', fontSize: 13 }}
                     onClick={() => setGroup(g)}
                   >
                     {tc(`avatar_group_${g}`)}

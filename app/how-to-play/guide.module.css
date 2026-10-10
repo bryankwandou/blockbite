@@ -136,3 +136,8 @@
 
 @media (prefers-reduced-motion: reduce) { .faq summary::after { transition: none; } }
 :global(html[data-reduce-motion='true']) .faq summary::after { transition: none; }
+
+/* Light theme: block colours used as text/labels need ≥4.5:1 on the light surface. */
+:global(html[data-theme='light']) .pVault { color: #155e75; }
+:global(html[data-theme='light']) .pRef { color: #92400e; }
+:global(html[data-theme='light']) .barTeam { color: #fff; }

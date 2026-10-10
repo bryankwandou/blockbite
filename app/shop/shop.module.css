@@ -122,3 +122,6 @@
   .cell { animation: none; }
 }
 :global(html[data-reduce-motion='true']) .cell { animation: none; }
+
+/* Light theme: referral share text needs ≥4.5:1 on the light surface. */
+:global(html[data-theme='light']) .pctRef { color: #92400e; }

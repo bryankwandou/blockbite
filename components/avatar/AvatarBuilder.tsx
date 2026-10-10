@@ -93,7 +93,7 @@ export function AvatarBuilder({ current, onUse }: Props) {
         <button type="button" style={{ ...btn, width: 'auto', padding: '0 14px', gap: 6 }} onClick={() => setParts(randomParts())}>
           <Shuffle size={16} /> {t('randomize')}
         </button>
-        <button type="button" style={{ ...btn, width: 'auto', padding: '0 14px', background: 'var(--ds-accent, #9945FF)', color: '#fff', border: 'none' }}
+        <button type="button" style={{ ...btn, width: 'auto', padding: '0 14px', background: 'var(--ds-accent, #9945FF)', color: 'var(--ds-bg, #fff)', border: 'none' }}
           onClick={() => onUse(code)} aria-pressed={current === code}>
           {t('use_this')}
         </button>

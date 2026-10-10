@@ -10,7 +10,7 @@
   --bg: #f7f7fb; --surface: rgba(0,0,0,0.04); --text: #0a0a14;
   --text-dim: #475569; --border: #e2e8f0;
   --accent: #6d28d9; --accent2: #0d9488;
-  --warn: #b45309; --danger: #b91c1c; --ok: #15803d;
+  --warn: #92400e; --danger: #b91c1c; --ok: #166534;
   --header-grad: linear-gradient(180deg, #ede9fe 0%, #f7f7fb 100%);
 }
 html, body { margin: 0; background: var(--bg); color: var(--text);
