@@ -170,3 +170,5 @@ span.slot { cursor: default; }
 .list li { display: flex; justify-content: space-between; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--border, #1f1f3a); overflow-wrap: anywhere; }
 .link { font-family: ui-monospace, monospace; font-size: 13px; overflow-wrap: anywhere; }
 @media (prefers-reduced-motion: reduce) { .flash { animation: none; } .ghostFill { transition: none; } }
+/* Inline note links: 40px tap height (lane 14). */
+.note a { display: inline-flex; align-items: center; min-height: 40px; }

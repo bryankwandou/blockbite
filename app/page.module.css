@@ -1009,3 +1009,6 @@
 .splitChips span { width: 14px; height: 14px; border-radius: 4px; background: var(--ds-block-2, #5eead4); box-shadow: var(--bevel); }
 .splitChips span:nth-child(2) { background: var(--ds-block-1, #a78bfa); }
 .splitChips span:nth-child(3) { background: var(--ds-block-4, #f472b6); }
+
+/* Footer links: 40px tap height without changing the look (lane 14). */
+.footNav a { display: inline-flex; align-items: center; min-height: 40px; }

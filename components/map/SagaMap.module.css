@@ -174,11 +174,11 @@
 }
 .jumpLabel { font-size: 11px; font-weight: 700; color: var(--glow); }
 .jumpInput {
-  width: 64px; padding: 6px 8px; border-radius: 999px; border: 1px solid #334155;
+  width: 64px; min-height: 40px; padding: 6px 8px; border-radius: 999px; border: 1px solid #334155;
   background: #0b1020; color: #fff; font: 700 12px 'Space Grotesk', system-ui, sans-serif;
 }
 .hudBtn {
-  padding: 7px 12px; border-radius: 999px; border: 0; cursor: pointer; min-height: 32px;
+  padding: 7px 12px; border-radius: 999px; border: 0; cursor: pointer; min-height: 40px; min-width: 44px;
   font: 800 12px 'Space Grotesk', system-ui, sans-serif; color: #0a0a14;
   background: linear-gradient(135deg, var(--accent), var(--glow));
 }

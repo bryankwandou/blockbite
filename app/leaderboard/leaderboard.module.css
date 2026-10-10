@@ -182,3 +182,6 @@
 :global(html[data-reduce-motion='true']) .skelRow { animation: none; opacity: 0.8; }
 :global(html[data-reduce-motion='true']) .tab { transition: none; }
 .rowHead > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Footer link: 40px tap height (lane 14). */
+.foot a { display: inline-flex; align-items: center; min-height: 40px; }
